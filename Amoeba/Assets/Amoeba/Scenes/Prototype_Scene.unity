@@ -834,7 +834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141513266}
   m_Layer: 0
-  m_Name: Greybox_01
+  m_Name: Greybox_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
