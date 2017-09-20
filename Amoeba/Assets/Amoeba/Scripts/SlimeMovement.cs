@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class SlimeMovement : MonoBehaviour {
 
     Rigidbody rb;
-    GameObject[] invisibleWalls;
     GameObject player;
 
     [SerializeField]
@@ -15,13 +17,13 @@ public class SlimeMovement : MonoBehaviour {
     float distanceMultiplier;
 
     [SerializeField]
-    float gravityMultiplier;
+    float avoidWallsForce;
+
 
     // Use this for initialization
     void Start ()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 	
@@ -29,9 +31,9 @@ public class SlimeMovement : MonoBehaviour {
 	void Update ()
     {
         Seek();
-        Avoid();
+      //  Avoid();
 
-        rb.AddForce(Vector3.down * gravityMultiplier);
+     //   rb.AddForce(Vector3.down * gravityMultiplier);
 
 	}
 
@@ -46,21 +48,44 @@ public class SlimeMovement : MonoBehaviour {
 
     }
 
-    void Avoid()
+    void Avoid(GameObject col)
     {
-        Vector3 vecBetween;
-        foreach(GameObject x in invisibleWalls)
+        Vector3 vecBtwSlimeAndWall = col.transform.position - transform.position;
+        Vector3 vecBtwSlimeAndPlayer = player.transform.position - transform.position;
+        Vector3 finalvec = new Vector3();
+
+
+        if (Vector3.SignedAngle(vecBtwSlimeAndWall, vecBtwSlimeAndPlayer, Vector3.up) > 0)
         {
-            vecBetween = transform.position - x.transform.position;
-            if(vecBetween.magnitude < 2)
-            {
-                rb.AddForce(vecBetween * 1, ForceMode.Impulse);
-            }
+
+            finalvec = Vector3.Cross(vecBtwSlimeAndPlayer.normalized, Vector3.up);
+            finalvec = -finalvec;
+        }
+
+        else
+        {
+            finalvec = Vector3.Cross(vecBtwSlimeAndPlayer.normalized, Vector3.up);
+
+        }
+
+        rb.AddForce(finalvec * (vecBtwSlimeAndPlayer.magnitude * distanceMultiplier) * speed * Time.deltaTime, ForceMode.Impulse);
+        rb.AddForce(-vecBtwSlimeAndPlayer * avoidWallsForce * vecBtwSlimeAndPlayer.magnitude * Time.deltaTime, ForceMode.Impulse);
+    }
+
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.tag == "Wall")
+        {
+            Avoid(collision.gameObject);
         }
     }
 
-    public void Dodge()
+    public void Dodge(Vector3 pos, float force)
     {
+        Vector3 vecBetween = pos - transform.position;
+        Debug.DrawLine(pos, transform.position);
+        rb.AddForce(-vecBetween.normalized * force,ForceMode.Impulse);
 
     }
 

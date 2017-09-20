@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]
-    private GameObject slime;
+    private GameObject slimePrefab;
 
     [SerializeField]
     float speed;
@@ -14,22 +14,26 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 startPos;
 
 
+    [SerializeField]
+    List<GameObject> slimes;
+
+
+    [SerializeField]
+    float dodgeForce;
+
+
     // Use this for initialization
     void Start ()
     {
         cc = GetComponent<CharacterController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>();
-        startPos = transform.position;
-
+        slimes.Add(Instantiate(slimePrefab, transform.position + -transform.up, transform.rotation));
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if(transform.position.y != startPos.y)
-        {
-            transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z);
-        }
+
 
         cc.Move(transform.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
         cc.Move(transform.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
@@ -38,13 +42,39 @@ public class PlayerMovement : MonoBehaviour {
         {
             DebugMode();
         }
+
+
+
+        if(Input.GetKeyDown("q"))
+        {
+
+            Vector3 centerPoint = new Vector3();
+            foreach (GameObject x in slimes)
+            {
+                centerPoint += x.transform.position;
+            }
+
+
+            centerPoint /= slimes.Count ;
+
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
+            }
+
+
+        }
+
+
     }
 
     void DebugMode()
     {
-        if(Input.GetKey(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
-            Instantiate(slime, transform.position + transform.right, transform.rotation);
+            GameObject tempSlime;
+            tempSlime = Instantiate(slimePrefab, transform.position + -transform.up  + transform.right, transform.rotation);
+            slimes.Add(tempSlime);
         }
     }
 

@@ -20,10 +20,10 @@ public class GameStateManager : MonoBehaviour {
         {
             if(Input.GetKey("u"))
             {
-                if (Input.GetKey("g"))
+                if (Input.GetKeyDown("g"))
                 {
-                    debugMode = true;
-                    Debug.Log("debug Turned on");
+                    debugMode = !debugMode;
+                    Debug.Log("debug mode = " + debugMode);
                 }            
             }
         }	
