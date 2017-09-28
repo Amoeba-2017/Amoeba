@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]
     private GameObject slimePrefab;
+
+    private InputDevice controller;
 
     [SerializeField]
     float speed;
@@ -17,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     List<GameObject> slimes;
 
+    [HideInInspector]
+    public int playerNumber = 1;
+
 
     [SerializeField]
     float dodgeForce;
@@ -25,44 +31,91 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        
         cc = GetComponent<CharacterController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>();
-        slimes.Add(Instantiate(slimePrefab, transform.position + -transform.up, transform.rotation));
+        playerNumber = gameManager.playerCount;
+        GameObject tempSlime = Instantiate(slimePrefab, transform.position + -transform.up, transform.rotation);
+        tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
+        slimes.Add(tempSlime);
+        Debug.Log(playerNumber);
+        Debug.Log(InputManager.Devices.Count);
+
+        if (playerNumber <= InputManager.Devices.Count)
+        {
+            Debug.Log("im a controller");
+            controller = InputManager.Devices[playerNumber - 1];
+
+        }
+
     }
 
     // Update is called once per frame
     void Update ()
     {
 
-
-        cc.Move(transform.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
-        cc.Move(transform.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
-
-        if(gameManager.debugMode == true)
+        if (controller == null)
         {
-            DebugMode();
+            cc.Move(transform.right * Input.GetAxis("HorizontalKeys") * speed * Time.deltaTime);
+            cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
+        
+
+            
+            if (gameManager.debugMode == true)
+            {
+                DebugMode();
+            }
+
+
+
+            if (Input.GetKeyDown("q"))
+            {
+
+                Vector3 centerPoint = new Vector3();
+                foreach (GameObject x in slimes)
+                {
+                    centerPoint += x.transform.position;
+                }
+
+
+                centerPoint /= slimes.Count;
+
+                foreach (GameObject x in slimes)
+                {
+                    x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
+                }
+
+
+            }
         }
-
-
-
-        if(Input.GetKeyDown("q"))
+        //controller
+        else
         {
+            cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
+            cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
-            Vector3 centerPoint = new Vector3();
-            foreach (GameObject x in slimes)
+            if (gameManager.debugMode == true)
             {
-                centerPoint += x.transform.position;
+                DebugMode();
             }
 
-
-            centerPoint /= slimes.Count ;
-
-            foreach (GameObject x in slimes)
+            if (controller.Action1.WasReleased)
             {
-                x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
+
+                Vector3 centerPoint = new Vector3();
+                foreach (GameObject x in slimes)
+                {
+                    centerPoint += x.transform.position;
+                }
+
+
+                centerPoint /= slimes.Count;
+
+                foreach (GameObject x in slimes)
+                {
+                    x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
+                }
             }
-
-
         }
 
 
@@ -74,6 +127,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             GameObject tempSlime;
             tempSlime = Instantiate(slimePrefab, transform.position + -transform.up  + transform.right, transform.rotation);
+            tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
             slimes.Add(tempSlime);
         }
     }

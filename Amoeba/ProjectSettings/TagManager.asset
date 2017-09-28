@@ -6,6 +6,10 @@ TagManager:
   tags:
   - InvisibleWall
   - GameManager
+  - PlayerRed
+  - PlayerPurple
+  - PlayerYellow
+  - PlayerBlue
   layers:
   - Default
   - TransparentFX

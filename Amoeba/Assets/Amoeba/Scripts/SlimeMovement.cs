@@ -19,22 +19,25 @@ public class SlimeMovement : MonoBehaviour {
     [SerializeField]
     float avoidWallsForce;
 
+    [HideInInspector]
+    public string parent;
 
     // Use this for initialization
     void Start ()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag(parent);
+        }
+
         Seek();
-      //  Avoid();
-
-     //   rb.AddForce(Vector3.down * gravityMultiplier);
-
 	}
 
     void Seek()
