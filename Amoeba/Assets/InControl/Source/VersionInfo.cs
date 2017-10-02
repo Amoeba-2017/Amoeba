@@ -28,7 +28,13 @@ namespace InControl
 				Major = 1,
 				Minor = 4,
 				Patch = 4,
+<<<<<<< .mine
+				Build = 3920
+||||||| .r17
+				Build = 3885
+=======
 				Build = 3986
+>>>>>>> .r19
 			};
 		}
 
