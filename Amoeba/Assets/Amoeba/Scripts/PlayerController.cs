@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 
     private float ShootTimer;
 
+    private GameObject controllerRetical;
 
     void Start ()
     {
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour {
             controller = InputManager.Devices[playerNumber - 1];
 
         }
+
+        controllerRetical = transform.GetChild(0).gameObject;
 
     }
 
@@ -151,6 +154,8 @@ public class PlayerController : MonoBehaviour {
             cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
             cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
+            controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.RightStick.Y);
+
 
             //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
             if (controller.Action1.WasPressed)
@@ -175,7 +180,18 @@ public class PlayerController : MonoBehaviour {
 
             //shooting on controller
 
-            // idk how this is going to be done yet
+
+            if (controller.RightTrigger.WasPressed)
+            {
+                Vector3 vecBetween = new Vector3();
+                vecBetween = controllerRetical.transform.position - transform.position;
+
+                foreach(GameObject i in slimes)
+                {
+                    i.GetComponent<SlimeActions>().Shoot(vecBetween.normalized);
+                }
+
+            }
 
 
         }

@@ -127,6 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileShot: {fileID: 1679630471815114, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
     type: 2}
+  ProjectileShotSpeed: 100
+  DestroyTimer: 20
 --- !u!135 &135932072417194066
 SphereCollider:
   m_ObjectHideFlags: 1
