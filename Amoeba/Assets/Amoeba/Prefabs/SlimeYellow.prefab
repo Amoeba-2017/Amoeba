@@ -25,9 +25,9 @@ GameObject:
   - component: {fileID: 114887618903913696}
   - component: {fileID: 54775075811002534}
   - component: {fileID: 114403981002050964}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SlimeYellow
-  m_TagString: Untagged
+  m_TagString: PlayerYellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,10 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileShot: {fileID: 1679630471815114, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
+  ProjectileShot: {fileID: 1411172102379500, guid: 4eb334b671c0dba41b207207cbe024b1,
     type: 2}
   ProjectileShotSpeed: 100
-  DestroyTimer: 20
+  DestroyTimer: 5
 --- !u!114 &114887618903913696
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,9 +25,9 @@ GameObject:
   - component: {fileID: 114749284612143476}
   - component: {fileID: 54113113682167390}
   - component: {fileID: 114984225119165272}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SlimeRed
-  m_TagString: Untagged
+  m_TagString: PlayerRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileShot: {fileID: 1679630471815114, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
+  ProjectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
     type: 2}
   ProjectileShotSpeed: 100
-  DestroyTimer: 20
+  DestroyTimer: 5
 --- !u!135 &135922440082773318
 SphereCollider:
   m_ObjectHideFlags: 1
