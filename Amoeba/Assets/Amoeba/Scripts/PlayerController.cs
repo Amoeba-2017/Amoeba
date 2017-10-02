@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
         playerNumber = gameManager.playerCount;
 
         //making the first slime
-        GameObject tempSlime = Instantiate(slimePrefab, transform.position + -transform.up, transform.rotation);
+        GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.6f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
 
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour {
         {
             //make a new slime
             GameObject tempSlime;
-            tempSlime = Instantiate(slimePrefab, transform.position + -transform.up  + transform.right, transform.rotation);
+            tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.6f, transform.position.z) + transform.right, transform.rotation);
             tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
             slimes.Add(tempSlime);
         }

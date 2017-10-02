@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23510479933347580}
   - component: {fileID: 114163042545305922}
   - component: {fileID: 143315880177889880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerRed
   m_TagString: PlayerRed
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33210298281440498}
   - component: {fileID: 65529205197533380}
   - component: {fileID: 23069400912269436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138844098488738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 47.376, z: -131.3}
+  m_LocalPosition: {x: 5, y: 47.09203, z: -131.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755057566398646}
@@ -191,10 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1021266176892364, guid: bce9d98ed28c0624f943f0e4422d4299,
     type: 2}
-  speed: 10
+  speed: 15
   playerNumber: 0
   dodgeForce: 500
-  BufferTime: 0
+  BufferTime: 0.7
 --- !u!143 &143315880177889880
 CharacterController:
   m_ObjectHideFlags: 1
