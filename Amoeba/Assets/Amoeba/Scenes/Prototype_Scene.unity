@@ -9351,6 +9351,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
+  playerRedPrefab: {fileID: 0}
+  playerBluePrefab: {fileID: 0}
+  playerYellowPrefab: {fileID: 0}
+  playerPurplePrefab: {fileID: 0}
+  playerCount: 1
 --- !u!4 &2143146076
 Transform:
   m_ObjectHideFlags: 0

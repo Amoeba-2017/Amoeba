@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] [Tooltip("The amount of force applied when dodging")]
     float dodgeForce;
 
+    [SerializeField]
+    private float BufferTime;
+
+    private float ShootTimer;
+
 
     void Start ()
     {
@@ -61,6 +66,8 @@ public class PlayerController : MonoBehaviour {
 
     void Update ()
     {
+        ShootTimer += Time.deltaTime;
+
         //if there is no controller
         if (controller == null)
         {
@@ -101,7 +108,30 @@ public class PlayerController : MonoBehaviour {
 
             //Shooting on keybored
 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            Vector3 vec3 = new Vector3();
+            if (Physics.Raycast(ray, out rayHit))
+            {
+
+
+                vec3 = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
+
+                Debug.DrawLine(rayHit.point, transform.position);
+            }
+
             //if mousebutton 0 is pressed
+            if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
+                {
+
+
+                    foreach (GameObject i in slimes)
+                    {
+                    i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
+                    }
+
+                ShootTimer = 0.0f;
+                }
                 
                 //find the normilised vector Between the the player(this gameobject) and the mouse 
 

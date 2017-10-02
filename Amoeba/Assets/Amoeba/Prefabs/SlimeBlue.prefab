@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23215282053137704}
   - component: {fileID: 114092729160600940}
   - component: {fileID: 54059643258877384}
+  - component: {fileID: 114872196053722660}
   m_Layer: 0
   m_Name: SlimeBlue
   m_TagString: Untagged
@@ -112,6 +113,20 @@ MonoBehaviour:
   speed: 80
   distanceMultiplier: 10
   avoidWallsForce: 0
+  parent: 
+--- !u!114 &114872196053722660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427665708314914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileShot: {fileID: 1679630471815114, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
+    type: 2}
 --- !u!135 &135550507956913070
 SphereCollider:
   m_ObjectHideFlags: 1
