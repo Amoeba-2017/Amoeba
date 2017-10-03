@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114749284612143476}
   - component: {fileID: 54113113682167390}
   - component: {fileID: 114984225119165272}
+  - component: {fileID: 114451270523584294}
   m_Layer: 14
   m_Name: SlimeRed
   m_TagString: PlayerRed
@@ -99,6 +100,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 1
+--- !u!114 &114451270523584294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021266176892364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeathPoints: 0
+  IsShielded: 0
+  IsDead: 0
 --- !u!114 &114749284612143476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,8 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
     type: 2}
-  ProjectileShotSpeed: 100
-  DestroyTimer: 5
+  ProjectileShotSpeed: 65
+  DestroyTimer: 0.6
 --- !u!135 &135922440082773318
 SphereCollider:
   m_ObjectHideFlags: 1

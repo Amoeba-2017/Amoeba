@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114597666713388882}
   - component: {fileID: 54795883828369864}
   - component: {fileID: 114946591894698922}
+  - component: {fileID: 114778683356281232}
   m_Layer: 17
   m_Name: SlimePurple
   m_TagString: PlayerPurple
@@ -114,6 +115,20 @@ MonoBehaviour:
   distanceMultiplier: 10
   avoidWallsForce: 0
   parent: 
+--- !u!114 &114778683356281232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1429985051513196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeathPoints: 0
+  IsShielded: 0
+  IsDead: 0
 --- !u!114 &114946591894698922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,8 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileShot: {fileID: 1451342109059462, guid: 408275eefd8221c4f926abeae2c63a8c,
     type: 2}
-  ProjectileShotSpeed: 100
-  DestroyTimer: 5
+  ProjectileShotSpeed: 65
+  DestroyTimer: 0.6
 --- !u!135 &135932072417194066
 SphereCollider:
   m_ObjectHideFlags: 1

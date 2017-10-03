@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour {
         //defining the GameManager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameStateManager>();
 
+        ShootTimer = BufferTime;
+
         //getting the amount of players in the game
         playerNumber = gameManager.playerCount;
 
@@ -127,13 +129,13 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
                 {
 
+                ShootTimer = 0.0f;
 
-                    foreach (GameObject i in slimes)
+                foreach (GameObject i in slimes)
                     {
                     i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
                     }
 
-                ShootTimer = 0.0f;
                 }
                 
                 //find the normilised vector Between the the player(this gameobject) and the mouse 
@@ -181,8 +183,10 @@ public class PlayerController : MonoBehaviour {
             //shooting on controller
 
 
-            if (controller.RightTrigger.WasPressed)
+            if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
             {
+
+                ShootTimer = 0.0f;
                 Vector3 vecBetween = new Vector3();
                 vecBetween = controllerRetical.transform.position - transform.position;
 

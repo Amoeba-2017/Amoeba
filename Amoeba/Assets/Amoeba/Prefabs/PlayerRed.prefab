@@ -194,7 +194,7 @@ MonoBehaviour:
   speed: 15
   playerNumber: 0
   dodgeForce: 500
-  BufferTime: 0.7
+  BufferTime: 0.9
 --- !u!143 &143315880177889880
 CharacterController:
   m_ObjectHideFlags: 1

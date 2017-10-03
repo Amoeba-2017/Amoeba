@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23877339128276908}
   - component: {fileID: 114475126650301656}
   - component: {fileID: 143299160847706632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerPurple
   m_TagString: PlayerPurple
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33785224057007358}
   - component: {fileID: 65715586314453716}
   - component: {fileID: 23932902708722070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,10 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1429985051513196, guid: d0794bcb6451b0c4a9472ee81eb34616,
     type: 2}
-  speed: 10
+  speed: 15
   playerNumber: 0
   dodgeForce: 500
-  BufferTime: 0
+  BufferTime: 0.9
 --- !u!143 &143299160847706632
 CharacterController:
   m_ObjectHideFlags: 1
