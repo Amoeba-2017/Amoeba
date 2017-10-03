@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9e1b86316488c4798d2578c02f176d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimePrefab: {fileID: 1021266176892364, guid: bce9d98ed28c0624f943f0e4422d4299,
+  slimePrefab: {fileID: 1367675481507750, guid: 7b327910b2e15ae4683ac74035d4d70c,
     type: 2}
   speed: 15
   playerNumber: 0

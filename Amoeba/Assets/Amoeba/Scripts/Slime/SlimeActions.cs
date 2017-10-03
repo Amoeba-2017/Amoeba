@@ -26,17 +26,19 @@ public class SlimeActions : MonoBehaviour {
     public void Shoot(Vector3 rot)
     {
         Debug.Log(rot);
+        if (rot != Vector3.zero)
+        {
+            // Create a Bullet object
+            GameObject Bullet;
 
-        // Create a Bullet object
-        GameObject Bullet;
+            Bullet = Instantiate(ProjectileShot, transform.position + (rot * 2), Quaternion.identity);
 
-        Bullet = Instantiate(ProjectileShot, transform.position + (rot * 2), Quaternion.identity);
+            // Get the object (Bullet) and add the force to it
+            Bullet.GetComponent<Rigidbody>().AddForce(rot * ProjectileShotSpeed, ForceMode.Impulse);
 
-        // Get the object (Bullet) and add the force to it
-        Bullet.GetComponent<Rigidbody>().AddForce(rot * ProjectileShotSpeed, ForceMode.Impulse);
-
-        // Destroy the Bullet when the DestroyTimer has been reached
-        Destroy(Bullet, DestroyTimer);
+            // Destroy the Bullet when the DestroyTimer has been reached
+            Destroy(Bullet, DestroyTimer);
+        }
     }
 
     // Update is called once per frame

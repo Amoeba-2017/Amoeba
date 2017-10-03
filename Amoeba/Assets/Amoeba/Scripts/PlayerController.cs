@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour {
 
 
             //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
-            if (controller.Action1.WasPressed)
+            if (controller.LeftTrigger.WasPressed)
             {
                 //find the center of all of the slimes
                 Vector3 centerPoint = new Vector3();
