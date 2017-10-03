@@ -195,7 +195,7 @@ MonoBehaviour:
   speed: 15
   powerUpTime: 10
   playerNumber: 0
-  dodgeForce: 500
+  dodgeForce: 0.05
   BufferTime: 0.9
 --- !u!114 &114756394631701582
 MonoBehaviour:

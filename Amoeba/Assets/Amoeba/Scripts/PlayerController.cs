@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
         playerNumber = gameManager.playerCount;
 
         //making the first slime
-        GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.6f, transform.position.z), transform.rotation);
+        GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
 
@@ -109,10 +109,8 @@ public class PlayerController : MonoBehaviour {
             cc.Move(transform.right * Input.GetAxis("HorizontalKeys") * speed * Time.deltaTime);
             cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
 
-
-
             //if q button is pressed
-            if (Input.GetKeyDown("q"))
+            if (cc.velocity == Vector3.zero)
             {
                 //find the center of all of the slimes
                 Vector3 centerPoint = new Vector3();
@@ -174,8 +172,6 @@ public class PlayerController : MonoBehaviour {
         //controller
         else
         {
-
-
             //add movment to the player if the user adds input 
             cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
             cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
@@ -184,7 +180,8 @@ public class PlayerController : MonoBehaviour {
 
 
             //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
-            if (controller.LeftTrigger.WasPressed)
+            //if q button is pressed
+            if (cc.velocity == Vector3.zero)
             {
                 //find the center of all of the slimes
                 Vector3 centerPoint = new Vector3();
@@ -242,7 +239,7 @@ public class PlayerController : MonoBehaviour {
         {
             //make a new slime
             GameObject tempSlime;
-            tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.6f, transform.position.z) + transform.right, transform.rotation);
+            tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z) + transform.right, transform.rotation);
             tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
             slimes.Add(tempSlime);
         }

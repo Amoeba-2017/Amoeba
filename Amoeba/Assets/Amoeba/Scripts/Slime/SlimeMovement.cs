@@ -11,6 +11,8 @@ public class SlimeMovement : MonoBehaviour {
     //declaring variables
     Rigidbody rb;
     GameObject player;
+    bool seeking = false;
+
 
     [SerializeField] [Tooltip("The speed that the slimes will move")]
     float speed;
@@ -43,6 +45,7 @@ public class SlimeMovement : MonoBehaviour {
         }
 
         //seek the player
+        
         Seek();
 	}
 
@@ -92,6 +95,7 @@ public class SlimeMovement : MonoBehaviour {
 
     public void Dodge(Vector3 centerPoint, float force)
     {
+
         //get the vector between the center point and me
         Vector3 vecBetween = centerPoint - transform.position;
 
