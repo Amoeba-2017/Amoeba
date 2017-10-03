@@ -10,6 +10,11 @@ TagManager:
   - PlayerPurple
   - PlayerYellow
   - PlayerBlue
+  - DamageBoost
+  - IncreasedSpeed
+  - RapidFire
+  - Shotgun
+  - ProtectiveShield
   layers:
   - Default
   - TransparentFX

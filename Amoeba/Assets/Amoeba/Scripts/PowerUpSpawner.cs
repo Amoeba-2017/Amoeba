@@ -22,30 +22,37 @@ public class PowerUpSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
-	}
+        powerUpSpawnTimer = spawnCoolDown;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
 
-        //Creates a timer that counts up
-        powerUpSpawnTimer += Time.deltaTime;
-
-        if (powerUpSpawnTimer > spawnCoolDown)
+        if (powerUpSpawnTimer <= 0.0f)
         {
-            powerUpSpawnTimer = 0.0f;
-
-            //For Each GameObject in the spawnPointPrefab
+            //foreach statement iterates through each GameObject inside the array
             foreach (GameObject i in spawnPointPrefab)
             {
-                if (i.transform.GetChild(0) == null)
+                if (i.transform.childCount == 0)
                 {
-                    //Creates a new randomised Power Up gameObject and sets it to a random SpawnPoint
-                    currentPowerUp = Instantiate(powerUps[(int)Random.Range(0, powerUps.Length - 1)], i.transform.position + (transform.up * 2), Quaternion.identity);
+                    //Creates new randomised Power-Up at a random SpawnPoint location and passes its position and rotation
+                    currentPowerUp = Instantiate(powerUps[(int)Random.Range(0, powerUps.Length)], i.transform.position + (transform.up * 2.5f), Quaternion.identity);
+                    //Sets the currentPowerUps parent to the SpawnPoint it is set at
                     currentPowerUp.transform.SetParent(i.transform);
-                }
+                }  
             }
+
+            powerUpSpawnTimer = spawnCoolDown;
+
         }
+        else
+        {
+           //Creates a timer that counts down
+           powerUpSpawnTimer -= Time.deltaTime;
+
+        }
+
 	}
+
 }

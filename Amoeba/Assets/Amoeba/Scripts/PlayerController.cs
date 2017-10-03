@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField][Tooltip("The speed that the player will move")]
     float speed;
 
+    private bool increasedSpeed;
+
+    [SerializeField]
+    private float powerUpTime;
 
     private GameStateManager gameManager;
     CharacterController cc;
@@ -38,6 +42,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start ()
     {
+        increasedSpeed = false;
+
         //defining the Character Controller
         cc = GetComponent<CharacterController>();
 
@@ -69,6 +75,26 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+
+    public void increasedSpeedPowerUp()
+    {
+        float tempSpeed = speed;
+
+        speed *= 2.0f;
+
+        StartCoroutine(returnSpeed(tempSpeed, powerUpTime));
+    }
+
+    private IEnumerator returnSpeed(float a_speed, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        print("NormalSpeed");
+
+        speed = a_speed;
+    }
+
+
     void Update ()
     {
         ShootTimer += Time.deltaTime;
@@ -79,11 +105,9 @@ public class PlayerController : MonoBehaviour {
 
             //using keybored controls
 
-
             //add movment to the player if the user adds input
             cc.Move(transform.right * Input.GetAxis("HorizontalKeys") * speed * Time.deltaTime);
             cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
-        
 
 
 

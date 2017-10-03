@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23510479933347580}
   - component: {fileID: 114163042545305922}
   - component: {fileID: 143315880177889880}
+  - component: {fileID: 114756394631701582}
   m_Layer: 8
   m_Name: PlayerRed
   m_TagString: PlayerRed
@@ -192,9 +193,21 @@ MonoBehaviour:
   slimePrefab: {fileID: 1367675481507750, guid: 7b327910b2e15ae4683ac74035d4d70c,
     type: 2}
   speed: 15
+  powerUpTime: 10
   playerNumber: 0
   dodgeForce: 500
   BufferTime: 0.9
+--- !u!114 &114756394631701582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138844098488738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45bdf70f78e99b4ebb86029aa864055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &143315880177889880
 CharacterController:
   m_ObjectHideFlags: 1

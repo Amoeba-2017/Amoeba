@@ -991,52 +991,6 @@ Transform:
   m_Father: {fileID: 1744073675}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &159144050
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 14.529019
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 45.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -156.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934853781240680, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180753500903514, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-      propertyPath: m_Name
-      value: PowerUpSpawnPoint2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &176461134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,6 +1193,14 @@ Prefab:
     - target: {fileID: 4163916693582774, guid: a177f3481fd3ccb42a0840c653f8ea00, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530509603064574, guid: a177f3481fd3ccb42a0840c653f8ea00, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138844098488738, guid: a177f3481fd3ccb42a0840c653f8ea00, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a177f3481fd3ccb42a0840c653f8ea00, type: 2}
@@ -5137,6 +5099,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 65084242725567492, guid: e6bea0dadca96a64e93ed7bf6ff4c752,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
   m_IsPrefabParent: 0
@@ -5838,6 +5805,11 @@ Prefab:
     - target: {fileID: 1180753500903514, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
       propertyPath: m_Name
       value: PowerUpSpawnPoint1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65084242725567492, guid: e6bea0dadca96a64e93ed7bf6ff4c752,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6bea0dadca96a64e93ed7bf6ff4c752, type: 2}
@@ -8340,14 +8312,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUps:
-  - {fileID: 1195230674532996, guid: 7756f402b62d3f84c8192112e08b38f5, type: 2}
-  - {fileID: 1853707506836422, guid: 2f5a4b0f232c25a4695a4d34b5a076c6, type: 2}
-  - {fileID: 1389629443748708, guid: 77aa19457bec2b746bce591343889a9f, type: 2}
-  spawnCoolDown: 3
+  - {fileID: 1815857903666126, guid: 604e4afc3aac24d459a1c68a488f332a, type: 2}
+  - {fileID: 1667997687753594, guid: 7756f402b62d3f84c8192112e08b38f5, type: 2}
+  spawnCoolDown: 5
   spawnPointPrefab:
   - {fileID: 1530325876}
   - {fileID: 1554731017}
-  - {fileID: 1913680410}
 --- !u!1 &1832174507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,11 +8845,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1906253540}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1913680410 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1180753500903514, guid: e6bea0dadca96a64e93ed7bf6ff4c752,
-    type: 2}
-  m_PrefabInternal: {fileID: 159144050}
 --- !u!1 &1946217077
 GameObject:
   m_ObjectHideFlags: 0
