@@ -34,7 +34,7 @@ public class SlimeActions : MonoBehaviour {
             Bullet = Instantiate(ProjectileShot, transform.position + (rot * 2), Quaternion.identity);
 
             // Get the object (Bullet) and add the force to it
-            Bullet.GetComponent<Rigidbody>().AddForce(rot * ProjectileShotSpeed, ForceMode.Force);
+            Bullet.GetComponent<Rigidbody>().AddForce(rot * ProjectileShotSpeed, ForceMode.Impulse);
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, DestroyTimer);

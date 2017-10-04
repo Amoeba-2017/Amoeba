@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour {
             cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
 
             //if q button is pressed
-            if (cc.velocity == Vector3.zero)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 //find the center of all of the slimes
                 Vector3 centerPoint = new Vector3();
@@ -181,10 +181,11 @@ public class PlayerController : MonoBehaviour {
 
             //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
             //if q button is pressed
-            if (cc.velocity == Vector3.zero)
-            {
-                //find the center of all of the slimes
-                Vector3 centerPoint = new Vector3();
+            //if (cc.velocity == Vector3.zero)
+            if (controller.LeftTrigger.WasPressed)
+                {
+                    //find the center of all of the slimes
+                    Vector3 centerPoint = new Vector3();
                 foreach (GameObject x in slimes)
                 {
                     centerPoint += x.transform.position;
