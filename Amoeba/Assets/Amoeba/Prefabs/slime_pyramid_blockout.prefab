@@ -36,12 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4252115796181738}
-  - component: {fileID: 135422707527048000}
   - component: {fileID: 23107363858086642}
   - component: {fileID: 114888840134407394}
   - component: {fileID: 114197311633708466}
   - component: {fileID: 114122537516666282}
-  - component: {fileID: 54291458480462338}
+  - component: {fileID: 143643682842858238}
   m_Layer: 15
   m_Name: slime_pyramid_blockout
   m_TagString: Untagged
@@ -147,21 +146,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160481742696018}
   m_Mesh: {fileID: 4300000, guid: ee8f0a103665f1a438cf7f928a4349ae, type: 3}
---- !u!54 &54291458480462338
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1775220863075118}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 2
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 1
 --- !u!114 &114122537516666282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,19 +186,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
-  distanceMultiplier: 10
+  speed: 5
   avoidWallsForce: 0
   parent: 
---- !u!135 &135422707527048000
-SphereCollider:
+--- !u!143 &143643682842858238
+CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775220863075118}
-  m_Material: {fileID: 13400000, guid: 81767fc2e613d85439b70adec4a6316e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.59
-  m_Center: {x: 0, y: 0.4, z: 0}
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.42, z: 0}

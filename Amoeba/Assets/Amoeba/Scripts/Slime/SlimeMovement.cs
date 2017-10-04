@@ -9,16 +9,15 @@ public class SlimeMovement : MonoBehaviour {
 
 
     //declaring variables
-    Rigidbody rb;
+    CharacterController cc;
     GameObject player;
     bool seeking = false;
 
+    private List<GameObject> slimes;
 
     [SerializeField] [Tooltip("The speed that the slimes will move")]
     float speed;
 
-    [SerializeField] [Tooltip("The amount of force applied depending upon the distance from the slime to the player")]
-    float distanceMultiplier;
 
     [SerializeField] [Tooltip("The amount of force applied when a slime hits a wall to try get around it")]
     float avoidWallsForce;
@@ -30,7 +29,7 @@ public class SlimeMovement : MonoBehaviour {
     void Start ()
     {
         //finding the ridgedbody
-        rb = gameObject.GetComponent<Rigidbody>();
+        cc = gameObject.GetComponent<CharacterController>();
 
     }
 	
@@ -42,19 +41,30 @@ public class SlimeMovement : MonoBehaviour {
         {
             //define it
             player = GameObject.FindGameObjectWithTag(parent);
+            slimes = player.GetComponent<PlayerController>().slimes;
         }
 
         //seek the player
-        
+        //Alignment()
         Seek();
+        //separation()
 	}
+
+    void Alignment()
+    {
+
+        //foreach
+
+    }
+
+
 
     void Seek()
     {        
         //get the vector between the player and the me and add a force to it (ignoring y)
          Vector3 vecBetween = player.transform.position - transform.position;
          vecBetween = new Vector3(vecBetween.x, 0, vecBetween.z);
-         rb.AddForce(vecBetween * (vecBetween.magnitude * distanceMultiplier) * speed * Time.deltaTime, ForceMode.Force);
+         cc.Move(vecBetween.normalized * speed * Time.deltaTime);
     }
 
     void Avoid(GameObject col)
@@ -78,8 +88,8 @@ public class SlimeMovement : MonoBehaviour {
 
         }
 
-        rb.AddForce(finalvec * (vecBtwSlimeAndPlayer.magnitude * distanceMultiplier) * speed * Time.deltaTime, ForceMode.Impulse);
-        rb.AddForce(-vecBtwSlimeAndPlayer * avoidWallsForce * vecBtwSlimeAndPlayer.magnitude * Time.deltaTime, ForceMode.Impulse);
+        cc.Move(finalvec * speed * Time.deltaTime);
+        cc.Move(-vecBtwSlimeAndPlayer * avoidWallsForce * vecBtwSlimeAndPlayer.magnitude * Time.deltaTime);
     }
 
 
@@ -100,7 +110,7 @@ public class SlimeMovement : MonoBehaviour {
         Vector3 vecBetween = centerPoint - transform.position;
 
         //inverse that vector and add a force to it
-        rb.AddForce(-vecBetween.normalized * force,ForceMode.Impulse);
+        cc.Move(-vecBetween.normalized * force);
 
     }
 

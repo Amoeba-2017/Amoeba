@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     CharacterController cc;
     Vector3 startPos;
 
-    List<GameObject> slimes = new List<GameObject>();
+    public List<GameObject> slimes = new List<GameObject>();
 
     [HideInInspector]
     public int playerNumber = 1;

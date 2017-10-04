@@ -19,12 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4514985421985728}
-  - component: {fileID: 135290812607553626}
   - component: {fileID: 23332336275466470}
   - component: {fileID: 114289517842148012}
   - component: {fileID: 114355564594265878}
   - component: {fileID: 114978346997836376}
-  - component: {fileID: 54792491744815260}
+  - component: {fileID: 143804790393924138}
   m_Layer: 14
   m_Name: slime_square_blockout
   m_TagString: Untagged
@@ -147,21 +146,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1890554865415368}
   m_Mesh: {fileID: 4300000, guid: bd1f8d6c7761590498ac06243cb45960, type: 3}
---- !u!54 &54792491744815260
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367675481507750}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 2
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 1
 --- !u!114 &114289517842148012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,8 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
-  distanceMultiplier: 10
+  speed: 5
   avoidWallsForce: 0
   parent: 
 --- !u!114 &114355564594265878
@@ -206,15 +189,20 @@ MonoBehaviour:
     type: 2}
   ProjectileShotSpeed: 65
   DestroyTimer: 0.7
---- !u!135 &135290812607553626
-SphereCollider:
+--- !u!143 &143804790393924138
+CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367675481507750}
-  m_Material: {fileID: 13400000, guid: 81767fc2e613d85439b70adec4a6316e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.74
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.43, z: 0}

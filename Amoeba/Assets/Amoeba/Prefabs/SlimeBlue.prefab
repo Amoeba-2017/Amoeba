@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4398935074696788}
   - component: {fileID: 33615154610833010}
-  - component: {fileID: 135550507956913070}
   - component: {fileID: 23215282053137704}
   - component: {fileID: 114092729160600940}
   - component: {fileID: 54059643258877384}
   - component: {fileID: 114872196053722660}
   - component: {fileID: 114385692959269296}
+  - component: {fileID: 143676569909198590}
   m_Layer: 16
   m_Name: SlimeBlue
   m_TagString: PlayerBlue
@@ -144,15 +144,20 @@ MonoBehaviour:
     type: 2}
   ProjectileShotSpeed: 65
   DestroyTimer: 0.6
---- !u!135 &135550507956913070
-SphereCollider:
+--- !u!143 &143676569909198590
+CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427665708314914}
-  m_Material: {fileID: 13400000, guid: 81767fc2e613d85439b70adec4a6316e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+  m_Height: 1
   m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
