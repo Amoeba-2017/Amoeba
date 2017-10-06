@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The speed that the player will move")]
-    float speed;
+    public float speed;
 
     private bool increasedSpeed;
 

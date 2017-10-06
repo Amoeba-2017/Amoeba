@@ -11,7 +11,8 @@ public class SlimeMovement : MonoBehaviour
 
     //declaring variables
     CharacterController cc;
-    GameObject player;
+    [HideInInspector]
+    public GameObject player;
     bool seeking = false;
 
     private List<GameObject> slimes;
@@ -67,43 +68,47 @@ public class SlimeMovement : MonoBehaviour
 
 
 
-
-        foreach (GameObject x in slimes)
+        if (player != null)
         {
-            if (x != gameObject)
+            foreach (GameObject x in slimes)
             {
-                if (Vector3.Distance(gameObject.transform.position, x.transform.position) < separationDistance)
+                if(x!= null)
                 {
-                    Vector3 vecBetween = x.transform.position - transform.position;
-                    separationForce += vecBetween;
+                    if (x != gameObject)
+                    {
+                        if (Vector3.Distance(gameObject.transform.position, x.transform.position) < separationDistance)
+                        {
+                            Vector3 vecBetween = x.transform.position - transform.position;
+                            separationForce += vecBetween;
+                        }
+                    }
                 }
             }
+
+            if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+            {
+                //StartCoroutine(FindNewPos());
+                newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+            }
+
+            if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > newPosRandomRange)
+            {
+                Debug.Log("new pos");
+                newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+            }
+
+            if (Vector3.Distance(transform.position, newPos) > 1)
+            {
+                Vector3 vecBetween = newPos - transform.position;
+
+                cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+            }
+
+            //seek the player
+            //Alignment()
+            //Seek();
+            //separation()
         }
-
-        if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
-        {
-            //StartCoroutine(FindNewPos());
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-        }
-
-        if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > newPosRandomRange)
-        {
-            Debug.Log("new pos");
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-        }
-
-        if (Vector3.Distance(transform.position, newPos) > 1)
-        {
-            Vector3 vecBetween = newPos - transform.position;
-
-            cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-
-        }
-
-        //seek the player
-        //Alignment()
-        //Seek();
-        //separation()
     }
 
 

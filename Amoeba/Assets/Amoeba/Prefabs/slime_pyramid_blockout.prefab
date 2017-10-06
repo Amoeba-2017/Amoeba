@@ -157,10 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileShot: {fileID: 1411172102379500, guid: 4eb334b671c0dba41b207207cbe024b1,
+  projectileShot: {fileID: 1411172102379500, guid: 4eb334b671c0dba41b207207cbe024b1,
     type: 2}
-  ProjectileShotSpeed: 65
-  DestroyTimer: 0.7
+  projectileShotSpeed: 65
+  destroyTimer: 0.7
+  slime: {fileID: 1775220863075118}
 --- !u!114 &114197311633708466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,9 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeathPoints: 0
+  HeathPoints: 1
   IsShielded: 0
-  IsDead: 0
+  amountOfSplits: 0
 --- !u!114 &114888840134407394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,11 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   speed: 20
   avoidWallsForce: 5
   parent: 
   speedRandomRange: 1
-  separationDistance: 1.5
+  separationDistance: 0.2
 --- !u!143 &143643682842858238
 CharacterController:
   m_ObjectHideFlags: 1

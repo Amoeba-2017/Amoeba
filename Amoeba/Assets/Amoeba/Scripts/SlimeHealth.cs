@@ -12,27 +12,31 @@ public class SlimeHealth : MonoBehaviour {
     [SerializeField]
     private bool IsShielded;
 
-    // Is the Slime dead?
-    [SerializeField]
-    private bool IsDead;
+
+    [HideInInspector]
+    public float amountOfSplits = 0;
+
+
+    private SlimeActions slimeAction;
 
     // Use this for initialization
     void Start ()
     {
-        HeathPoints = 100.0f;
+        HeathPoints = 1f;
         IsShielded = false;
-        IsDead = false;
-	}
+        slimeAction = gameObject.GetComponent<SlimeActions>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             HeathPoints = 0;
+            Debug.Log("split");
         }
 
-        if (HeathPoints <= 0 || Input.GetKeyDown(KeyCode.Alpha0))
+        if (HeathPoints <= 0)
         {
             Death();
         }
@@ -40,12 +44,8 @@ public class SlimeHealth : MonoBehaviour {
 
     void Death ()
     {
-        IsDead = true;
-        Destroy(gameObject);
+        slimeAction.Split(amountOfSplits);
+        amountOfSplits++;
     }
 
-    void Splitting ()
-    {
-
-    }
 }
