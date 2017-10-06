@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114163042545305922}
   - component: {fileID: 143315880177889880}
   - component: {fileID: 114756394631701582}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlayerRed
   m_TagString: PlayerRed
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33210298281440498}
   - component: {fileID: 65529205197533380}
   - component: {fileID: 23069400912269436}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1367675481507750, guid: 7b327910b2e15ae4683ac74035d4d70c,
     type: 2}
-  speed: 17
+  speed: 13
   powerUpTime: 10
   slimes: []
   playerNumber: 0

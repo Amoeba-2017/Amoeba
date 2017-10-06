@@ -50,42 +50,34 @@ public class SlimeMovement : MonoBehaviour
         //finding the ridgedbody
         cc = gameObject.GetComponent<CharacterController>();
         speed = Random.Range(speed - speedRandomRange, speed + speedRandomRange);
+        //define it
+        player = GameObject.FindGameObjectWithTag(parent);
+        slimes = player.GetComponent<PlayerController>().slimes;
+        newPosRandomRange = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
+        newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x, transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z);
+        playersController = player.GetComponent<CharacterController>();
     }
 
 
     void Update()
     {
-        //if the player hasnt been defined yet
-        if (player == null)
+
+        foreach (GameObject x in slimes)
         {
-            //define it
-            player = GameObject.FindGameObjectWithTag(parent);
-            slimes = player.GetComponent<PlayerController>().slimes;
-            newPosRandomRange = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x, transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z);
-            playersController = player.GetComponent<CharacterController>();
-        }
-
-
-
-        if (player != null)
-        {
-            foreach (GameObject x in slimes)
+            if (x != null)
             {
-                if(x!= null)
+                if (x != gameObject)
                 {
-                    if (x != gameObject)
+                    if (Vector3.Distance(gameObject.transform.position, x.transform.position) < separationDistance)
                     {
-                        if (Vector3.Distance(gameObject.transform.position, x.transform.position) < separationDistance)
-                        {
-                            Vector3 vecBetween = x.transform.position - transform.position;
-                            separationForce += vecBetween;
-                        }
+                        Vector3 vecBetween = x.transform.position - transform.position;
+                        separationForce += vecBetween;
                     }
                 }
             }
+        }
 
-            if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+        if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
             {
                 //StartCoroutine(FindNewPos());
                 newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
@@ -109,7 +101,7 @@ public class SlimeMovement : MonoBehaviour
             //Seek();
             //separation()
         }
-    }
+
 
 
     //IEnumerator FindNewPos()

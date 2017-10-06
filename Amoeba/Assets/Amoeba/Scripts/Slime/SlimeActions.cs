@@ -27,7 +27,7 @@ public class SlimeActions : MonoBehaviour {
     void Start ()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-        playerController = slimeMovement.player.GetComponent<PlayerController>();
+
     }
 
 
@@ -53,57 +53,56 @@ public class SlimeActions : MonoBehaviour {
 
     public void Split(float amount)
     {
-        if(playerController == null)
+        Debug.Log(amount);
+
+        if (playerController == null)
         {
             playerController = slimeMovement.player.GetComponent<PlayerController>();
         }
+        playerController.slimes.Remove(gameObject);
 
-        if(amount == 0)
+        if (amount == 0)
         {
-            playerController.slimeRandomDistanceToPlayer = 1;
-            playerController.speed = 17;
+            playerController.slimeRandomDistanceToPlayer = 2.5f;
+            playerController.speed = 15.5f;
 
-            newSlime(0.9f);
-            newSlime(0.9f);
+            newSlime(0.9f, 1);
+            newSlime(0.9f, 1);
         }
         else if(amount == 1)
         {
-            playerController.slimeRandomDistanceToPlayer = 1.3f;
-            playerController.speed = 18;
+            
+            playerController.speed = 15.7f;
 
-            newSlime(0.8f);
-            newSlime(0.8f);
-            newSlime(0.8f);
+            newSlime(0.8f, 2);
+            newSlime(0.8f, 2);
+            newSlime(0.8f, 2);
         }
 
         else if(amount == 2)
         {
-            playerController.speed = 19;
+            playerController.speed = 16;
 
-            newSlime(0.7f);
-            newSlime(0.7f);
-            newSlime(0.7f);
-            newSlime(0.7f);
-
-
+            newSlime(0.7f, 3);
+            newSlime(0.7f, 3);
+            newSlime(0.7f, 3);
+            newSlime(0.7f, 3);
         }
+
 
     }
 
 
-    void newSlime(float size)
+    void newSlime(float size , float amount)
     {
         GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
         playerController.slimes.Add(tempSlime);
         tempSlime.GetComponent<SlimeMovement>().parent = slimeMovement.parent;
+        tempSlime.GetComponent<SlimeHealth>().amountOfSplits = amount;
         tempSlime.transform.localScale = new Vector3(size, size, size);
     }
 
 
 
     // Update is called once per frame
-    void Update ()
-    {
-		
-	}
 }

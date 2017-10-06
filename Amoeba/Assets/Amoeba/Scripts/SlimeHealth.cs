@@ -45,7 +45,7 @@ public class SlimeHealth : MonoBehaviour {
     void Death ()
     {
         slimeAction.Split(amountOfSplits);
-        amountOfSplits++;
+        Destroy(gameObject);
     }
 
 }
