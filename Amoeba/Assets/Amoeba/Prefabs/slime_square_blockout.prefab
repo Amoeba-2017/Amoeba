@@ -157,9 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  avoidWallsForce: 0
+  speed: 20
+  avoidWallsForce: 5
   parent: 
+  speedRandomRange: 1
+  separationDistance: 1.5
 --- !u!114 &114355564594265878
 MonoBehaviour:
   m_ObjectHideFlags: 1

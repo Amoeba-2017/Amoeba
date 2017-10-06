@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138844098488738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 47.09203, z: -131.3}
+  m_LocalPosition: {x: 7, y: 47.376, z: -131.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755057566398646}
@@ -192,11 +192,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1367675481507750, guid: 7b327910b2e15ae4683ac74035d4d70c,
     type: 2}
-  speed: 15
+  speed: 17
   powerUpTime: 10
+  slimes: []
   playerNumber: 0
   dodgeForce: 0.05
   BufferTime: 0.9
+  slimeRandomDistanceToPlayer: 3
 --- !u!114 &114756394631701582
 MonoBehaviour:
   m_ObjectHideFlags: 1

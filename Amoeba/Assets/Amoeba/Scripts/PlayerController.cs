@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     //declaring variables
 
-    [SerializeField] [Tooltip("The slime that will be spawned by this player")]
+    [SerializeField]
+    [Tooltip("The slime that will be spawned by this player")]
     private GameObject slimePrefab;
 
     private InputDevice controller;
 
-    [SerializeField][Tooltip("The speed that the player will move")]
+    [SerializeField]
+    [Tooltip("The speed that the player will move")]
     float speed;
 
     private bool increasedSpeed;
@@ -30,7 +33,8 @@ public class PlayerController : MonoBehaviour {
     public int playerNumber = 1;
 
 
-    [SerializeField] [Tooltip("The amount of force applied when dodging")]
+    [SerializeField]
+    [Tooltip("The amount of force applied when dodging")]
     float dodgeForce;
 
     [SerializeField]
@@ -40,7 +44,10 @@ public class PlayerController : MonoBehaviour {
 
     private GameObject controllerRetical;
 
-    void Start ()
+    public float slimeRandomDistanceToPlayer;
+
+
+    void Start()
     {
         increasedSpeed = false;
 
@@ -64,7 +71,7 @@ public class PlayerController : MonoBehaviour {
         if (playerNumber <= InputManager.Devices.Count)
         {
             Debug.Log("Added a controller to player number" + playerNumber);
-            
+
             //give this player a controller
             controller = InputManager.Devices[playerNumber - 1];
 
@@ -95,7 +102,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void Update ()
+    void Update()
     {
         ShootTimer += Time.deltaTime;
 
@@ -106,8 +113,8 @@ public class PlayerController : MonoBehaviour {
             //using keybored controls
 
             //add movment to the player if the user adds input
-            cc.Move(transform.right * Input.GetAxis("HorizontalKeys") * speed * Time.deltaTime);
-            cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
+            cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKeys"))).normalized * speed * Time.deltaTime);
+         //   cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
 
             //if q button is pressed
             if (Input.GetKeyDown(KeyCode.Q))
@@ -122,7 +129,7 @@ public class PlayerController : MonoBehaviour {
                 //average all the slimes positions
                 centerPoint /= slimes.Count;
 
-                
+
                 foreach (GameObject x in slimes)
                 {
                     //call dodge on each slime passing though the centerpoint and the amount of force 
@@ -149,43 +156,46 @@ public class PlayerController : MonoBehaviour {
 
             //if mousebutton 0 is pressed
             if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
-                {
+            {
 
                 ShootTimer = 0.0f;
 
                 foreach (GameObject i in slimes)
-                    {
+                {
                     i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
-                    }
-
                 }
-                
-                //find the normilised vector Between the the player(this gameobject) and the mouse 
 
-                // foreach slime in the list slimes
+            }
 
-                 // call shoot on current slime
+            //find the normilised vector Between the the player(this gameobject) and the mouse 
+
+            // foreach slime in the list slimes
+
+            // call shoot on current slime
 
         }
-       
-        
+
+
         //controller
         else
         {
             //add movment to the player if the user adds input 
-            cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
-            cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
+            //cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
+            //cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
-            controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.RightStick.Y);
+            cc.Move(((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized * speed * Time.deltaTime);
+
+
+            controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.LeftStick.Y);
 
 
             //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
             //if q button is pressed
             //if (cc.velocity == Vector3.zero)
             if (controller.LeftTrigger.WasPressed)
-                {
-                    //find the center of all of the slimes
-                    Vector3 centerPoint = new Vector3();
+            {
+                //find the center of all of the slimes
+                Vector3 centerPoint = new Vector3();
                 foreach (GameObject x in slimes)
                 {
                     centerPoint += x.transform.position;
@@ -212,7 +222,7 @@ public class PlayerController : MonoBehaviour {
                 Vector3 vecBetween = new Vector3();
                 vecBetween = controllerRetical.transform.position - transform.position;
 
-                foreach(GameObject i in slimes)
+                foreach (GameObject i in slimes)
                 {
                     i.GetComponent<SlimeActions>().Shoot(vecBetween.normalized);
                 }
@@ -236,7 +246,7 @@ public class PlayerController : MonoBehaviour {
     void DebugMode()
     {
         //if enter is pressed
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             //make a new slime
             GameObject tempSlime;

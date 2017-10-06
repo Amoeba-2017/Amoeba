@@ -191,10 +191,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1775220863075118, guid: 79b42b55e18e36b4eb893a06432f6cab,
     type: 2}
-  speed: 15
+  speed: 17
+  powerUpTime: 0
+  slimes: []
   playerNumber: 0
   dodgeForce: 500
   BufferTime: 0.9
+  slimeRandomDistanceToPlayer: 0
 --- !u!143 &143661321668195568
 CharacterController:
   m_ObjectHideFlags: 1

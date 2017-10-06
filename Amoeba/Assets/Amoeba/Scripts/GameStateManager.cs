@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class GameStateManager : MonoBehaviour {
+public class GameStateManager : MonoBehaviour
+{
 
     [HideInInspector]
     public bool debugMode = false;
@@ -32,39 +33,39 @@ public class GameStateManager : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         maxPlayerCount = InputManager.Devices.Count + 1;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
 
         //TEMP
-        if(players.Count == 0)
+        if (players.Count == 0)
         {
             players.Add(GameObject.FindGameObjectWithTag("PlayerRed"));
         }
 
-	    if(Input.GetKey("b"))
+        if (Input.GetKey("b"))
         {
-            if(Input.GetKey("u"))
+            if (Input.GetKey("u"))
             {
                 if (Input.GetKeyDown("g"))
                 {
                     debugMode = !debugMode;
                     Debug.Log("debug mode = " + debugMode);
-                }            
+                }
             }
         }
-        
-        if(debugMode == true)
+
+        if (debugMode == true)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if(playerCount < maxPlayerCount)
-                {
+               // if (playerCount < maxPlayerCount)
+               // {
                     playerCount++;
                     if (playerCount == 1)
                     {
@@ -82,10 +83,11 @@ public class GameStateManager : MonoBehaviour {
                     {
                         players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
                     }
-                }
+               // }
+
             }
-        }	
-	}
+        }
+    }
 
 
     public List<GameObject> Players
