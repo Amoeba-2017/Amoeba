@@ -111,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileShot: {fileID: 1411172102379500, guid: 4eb334b671c0dba41b207207cbe024b1,
-    type: 2}
-  ProjectileShotSpeed: 65
-  DestroyTimer: 0.6
+  projectileShot: {fileID: 0}
+  projectileShotSpeed: 0
+  destroyTimer: 0
+  slime: {fileID: 0}
 --- !u!114 &114665992971980072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeathPoints: 0
   IsShielded: 0
-  IsDead: 0
+  amountOfSplits: 0
 --- !u!114 &114887618903913696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,10 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   speed: 80
-  distanceMultiplier: 10
   avoidWallsForce: 0
   parent: 
+  speedRandomRange: 0
+  separationDistance: 0
 --- !u!135 &135049774477809806
 SphereCollider:
   m_ObjectHideFlags: 1
