@@ -12,7 +12,11 @@ public class SlimeHealth : MonoBehaviour {
     [SerializeField]
     private bool IsShielded;
 
+    // Damage a Slime takes from bullets
+    [SerializeField]
+    private float BulletDamage;
 
+    // Amount of times a Slime has split
     [HideInInspector]
     public float amountOfSplits = 0;
 
@@ -47,7 +51,7 @@ public class SlimeHealth : MonoBehaviour {
         if (col.gameObject.tag == "Bullet")
         {
             print("Colliding");
-            Destroy(gameObject);
+            HeathPoints = -BulletDamage;
         }
     }
 

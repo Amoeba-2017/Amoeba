@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4398935074696788}
   - component: {fileID: 33615154610833010}
+  - component: {fileID: 135860848569648562}
   - component: {fileID: 23215282053137704}
   - component: {fileID: 114092729160600940}
   - component: {fileID: 54059643258877384}
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeathPoints: 0
   IsShielded: 0
+  BulletDamage: 0
   amountOfSplits: 0
 --- !u!114 &114872196053722660
 MonoBehaviour:
@@ -146,6 +148,18 @@ MonoBehaviour:
   projectileShotSpeed: 0
   destroyTimer: 0
   slime: {fileID: 0}
+--- !u!135 &135860848569648562
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427665708314914}
+  m_Material: {fileID: 13400000, guid: 81767fc2e613d85439b70adec4a6316e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143676569909198590
 CharacterController:
   m_ObjectHideFlags: 1
