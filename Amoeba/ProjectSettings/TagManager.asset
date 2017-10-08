@@ -15,6 +15,7 @@ TagManager:
   - RapidFire
   - Shotgun
   - ProtectiveShield
+  - Bullet
   layers:
   - Default
   - TransparentFX

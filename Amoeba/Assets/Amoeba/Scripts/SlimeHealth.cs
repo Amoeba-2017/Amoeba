@@ -42,6 +42,15 @@ public class SlimeHealth : MonoBehaviour {
         }
 	}
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Bullet")
+        {
+            print("Colliding");
+            Destroy(gameObject);
+        }
+    }
+
     void Death ()
     {
         slimeAction.Split(amountOfSplits);
