@@ -89,7 +89,7 @@ public class SlimeMovement : MonoBehaviour
                 newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
             }
 
-            if (Vector3.Distance(transform.position, newPos) > 1)
+            if (Vector3.Distance(transform.position, newPos) > 0.5f)
             {
                 Vector3 vecBetween = newPos - transform.position;
 
@@ -148,15 +148,15 @@ public class SlimeMovement : MonoBehaviour
     //}
 
 
-    //void OnCollisionStay(Collision collision)
-    //{
-    //    //if the slime collides with a wall
-    //    if (collision.transform.tag == "Wall")
-    //    {
-    //        //avoid the wall
-    //        Avoid(collision.gameObject);
-    //    }
-    //}
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        //if the slime collides with a wall
+        if (hit.transform.tag == "InvisibleWall")
+        {
+            Debug.Log("WALL");
+            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+        }
+    }
 
     public void Dodge(Vector3 centerPoint, float force)
     {

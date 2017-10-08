@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114163042545305922}
   - component: {fileID: 143315880177889880}
   - component: {fileID: 114756394631701582}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: PlayerRed
   m_TagString: PlayerRed
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33210298281440498}
   - component: {fileID: 65529205197533380}
   - component: {fileID: 23069400912269436}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530509603064574}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -115,7 +115,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1138844098488738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -175,7 +175,7 @@ BoxCollider:
   m_GameObject: {fileID: 1530509603064574}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -226,4 +226,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 8.18, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
