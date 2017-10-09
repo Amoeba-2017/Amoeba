@@ -15,7 +15,7 @@ public class UserInterfaceManager : MonoBehaviour {
     //called when the play button is pressed on the main menu
     void PlayButton()
     {
-
+        mainMenu.
     }
 
 
