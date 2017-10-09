@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Amoeba/Scenes/Alpha_Main_Menu.unity
+    guid: b959da28d46d6924c9cd155976149285
+  - enabled: 1
+    path: Assets/Amoeba/Scenes/prototype_Scene_001.unity
+    guid: 372336b6be574c24abcfff602553ad98
