@@ -269,8 +269,10 @@ public class PlayerController : MonoBehaviour
     {
         //using keybored controls
 
+        Debug.Log(Input.GetAxis("VerticalKey"));
+
         //add movment to the player if the user adds input
-        cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKeys"))).normalized * speed * Time.deltaTime);
+        cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKey"))).normalized * speed * Time.deltaTime);
         //   cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
 
         //if q button is down

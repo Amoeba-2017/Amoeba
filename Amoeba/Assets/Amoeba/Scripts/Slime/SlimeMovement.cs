@@ -105,7 +105,7 @@ public class SlimeMovement : MonoBehaviour
         //Vector3 pointOnCircle = transform.position + new Vector3(Mathf.Cos(randAngle), 0.0f, Mathf.Sin(randAngle)) * (radius + offset);
 
         float angle = Random.Range(0, Mathf.PI * 2);
-        return player.transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
+        return new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
 
     }
 
