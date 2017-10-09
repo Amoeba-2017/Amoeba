@@ -198,7 +198,7 @@ MonoBehaviour:
   playerNumber: 0
   dodgeForce: 0.05
   BufferTime: 0.9
-  slimeRandomDistanceToPlayer: 0.5
+  slimeRandomDistanceToPlayer: 3.36
   maxSlimeRandomDistance: 3
 --- !u!114 &114756394631701582
 MonoBehaviour:

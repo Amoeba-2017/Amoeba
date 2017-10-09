@@ -195,6 +195,11 @@ MonoBehaviour:
   parent: 
   speedRandomRange: 1
   separationDistance: 0.2
+  isMoving: 1
+  maxSpreadDistance: 8
+  minSpreadDistance: 2
+  randomSlimeOffset: 2
+  ExpandAndSrinkSpeed: 15
 --- !u!135 &135263793752631288
 SphereCollider:
   m_ObjectHideFlags: 1

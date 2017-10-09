@@ -37,7 +37,7 @@ public class SlimeMovement : MonoBehaviour
 
     Vector3 newPos;
 
-    private float newPosRandomRange;
+    private float randomCircleRadius;
 
     private CharacterController playersController;
 
@@ -48,6 +48,18 @@ public class SlimeMovement : MonoBehaviour
     [HideInInspector]
     public bool isMoving = true;
 
+    [SerializeField]
+    private float maxSpreadDistance;
+
+    [SerializeField]
+    private float minSpreadDistance;
+
+    [SerializeField]
+    private float randomSlimeOffset;
+
+    [SerializeField]
+    private float ExpandAndSrinkSpeed;
+
     void Start()
     {
         //finding the ridgedbody
@@ -56,8 +68,8 @@ public class SlimeMovement : MonoBehaviour
         //define it
         player = GameObject.FindGameObjectWithTag(parent);
         slimes = player.GetComponent<PlayerController>().slimes;
-        newPosRandomRange = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
-        newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x, transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z);
+        randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
+        newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
         isMoving = true;
     }
@@ -88,44 +100,61 @@ public class SlimeMovement : MonoBehaviour
 
     //  }
 
+    Vector3 FindnewPosition()
+    {
+        //Vector3 pointOnCircle = transform.position + new Vector3(Mathf.Cos(randAngle), 0.0f, Mathf.Sin(randAngle)) * (radius + offset);
 
+        float angle = Random.Range(0, Mathf.PI * 2);
+        return player.transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
+
+    }
 
 
     void Seek()
     {
-        foreach (GameObject x in slimes)
-        {
-            if (x != null)
-            {
-                if (x != gameObject)
-                {
-                    if (Vector3.Distance(gameObject.transform.position, x.transform.position) < separationDistance)
-                    {
-                        Vector3 vecBetween = x.transform.position - transform.position;
-                        separationForce += vecBetween;
-                    }
-                }
-            }
-        }
 
-        if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
-        {
-            //StartCoroutine(FindNewPos());
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-        }
 
-        if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > newPosRandomRange)
-        {
-            Debug.Log("new pos");
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-        }
+        //if(slimes.Count > 1)
+        //{
 
-        if (Vector3.Distance(transform.position, newPos) > 0.5f)
-        {
-            Vector3 vecBetween = newPos - transform.position;
+        //    Vector3 posOnCircle = FindnewPosition();
+        //    Vector3 vecBetween = posOnCircle - transform.position;
+        //    cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+        //}
+        //else
+        //{
+        //    Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
+        //    cc.Move(vecBetween * speed * Time.deltaTime);
+        //}
 
-            cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-        }
+
+
+       if (slimes.Count > 1)
+       {
+            //if the player is moving and we're far enough away from our target
+           if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+           {
+               //StartCoroutine(FindNewPos());
+               newPos = FindnewPosition();
+           }
+
+           if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > randomCircleRadius)
+           {
+              Debug.Log("new pos");
+              newPos = FindnewPosition();
+           }
+
+           if (Vector3.Distance(transform.position, newPos) > 0.5f)
+           {
+               Vector3 vecBetween = newPos - transform.position;
+               cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+           }
+       }
+       else
+       {
+           Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
+           cc.Move(vecBetween * speed *Time.deltaTime);
+       }
     }
 
     //void Avoid(GameObject col)
@@ -160,26 +189,100 @@ public class SlimeMovement : MonoBehaviour
         if (hit.transform.tag == "InvisibleWall")
         {
             Debug.Log("WALL");
-            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+            newPos = FindnewPosition();
         }
     }
 
     public void Expand(Vector3 centerPoint)
     {
 
-        //get the vector between the center point and me
-        Vector3 vecBetween = centerPoint - transform.position;
+        if(randomCircleRadius == maxSpreadDistance)
+        {
+            return;
+        }
 
-        //inverse that vector and add a force to it
-        cc.Move(-vecBetween.normalized * speed * Time.deltaTime);
+        randomCircleRadius += (Time.deltaTime * (ExpandAndSrinkSpeed));
+
+        if (randomCircleRadius > maxSpreadDistance)
+        {
+             randomCircleRadius = maxSpreadDistance;
+             newPos = FindnewPosition();
+        }
+        else if (Vector3.Distance(transform.position, newPos) < 1.0f)
+        {
+            newPos = FindnewPosition();
+        }
+
+   
+
+        // if (randomCircleRadius < maxSpreadDistance)
+        //{
+
+        ////if (isMoving == true)
+        ////{
+        ////    isMoving = false;
+        ////}
+        ////get the vector between the center point and me
+        //// if (Vector3.Distance(transform.position, newPos) < 1)
+        ////{
+
+        //Vector3 vecBetween = centerPoint - transform.position;
+
+        //        //inverse that vector and add a force to it
+        //        newPos = (-vecBetween.normalized * speed * Time.deltaTime);
+        //    //}
+        //    randomCircleRadius += (Time.deltaTime * (speed / 3));
+        ////}
 
     }
 
 
     public void Retract(Vector3 centerPoint)
     {
-        Vector3 vecBetween = centerPoint - transform.position;
-        cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+
+
+
+        if (randomCircleRadius == minSpreadDistance)
+        {
+            return;
+        }
+
+        randomCircleRadius -= (Time.deltaTime * (ExpandAndSrinkSpeed));
+
+        if (randomCircleRadius < minSpreadDistance)
+        {
+            randomCircleRadius = minSpreadDistance;
+            newPos = FindnewPosition();
+        }
+        else if (Vector3.Distance(transform.position, newPos) < 1.0f)
+        {
+            newPos = FindnewPosition();
+        }
+
+    
+     
+
+        //if (randomCircleRadius > minSpreadDistance)
+        //{
+
+        //    //if (isMoving == true)
+        //    //{
+        //    //    isMoving = false;
+        //    //}
+        //    if (Vector3.Distance(transform.position, newPos) < 1)
+        //    {
+        //        Vector3 vecBetween = centerPoint - transform.position;
+        //        newPos = (vecBetween.normalized * speed * Time.deltaTime);
+        //    }
+        //    randomCircleRadius -= (Time.deltaTime *(speed / 3));
+
+        //}
+
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(newPos, 0.5f);
     }
 
 }
