@@ -52,6 +52,7 @@ public class SlimeHealth : MonoBehaviour {
         {
             print("Colliding");
             HeathPoints = -BulletDamage;
+            Destroy(col.gameObject);
         }
     }
 

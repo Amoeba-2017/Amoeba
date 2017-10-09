@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114197311633708466}
   - component: {fileID: 114122537516666282}
   - component: {fileID: 143643682842858238}
+  - component: {fileID: 135191853987609908}
   m_Layer: 15
   m_Name: slime_pyramid_blockout
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeathPoints: 1
   IsShielded: 0
+  BulletDamage: 0
   amountOfSplits: 0
 --- !u!114 &114888840134407394
 MonoBehaviour:
@@ -193,6 +195,19 @@ MonoBehaviour:
   parent: 
   speedRandomRange: 1
   separationDistance: 0.2
+  isMoving: 1
+--- !u!135 &135191853987609908
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775220863075118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143643682842858238
 CharacterController:
   m_ObjectHideFlags: 1
