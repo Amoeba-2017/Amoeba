@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     public float slimeRandomDistanceToPlayer;
 
+    [SerializeField]
+    private float maxSlimeRandomDistance;
+
 
     void Start()
     {
@@ -104,74 +107,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if(slimeRandomDistanceToPlayer < 0)
+        {
+            slimeRandomDistanceToPlayer = 0;
+        }
+
+        if(slimeRandomDistanceToPlayer > maxSlimeRandomDistance)
+        {
+            slimeRandomDistanceToPlayer = maxSlimeRandomDistance;
+        }
+
         ShootTimer += Time.deltaTime;
 
         //if there is no controller
         if (controller == null)
         {
 
-            //using keybored controls
-
-            //add movment to the player if the user adds input
-            cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKeys"))).normalized * speed * Time.deltaTime);
-         //   cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
-
-            //if q button is pressed
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                //find the center of all of the slimes
-                Vector3 centerPoint = new Vector3();
-                foreach (GameObject x in slimes)
-                {
-                    centerPoint += x.transform.position;
-                }
-
-                //average all the slimes positions
-                centerPoint /= slimes.Count;
-
-
-                foreach (GameObject x in slimes)
-                {
-                    //call dodge on each slime passing though the centerpoint and the amount of force 
-                    x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
-                }
-
-
-            }
-
-
-            //Shooting on keybored
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit rayHit;
-            Vector3 vec3 = new Vector3();
-            if (Physics.Raycast(ray, out rayHit))
-            {
-
-
-                vec3 = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
-
-                Debug.DrawLine(rayHit.point, transform.position);
-            }
-
-            //if mousebutton 0 is pressed
-            if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
-            {
-
-                ShootTimer = 0.0f;
-
-                foreach (GameObject i in slimes)
-                {
-                    i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
-                }
-
-            }
-
-            //find the normilised vector Between the the player(this gameobject) and the mouse 
-
-            // foreach slime in the list slimes
-
-            // call shoot on current slime
+            KeyboredUpdate();
 
         }
 
@@ -179,56 +132,8 @@ public class PlayerController : MonoBehaviour
         //controller
         else
         {
-            //add movment to the player if the user adds input 
-            //cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
-            //cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
-            cc.Move(((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized * speed * Time.deltaTime);
-
-
-            controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.LeftStick.Y);
-
-
-            //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
-            //if q button is pressed
-            //if (cc.velocity == Vector3.zero)
-            if (controller.LeftTrigger.WasPressed)
-            {
-                //find the center of all of the slimes
-                Vector3 centerPoint = new Vector3();
-                foreach (GameObject x in slimes)
-                {
-                    centerPoint += x.transform.position;
-                }
-
-                //average all the slimes positions
-                centerPoint /= slimes.Count;
-
-                foreach (GameObject x in slimes)
-                {
-                    //call dodge on each slime passing though the centerpoint and the amount of force 
-                    x.GetComponent<SlimeMovement>().Dodge(centerPoint, dodgeForce);
-                }
-            }
-
-
-            //shooting on controller
-
-
-            if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
-            {
-
-                ShootTimer = 0.0f;
-                Vector3 vecBetween = new Vector3();
-                vecBetween = controllerRetical.transform.position - transform.position;
-
-                foreach (GameObject i in slimes)
-                {
-                    i.GetComponent<SlimeActions>().Shoot(vecBetween.normalized);
-                }
-
-            }
-
+            ControllerUpdate();
 
         }
 
@@ -254,6 +159,217 @@ public class PlayerController : MonoBehaviour
             tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
             slimes.Add(tempSlime);
         }
+    }
+
+    void ControllerUpdate()
+    {
+        //add movment to the player if the user adds input 
+        //cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
+        //cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
+
+        cc.Move(((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized * speed * Time.deltaTime);
+
+
+        controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.RightStick.Y);
+
+
+        //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
+        //if q button is pressed
+        //if (cc.velocity == Vector3.zero)
+        if (controller.LeftBumper)
+        {
+            //find the center of all of the slimes
+            Vector3 centerPoint = new Vector3();
+            foreach (GameObject x in slimes)
+            {
+                centerPoint += x.transform.position;
+            }
+
+            //average all the slimes positions
+            centerPoint /= slimes.Count;
+
+            foreach (GameObject x in slimes)
+            {
+                //call dodge on each slime passing though the centerpoint and the amount of force 
+                x.GetComponent<SlimeMovement>().Retract(centerPoint);
+            }
+            slimeRandomDistanceToPlayer -= Time.deltaTime;
+        }
+        if (controller.LeftBumper.WasReleased)
+        {
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = true;
+            }
+        }
+
+
+        if (controller.RightBumper)
+        {
+            //find the center of all of the slimes
+            Vector3 centerPoint = new Vector3();
+            foreach (GameObject x in slimes)
+            {
+                centerPoint += x.transform.position;
+            }
+
+            //average all the slimes positions
+            centerPoint /= slimes.Count;
+
+            foreach (GameObject x in slimes)
+            {
+                //call dodge on each slime passing though the centerpoint and the amount of force 
+                x.GetComponent<SlimeMovement>().Expand(centerPoint);
+            }
+            slimeRandomDistanceToPlayer += Time.deltaTime;
+        }
+        if (controller.LeftBumper.WasReleased)
+        {
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = true;
+            }
+        }
+
+
+
+
+
+        //shooting on controller
+
+
+        if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
+        {
+
+            ShootTimer = 0.0f;
+            Vector3 vecBetween = Vector3.zero;
+            vecBetween = controllerRetical.transform.position - transform.position;
+            if (vecBetween.magnitude > 0.5)
+            {
+                foreach (GameObject i in slimes)
+                {
+                    i.GetComponent<SlimeActions>().Shoot(vecBetween.normalized);
+                }
+            }
+        }
+
+
+    }
+
+
+        //if debug mode is active
+
+
+    void KeyboredUpdate()
+    {
+        //using keybored controls
+
+        //add movment to the player if the user adds input
+        cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKeys"))).normalized * speed * Time.deltaTime);
+        //   cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
+
+        //if q button is down
+        if (Input.GetKey(KeyCode.Q))
+        {
+
+
+            //find the center of all of the slimes
+            Vector3 centerPoint = Vector3.zero;
+            foreach (GameObject x in slimes)
+            {
+                centerPoint += x.transform.position;
+            }
+
+            //average all the slimes positions
+            centerPoint /= slimes.Count;
+
+
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = false;
+
+                //call dodge on each slime passing though the centerpoint and the amount of force 
+                x.GetComponent<SlimeMovement>().Retract(centerPoint);
+            }
+
+            slimeRandomDistanceToPlayer -= Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = true;
+            }
+        }
+
+
+
+        if (Input.GetKey(KeyCode.E))
+        {
+
+
+            //find the center of all of the slimes
+            Vector3 centerPoint = Vector3.zero;
+            foreach (GameObject x in slimes)
+            {
+                centerPoint += x.transform.position;
+            }
+
+            //average all the slimes positions
+            centerPoint /= slimes.Count;
+
+
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = false;
+
+                //call dodge on each slime passing though the centerpoint and the amount of force 
+                x.GetComponent<SlimeMovement>().Expand(centerPoint);
+            }
+
+            slimeRandomDistanceToPlayer += Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            foreach (GameObject x in slimes)
+            {
+                x.GetComponent<SlimeMovement>().isMoving = true;
+            }
+        }
+
+
+        //Shooting on keybored
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit rayHit;
+        Vector3 vec3 = new Vector3();
+        if (Physics.Raycast(ray, out rayHit))
+        {
+
+
+            vec3 = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
+
+            Debug.DrawLine(rayHit.point, transform.position);
+        }
+
+        //if mousebutton 0 is pressed
+        if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
+        {
+
+            ShootTimer = 0.0f;
+
+            foreach (GameObject i in slimes)
+            {
+                i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
+            }
+
+        }
+
+        //find the normilised vector Between the the player(this gameobject) and the mouse 
+
+        // foreach slime in the list slimes
+
+        // call shoot on current slime
     }
 
 }

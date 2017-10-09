@@ -45,6 +45,9 @@ public class SlimeMovement : MonoBehaviour
 
     private float StuckTimer;
 
+    [HideInInspector]
+    public bool isMoving = true;
+
     void Start()
     {
         //finding the ridgedbody
@@ -56,12 +59,40 @@ public class SlimeMovement : MonoBehaviour
         newPosRandomRange = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x, transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z);
         playersController = player.GetComponent<CharacterController>();
+        isMoving = true;
     }
 
 
     void Update()
     {
 
+
+        if (isMoving == true)
+        {
+            Seek();
+        }
+
+        
+        //seek the player
+        //Alignment()
+        //Seek();
+        //separation()
+    }
+
+
+
+    //IEnumerator FindNewPos()
+    //{
+    //  yield return new WaitForSeconds(.1f);
+    //        newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+
+    //  }
+
+
+
+
+    void Seek()
+    {
         foreach (GameObject x in slimes)
         {
             if (x != null)
@@ -78,49 +109,24 @@ public class SlimeMovement : MonoBehaviour
         }
 
         if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
-            {
-                //StartCoroutine(FindNewPos());
-                newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-            }
-
-            if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > newPosRandomRange)
-            {
-                Debug.Log("new pos");
-                newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-            }
-
-            if (Vector3.Distance(transform.position, newPos) > 0.5f)
-            {
-                Vector3 vecBetween = newPos - transform.position;
-
-                cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-            }
-
-            //seek the player
-            //Alignment()
-            //Seek();
-            //separation()
+        {
+            //StartCoroutine(FindNewPos());
+            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
         }
 
+        if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > newPosRandomRange)
+        {
+            Debug.Log("new pos");
+            newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
+        }
 
+        if (Vector3.Distance(transform.position, newPos) > 0.5f)
+        {
+            Vector3 vecBetween = newPos - transform.position;
 
-    //IEnumerator FindNewPos()
-    //{
-    //  yield return new WaitForSeconds(.1f);
-    //        newPos = new Vector3(Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.x + (separationForce.normalized.x * separationDistance), transform.position.y, Random.Range(newPosRandomRange, -newPosRandomRange) + player.transform.position.z + (separationForce.normalized.z * separationDistance));
-
-    //  }
-
-
-
-
-    //void Seek()
-    //{
-    //    //get the vector between the player and the me and add a force to it (ignoring y)
-    //    Vector3 vecBetween = player.transform.position - transform.position;
-    //    vecBetween = new Vector3(vecBetween.x, 0, vecBetween.z);
-    //    cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-    //}
+            cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+        }
+    }
 
     //void Avoid(GameObject col)
     //{
@@ -158,15 +164,22 @@ public class SlimeMovement : MonoBehaviour
         }
     }
 
-    public void Dodge(Vector3 centerPoint, float force)
+    public void Expand(Vector3 centerPoint)
     {
 
         //get the vector between the center point and me
         Vector3 vecBetween = centerPoint - transform.position;
 
         //inverse that vector and add a force to it
-        cc.Move(-vecBetween.normalized * force);
+        cc.Move(-vecBetween.normalized * speed * Time.deltaTime);
 
+    }
+
+
+    public void Retract(Vector3 centerPoint)
+    {
+        Vector3 vecBetween = centerPoint - transform.position;
+        cc.Move(vecBetween.normalized * speed * Time.deltaTime);
     }
 
 }
