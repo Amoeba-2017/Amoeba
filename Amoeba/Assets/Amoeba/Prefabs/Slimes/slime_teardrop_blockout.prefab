@@ -179,7 +179,7 @@ MonoBehaviour:
   avoidWallsForce: 5
   parent: 
   speedRandomRange: 1
-  separationDistance: 1.55
+  separationDistance: 0.2
   isMoving: 1
   maxSpreadDistance: 8
   minSpreadDistance: 2

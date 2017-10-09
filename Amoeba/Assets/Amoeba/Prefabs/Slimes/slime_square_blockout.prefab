@@ -165,6 +165,10 @@ MonoBehaviour:
   speedRandomRange: 1
   separationDistance: 0.2
   isMoving: 1
+  maxSpreadDistance: 8
+  minSpreadDistance: 2
+  randomSlimeOffset: 2
+  ExpandAndSrinkSpeed: 15
 --- !u!114 &114355564594265878
 MonoBehaviour:
   m_ObjectHideFlags: 1
