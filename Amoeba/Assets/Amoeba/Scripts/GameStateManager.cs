@@ -41,6 +41,10 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("p"))
+        {
+            VictoryScreen();
+        }
 
         //TEMP
         if (players.Count == 0)
@@ -89,6 +93,10 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    public void VictoryScreen()
+    {
+
+    }
 
     public List<GameObject> Players
     {
