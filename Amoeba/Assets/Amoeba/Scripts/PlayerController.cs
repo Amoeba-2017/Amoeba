@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
 {
-
     //declaring variables
-
     [SerializeField]
     [Tooltip("The slime that will be spawned by this player")]
     private GameObject slimePrefab;
@@ -77,14 +75,8 @@ public class PlayerController : MonoBehaviour
 
             //give this player a controller
             controller = InputManager.Devices[playerNumber - 1];
-
         }
-
-        controllerRetical = transform.GetChild(0).gameObject;
-
     }
-
-
 
     public void increasedSpeedPowerUp()
     {
@@ -107,6 +99,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (slimes.Count == 0)
+        {
+            gameManager.Players.Remove(gameObject);
+            Destroy(gameObject);
+        }
+
+
 
         //if(slimeRandomDistanceToPlayer < 0)
         //{
@@ -337,42 +336,26 @@ public class PlayerController : MonoBehaviour
             //{
             //    x.GetComponent<SlimeMovement>().isMoving = true;
             //}
-
         }
 
-
         //Shooting on keybored
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
         Vector3 vec3 = new Vector3();
         if (Physics.Raycast(ray, out rayHit))
         {
-
-
             vec3 = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
-
             Debug.DrawLine(rayHit.point, transform.position);
         }
 
         //if mousebutton 0 is pressed
         if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
         {
-
             ShootTimer = 0.0f;
-
             foreach (GameObject i in slimes)
             {
                 i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
             }
-
         }
-
-        //find the normilised vector Between the the player(this gameobject) and the mouse 
-
-        // foreach slime in the list slimes
-
-        // call shoot on current slime
     }
-
 }

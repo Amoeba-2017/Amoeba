@@ -5,7 +5,6 @@ using InControl;
 using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
-
     [HideInInspector]
     public bool debugMode = false;
 
@@ -45,10 +44,6 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("p"))
-        {
-            VictoryScreen();
-        }
 
         if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
         {
@@ -145,11 +140,6 @@ public class GameStateManager : MonoBehaviour
 
             }
         }
-    }
-
-    public void VictoryScreen()
-    {
-
     }
 
     public List<GameObject> Players
