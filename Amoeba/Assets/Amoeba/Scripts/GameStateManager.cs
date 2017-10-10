@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
-
+using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
 
@@ -27,15 +27,19 @@ public class GameStateManager : MonoBehaviour
     [HideInInspector]
     public int playerCount = 1;
 
-    private int maxPlayerCount = 1;
 
     private List<GameObject> players = new List<GameObject>();
+
+    private UserInterfaceManager uim;
+
+    private List<InputDevice> inputDivices = new List<InputDevice>();
 
 
     // Use this for initialization
     void Start()
     {
-        maxPlayerCount = InputManager.Devices.Count + 1;
+        DontDestroyOnLoad(gameObject);
+        uim = gameObject.GetComponent<UserInterfaceManager>();
     }
 
     // Update is called once per frame
@@ -46,12 +50,62 @@ public class GameStateManager : MonoBehaviour
             VictoryScreen();
         }
 
+        if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
+        {
+            foreach (InputDevice x in InputManager.Devices)
+            {
+                if (x.Action1.WasPressed)
+                {
+                    if (inputDivices.Contains(x) == false)
+                    {
+                        playerCount++;
+                        inputDivices.Add(x);
+
+                    }
+
+                }
+            }
+
+            InputDevice removeFromArray = null;
+
+            foreach (InputDevice i in inputDivices)
+            {
+                if (i.Action2.WasPressed)
+                {
+                    removeFromArray = i;
+                }
+
+                if (playerCount > InputManager.Devices.Count)
+                {
+
+                }
+            }
+            if (removeFromArray != null)
+            {
+                inputDivices.Remove(removeFromArray);
+            }
+        }
+
+
+        if(inputDivices.Count == 4)
+        {
+            SceneManager.LoadScene(1);
+        }
+
+
         //TEMP
         if (players.Count == 0)
         {
             players.Add(GameObject.FindGameObjectWithTag("PlayerRed"));
         }
 
+        DebugUpdate();
+    }
+
+
+
+    void DebugUpdate()
+    {
         if (Input.GetKey("b"))
         {
             if (Input.GetKey("u"))
@@ -68,26 +122,26 @@ public class GameStateManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-               // if (playerCount < maxPlayerCount)
-               // {
-                    playerCount++;
-                    if (playerCount == 1)
-                    {
-                        players.Add(Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                    }
-                    else if (playerCount == 2)
-                    {
-                        players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                    }
-                    else if (playerCount == 3)
-                    {
-                        players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                    }
-                    else
-                    {
-                        players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                    }
-               // }
+                // if (playerCount < maxPlayerCount)
+                // {
+                playerCount++;
+                if (playerCount == 1)
+                {
+                    players.Add(Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                }
+                else if (playerCount == 2)
+                {
+                    players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                }
+                else if (playerCount == 3)
+                {
+                    players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                }
+                else
+                {
+                    players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                }
+                // }
 
             }
         }
