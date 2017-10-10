@@ -67,47 +67,12 @@ public class UserInterfaceManager : MonoBehaviour
     {
         if (currentCanvas == CanvasCount.playerSelect)
         {
-            for (int i = 0; i < gsm.playerCount - 1; i++)
+
+            int amountOfNotPlayers = 4 - gsm.playerCount;
+
+            for (int x = 0; x < amountOfNotPlayers; x++)
             {
-                if (i == 0)
-                {
-                    if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
-                    {
-                        playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
-                    }
-                }
-
-                if (i == 1)
-                {
-                    if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
-                    {
-                        playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
-                    }
-                }
-
-                if (i == 2)
-                {
-                    if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
-                    {
-                        playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
-                    }
-                }
-
-                if (i == 3)
-                {
-                    if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
-                    {
-                        playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
-                    }
-                }
-            }
-            int amountOfNotPlayers = gsm.playerCount - 4;
-
-
-
-            for (int i = 0; i < amountOfNotPlayers; i++)
-            {
-                if (i == 0)
+                if (x == 0)
                 {
                     if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
                     {
@@ -115,7 +80,7 @@ public class UserInterfaceManager : MonoBehaviour
                     }
                 }
 
-                if (i == 1)
+                if (x == 1)
                 {
                     if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != blueSlimebw)
                     {
@@ -123,7 +88,7 @@ public class UserInterfaceManager : MonoBehaviour
                     }
                 }
 
-                if (i == 2)
+                if (x == 2)
                 {
                     if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != yellowSlimebw)
                     {
@@ -131,13 +96,53 @@ public class UserInterfaceManager : MonoBehaviour
                     }
                 }
 
-                if (i == 3)
+                if (x == 3)
                 {
                     if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != redSlimebw)
                     {
                         playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = redSlimebw;
                     }
                 }
+
+                for (int i = 0; i < gsm.playerCount - 1; i++)
+                {
+                    if (i == 0)
+                    {
+                        if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
+                        {
+                            playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
+                        }
+                    }
+
+                    if (i == 1)
+                    {
+                        if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
+                        {
+                            playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
+                        }
+                    }
+
+                    if (i == 2)
+                    {
+                        if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
+                        {
+                            playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
+                        }
+                    }
+
+                    if (i == 3)
+                    {
+                        if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
+                        {
+                            playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
+                        }
+                    }
+                }
+
+
+
+
+
             }
         }
     }
@@ -149,6 +154,15 @@ public class UserInterfaceManager : MonoBehaviour
         mainMenu.enabled = false;
         playerSelect.enabled = true;
     }
+
+
+    public void StartGameButtom()
+    {
+
+    }
+
+
+
 
 
 }

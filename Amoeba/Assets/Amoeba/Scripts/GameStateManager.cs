@@ -5,6 +5,7 @@ using InControl;
 using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
+
     [HideInInspector]
     public bool debugMode = false;
 
@@ -37,7 +38,10 @@ public class GameStateManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (GameObject.FindGameObjectWithTag("GameManager") != true)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         uim = gameObject.GetComponent<UserInterfaceManager>();
     }
 
@@ -45,19 +49,23 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
 
-        if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
+
+        if (uim != null)
         {
-            foreach (InputDevice x in InputManager.Devices)
+            if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
-                if (x.Action1.WasPressed)
+                foreach (InputDevice x in InputManager.Devices)
                 {
-                    if (inputDivices.Contains(x) == false)
+                    if (x.Action1.WasPressed)
                     {
-                        playerCount++;
-                        inputDivices.Add(x);
+                        if (inputDivices.Contains(x) == false)
+                        {
+                            playerCount++;
+                            inputDivices.Add(x);
+
+                        }
 
                     }
-
                 }
             }
 
@@ -67,12 +75,13 @@ public class GameStateManager : MonoBehaviour
             {
                 if (i.Action2.WasPressed)
                 {
+                    playerCount--;
                     removeFromArray = i;
                 }
 
                 if (playerCount > InputManager.Devices.Count)
                 {
-
+                    playerCount--;
                 }
             }
             if (removeFromArray != null)
@@ -141,6 +150,8 @@ public class GameStateManager : MonoBehaviour
             }
         }
     }
+
+   
 
     public List<GameObject> Players
     {
