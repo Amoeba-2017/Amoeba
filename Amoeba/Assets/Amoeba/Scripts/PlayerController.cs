@@ -67,16 +67,13 @@ using InControl;
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
-
-        //if this player number is less then or equal to the amount of controllers
-        if (playerNumber <= InputManager.Devices.Count)
-        {
-            Debug.Log("Added a controller to player number" + playerNumber);
-
-            //give this player a controller
-            controller = InputManager.Devices[playerNumber - 1];
-        }
     }
+
+    public void SetController(InputDevice device)
+    {
+        controller = device;
+    }
+
 
     public void increasedSpeedPowerUp()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class UserInterfaceManager : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public class UserInterfaceManager : MonoBehaviour
     private GameStateManager gsm;
 
 
-
+    private int currentAmountofPlayers;
 
     private List<Image> sprites = new List<Image>();
 
@@ -51,6 +51,12 @@ public class UserInterfaceManager : MonoBehaviour
 
 
     public CanvasCount currentCanvas;
+
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     void Start()
     {
@@ -67,85 +73,10 @@ public class UserInterfaceManager : MonoBehaviour
     {
         if (currentCanvas == CanvasCount.playerSelect)
         {
-
             int amountOfNotPlayers = 4 - gsm.playerCount;
-
-            for (int x = 0; x < amountOfNotPlayers; x++)
-            {
-                if (x == 0)
-                {
-                    if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
-                    {
-                        playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
-                    }
-                }
-
-                if (x == 1)
-                {
-                    if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != blueSlimebw)
-                    {
-                        playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = blueSlimebw;
-                    }
-                }
-
-                if (x == 2)
-                {
-                    if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != yellowSlimebw)
-                    {
-                        playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = yellowSlimebw;
-                    }
-                }
-
-                if (x == 3)
-                {
-                    if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != redSlimebw)
-                    {
-                        playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = redSlimebw;
-                    }
-                }
-
-                for (int i = 0; i < gsm.playerCount - 1; i++)
-                {
-                    if (i == 0)
-                    {
-                        if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
-                        {
-                            playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
-                        }
-                    }
-
-                    if (i == 1)
-                    {
-                        if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
-                        {
-                            playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
-                        }
-                    }
-
-                    if (i == 2)
-                    {
-                        if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
-                        {
-                            playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
-                        }
-                    }
-
-                    if (i == 3)
-                    {
-                        if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
-                        {
-                            playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
-                        }
-                    }
-                }
-
-
-
-
-
-            }
         }
     }
+
 
     //called when the play button is pressed on the main menu
     public void PlayButton()
@@ -158,11 +89,99 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void StartGameButtom()
     {
+        SceneManager.LoadScene(1);
+        gsm.SpawnPlayers();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene == SceneManager.GetSceneAt(1))
+        {
+            gsm.SpawnPlayers();
+        }
+    }
+
+    public void AddPlayer()
+    {
+        currentAmountofPlayers++;
+
+        if (currentAmountofPlayers == 1)
+        {
+            if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
+            {
+                playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
+            }
+        }
+
+        if (currentAmountofPlayers == 2)
+        {
+            if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
+            {
+                playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
+            }
+        }
+
+        if (currentAmountofPlayers == 3)
+        {
+            if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
+            {
+                playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
+            }
+        }
+
+        if (currentAmountofPlayers == 4)
+        {
+            if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
+            {
+                playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
+            }
+        }
+    }
+
+    public void RemovePlayer()
+    {
+
+
+        if (currentAmountofPlayers == 4)
+        {
+            if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
+            {
+                playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
+            }
+        }
+
+        if (currentAmountofPlayers == 3)
+        {
+            if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlimebw)
+            {
+                playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlimebw;
+            }
+        }
+
+        if (currentAmountofPlayers == 2)
+        {
+            if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlimebw)
+            {
+                playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlimebw;
+            }
+        }
+
+        if (currentAmountofPlayers == 1)
+        {
+            if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlimebw)
+            {
+                playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlimebw;
+            }
+        }
+
+        currentAmountofPlayers--;
 
     }
 
-
-
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
 
 }

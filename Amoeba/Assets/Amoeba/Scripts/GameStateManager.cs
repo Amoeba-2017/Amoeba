@@ -60,9 +60,10 @@ public class GameStateManager : MonoBehaviour
                     {
                         if (inputDivices.Contains(x) == false)
                         {
+                            Debug.Log("add a player");
                             playerCount++;
+                            uim.AddPlayer();
                             inputDivices.Add(x);
-
                         }
 
                     }
@@ -75,15 +76,22 @@ public class GameStateManager : MonoBehaviour
             {
                 if (i.Action2.WasPressed)
                 {
+                    uim.RemovePlayer();
+
                     playerCount--;
                     removeFromArray = i;
+                    Debug.Log("removePlayer");
                 }
 
-                if (playerCount > InputManager.Devices.Count)
+                if (playerCount > InputManager.Devices.Count + 1)
                 {
+                    Debug.Log("too many players");
+                    uim.RemovePlayer();
                     playerCount--;
                 }
             }
+
+
             if (removeFromArray != null)
             {
                 inputDivices.Remove(removeFromArray);
@@ -91,10 +99,10 @@ public class GameStateManager : MonoBehaviour
         }
 
 
-        if(inputDivices.Count == 4)
-        {
-            SceneManager.LoadScene(1);
-        }
+        //if(inputDivices.Count == 4)
+        //{
+        //    SceneManager.LoadScene(1);
+        //}
 
 
         //TEMP
@@ -151,7 +159,26 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-   
+
+    public void SpawnPlayers()
+    {
+        if (playerCount >= 1)
+        {
+            Instantiate(playerRedPrefab);
+        }
+        if (playerCount >= 2)
+        {
+            Instantiate(playerRedPrefab);
+        }
+        if (playerCount >= 3)
+        {
+            Instantiate(playerRedPrefab);
+        }
+        if (playerCount >= 4)
+        {
+            Instantiate(playerRedPrefab);
+        }
+    }
 
     public List<GameObject> Players
     {
