@@ -198,7 +198,7 @@ MonoBehaviour:
   projectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
     type: 2}
   projectileShotSpeed: 65
-  destroyTimer: 0.7
+  destroyTimer: 0.5
   slime: {fileID: 1367675481507750}
 --- !u!135 &135188636210379800
 SphereCollider:
