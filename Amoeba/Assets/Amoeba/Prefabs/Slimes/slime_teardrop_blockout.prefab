@@ -185,7 +185,7 @@ MonoBehaviour:
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
-  beginYPos: 1
+  beginYPos: 0
 --- !u!114 &114914008840206336
 MonoBehaviour:
   m_ObjectHideFlags: 1
