@@ -60,6 +60,9 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField]
     private float ExpandAndSrinkSpeed;
 
+    [SerializeField]
+    private float beginYPos;
+
     void Start()
     {
         //finding the ridgedbody
@@ -72,6 +75,8 @@ public class SlimeMovement : MonoBehaviour
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
         isMoving = true;
+
+        transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
     }
 
 
