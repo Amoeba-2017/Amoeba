@@ -95,7 +95,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene == SceneManager.GetSceneAt(1))
+        if(scene == SceneManager.GetSceneAt(0))
         {
             gsm.SpawnPlayers();
         }

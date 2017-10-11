@@ -49,6 +49,8 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
 
+        if(GameObject.FindGameObjectWithTag("")
+
 
         if (uim != null)
         {
