@@ -55,10 +55,6 @@ public class UserInterfaceManager : MonoBehaviour
 
     void Update()
     {
-        if (currentCanvas == CanvasCount.playerSelect)
-        {
-            int amountOfNotPlayers = 4 - gsm.playerCount;
-        }
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
@@ -66,16 +62,21 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
+
             if (gsm.Players.Count == 1)
             {
-                Time.timeScale = 0;
-                victoryScreen.enabled = true;
+                StartCoroutine(waitForCheck());
             }
         }
-
-
     }
-
+    IEnumerator waitForCheck()
+    {
+        // Start function WaitAndPrint as a coroutine
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("ended the game");
+        Time.timeScale = 0;
+        victoryScreen.enabled = true;
+    }
 
     //called when the play button is pressed on the main menu
     public void PlayButton()
@@ -88,8 +89,11 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void StartGameButtom()
     {
-        SceneManager.LoadScene(1);
-        gsm.SpawnPlayers();
+        if (currentAmountofPlayers > 0)
+        {
+            SceneManager.LoadScene(1);
+            gsm.SpawnPlayers();
+        }
     }
 
 

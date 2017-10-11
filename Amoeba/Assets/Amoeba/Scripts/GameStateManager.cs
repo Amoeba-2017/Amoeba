@@ -38,18 +38,58 @@ public class GameStateManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("GameManager") != true)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+
+        DontDestroyOnLoad(gameObject);
         uim = gameObject.GetComponent<UserInterfaceManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        {
+            Debug.Log(inputDivices.Count);
+            if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
+            {
+                if (inputDivices.Count >= 1)
+                {
+                    Debug.Log("added Red Player");
+                    GameObject temp = Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity);
+                    players.Add(temp);
+                    temp.GetComponent<PlayerController>().SetController(inputDivices[0]);
+                }
+            }
 
-     //   if(GameObject.FindGameObjectWithTag("")
+            if (GameObject.FindGameObjectWithTag("PlayerYellow") == false)
+            {
+                if (inputDivices.Count >= 2)
+                {
+                    GameObject temp = Instantiate(playerYellowPrefab, new Vector3(8f, 47.376f, -131.3f), Quaternion.identity);
+                    players.Add(temp);
+                    temp.GetComponent<PlayerController>().SetController(inputDivices[1]);
+                }
+            }
+
+            if (GameObject.FindGameObjectWithTag("PlayerBlue") == false)
+            {
+                if (inputDivices.Count >= 3)
+                {
+                    GameObject temp = Instantiate(playerBluePrefab, new Vector3(9f, 47.376f, -131.3f), Quaternion.identity);
+                    players.Add(temp);
+                    temp.GetComponent<PlayerController>().SetController(inputDivices[2]);
+                }
+            }
+
+            if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
+            {
+                if (inputDivices.Count >= 3)
+                {
+                    GameObject temp = Instantiate(playerPurplePrefab, new Vector3(10f, 47.376f, -131.3f), Quaternion.identity);
+                    players.Add(temp);
+                    temp.GetComponent<PlayerController>().SetController(inputDivices[3]);
+                }
+            }
+        }
 
 
         if (uim != null)
@@ -145,11 +185,11 @@ public class GameStateManager : MonoBehaviour
                 }
                 else if (playerCount == 2)
                 {
-                    players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                    players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
                 }
                 else if (playerCount == 3)
                 {
-                    players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                    players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
                 }
                 else
                 {
