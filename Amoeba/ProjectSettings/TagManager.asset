@@ -10,12 +10,9 @@ TagManager:
   - PlayerPurple
   - PlayerYellow
   - PlayerBlue
-  - DamageBoost
-  - IncreasedSpeed
-  - RapidFire
-  - Shotgun
   - ProtectiveShield
   - Bullet
+  - VictoryScreen
   layers:
   - Default
   - TransparentFX

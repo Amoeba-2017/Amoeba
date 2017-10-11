@@ -6,38 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class UserInterfaceManager : MonoBehaviour
 {
-
     [SerializeField]
     private Canvas mainMenu;
-
     [SerializeField]
     private Canvas playerSelect;
-
+    private Canvas victoryScreen;
 
     [SerializeField]
     private Sprite redSlime;
-
     [SerializeField]
     private Sprite yellowSlime;
-
     [SerializeField]
     private Sprite blueSlime;
-
     [SerializeField]
     private Sprite purpleSlime;
 
-
     private Sprite redSlimebw;
-
     private Sprite yellowSlimebw;
-
     private Sprite blueSlimebw;
-
     private Sprite purpleSlimebw;
 
-
     private GameStateManager gsm;
-
 
     private int currentAmountofPlayers;
 
@@ -52,11 +41,6 @@ public class UserInterfaceManager : MonoBehaviour
 
     public CanvasCount currentCanvas;
 
-
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 
     void Start()
     {
@@ -75,6 +59,21 @@ public class UserInterfaceManager : MonoBehaviour
         {
             int amountOfNotPlayers = 4 - gsm.playerCount;
         }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        {
+            if (victoryScreen == null)
+            {
+                victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
+            }
+            if (gsm.Players.Count == 1)
+            {
+                Time.timeScale = 0;
+                victoryScreen.enabled = true;
+            }
+        }
+
+
     }
 
 
@@ -93,13 +92,6 @@ public class UserInterfaceManager : MonoBehaviour
         gsm.SpawnPlayers();
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if(scene == SceneManager.GetSceneAt(0))
-        {
-            gsm.SpawnPlayers();
-        }
-    }
 
     public void AddPlayer()
     {
@@ -178,10 +170,6 @@ public class UserInterfaceManager : MonoBehaviour
 
     }
 
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
 
 
 }
