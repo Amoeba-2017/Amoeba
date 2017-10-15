@@ -1,29 +1,15 @@
 fileFormatVersion: 2
-guid: f2866a5ce398f434b9e66e31685b3446
-timeCreated: 1507595650
+guid: c62618e99ffc050468e7bc91ed0d8001
+timeCreated: 1508106001
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCylinder5
-    100004: pCylinder6
-    100006: pCylinder7
-    100008: pCylinder8
-    100010: transform43
-    100012: transform44
-    100014: transform45
     400000: //RootNode
-    400002: pCylinder5
-    400004: pCylinder6
-    400006: pCylinder7
-    400008: pCylinder8
-    400010: transform43
-    400012: transform44
-    400014: transform45
-    2300000: pCylinder8
-    3300000: pCylinder8
-    4300000: pCylinder8
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: log_moss_001
     9500000: //RootNode
   materials:
     importMaterials: 1

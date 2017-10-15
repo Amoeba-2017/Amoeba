@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7b45ba633f9a2aa46b5865c87d549d09
-timeCreated: 1507586652
+guid: e9ece5f39647fb64f99f643431c45b26
+timeCreated: 1508105832
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCube23
+    4300000: barricade_001
     9500000: //RootNode
   materials:
     importMaterials: 1

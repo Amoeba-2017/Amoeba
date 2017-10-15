@@ -1,38 +1,15 @@
 fileFormatVersion: 2
-guid: 8e14f93a2e6125e4da64dbeec35c1e39
-timeCreated: 1507594058
+guid: 5316ca33ee879264a9f28af530da94a4
+timeCreated: 1508105903
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: pCube46
-    100002: pCube47
-    100004: pCube48
-    100006: pCube49
-    100008: pCube50
-    100010: pCylinder1
-    100012: //RootNode
-    100014: transform35
-    100016: transform36
-    100018: transform37
-    100020: transform38
-    400000: pCube46
-    400002: pCube47
-    400004: pCube48
-    400006: pCube49
-    400008: pCube50
-    400010: pCylinder1
-    400012: //RootNode
-    400014: transform35
-    400016: transform36
-    400018: transform37
-    400020: transform38
-    2300000: pCube49
-    2300002: pCube50
-    3300000: pCube49
-    3300002: pCube50
-    4300000: pCube49
-    4300002: pCube50
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: bush_large_001
     9500000: //RootNode
   materials:
     importMaterials: 1
