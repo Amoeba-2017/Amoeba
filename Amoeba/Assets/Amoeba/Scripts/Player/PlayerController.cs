@@ -63,6 +63,8 @@ using InControl;
         //getting the amount of players in the game
         playerNumber = gameManager.playerCount;
 
+        controllerRetical = transform.GetChild(0).gameObject;
+
         //making the first slime
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;

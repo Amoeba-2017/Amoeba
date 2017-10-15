@@ -32,10 +32,13 @@ public class UserInterfaceManager : MonoBehaviour
 
     private List<Image> sprites = new List<Image>();
 
+    public Text maxRoundText;
+
     public enum CanvasCount
     {
         mainMenu,
-        playerSelect
+        playerSelect,
+        none
     };
 
 
@@ -44,6 +47,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     void Start()
     {
+        maxRoundText = playerSelect.transform.GetChild(5).gameObject.GetComponent<Text>();
         currentCanvas = CanvasCount.mainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
         redSlimebw = (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite);
@@ -65,17 +69,24 @@ public class UserInterfaceManager : MonoBehaviour
 
             if (gsm.Players.Count == 1)
             {
-                StartCoroutine(waitForCheck());
+                Debug.Log("ended the game");
+                StartCoroutine(restartGame());
+                victoryScreen.enabled = true;
+                gsm.Players[0].GetComponent<PlayerUI>().addScore();
+                Destroy(gsm.Players[0]);
+                gsm.Players.Clear();
             }
         }
     }
-    IEnumerator waitForCheck()
+
+
+    IEnumerator restartGame()
     {
-        // Start function WaitAndPrint as a coroutine
-        yield return new WaitForSeconds(0.5f);
-        Debug.Log("ended the game");
-        Time.timeScale = 0;
-        victoryScreen.enabled = true;
+        // Start function restartGame as a coroutine
+        yield return new WaitForSeconds(5.0f);
+        Debug.Log("loading new Scene");
+        gsm.spawnPlayers = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //called when the play button is pressed on the main menu
@@ -91,6 +102,7 @@ public class UserInterfaceManager : MonoBehaviour
     {
         if (currentAmountofPlayers > 0)
         {
+            currentCanvas = CanvasCount.none;
             SceneManager.LoadScene(1);
             gsm.SpawnPlayers();
         }

@@ -89,7 +89,7 @@ public class SlimeMovement : MonoBehaviour
             Seek();
         }
 
-        
+
         //seek the player
         //Alignment()
         //Seek();
@@ -133,33 +133,35 @@ public class SlimeMovement : MonoBehaviour
         //}
 
 
+        if (player != null)
+        {
+            if (slimes.Count > 1)
+            {
+                //if the player is moving and we're far enough away from our target
+                if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+                {
+                    //StartCoroutine(FindNewPos());
+                    newPos = FindnewPosition();
+                }
 
-       if (slimes.Count > 1)
-       {
-            //if the player is moving and we're far enough away from our target
-           if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
-           {
-               //StartCoroutine(FindNewPos());
-               newPos = FindnewPosition();
-           }
+                if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > randomCircleRadius)
+                {
+                    Debug.Log("new pos");
+                    newPos = FindnewPosition();
+                }
 
-           if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > randomCircleRadius)
-           {
-              Debug.Log("new pos");
-              newPos = FindnewPosition();
-           }
-
-           if (Vector3.Distance(transform.position, newPos) > 0.5f)
-           {
-               Vector3 vecBetween = newPos - transform.position;
-               cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-           }
-       }
-       else
-       {
-           Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
-           cc.Move(vecBetween * speed *Time.deltaTime);
-       }
+                if (Vector3.Distance(transform.position, newPos) > 0.5f)
+                {
+                    Vector3 vecBetween = newPos - transform.position;
+                    cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
+                cc.Move(vecBetween * speed * Time.deltaTime);
+            }
+        }
     }
 
     //void Avoid(GameObject col)
@@ -201,7 +203,7 @@ public class SlimeMovement : MonoBehaviour
     public void Expand(Vector3 centerPoint)
     {
 
-        if(randomCircleRadius == maxSpreadDistance)
+        if (randomCircleRadius == maxSpreadDistance)
         {
             return;
         }
@@ -210,15 +212,15 @@ public class SlimeMovement : MonoBehaviour
 
         if (randomCircleRadius > maxSpreadDistance)
         {
-             randomCircleRadius = maxSpreadDistance;
-             newPos = FindnewPosition();
+            randomCircleRadius = maxSpreadDistance;
+            newPos = FindnewPosition();
         }
         else if (Vector3.Distance(transform.position, newPos) < 1.0f)
         {
             newPos = FindnewPosition();
         }
 
-   
+
 
         // if (randomCircleRadius < maxSpreadDistance)
         //{
@@ -264,8 +266,8 @@ public class SlimeMovement : MonoBehaviour
             newPos = FindnewPosition();
         }
 
-    
-     
+
+
 
         //if (randomCircleRadius > minSpreadDistance)
         //{

@@ -37,8 +37,8 @@ public class CameraRig : MonoBehaviour {
     {
         if (players.Count > 1)
         {
-
             centerPoint = Vector3.zero;
+
             foreach (GameObject x in players)
             {
                 centerPoint += x.transform.position;

@@ -21,7 +21,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPurplePrefab;
 
-
+    [HideInInspector]
+    public int maxRounds;
 
 
     [HideInInspector]
@@ -34,13 +35,22 @@ public class GameStateManager : MonoBehaviour
 
     private List<InputDevice> inputDivices = new List<InputDevice>();
 
+    [HideInInspector]
+    public bool spawnPlayers = true;
+
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-
+        maxRounds = 3;
         DontDestroyOnLoad(gameObject);
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
         uim = gameObject.GetComponent<UserInterfaceManager>();
+        spawnPlayers = true;
+
     }
 
     // Update is called once per frame
@@ -48,49 +58,12 @@ public class GameStateManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
-            Debug.Log(inputDivices.Count);
-            if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
+            if (spawnPlayers == true)
             {
-                if (inputDivices.Count >= 1)
-                {
-                    Debug.Log("added Red Player");
-                    GameObject temp = Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity);
-                    players.Add(temp);
-                    temp.GetComponent<PlayerController>().SetController(inputDivices[0]);
-                }
-            }
-
-            if (GameObject.FindGameObjectWithTag("PlayerYellow") == false)
-            {
-                if (inputDivices.Count >= 2)
-                {
-                    GameObject temp = Instantiate(playerYellowPrefab, new Vector3(8f, 47.376f, -131.3f), Quaternion.identity);
-                    players.Add(temp);
-                    temp.GetComponent<PlayerController>().SetController(inputDivices[1]);
-                }
-            }
-
-            if (GameObject.FindGameObjectWithTag("PlayerBlue") == false)
-            {
-                if (inputDivices.Count >= 3)
-                {
-                    GameObject temp = Instantiate(playerBluePrefab, new Vector3(9f, 47.376f, -131.3f), Quaternion.identity);
-                    players.Add(temp);
-                    temp.GetComponent<PlayerController>().SetController(inputDivices[2]);
-                }
-            }
-
-            if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
-            {
-                if (inputDivices.Count >= 3)
-                {
-                    GameObject temp = Instantiate(playerPurplePrefab, new Vector3(10f, 47.376f, -131.3f), Quaternion.identity);
-                    players.Add(temp);
-                    temp.GetComponent<PlayerController>().SetController(inputDivices[3]);
-                }
+                loadPlayers();
+                spawnPlayers = false;
             }
         }
-
 
         if (uim != null)
         {
@@ -98,6 +71,19 @@ public class GameStateManager : MonoBehaviour
             {
                 foreach (InputDevice x in InputManager.Devices)
                 {
+                    if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
+                    {
+                        maxRounds++;
+                        uim.maxRoundText.text = maxRounds.ToString();
+                    }
+                    else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
+                    {
+                        maxRounds--;
+                        uim.maxRoundText.text = maxRounds.ToString();
+
+                    }
+
+
                     if (x.Action1.WasPressed)
                     {
                         if (inputDivices.Contains(x) == false)
@@ -147,11 +133,6 @@ public class GameStateManager : MonoBehaviour
         //}
 
 
-        //TEMP
-        if (players.Count == 0)
-        {
-            players.Add(GameObject.FindGameObjectWithTag("PlayerRed"));
-        }
 
         DebugUpdate();
     }
@@ -201,6 +182,53 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+
+    private void loadPlayers()
+    {
+
+        Debug.Log(inputDivices.Count);
+        if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
+        {
+            if (inputDivices.Count >= 1)
+            {
+                Debug.Log("added Red Player");
+                GameObject temp = Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity);
+                players.Add(temp);
+                temp.GetComponent<PlayerController>().SetController(inputDivices[0]);
+            }
+        }
+
+        if (GameObject.FindGameObjectWithTag("PlayerYellow") == false)
+        {
+            if (inputDivices.Count >= 2)
+            {
+                GameObject temp = Instantiate(playerYellowPrefab, new Vector3(8f, 47.376f, -131.3f), Quaternion.identity);
+                players.Add(temp);
+                temp.GetComponent<PlayerController>().SetController(inputDivices[1]);
+            }
+        }
+
+        if (GameObject.FindGameObjectWithTag("PlayerBlue") == false)
+        {
+            if (inputDivices.Count >= 3)
+            {
+                GameObject temp = Instantiate(playerBluePrefab, new Vector3(9f, 47.376f, -131.3f), Quaternion.identity);
+                players.Add(temp);
+                temp.GetComponent<PlayerController>().SetController(inputDivices[2]);
+            }
+        }
+
+        if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
+        {
+            if (inputDivices.Count >= 3)
+            {
+                GameObject temp = Instantiate(playerPurplePrefab, new Vector3(10f, 47.376f, -131.3f), Quaternion.identity);
+                players.Add(temp);
+                temp.GetComponent<PlayerController>().SetController(inputDivices[3]);
+            }
+        }
+
+    }
 
     public void SpawnPlayers()
     {
