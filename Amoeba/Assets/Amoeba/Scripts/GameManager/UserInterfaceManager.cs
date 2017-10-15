@@ -72,6 +72,25 @@ public class UserInterfaceManager : MonoBehaviour
                 Debug.Log("ended the game");
                 StartCoroutine(restartGame());
                 victoryScreen.enabled = true;
+
+                //victoryScreen.Transform.GetChild(0).GameObject.GetCompnent<Image>().Sprite = redSlime;
+                if (gsm.Players[0].tag == "PlayerRed")
+                {
+                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;
+                }
+                if (gsm.Players[0].tag == "PlayerBlue")
+                {
+                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = blueSlime;
+                }
+                if (gsm.Players[0].tag == "PlayerYellow")
+                {
+                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = yellowSlime;
+                }
+                if (gsm.Players[0].tag == "PlayerPurple")
+                {
+                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
+                }
+
                 gsm.Players[0].GetComponent<PlayerUI>().addScore();
                 Destroy(gsm.Players[0]);
                 gsm.Players.Clear();
