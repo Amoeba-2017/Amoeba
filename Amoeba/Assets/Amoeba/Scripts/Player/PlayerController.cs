@@ -69,6 +69,8 @@ using InControl;
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
+        
+
     }
 
     public void SetController(InputDevice device)

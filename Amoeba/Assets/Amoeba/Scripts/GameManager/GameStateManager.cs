@@ -52,6 +52,10 @@ public class GameStateManager : MonoBehaviour
         uim = gameObject.GetComponent<UserInterfaceManager>();
         spawnPlayers = true;
 
+        foreach (InputDevice x in InputManager.Devices)
+        {
+            Debug.Log(x);
+        }
     }
 
     // Update is called once per frame
