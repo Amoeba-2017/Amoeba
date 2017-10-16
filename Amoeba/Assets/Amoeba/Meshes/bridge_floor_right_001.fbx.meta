@@ -1,25 +1,15 @@
 fileFormatVersion: 2
-guid: 57cbe2c68f74b9e4494e36d36831b4ad
-timeCreated: 1507590174
+guid: f10be54af304661468b16d23f7f2f2de
+timeCreated: 1508113657
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: pCube53
-    100002: pCube54
-    100004: pCube55
-    100006: transform39
-    100008: transform40
-    100010: //RootNode
-    400000: pCube53
-    400002: pCube54
-    400004: pCube55
-    400006: transform39
-    400008: transform40
-    400010: //RootNode
-    2300000: pCube55
-    3300000: pCube55
-    4300000: pCube55
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: bridge_floor_right_001
     9500000: //RootNode
   materials:
     importMaterials: 1

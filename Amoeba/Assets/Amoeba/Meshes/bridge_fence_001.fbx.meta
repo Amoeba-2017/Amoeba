@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 1778408f47b4c4945b4d1c9c57059fe8
-timeCreated: 1507591916
+guid: dfb77d4278caf6d489ccee6f45e4c1f2
+timeCreated: 1508113800
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: pCube114
-    100002: pCube115
-    100004: pCube116
-    100006: //RootNode
-    100008: transform111
-    100010: transform112
-    400000: pCube114
-    400002: pCube115
-    400004: pCube116
-    400006: //RootNode
-    400008: transform111
-    400010: transform112
-    2300000: pCube116
-    3300000: pCube116
-    4300000: pCube116
+    100000: //RootNode
+    100002: bridge_fence_001
+    100004: pCube108
+    100006: pCube95
+    100008: transform184
+    100010: transform185
+    400000: //RootNode
+    400002: bridge_fence_001
+    400004: pCube108
+    400006: pCube95
+    400008: transform184
+    400010: transform185
+    2300000: bridge_fence_001
+    3300000: bridge_fence_001
+    4300000: bridge_fence_001
     9500000: //RootNode
   materials:
     importMaterials: 1
