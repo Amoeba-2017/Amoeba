@@ -88,7 +88,10 @@ public class SlimeActions : MonoBehaviour {
             newSlime(1f, 3);
             newSlime(1f, 3);
         }
-
+        else if(amount == 3)
+        {
+            slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
+        }
 
     }
 

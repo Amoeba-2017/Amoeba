@@ -50,6 +50,7 @@ public class SlimeHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Bullet")
         {
+            gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
             print("Colliding");
             HeathPoints = -BulletDamage;
             Destroy(col.gameObject);
@@ -59,6 +60,7 @@ public class SlimeHealth : MonoBehaviour {
     void Death ()
     {
         slimeAction.Split(amountOfSplits);
+        if(amountOfSplits <= 3)
         Destroy(gameObject);
     }
 

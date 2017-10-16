@@ -45,8 +45,14 @@ public class SlimeMovement : MonoBehaviour
 
     private float StuckTimer;
 
-    [HideInInspector]
-    public bool isMoving = true;
+    public enum SlimeState
+    {
+        moving,
+        flying,
+        still
+    }
+
+    public SlimeState currentSlimeState;
 
     [SerializeField]
     private float maxSpreadDistance;
@@ -63,8 +69,21 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField]
     private float beginYPos;
 
+    [SerializeField]
+    private float flyingForce;
+
+    [SerializeField]
+    private float timeFlying;
+
+    [HideInInspector]
+    public Vector3 flyingVel;
+
+    private float flyingTimer;
+
     void Start()
     {
+        flyingTimer = 0;
+        currentSlimeState = SlimeState.moving;
         //finding the ridgedbody
         cc = gameObject.GetComponent<CharacterController>();
         speed = Random.Range(speed - speedRandomRange, speed + speedRandomRange);
@@ -74,7 +93,6 @@ public class SlimeMovement : MonoBehaviour
         randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
-        isMoving = true;
 
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
     }
@@ -84,9 +102,13 @@ public class SlimeMovement : MonoBehaviour
     {
 
 
-        if (isMoving == true)
+        if (currentSlimeState == SlimeState.moving)
         {
             Seek();
+        }
+        else if(currentSlimeState == SlimeState.flying)
+        {
+            flying();
         }
 
 
@@ -114,24 +136,24 @@ public class SlimeMovement : MonoBehaviour
 
     }
 
+    void flying()
+    {
+        flyingTimer += Time.deltaTime;
+        flyingVel = flyingVel.normalized + Vector3.up * flyingForce;
+        if (flyingTimer < timeFlying)
+        {
+            cc.Move(flyingVel);
+        }
+        else
+        {
+            flyingTimer = 0;
+            currentSlimeState = SlimeState.still;
+        }
+    }
+
 
     void Seek()
     {
-
-
-        //if(slimes.Count > 1)
-        //{
-
-        //    Vector3 posOnCircle = FindnewPosition();
-        //    Vector3 vecBetween = posOnCircle - transform.position;
-        //    cc.Move(vecBetween.normalized * speed * Time.deltaTime);
-        //}
-        //else
-        //{
-        //    Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
-        //    cc.Move(vecBetween * speed * Time.deltaTime);
-        //}
-
 
         if (player != null)
         {
@@ -164,31 +186,6 @@ public class SlimeMovement : MonoBehaviour
         }
     }
 
-    //void Avoid(GameObject col)
-    //{
-
-    //    Vector3 vecBtwSlimeAndWall = col.transform.position - transform.position;
-    //    Vector3 vecBtwSlimeAndPlayer = player.transform.position - transform.position;
-    //    Vector3 finalvec = new Vector3();
-
-
-    //    if (Vector3.SignedAngle(vecBtwSlimeAndWall, vecBtwSlimeAndPlayer, Vector3.up) > 0)
-    //    {
-
-    //        finalvec = Vector3.Cross(vecBtwSlimeAndPlayer.normalized, Vector3.up);
-    //        finalvec = -finalvec;
-    //    }
-
-    //    else
-    //    {
-    //        finalvec = Vector3.Cross(vecBtwSlimeAndPlayer.normalized, Vector3.up);
-
-    //    }
-
-    //    cc.Move(finalvec * speed * Time.deltaTime);
-    //    cc.Move(-vecBtwSlimeAndPlayer * avoidWallsForce * vecBtwSlimeAndPlayer.magnitude * Time.deltaTime);
-    //}
-
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -219,28 +216,6 @@ public class SlimeMovement : MonoBehaviour
         {
             newPos = FindnewPosition();
         }
-
-
-
-        // if (randomCircleRadius < maxSpreadDistance)
-        //{
-
-        ////if (isMoving == true)
-        ////{
-        ////    isMoving = false;
-        ////}
-        ////get the vector between the center point and me
-        //// if (Vector3.Distance(transform.position, newPos) < 1)
-        ////{
-
-        //Vector3 vecBetween = centerPoint - transform.position;
-
-        //        //inverse that vector and add a force to it
-        //        newPos = (-vecBetween.normalized * speed * Time.deltaTime);
-        //    //}
-        //    randomCircleRadius += (Time.deltaTime * (speed / 3));
-        ////}
-
     }
 
 
