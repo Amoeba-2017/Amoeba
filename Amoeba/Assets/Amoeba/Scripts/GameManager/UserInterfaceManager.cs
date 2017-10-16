@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using InControl;
 
 public class UserInterfaceManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UserInterfaceManager : MonoBehaviour
     [SerializeField]
     private Canvas playerSelect;
     private Canvas victoryScreen;
+    private Canvas pauseScreen;
 
     [SerializeField]
     private Sprite redSlime;
@@ -33,6 +35,8 @@ public class UserInterfaceManager : MonoBehaviour
     private List<Image> sprites = new List<Image>();
 
     public Text maxRoundText;
+
+    bool isPaused = false;
 
     public enum CanvasCount
     {
@@ -67,13 +71,41 @@ public class UserInterfaceManager : MonoBehaviour
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
 
+            if (pauseScreen == null)
+            {
+                pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
+            }
+
+            foreach (InputDevice x in gsm.inputDivices)
+            {
+                if (x.MenuWasPressed)
+                {
+                    isPaused = !isPaused;
+                    if (isPaused)
+                    {
+                        pauseScreen.enabled = true;
+                        Time.timeScale = 0.0f;
+                    }
+                    else
+                    {
+                        Time.timeScale = 1.0f;
+                        pauseScreen.enabled = false;
+                        
+                    }
+                }
+            }
+
+
+
             if (gsm.Players.Count == 1)
             {
                 Debug.Log("ended the game");
                 StartCoroutine(restartGame());
                 victoryScreen.enabled = true;
 
-                //victoryScreen.Transform.GetChild(0).GameObject.GetCompnent<Image>().Sprite = redSlime;
+                // Winner Icon
+                // If statements that trigger depending on which tag the last object left standing has,
+                // they then change the sprite to match the corresponding tag.
                 if (gsm.Players[0].tag == "PlayerRed")
                 {
                     victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;

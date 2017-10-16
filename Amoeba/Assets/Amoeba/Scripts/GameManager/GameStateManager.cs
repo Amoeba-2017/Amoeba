@@ -33,7 +33,8 @@ public class GameStateManager : MonoBehaviour
 
     private UserInterfaceManager uim;
 
-    private List<InputDevice> inputDivices = new List<InputDevice>();
+    [HideInInspector]
+    public List<InputDevice> inputDivices = new List<InputDevice>();
 
     [HideInInspector]
     public bool spawnPlayers = true;
