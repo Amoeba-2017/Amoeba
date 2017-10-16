@@ -63,19 +63,20 @@ public class UserInterfaceManager : MonoBehaviour
 
     void Update()
     {
-
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
+            // Set up Victory Screen
             if (victoryScreen == null)
             {
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
-
+            // Set up Pause Screen
             if (pauseScreen == null)
             {
                 pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
             }
 
+            // Call Pause Screen
             foreach (InputDevice x in gsm.inputDevices)
             {
                 if (x.MenuWasPressed)
@@ -90,13 +91,10 @@ public class UserInterfaceManager : MonoBehaviour
                     {
                         Time.timeScale = 1.0f;
                         pauseScreen.enabled = false;
-                        
                     }
                 }
             }
-
-
-
+            // Call Victory Screen
             if (gsm.Players.Count == 1)
             {
                 Debug.Log("ended the game");
@@ -130,7 +128,6 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
-
     IEnumerator restartGame()
     {
         // Start function restartGame as a coroutine
@@ -140,14 +137,40 @@ public class UserInterfaceManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //called when the play button is pressed on the main menu
-    public void PlayButton()
+    //=================================================================
+    // Main Menu button functions
+    //=================================================================
+
+    // Function for the Play button in the Main Menu
+    public void mainPlayButton()
     {
         currentCanvas = CanvasCount.playerSelect;
         mainMenu.enabled = false;
         playerSelect.enabled = true;
     }
 
+    // Function for the Quit button in the Main Menu
+    public void mainQuitButton()
+    {
+        Application.Quit();
+    }
+
+    //=================================================================
+    // Pause Menu button functions
+    //=================================================================
+
+    // Function for the Continue button in the Pause Menu
+    public void pauseContinueButton()
+    {
+        Time.timeScale = 1.0f;
+        pauseScreen.enabled = false;
+    }
+
+    // Function for the Quit button in the Pause Menu
+    public void pauseQuitButton()
+    {
+
+    }
 
     public void StartGameButtom()
     {
@@ -158,12 +181,6 @@ public class UserInterfaceManager : MonoBehaviour
             gsm.SpawnPlayers();
         }
     }
-
-    public void Exit()
-    {
-        
-    }
-
 
     public void AddPlayer()
     {
@@ -241,7 +258,4 @@ public class UserInterfaceManager : MonoBehaviour
         currentAmountofPlayers--;
 
     }
-
-
-
 }
