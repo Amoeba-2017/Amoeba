@@ -97,7 +97,7 @@ public class SlimeHealth : MonoBehaviour {
                 print("Colliding");
                 HeathPoints = -BulletDamage;
             }
-            DestroyImmediate(col.gameObject);
+            Destroy(col.gameObject);
         }
     }
 

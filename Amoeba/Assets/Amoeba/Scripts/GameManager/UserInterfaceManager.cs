@@ -13,6 +13,7 @@ public class UserInterfaceManager : MonoBehaviour
     private Canvas playerSelect;
     private Canvas victoryScreen;
     private Canvas pauseScreen;
+    private Canvas drawScreen;
 
     [SerializeField]
     private Sprite redSlime;
@@ -22,6 +23,9 @@ public class UserInterfaceManager : MonoBehaviour
     private Sprite blueSlime;
     [SerializeField]
     private Sprite purpleSlime;
+
+    [SerializeField]
+    private float roundLength;
 
     private Sprite redSlimebw;
     private Sprite yellowSlimebw;
@@ -38,6 +42,13 @@ public class UserInterfaceManager : MonoBehaviour
 
     bool isPaused = false;
 
+    bool firstRun;
+    private Canvas timerCanvas;
+
+    private float currentTimer;
+
+    
+
     public enum CanvasCount
     {
         mainMenu,
@@ -51,6 +62,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     void Start()
     {
+        firstRun = true;
         maxRoundText = playerSelect.transform.GetChild(5).gameObject.GetComponent<Text>();
         currentCanvas = CanvasCount.mainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
@@ -63,20 +75,54 @@ public class UserInterfaceManager : MonoBehaviour
 
     void Update()
     {
+
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
-            // Set up Victory Screen
+            if(firstRun == true)
+            {
+                StartCoroutine(GameTimer());
+                Debug.Log("startedGametimer");
+                firstRun = false;
+            }
+
+            currentTimer += Time.deltaTime;
+
             if (victoryScreen == null)
             {
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
-            // Set up Pause Screen
+
+
             if (pauseScreen == null)
             {
                 pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
             }
 
-            // Call Pause Screen
+            if (drawScreen == null)
+            {
+                drawScreen = GameObject.FindGameObjectWithTag("DrawCanvas").transform.GetComponent<Canvas>();
+            }
+
+            if (timerCanvas == null)
+            {
+                timerCanvas = GameObject.FindGameObjectWithTag("TimerCanvas").transform.GetComponent<Canvas>();
+            }
+
+            if(timerCanvas != null)
+            {
+                float countDown = ((roundLength * 60) - currentTimer);
+                string minutes = Mathf.Floor(countDown / 60).ToString("0");
+                string seconds = (countDown % 60).ToString("00");
+                if (float.Parse(minutes) <= 0.0f && float.Parse(seconds) <= 0.0f)
+                {
+                    timerCanvas.transform.GetChild(0).GetComponent<Text>().text = "0:00";
+                }
+                else
+                {
+                    timerCanvas.transform.GetChild(0).GetComponent<Text>().text = minutes.ToString() + ":" + seconds.ToString();
+                }
+            }
+
             foreach (InputDevice x in gsm.inputDevices)
             {
                 if (x.MenuWasPressed)
@@ -91,10 +137,13 @@ public class UserInterfaceManager : MonoBehaviour
                     {
                         Time.timeScale = 1.0f;
                         pauseScreen.enabled = false;
+                        
                     }
                 }
             }
-            // Call Victory Screen
+
+
+
             if (gsm.Players.Count == 1)
             {
                 Debug.Log("ended the game");
@@ -125,52 +174,41 @@ public class UserInterfaceManager : MonoBehaviour
                 Destroy(gsm.Players[0]);
                 gsm.Players.Clear();
             }
+
+
         }
+    }
+
+    IEnumerator GameTimer()
+    {
+        yield return new WaitForSeconds(roundLength * 60);
+        drawScreen.enabled = true;
+        foreach(GameObject x in gsm.Players)
+        {
+            Destroy(x);
+        }
+        gsm.Players.Clear();
+        StartCoroutine(restartGame());
     }
 
     IEnumerator restartGame()
     {
         // Start function restartGame as a coroutine
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSecondsRealtime(5.0f);
         Debug.Log("loading new Scene");
         gsm.spawnPlayers = true;
+        currentTimer = roundLength;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //=================================================================
-    // Main Menu button functions
-    //=================================================================
-
-    // Function for the Play button in the Main Menu
-    public void mainPlayButton()
+    //called when the play button is pressed on the main menu
+    public void PlayButton()
     {
         currentCanvas = CanvasCount.playerSelect;
         mainMenu.enabled = false;
         playerSelect.enabled = true;
     }
 
-    // Function for the Quit button in the Main Menu
-    public void mainQuitButton()
-    {
-        Application.Quit();
-    }
-
-    //=================================================================
-    // Pause Menu button functions
-    //=================================================================
-
-    // Function for the Continue button in the Pause Menu
-    public void pauseContinueButton()
-    {
-        Time.timeScale = 1.0f;
-        pauseScreen.enabled = false;
-    }
-
-    // Function for the Quit button in the Pause Menu
-    public void pauseQuitButton()
-    {
-
-    }
 
     public void StartGameButtom()
     {
@@ -181,6 +219,12 @@ public class UserInterfaceManager : MonoBehaviour
             gsm.SpawnPlayers();
         }
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
 
     public void AddPlayer()
     {
@@ -258,4 +302,7 @@ public class UserInterfaceManager : MonoBehaviour
         currentAmountofPlayers--;
 
     }
+
+
+
 }
