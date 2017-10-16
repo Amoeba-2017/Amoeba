@@ -162,6 +162,7 @@ MonoBehaviour:
   IsShielded: 0
   BulletDamage: 0
   amountOfSplits: 0
+  colorTimerLength: 15
 --- !u!114 &114638068967787850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,12 +196,15 @@ MonoBehaviour:
   parent: 
   speedRandomRange: 1
   separationDistance: 0.2
-  isMoving: 1
+  currentSlimeState: 0
   maxSpreadDistance: 8
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
   beginYPos: 45.76726
+  flyingForce: 0
+  timeFlying: 0
+  flyingVel: {x: 0, y: 0, z: 0}
 --- !u!135 &135263793752631288
 SphereCollider:
   m_ObjectHideFlags: 1

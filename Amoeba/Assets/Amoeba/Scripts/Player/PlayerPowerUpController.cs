@@ -10,17 +10,18 @@ public class PlayerPowerUpController : MonoBehaviour {
 	void Start ()
     {
         playerController = gameObject.GetComponent<PlayerController>();	
+        
 	}
-	
-	// Update is called once per frame
-	void OnCollisionEnter(Collision other)
+
+    // Update is called once per frame
+
+
+    public void Shield()
     {
-        if (other.gameObject.tag == "IncreasedSpeed")
+        foreach(GameObject x in playerController.slimes)
         {
-            playerController.increasedSpeedPowerUp();
-
-            Debug.Log("IncreasedSpeed!");
-
-        }
+            x.GetComponent<SlimeHealth>().IsShielded = true;
+        }   
     }
+
 }

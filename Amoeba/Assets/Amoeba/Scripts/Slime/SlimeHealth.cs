@@ -9,8 +9,8 @@ public class SlimeHealth : MonoBehaviour {
     private float HeathPoints;
 
     // Is the Slime shielded?
-    [SerializeField]
-    private bool IsShielded;
+    [HideInInspector]
+    public bool IsShielded;
 
     // Damage a Slime takes from bullets
     [SerializeField]
@@ -23,11 +23,22 @@ public class SlimeHealth : MonoBehaviour {
 
     private SlimeActions slimeAction;
 
+    private bool firstColor;
+
+    private Color color;
+
+    private float colorTimer;
+
+    [SerializeField]
+    private float colorTimerLength;
+    
+
     // Use this for initialization
     void Start ()
     {
         HeathPoints = 1f;
         IsShielded = false;
+        firstColor = true;
         slimeAction = gameObject.GetComponent<SlimeActions>();
     }
 	
@@ -40,11 +51,35 @@ public class SlimeHealth : MonoBehaviour {
             Debug.Log("split");
         }
 
+        if(IsShielded == true)
+        {
+            colorTimer += Time.deltaTime; 
+            if (firstColor == true)
+            {
+                firstColor = false;
+                color = gameObject.GetComponent<Renderer>().material.color;
+            }
+
+            Debug.Log("shielded");
+            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(color, Color.white, Mathf.PingPong(Time.time, 1));
+
+            if (colorTimer > colorTimerLength && gameObject.GetComponent<Renderer>().material.color == color)
+            {
+                IsShielded = false;
+                firstColor = true;
+            }
+        }
+
+
+
         if (HeathPoints <= 0)
         {
             Death();
         }
 	}
+
+
+   
 
     void OnCollisionEnter(Collision col)
     {
@@ -65,3 +100,4 @@ public class SlimeHealth : MonoBehaviour {
     }
 
 }
+

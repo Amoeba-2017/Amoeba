@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeActions : MonoBehaviour {
+public class SlimeActions : MonoBehaviour
+{
 
     // GameObject-type variable for the projectile
     [SerializeField]
@@ -23,11 +24,12 @@ public class SlimeActions : MonoBehaviour {
 
     private PlayerController playerController;
 
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-
+        
     }
 
 
@@ -69,9 +71,9 @@ public class SlimeActions : MonoBehaviour {
             newSlime(2f, 1);
             newSlime(2f, 1);
         }
-        else if(amount == 1)
+        else if (amount == 1)
         {
-            
+
             playerController.speed = 15.7f;
 
             newSlime(1.5f, 2);
@@ -79,7 +81,7 @@ public class SlimeActions : MonoBehaviour {
             newSlime(1.5f, 2);
         }
 
-        else if(amount == 2)
+        else if (amount == 2)
         {
             playerController.speed = 16;
 
@@ -88,7 +90,7 @@ public class SlimeActions : MonoBehaviour {
             newSlime(1f, 3);
             newSlime(1f, 3);
         }
-        else if(amount == 3)
+        else if (amount == 3)
         {
             slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
         }
@@ -96,7 +98,7 @@ public class SlimeActions : MonoBehaviour {
     }
 
 
-    void newSlime(float size , float amount)
+    void newSlime(float size, float amount)
     {
         GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
         playerController.slimes.Add(tempSlime);
@@ -105,7 +107,13 @@ public class SlimeActions : MonoBehaviour {
         tempSlime.transform.localScale = new Vector3(size, size, size);
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "ProtectiveShield")
+        {
+            Debug.Log("shield");
+            slimeMovement.player.gameObject.GetComponent<PlayerPowerUpController>().Shield();
+        }
+    }
 
-
-    // Update is called once per frame
 }

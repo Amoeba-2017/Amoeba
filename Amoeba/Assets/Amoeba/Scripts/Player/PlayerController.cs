@@ -79,23 +79,6 @@ using InControl;
     }
 
 
-    public void increasedSpeedPowerUp()
-    {
-        float tempSpeed = speed;
-
-        speed *= 2.0f;
-
-        StartCoroutine(returnSpeed(tempSpeed, powerUpTime));
-    }
-
-    private IEnumerator returnSpeed(float a_speed, float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        print("NormalSpeed");
-
-        speed = a_speed;
-    }
 
 
     void Update()

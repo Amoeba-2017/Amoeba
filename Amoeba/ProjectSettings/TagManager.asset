@@ -13,9 +13,8 @@ TagManager:
   - ProtectiveShield
   - Bullet
   - VictoryScreen
-  - IncreasedSpeed
-  - RapidFire
   - PauseScreen
+  - PowerUpSpawner
   layers:
   - Default
   - TransparentFX
