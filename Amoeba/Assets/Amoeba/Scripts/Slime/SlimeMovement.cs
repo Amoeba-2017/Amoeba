@@ -80,8 +80,12 @@ public class SlimeMovement : MonoBehaviour
 
     private float flyingTimer;
 
+    private bool updatePlayerPos;
+
     void Start()
     {
+        updatePlayerPos = true;
+
         flyingTimer = 0;
         currentSlimeState = SlimeState.moving;
         //finding the ridgedbody
@@ -180,6 +184,11 @@ public class SlimeMovement : MonoBehaviour
             }
             else
             {
+                if (updatePlayerPos == true)
+                {
+                    player.transform.position = gameObject.transform.position;
+                    updatePlayerPos = false;
+                }
                 Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
                 cc.Move(vecBetween * speed * Time.deltaTime);
             }
