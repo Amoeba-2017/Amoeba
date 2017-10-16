@@ -113,6 +113,7 @@ public class SlimeActions : MonoBehaviour
         {
             Debug.Log("shield");
             slimeMovement.player.gameObject.GetComponent<PlayerPowerUpController>().Shield();
+            Destroy(hit.gameObject);
         }
     }
 

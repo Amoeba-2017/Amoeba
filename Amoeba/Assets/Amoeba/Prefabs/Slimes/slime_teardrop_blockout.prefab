@@ -205,6 +205,7 @@ MonoBehaviour:
   BulletDamage: 0
   amountOfSplits: 0
   colorTimerLength: 15
+  colorChangeSpeed: 2
 --- !u!135 &135574741816441624
 SphereCollider:
   m_ObjectHideFlags: 1

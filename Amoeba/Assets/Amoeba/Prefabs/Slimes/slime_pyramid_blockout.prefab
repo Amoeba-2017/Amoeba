@@ -179,6 +179,7 @@ MonoBehaviour:
   BulletDamage: 0
   amountOfSplits: 0
   colorTimerLength: 15
+  colorChangeSpeed: 2
 --- !u!114 &114888840134407394
 MonoBehaviour:
   m_ObjectHideFlags: 1

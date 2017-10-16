@@ -31,11 +31,16 @@ public class SlimeHealth : MonoBehaviour {
 
     [SerializeField]
     private float colorTimerLength;
-    
+
+    [SerializeField]
+    private float colorChangeSpeed;
+
+    private Renderer renderer;
 
     // Use this for initialization
     void Start ()
     {
+        renderer = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         HeathPoints = 1f;
         IsShielded = false;
         firstColor = true;
@@ -57,14 +62,15 @@ public class SlimeHealth : MonoBehaviour {
             if (firstColor == true)
             {
                 firstColor = false;
-                color = gameObject.GetComponent<Renderer>().material.color;
+                color = renderer.material.color;
             }
 
             Debug.Log("shielded");
-            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(color, Color.white, Mathf.PingPong(Time.time, 1));
+            renderer.material.color = Color.Lerp(color, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1));
 
-            if (colorTimer > colorTimerLength && gameObject.GetComponent<Renderer>().material.color == color)
+            if (colorTimer > colorTimerLength)
             {
+                renderer.material.color = color;
                 IsShielded = false;
                 firstColor = true;
             }
@@ -85,10 +91,13 @@ public class SlimeHealth : MonoBehaviour {
     {
         if (col.gameObject.tag == "Bullet")
         {
-            gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
-            print("Colliding");
-            HeathPoints = -BulletDamage;
-            Destroy(col.gameObject);
+            if (IsShielded == false)
+            {
+                gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
+                print("Colliding");
+                HeathPoints = -BulletDamage;
+            }
+            DestroyImmediate(col.gameObject);
         }
     }
 
