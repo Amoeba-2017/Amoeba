@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Amoeba/Scenes/prototype_Scene_001.unity
     guid: 372336b6be574c24abcfff602553ad98
+  - enabled: 0
+    path: Assets/Amoeba/Scenes/Prototype_Scene.unity
+    guid: e013e700b75380648ae71d4ed85a169c

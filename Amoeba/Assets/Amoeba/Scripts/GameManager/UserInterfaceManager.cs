@@ -76,7 +76,7 @@ public class UserInterfaceManager : MonoBehaviour
                 pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
             }
 
-            foreach (InputDevice x in gsm.inputDivices)
+            foreach (InputDevice x in gsm.inputDevices)
             {
                 if (x.MenuWasPressed)
                 {
@@ -157,6 +157,11 @@ public class UserInterfaceManager : MonoBehaviour
             SceneManager.LoadScene(1);
             gsm.SpawnPlayers();
         }
+    }
+
+    public void Exit()
+    {
+        
     }
 
 

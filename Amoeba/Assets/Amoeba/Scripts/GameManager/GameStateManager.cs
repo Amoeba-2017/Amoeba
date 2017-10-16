@@ -34,7 +34,7 @@ public class GameStateManager : MonoBehaviour
     private UserInterfaceManager uim;
 
     [HideInInspector]
-    public List<InputDevice> inputDivices = new List<InputDevice>();
+    public List<InputDevice> inputDevices = new List<InputDevice>();
 
     [HideInInspector]
     public bool spawnPlayers = true;
@@ -74,59 +74,64 @@ public class GameStateManager : MonoBehaviour
                 {
                     if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
                     {
-                        maxRounds++;
-                        uim.maxRoundText.text = maxRounds.ToString();
+                        if (maxRounds < 30)
+                        {
+                            maxRounds++;
+                            uim.maxRoundText.text = maxRounds.ToString();
+                        }
                     }
                     else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
                     {
-                        maxRounds--;
-                        uim.maxRoundText.text = maxRounds.ToString();
-
-                    }
-
-
-                    if (x.Action1.WasPressed)
-                    {
-                        if (inputDivices.Contains(x) == false)
+                        if (maxRounds > 1)
                         {
-                            Debug.Log("add a player");
-                            playerCount++;
-                            uim.AddPlayer();
-                            inputDivices.Add(x);
+                            maxRounds--;
+                            uim.maxRoundText.text = maxRounds.ToString();
+
                         }
 
+
+                        if (x.Action1.WasPressed)
+                        {
+                            if (inputDevices.Contains(x) == false)
+                            {
+                                Debug.Log("add a player");
+                                playerCount++;
+                                uim.AddPlayer();
+                                inputDevices.Add(x);
+                            }
+
+                        }
                     }
                 }
-            }
 
-            InputDevice removeFromArray = null;
+                InputDevice removeFromArray = null;
 
-            foreach (InputDevice i in inputDivices)
-            {
-                if (i.Action2.WasPressed)
+                foreach (InputDevice i in inputDevices)
                 {
-                    uim.RemovePlayer();
+                    if (i.Action2.WasPressed)
+                    {
+                        uim.RemovePlayer();
 
-                    playerCount--;
-                    removeFromArray = i;
-                    Debug.Log("removePlayer");
+                        playerCount--;
+                        removeFromArray = i;
+                        Debug.Log("removePlayer");
+                    }
+
+                    if (playerCount > InputManager.Devices.Count + 1)
+                    {
+                        Debug.Log("too many players");
+                        uim.RemovePlayer();
+                        playerCount--;
+                    }
                 }
 
-                if (playerCount > InputManager.Devices.Count + 1)
+
+                if (removeFromArray != null)
                 {
-                    Debug.Log("too many players");
-                    uim.RemovePlayer();
-                    playerCount--;
+                    inputDevices.Remove(removeFromArray);
                 }
-            }
-
-
-            if (removeFromArray != null)
-            {
-                inputDivices.Remove(removeFromArray);
             }
         }
-
 
         //if(inputDivices.Count == 4)
         //{
@@ -187,45 +192,45 @@ public class GameStateManager : MonoBehaviour
     private void loadPlayers()
     {
 
-        Debug.Log(inputDivices.Count);
+        Debug.Log(inputDevices.Count);
         if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
         {
-            if (inputDivices.Count >= 1)
+            if (inputDevices.Count >= 1)
             {
                 Debug.Log("added Red Player");
                 GameObject temp = Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDivices[0]);
+                temp.GetComponent<PlayerController>().SetController(inputDevices[0]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerYellow") == false)
         {
-            if (inputDivices.Count >= 2)
+            if (inputDevices.Count >= 2)
             {
                 GameObject temp = Instantiate(playerYellowPrefab, new Vector3(8f, 47.376f, -131.3f), Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDivices[1]);
+                temp.GetComponent<PlayerController>().SetController(inputDevices[1]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerBlue") == false)
         {
-            if (inputDivices.Count >= 3)
+            if (inputDevices.Count >= 3)
             {
                 GameObject temp = Instantiate(playerBluePrefab, new Vector3(9f, 47.376f, -131.3f), Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDivices[2]);
+                temp.GetComponent<PlayerController>().SetController(inputDevices[2]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
         {
-            if (inputDivices.Count >= 3)
+            if (inputDevices.Count >= 3)
             {
                 GameObject temp = Instantiate(playerPurplePrefab, new Vector3(10f, 47.376f, -131.3f), Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDivices[3]);
+                temp.GetComponent<PlayerController>().SetController(inputDevices[3]);
             }
         }
 
