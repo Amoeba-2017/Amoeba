@@ -230,12 +230,12 @@ MonoBehaviour:
   slimePrefab: {fileID: 1367675481507750, guid: f306989a02424454094a44e766a5246f,
     type: 2}
   speed: 13
-  powerUpTime: 10
+  powerUpTime: 0
   slimes: []
   playerNumber: 0
-  dodgeForce: 0.05
+  dodgeForce: 500
   BufferTime: 0.9
-  slimeRandomDistanceToPlayer: 3.36
+  slimeRandomDistanceToPlayer: 0.5
   maxSlimeRandomDistance: 3
 --- !u!114 &114192043285004018
 MonoBehaviour:

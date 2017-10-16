@@ -89,20 +89,20 @@ public class GameStateManager : MonoBehaviour
 
                         }
 
-
-                        if (x.Action1.WasPressed)
+                    }
+                    if (x.Action1.WasPressed)
+                    {
+                        if (inputDevices.Contains(x) == false)
                         {
-                            if (inputDevices.Contains(x) == false)
-                            {
-                                Debug.Log("add a player");
-                                playerCount++;
-                                uim.AddPlayer();
-                                inputDevices.Add(x);
-                            }
-
+                            Debug.Log("add a player");
+                            playerCount++;
+                            uim.AddPlayer();
+                            inputDevices.Add(x);
                         }
+
                     }
                 }
+
 
                 InputDevice removeFromArray = null;
 
@@ -132,6 +132,7 @@ public class GameStateManager : MonoBehaviour
                 }
             }
         }
+
 
         //if(inputDivices.Count == 4)
         //{
