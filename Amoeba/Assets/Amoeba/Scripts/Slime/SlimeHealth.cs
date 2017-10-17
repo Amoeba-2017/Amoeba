@@ -30,7 +30,7 @@ public class SlimeHealth : MonoBehaviour {
     private float colorTimer;
 
     [SerializeField]
-    private float colorTimerLength;
+    private float powerUpLength;
 
     [SerializeField]
     private float colorChangeSpeed;
@@ -68,7 +68,7 @@ public class SlimeHealth : MonoBehaviour {
             Debug.Log("shielded");
             renderer.material.color = Color.Lerp(color, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1));
 
-            if (colorTimer > colorTimerLength)
+            if (colorTimer > powerUpLength)
             {
                 renderer.material.color = color;
                 IsShielded = false;
