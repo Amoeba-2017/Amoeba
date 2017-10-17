@@ -76,74 +76,78 @@ public class GameStateManager : MonoBehaviour
             {
                 foreach (InputDevice x in InputManager.Devices)
                 {
-                    if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
+                    if (x == InputManager.ActiveDevice)
                     {
-                        if (maxRounds < 30)
+
+                        if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
                         {
-                            maxRounds++;
-                            uim.maxRoundText.text = maxRounds.ToString();
+                            if (maxRounds < 30)
+                            {
+                                maxRounds++;
+                                uim.maxRoundText.text = maxRounds.ToString();
+                            }
+                        }
+                        else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
+                        {
+                            if (maxRounds > 1)
+                            {
+                                maxRounds--;
+                                uim.maxRoundText.text = maxRounds.ToString();
+
+                            }
+
+                        }
+                        if (x.Action1.WasPressed)
+                        {
+                            if (inputDevices.Contains(x) == false)
+                            {
+                                Debug.Log("add a player");
+                                playerCount++;
+                                uim.AddPlayer();
+                                inputDevices.Add(x);
+                            }
+
+                        }
+
+                    }
+
+
+                    InputDevice removeFromArray = null;
+
+                    foreach (InputDevice i in inputDevices)
+                    {
+                        if (i.Action2.WasPressed)
+                        {
+                            uim.RemovePlayer();
+
+                            playerCount--;
+                            removeFromArray = i;
+                            Debug.Log("removePlayer");
+                        }
+
+                        if (playerCount > InputManager.Devices.Count + 1)
+                        {
+                            Debug.Log("too many players");
+                            uim.RemovePlayer();
+                            playerCount--;
                         }
                     }
-                    else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
+
+
+                    if (removeFromArray != null)
                     {
-                        if (maxRounds > 1)
-                        {
-                            maxRounds--;
-                            uim.maxRoundText.text = maxRounds.ToString();
-
-                        }
-
+                        inputDevices.Remove(removeFromArray);
                     }
-                    if (x.Action1.WasPressed)
-                    {
-                        if (inputDevices.Contains(x) == false)
-                        {
-                            Debug.Log("add a player");
-                            playerCount++;
-                            uim.AddPlayer();
-                            inputDevices.Add(x);
-                        }
-
-                    }
-                }
-
-
-                InputDevice removeFromArray = null;
-
-                foreach (InputDevice i in inputDevices)
-                {
-                    if (i.Action2.WasPressed)
-                    {
-                        uim.RemovePlayer();
-
-                        playerCount--;
-                        removeFromArray = i;
-                        Debug.Log("removePlayer");
-                    }
-
-                    if (playerCount > InputManager.Devices.Count + 1)
-                    {
-                        Debug.Log("too many players");
-                        uim.RemovePlayer();
-                        playerCount--;
-                    }
-                }
-
-
-                if (removeFromArray != null)
-                {
-                    inputDevices.Remove(removeFromArray);
                 }
             }
+
+
+            //if(inputDivices.Count == 4)
+            //{
+            //    SceneManager.LoadScene(1);
+            //}
+
         }
-
-
-        //if(inputDivices.Count == 4)
-        //{
-        //    SceneManager.LoadScene(1);
-        //}
-
-
 
         DebugUpdate();
     }

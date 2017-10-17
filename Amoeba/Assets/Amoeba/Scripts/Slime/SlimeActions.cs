@@ -73,27 +73,27 @@ public class SlimeActions : MonoBehaviour
             playerController.slimeRandomDistanceToPlayer = 2.5f;
             playerController.speed = 15.5f;
 
-            newSlime(2f, 1);
-            newSlime(2f, 1);
+            newSlime(0.75f, 1);
+            newSlime(0.75f, 1);
         }
         else if (amount == 1)
         {
 
             playerController.speed = 15.7f;
 
-            newSlime(1.5f, 2);
-            newSlime(1.5f, 2);
-            newSlime(1.5f, 2);
+            newSlime(.6f, 2);
+            newSlime(.6f, 2);
+            newSlime(.6f, 2);
         }
 
         else if (amount == 2)
         {
             playerController.speed = 16;
 
-            newSlime(1f, 3);
-            newSlime(1f, 3);
-            newSlime(1f, 3);
-            newSlime(1f, 3);
+            newSlime(0.4f, 3);
+            newSlime(0.4f, 3);
+            newSlime(0.4f, 3);
+            newSlime(0.4f, 3);
         }
         else if (amount == 3)
         {
