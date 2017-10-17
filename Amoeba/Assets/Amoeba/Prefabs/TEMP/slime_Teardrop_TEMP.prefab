@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114482243170876524}
   - component: {fileID: 114481211369094180}
   - component: {fileID: 114734289424243706}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: slime_Teardrop_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33825639357657970}
   - component: {fileID: 23133403136176076}
   - component: {fileID: 95675410093712468}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: slime_Teardrop_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
+  rotSpeed: 3
 --- !u!135 &135085119982324232
 SphereCollider:
   m_ObjectHideFlags: 1

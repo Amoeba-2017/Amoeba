@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114294890025187078}
   - component: {fileID: 114087665788766520}
   - component: {fileID: 114354948712912548}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: slime_Pyramid_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33403778709445322}
   - component: {fileID: 23943486482349286}
   - component: {fileID: 95922399088570772}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: slime_Pyramid_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
+  rotSpeed: 2
 --- !u!135 &135410476268753922
 SphereCollider:
   m_ObjectHideFlags: 1

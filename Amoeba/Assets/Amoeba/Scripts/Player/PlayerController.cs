@@ -22,7 +22,8 @@ using InControl;
     private float powerUpTime;
 
     private GameStateManager gameManager;
-    CharacterController cc;
+    [HideInInspector]
+    public CharacterController cc;
     Vector3 startPos;
 
     public List<GameObject> slimes = new List<GameObject>();
@@ -50,6 +51,7 @@ using InControl;
 
     void Start()
     {
+
         increasedSpeed = false;
 
         //defining the Character Controller

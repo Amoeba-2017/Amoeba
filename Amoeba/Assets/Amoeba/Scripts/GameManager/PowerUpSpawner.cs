@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PowerUpSpawner : MonoBehaviour {
+public class PowerUpSpawner : MonoBehaviour
+{
 
     //Allows the GameObject to be seen in the inspector
     [SerializeField]
@@ -18,14 +19,14 @@ public class PowerUpSpawner : MonoBehaviour {
     private GameObject currentPowerUp;
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         powerUpSpawnTimer = spawnCoolDown;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
@@ -40,13 +41,11 @@ public class PowerUpSpawner : MonoBehaviour {
                 //foreach statement iterates through each GameObject inside the array
                 for (int i = 0; i < spawnPointPrefab.Length; i++)
                 {
-                    if (spawnPointPrefab[i].transform.childCount == 0)
-                    {
-                        //Creates new randomised Power-Up at a random SpawnPoint location and passes its position and rotation
-                        currentPowerUp = Instantiate(powerUps[0], spawnPointPrefab[i].transform.position + (transform.up * 1.5f), Quaternion.identity);
-                        //Sets the currentPowerUps parent to the SpawnPoint it is set at
-                        currentPowerUp.transform.SetParent(spawnPointPrefab[i].transform);
-                    }
+                    //Creates new randomised Power-Up at a random SpawnPoint location and passes its position and rotation
+                    currentPowerUp = Instantiate(powerUps[0], spawnPointPrefab[i].transform.position + (transform.up * 1.5f), Quaternion.identity);
+                    //Sets the currentPowerUps parent to the SpawnPoint it is set at
+                    currentPowerUp.transform.SetParent(spawnPointPrefab[i].transform);
+
                 }
 
                 powerUpSpawnTimer = spawnCoolDown;
@@ -59,6 +58,6 @@ public class PowerUpSpawner : MonoBehaviour {
 
             }
         }
-	}
+    }
 
 }

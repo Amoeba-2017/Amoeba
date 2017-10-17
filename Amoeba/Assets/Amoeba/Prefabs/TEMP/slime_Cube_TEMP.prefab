@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114012252371586062}
   - component: {fileID: 114805458414191090}
   - component: {fileID: 114522668222445102}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: slime_Cube_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33454323027978568}
   - component: {fileID: 23245935885405044}
   - component: {fileID: 95335832308521778}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: slime_Cube_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,6 +174,7 @@ MonoBehaviour:
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
+  rotSpeed: 2
 --- !u!114 &114805458414191090
 MonoBehaviour:
   m_ObjectHideFlags: 1

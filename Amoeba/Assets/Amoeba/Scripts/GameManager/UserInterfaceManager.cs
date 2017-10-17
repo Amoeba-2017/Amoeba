@@ -25,7 +25,7 @@ public class UserInterfaceManager : MonoBehaviour
     private Sprite purpleSlime;
 
     [SerializeField]
-    private float roundLength;
+    private float roundTime;
 
     private Sprite redSlimebw;
     private Sprite yellowSlimebw;
@@ -110,7 +110,7 @@ public class UserInterfaceManager : MonoBehaviour
 
             if(timerCanvas != null)
             {
-                float countDown = ((roundLength * 60) - currentTimer);
+                float countDown = ((roundTime * 60) - currentTimer);
                 string minutes = Mathf.Floor(countDown / 60).ToString("0");
                 string seconds = (countDown % 60).ToString("00");
                 if (float.Parse(minutes) <= 0.0f && float.Parse(seconds) <= 0.0f)
@@ -181,7 +181,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     IEnumerator GameTimer()
     {
-        yield return new WaitForSeconds(roundLength * 60);
+        yield return new WaitForSeconds(roundTime * 60);
         drawScreen.enabled = true;
         foreach(GameObject x in gsm.Players)
         {
@@ -194,10 +194,10 @@ public class UserInterfaceManager : MonoBehaviour
     IEnumerator restartGame()
     {
         // Start function restartGame as a coroutine
-        yield return new WaitForSecondsRealtime(5.0f);
+        yield return new WaitForSeconds(5.0f);
         Debug.Log("loading new Scene");
         gsm.spawnPlayers = true;
-        currentTimer = roundLength;
+        currentTimer = roundTime;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

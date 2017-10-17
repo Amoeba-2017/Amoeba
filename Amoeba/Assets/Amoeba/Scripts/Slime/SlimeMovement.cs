@@ -82,6 +82,12 @@ public class SlimeMovement : MonoBehaviour
 
     private bool updatePlayerPos;
 
+    [SerializeField]
+    private float rotSpeed;
+
+    private Quaternion targetRot;
+
+
     void Start()
     {
         updatePlayerPos = true;
@@ -105,6 +111,7 @@ public class SlimeMovement : MonoBehaviour
     void Update()
     {
 
+        
 
         if (currentSlimeState == SlimeState.moving)
         {
@@ -192,6 +199,17 @@ public class SlimeMovement : MonoBehaviour
                 Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
                 cc.Move(vecBetween * speed * Time.deltaTime);
             }
+          //  cc.Move(Vector3.down * 9.8f);
+
+            if(playersController.velocity == Vector3.zero)
+            {
+                targetRot = Quaternion.LookRotation(new Vector3(0, 0, -1),Vector3.up);
+            }
+            else
+            {
+                targetRot = Quaternion.LookRotation(playersController.velocity.normalized, Vector3.up);
+            }
+          //  transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
         }
     }
 

@@ -66,7 +66,7 @@ public class SlimeHealth : MonoBehaviour {
             }
 
             Debug.Log("shielded");
-            renderer.material.color = Color.Lerp(color, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1));
+            renderer.material.SetColor("_EmissionColor", Color.Lerp(color, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1)));
 
             if (colorTimer > powerUpLength)
             {
