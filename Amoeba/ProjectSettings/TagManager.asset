@@ -17,6 +17,7 @@ TagManager:
   - PowerUpSpawner
   - TimerCanvas
   - DrawCanvas
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

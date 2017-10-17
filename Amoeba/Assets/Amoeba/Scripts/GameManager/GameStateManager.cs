@@ -196,14 +196,14 @@ public class GameStateManager : MonoBehaviour
 
     private void loadPlayers()
     {
-
+        GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         Debug.Log(inputDevices.Count);
         if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
         {
             if (inputDevices.Count >= 1)
             {
                 Debug.Log("added Red Player");
-                GameObject temp = Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity);
+                GameObject temp = Instantiate(playerRedPrefab, spawnpoints[0].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(inputDevices[0]);
             }
@@ -213,7 +213,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (inputDevices.Count >= 2)
             {
-                GameObject temp = Instantiate(playerYellowPrefab, new Vector3(8f, 47.376f, -131.3f), Quaternion.identity);
+                GameObject temp = Instantiate(playerYellowPrefab, spawnpoints[1].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(inputDevices[1]);
             }
@@ -223,7 +223,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (inputDevices.Count >= 3)
             {
-                GameObject temp = Instantiate(playerBluePrefab, new Vector3(9f, 47.376f, -131.3f), Quaternion.identity);
+                GameObject temp = Instantiate(playerBluePrefab, spawnpoints[2].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(inputDevices[2]);
             }
@@ -233,7 +233,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (inputDevices.Count >= 3)
             {
-                GameObject temp = Instantiate(playerPurplePrefab, new Vector3(10f, 47.376f, -131.3f), Quaternion.identity);
+                GameObject temp = Instantiate(playerPurplePrefab, spawnpoints[3].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(inputDevices[3]);
             }
