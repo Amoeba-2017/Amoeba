@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class CameraRig : MonoBehaviour {
 
-
-
     private Vector3 centerPoint = new Vector3();
     private List<GameObject> players;
     private GameStateManager gsm;
 
+    public Transform lookAt;
+    private bool smooth = true;
+    private float smoothSpeed = 0.125f;
+    private Vector3 offset = new Vector3(0, 0, -6.5f);
 
     [SerializeField]
     private float zOffset;
-
-
     [SerializeField]
     private float yOffset;
 
     [SerializeField]
     private float maxDistance;
-
     [SerializeField]
     private float minDistance;
 
@@ -68,12 +67,31 @@ public class CameraRig : MonoBehaviour {
             {
                 distance = minDistance;
             }
-
-
             centerPoint = new Vector3(centerPoint.x, centerPoint.y + (distance * yOffset), centerPoint.z - (distance * zOffset));
             transform.position = centerPoint;
+
+            Vector3 desiredPosition = transform.position + offset;
+            if (smooth)
+            {
+                transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            }
+            else
+            {
+                transform.position = desiredPosition;
+            }
         }
-
-
     }
+
+    //void FixedUpdate()
+    //{
+        //Vector3 desiredPosition = lookAt.transform.position + offset;
+        //if (smooth)
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        //}
+        //else
+        //{
+        //   transform.position = desiredPosition;
+        //}
+    //}
 }
