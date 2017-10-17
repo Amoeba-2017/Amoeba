@@ -154,7 +154,7 @@ MonoBehaviour:
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
-  beginYPos: 45.76726
+  beginYPos: 45
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
