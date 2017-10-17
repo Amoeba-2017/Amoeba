@@ -82,16 +82,4 @@ public class CameraRig : MonoBehaviour {
         }
     }
 
-    //void FixedUpdate()
-    //{
-        //Vector3 desiredPosition = lookAt.transform.position + offset;
-        //if (smooth)
-        //{
-        //    transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        //}
-        //else
-        //{
-        //   transform.position = desiredPosition;
-        //}
-    //}
 }

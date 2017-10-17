@@ -35,6 +35,7 @@ public class SlimeActions : MonoBehaviour
 
     public void Shoot(Vector3 rot)
     {
+    
         Debug.Log(rot);
         if (rot != Vector3.zero)
         {
@@ -44,7 +45,11 @@ public class SlimeActions : MonoBehaviour
             Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.identity);
 
             // Get the object (Bullet) and add the force to it
-            Bullet.GetComponent<Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
+            Bullet.GetComponent
+            <Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
+
+            // Play shooting sound
+            AudioManager.PlaySound("ShootSound_Placeholder");
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, destroyTimer);
