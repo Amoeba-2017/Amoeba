@@ -1351,7 +1351,7 @@ MonoBehaviour:
   yellowSlime: {fileID: 21300000, guid: 49a4a1e3c8cc9e54eb8aa109d37032f9, type: 3}
   blueSlime: {fileID: 21300000, guid: adde7d68adf433e4582439b26141ce48, type: 3}
   purpleSlime: {fileID: 21300000, guid: 44db1e4dea5a10a459646a4609004f7e, type: 3}
-  roundTime: 0
+  roundTime: 3
   maxRoundText: {fileID: 0}
   currentCanvas: 0
 --- !u!114 &1624949586
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: 1273660426412038, guid: 46ab4bf535b024a46b3a3c7875d26397, type: 2}
-  spawnCoolDown: 30
+  spawnCoolDown: 5
 --- !u!82 &1624949588
 AudioSource:
   m_ObjectHideFlags: 0

@@ -246,10 +246,6 @@ using InControl;
 
     }
 
-
-        //if debug mode is active
-
-
     void KeyboredUpdate()
     {
         //using keybored controls
@@ -340,6 +336,15 @@ using InControl;
             {
                 i.GetComponent<SlimeActions>().Shoot(vec3.normalized);
             }
+        }
+    }
+
+    public void allSlimesAreIsInvincible()
+    {
+        foreach(GameObject x in slimes)
+        {
+            x.GetComponent<SlimeHealth>().isInvincible = true;
+            StartCoroutine(x.GetComponent<SlimeHealth>().InvincibleFrames());
         }
     }
 }

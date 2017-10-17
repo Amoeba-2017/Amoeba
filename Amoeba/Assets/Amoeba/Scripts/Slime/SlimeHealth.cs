@@ -36,6 +36,9 @@ public class SlimeHealth : MonoBehaviour {
     private float colorChangeSpeed;
 
     private Renderer renderer;
+    Color LerpColor;
+
+    public bool isInvincible;
 
     // Use this for initialization
     void Start ()
@@ -62,16 +65,18 @@ public class SlimeHealth : MonoBehaviour {
             if (firstColor == true)
             {
                 firstColor = false;
-                color = renderer.material.color;
             }
 
+            LerpColor = Color.Lerp(Color.black, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1));
+
             Debug.Log("shielded");
-            renderer.material.SetColor("_EmissionColor", Color.Lerp(color, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1)));
+            renderer.material.SetColor("_EmissionColor", LerpColor);
 
             if (colorTimer > powerUpLength)
             {
-                renderer.material.color = color;
-                IsShielded = false;
+                renderer.material.SetColor("_EmissionColor", Color.black);
+
+              IsShielded = false;
                 firstColor = true;
             }
         }
@@ -93,13 +98,24 @@ public class SlimeHealth : MonoBehaviour {
         {
             if (IsShielded == false)
             {
-                gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
-                print("Colliding");
-                HeathPoints = -BulletDamage;
+                if (isInvincible == false)
+                {
+                    gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
+                    print("Colliding");
+                    HeathPoints = -BulletDamage;
+                }
             }
+
             Destroy(col.gameObject);
         }
     }
+
+    public IEnumerator InvincibleFrames()
+    {
+        yield return new WaitForSeconds(1f);
+        isInvincible = false;
+    }
+
 
     void Death ()
     {

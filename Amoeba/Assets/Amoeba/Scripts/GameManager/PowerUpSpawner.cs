@@ -41,11 +41,13 @@ public class PowerUpSpawner : MonoBehaviour
                 //foreach statement iterates through each GameObject inside the array
                 for (int i = 0; i < spawnPointPrefab.Length; i++)
                 {
-                    //Creates new randomised Power-Up at a random SpawnPoint location and passes its position and rotation
-                    currentPowerUp = Instantiate(powerUps[0], spawnPointPrefab[i].transform.position + (transform.up * 1.5f), Quaternion.identity);
-                    //Sets the currentPowerUps parent to the SpawnPoint it is set at
-                    currentPowerUp.transform.SetParent(spawnPointPrefab[i].transform);
-
+                    if (spawnPointPrefab[i].transform.childCount == 0)
+                    {
+                        //Creates new randomised Power-Up at a random SpawnPoint location and passes its position and rotation
+                        currentPowerUp = Instantiate(powerUps[0], spawnPointPrefab[i].transform.position + (transform.up * 1.5f), Quaternion.identity);
+                        //Sets the currentPowerUps parent to the SpawnPoint it is set at
+                        currentPowerUp.transform.SetParent(spawnPointPrefab[i].transform);
+                    }
                 }
 
                 powerUpSpawnTimer = spawnCoolDown;

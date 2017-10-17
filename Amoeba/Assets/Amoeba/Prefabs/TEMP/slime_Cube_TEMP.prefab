@@ -174,7 +174,7 @@ MonoBehaviour:
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
-  rotSpeed: 2
+  rotSpeed: 5
 --- !u!114 &114805458414191090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,8 +190,9 @@ MonoBehaviour:
   IsShielded: 0
   BulletDamage: 0
   amountOfSplits: 0
-  powerUpLength: 0
+  powerUpLength: 10
   colorChangeSpeed: 2
+  isInvincible: 0
 --- !u!135 &135927975185901128
 SphereCollider:
   m_ObjectHideFlags: 1
