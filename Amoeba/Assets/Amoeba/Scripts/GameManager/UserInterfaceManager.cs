@@ -232,7 +232,7 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 if(Input.GetKeyDown(KeyCode.KeypadEnter) || InputManager.ActiveDevice.MenuWasPressed)
                 {
-                   if(gsm.inputDevices.Count > 2)
+                   if(gsm.inputDevices.Count > 1)
                     {
                         StartGameButtom();
                     }
