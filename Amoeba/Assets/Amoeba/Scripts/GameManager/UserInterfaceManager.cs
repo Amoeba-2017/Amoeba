@@ -47,7 +47,15 @@ public class UserInterfaceManager : MonoBehaviour
 
     private float currentTimer;
 
-    
+
+
+    private ControllerUISelection currentControllerUISelection;
+
+    public enum ControllerUISelection
+    {
+        play,
+        exit,
+    }
 
     public enum CanvasCount
     {
@@ -63,6 +71,7 @@ public class UserInterfaceManager : MonoBehaviour
     void Start()
     {
         firstRun = true;
+        currentControllerUISelection = ControllerUISelection.play;
         maxRoundText = playerSelect.transform.GetChild(5).gameObject.GetComponent<Text>();
         currentCanvas = CanvasCount.mainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
@@ -176,6 +185,59 @@ public class UserInterfaceManager : MonoBehaviour
             }
 
 
+        }
+        else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        {
+            if(currentCanvas == CanvasCount.mainMenu)
+            {
+
+                if(Input.GetKeyDown(KeyCode.DownArrow) || InputManager.ActiveDevice.DPadDown.WasPressed || InputManager.ActiveDevice.LeftStick.Down.WasPressed || Input.GetKeyDown(KeyCode.UpArrow) || InputManager.ActiveDevice.DPadUp.WasPressed || InputManager.ActiveDevice.LeftStick.Up.WasPressed)
+                {
+                    if(currentControllerUISelection == ControllerUISelection.play)
+                    {
+                        Debug.Log("exit");
+                        currentControllerUISelection = ControllerUISelection.exit;
+                    }
+                    else if (currentControllerUISelection == ControllerUISelection.exit)
+                    {
+                        currentControllerUISelection = ControllerUISelection.play;
+                    }
+                }
+
+                if(currentControllerUISelection == ControllerUISelection.play)
+                {
+                    mainMenu.transform.GetChild(1).GetComponent<Button>().Select();
+                }
+                if(currentControllerUISelection == ControllerUISelection.exit)
+                {
+                    mainMenu.transform.GetChild(2).GetComponent<Button>().Select();
+                }
+
+                if(Input.GetKeyDown(KeyCode.KeypadEnter) || InputManager.ActiveDevice.Action1.WasPressed)
+                {
+                    if (currentControllerUISelection == ControllerUISelection.play)
+                    {
+                        PlayButton();
+                    }
+                    if (currentControllerUISelection == ControllerUISelection.exit)
+                    {
+                        Exit();
+                    }
+
+                }
+
+
+            }
+            if (currentCanvas == CanvasCount.playerSelect)
+            {
+                if(Input.GetKeyDown(KeyCode.KeypadEnter) || InputManager.ActiveDevice.MenuWasPressed)
+                {
+                   if(gsm.inputDevices.Count > 2)
+                    {
+                        StartGameButtom();
+                    }
+                }
+            }
         }
     }
 
