@@ -101,7 +101,6 @@ public class UserInterfaceManager : MonoBehaviour
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
 
-
             if (pauseScreen == null)
             {
                 pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
@@ -146,12 +145,9 @@ public class UserInterfaceManager : MonoBehaviour
                     {
                         Time.timeScale = 1.0f;
                         pauseScreen.enabled = false;
-                        
                     }
                 }
             }
-
-
 
             if (gsm.Players.Count == 1)
             {
@@ -183,9 +179,8 @@ public class UserInterfaceManager : MonoBehaviour
                 Destroy(gsm.Players[0]);
                 gsm.Players.Clear();
             }
-
-
         }
+
         else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
         {
             if(currentCanvas == CanvasCount.mainMenu)
@@ -287,7 +282,6 @@ public class UserInterfaceManager : MonoBehaviour
         Application.Quit();
     }
 
-
     public void AddPlayer()
     {
         currentAmountofPlayers++;
@@ -299,7 +293,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
             }
         }
-
         if (currentAmountofPlayers == 2)
         {
             if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
@@ -307,7 +300,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
             }
         }
-
         if (currentAmountofPlayers == 3)
         {
             if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
@@ -315,7 +307,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
             }
         }
-
         if (currentAmountofPlayers == 4)
         {
             if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
@@ -327,8 +318,6 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void RemovePlayer()
     {
-
-
         if (currentAmountofPlayers == 4)
         {
             if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
@@ -336,7 +325,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
             }
         }
-
         if (currentAmountofPlayers == 3)
         {
             if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlimebw)
@@ -344,7 +332,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlimebw;
             }
         }
-
         if (currentAmountofPlayers == 2)
         {
             if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlimebw)
@@ -352,7 +339,6 @@ public class UserInterfaceManager : MonoBehaviour
                 playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlimebw;
             }
         }
-
         if (currentAmountofPlayers == 1)
         {
             if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlimebw)
@@ -362,9 +348,5 @@ public class UserInterfaceManager : MonoBehaviour
         }
 
         currentAmountofPlayers--;
-
     }
-
-
-
 }

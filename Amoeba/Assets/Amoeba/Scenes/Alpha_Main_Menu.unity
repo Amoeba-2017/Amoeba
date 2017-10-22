@@ -1474,6 +1474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db924dacb9f00074f85000faec318f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shoot_SFX: {fileID: 8300000, guid: 96e5e6f6c4dcaa4419842a1113201f52, type: 3}
 --- !u!1 &1906774655
 GameObject:
   m_ObjectHideFlags: 0

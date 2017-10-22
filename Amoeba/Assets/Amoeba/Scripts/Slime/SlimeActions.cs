@@ -49,7 +49,7 @@ public class SlimeActions : MonoBehaviour
             <Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
 
             // Play shooting sound
-            AudioManager.PlaySound("ShootSound_Placeholder");
+            AudioManager.PlaySound("ShootSound");
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, destroyTimer);

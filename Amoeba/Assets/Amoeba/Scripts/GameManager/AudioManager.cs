@@ -7,10 +7,14 @@ public class AudioManager : MonoBehaviour {
     public static AudioClip ShootSound, DeathSound, VictorySound;
     static AudioSource am;
 
+    [SerializeField]
+    public AudioClip Shoot_SFX;
+
     // Use this for initialization
     void Start ()
     {
-        ShootSound = Resources.Load<AudioClip>("ShootSound_Placeholder");
+        //ShootSound = Resources.Load<AudioClip>("ShootSound_Placeholder");
+        ShootSound = Shoot_SFX;
 
         am = GetComponent<AudioSource>();
 	}
@@ -26,7 +30,7 @@ public class AudioManager : MonoBehaviour {
         switch (clip)
         {
             // Slime Shooting sound
-            case "ShootSound_Placeholder": am.PlayOneShot(ShootSound, 1f);
+            case "ShootSound": am.PlayOneShot(ShootSound, 1f);
                 break;
         }
     }
