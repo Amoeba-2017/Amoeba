@@ -88,6 +88,10 @@ using InControl;
         if (slimes.Count == 0)
         {
             gameManager.Players.Remove(gameObject);
+
+            // Play Defeat sound
+            AudioManager.PlaySound("DefeatSound");
+
             Destroy(gameObject);
         }
 

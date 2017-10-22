@@ -1475,6 +1475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shoot_SFX: {fileID: 8300000, guid: 96e5e6f6c4dcaa4419842a1113201f52, type: 3}
+  Death_SFX: {fileID: 8300000, guid: 04d8fd00bddc09146be2faaa25570af7, type: 3}
+  Victory_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
+  Defeat_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
 --- !u!1 &1906774655
 GameObject:
   m_ObjectHideFlags: 0

@@ -120,8 +120,12 @@ public class SlimeHealth : MonoBehaviour {
     void Death ()
     {
         slimeAction.Split(amountOfSplits);
-        if(amountOfSplits <= 3)
-        Destroy(gameObject);
+        if (amountOfSplits <= 3)
+        {
+            // Play Death sound
+            AudioManager.PlaySound("DeathSound");
+            Destroy(gameObject);
+        }
     }
 
 }

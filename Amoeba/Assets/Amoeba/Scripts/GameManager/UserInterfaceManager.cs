@@ -175,6 +175,9 @@ public class UserInterfaceManager : MonoBehaviour
                     victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
                 }
 
+                // Play Victory sound
+                AudioManager.PlaySound("VictorySound");
+
                 gsm.Players[0].GetComponent<PlayerUI>().addScore();
                 Destroy(gsm.Players[0]);
                 gsm.Players.Clear();

@@ -29,9 +29,7 @@ public class SlimeActions : MonoBehaviour
     void Start()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-        
     }
-
 
     public void Shoot(Vector3 rot)
     {
@@ -53,7 +51,6 @@ public class SlimeActions : MonoBehaviour
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, destroyTimer);
-
         }
     }
 
