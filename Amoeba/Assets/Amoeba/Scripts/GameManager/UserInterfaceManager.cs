@@ -7,35 +7,54 @@ using InControl;
 
 public class UserInterfaceManager : MonoBehaviour
 {
+    // Menu Canvases
     [SerializeField]
-    private Canvas mainMenu;
+    [Tooltip("Canvas for the Main Menu.")]
+    private Canvas mainMenu;        // Main Menu
     [SerializeField]
-    private Canvas playerSelect;
-    private Canvas victoryScreen;
-    private Canvas pauseScreen;
+    [Tooltip("Canvas for the Player/Slime Selection Menu.")]
+    private Canvas selectScreen;    // Player/Slime Selection
+    private Canvas pauseScreen;     // Pause Screen
+    private Canvas victoryScreen;   // Victory Screen
+    private Canvas timerCanvas;     // Timer
+
     private Canvas drawScreen;
 
+    // Slime Icon Sprites
     [SerializeField]
-    private Sprite redSlime;
+    [Tooltip("Sprite for the Red Slime icon.")]
+    private Sprite redSlime;        // Colored
+    private Sprite redSlimebw;      // Black & White
     [SerializeField]
-    private Sprite yellowSlime;
+    [Tooltip("Sprite for the Yellow Slime icon.")]
+    private Sprite yellowSlime;     // Colored
+    private Sprite yellowSlimebw;   // Black & White
     [SerializeField]
-    private Sprite blueSlime;
+    [Tooltip("Sprite for the Blue Slime icon.")]
+    private Sprite blueSlime;       // Colored
+    private Sprite blueSlimebw;     // Black & White
     [SerializeField]
-    private Sprite purpleSlime;
+    [Tooltip("Sprite for the Purple Slime icon.")]
+    private Sprite purpleSlime;     // Colored
+    private Sprite purpleSlimebw;   // Black & White
 
+    // Round Timer
+    // Intergers represents minutes (i.e. 1f == 1 minute)
     [SerializeField]
+    [Tooltip("Amount of minutes for each round.")]
     private float roundTime;
 
-    private Sprite redSlimebw;
-    private Sprite yellowSlimebw;
-    private Sprite blueSlimebw;
-    private Sprite purpleSlimebw;
+    // Current Timer
+    // Counts seconds mid-round
+    private float currentTimer;
 
+    // Game State Manager
     private GameStateManager gsm;
 
+    // Amount of Players
     private int currentAmountofPlayers;
 
+    // List of sprites
     private List<Image> sprites = new List<Image>();
 
     public Text maxRoundText;
@@ -43,11 +62,6 @@ public class UserInterfaceManager : MonoBehaviour
     bool isPaused = false;
 
     bool firstRun;
-    private Canvas timerCanvas;
-
-    private float currentTimer;
-
-
 
     private ControllerUISelection currentControllerUISelection;
 
@@ -64,27 +78,25 @@ public class UserInterfaceManager : MonoBehaviour
         none
     };
 
-
     public CanvasCount currentCanvas;
 
-
+    // Initialization
     void Start()
     {
         firstRun = true;
         currentControllerUISelection = ControllerUISelection.play;
-        maxRoundText = playerSelect.transform.GetChild(5).gameObject.GetComponent<Text>();
+        maxRoundText = selectScreen.transform.GetChild(5).gameObject.GetComponent<Text>();
         currentCanvas = CanvasCount.mainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
-        redSlimebw = (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite);
-        yellowSlimebw = (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite);
-        blueSlimebw = (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite);
-        purpleSlimebw = (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite);
+        redSlimebw = (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite);
+        yellowSlimebw = (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite);
+        blueSlimebw = (selectScreen.transform.GetChild(2).GetComponent<Image>().sprite);
+        purpleSlimebw = (selectScreen.transform.GetChild(3).GetComponent<Image>().sprite);
     }
 
-
+    // Update (Per Frame)
     void Update()
     {
-
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             if(firstRun == true)
@@ -96,21 +108,19 @@ public class UserInterfaceManager : MonoBehaviour
 
             currentTimer += Time.deltaTime;
 
+            // Game Canvas Detections
             if (victoryScreen == null)
             {
                 victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetComponent<Canvas>();
             }
-
             if (pauseScreen == null)
             {
                 pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen").transform.GetComponent<Canvas>();
             }
-
             if (drawScreen == null)
             {
                 drawScreen = GameObject.FindGameObjectWithTag("DrawCanvas").transform.GetComponent<Canvas>();
             }
-
             if (timerCanvas == null)
             {
                 timerCanvas = GameObject.FindGameObjectWithTag("TimerCanvas").transform.GetComponent<Canvas>();
@@ -215,16 +225,13 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                     if (currentControllerUISelection == ControllerUISelection.play)
                     {
-                        PlayButton();
+                        mainStartButton();
                     }
                     if (currentControllerUISelection == ControllerUISelection.exit)
                     {
-                        Exit();
+                        mainQuitButton();
                     }
-
                 }
-
-
             }
             if (currentCanvas == CanvasCount.playerSelect)
             {
@@ -232,7 +239,7 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                    if(gsm.inputDevices.Count > 1)
                     {
-                        StartGameButtom();
+                        selectStartButton();
                     }
                 }
             }
@@ -261,16 +268,26 @@ public class UserInterfaceManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //called when the play button is pressed on the main menu
-    public void PlayButton()
+    //===============================================
+    // Button Functions
+    //===============================================
+
+    // Button function for the Main Menu 'Start' button
+    public void mainStartButton()
     {
         currentCanvas = CanvasCount.playerSelect;
         mainMenu.enabled = false;
-        playerSelect.enabled = true;
+        selectScreen.enabled = true;
     }
 
+    // Button function for the Main Menu 'Quit' button
+    public void mainQuitButton()
+    {
+        Application.Quit();
+    }
 
-    public void StartGameButtom()
+    // Button function for the Player Select 'Start' button
+    public void selectStartButton()
     {
         if (currentAmountofPlayers > 0)
         {
@@ -280,41 +297,36 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
     public void AddPlayer()
     {
         currentAmountofPlayers++;
 
         if (currentAmountofPlayers == 1)
         {
-            if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
+            if (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
             {
-                playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
+                selectScreen.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
             }
         }
         if (currentAmountofPlayers == 2)
         {
-            if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
+            if (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
             {
-                playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
+                selectScreen.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
             }
         }
         if (currentAmountofPlayers == 3)
         {
-            if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
+            if (selectScreen.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
             {
-                playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
+                selectScreen.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
             }
         }
         if (currentAmountofPlayers == 4)
         {
-            if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
+            if (selectScreen.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
             {
-                playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
+                selectScreen.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
             }
         }
     }
@@ -323,30 +335,30 @@ public class UserInterfaceManager : MonoBehaviour
     {
         if (currentAmountofPlayers == 4)
         {
-            if (playerSelect.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
+            if (selectScreen.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
             {
-                playerSelect.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
+                selectScreen.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
             }
         }
         if (currentAmountofPlayers == 3)
         {
-            if (playerSelect.transform.GetChild(2).GetComponent<Image>().sprite != blueSlimebw)
+            if (selectScreen.transform.GetChild(2).GetComponent<Image>().sprite != blueSlimebw)
             {
-                playerSelect.transform.GetChild(2).GetComponent<Image>().sprite = blueSlimebw;
+                selectScreen.transform.GetChild(2).GetComponent<Image>().sprite = blueSlimebw;
             }
         }
         if (currentAmountofPlayers == 2)
         {
-            if (playerSelect.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlimebw)
+            if (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlimebw)
             {
-                playerSelect.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlimebw;
+                selectScreen.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlimebw;
             }
         }
         if (currentAmountofPlayers == 1)
         {
-            if (playerSelect.transform.GetChild(0).GetComponent<Image>().sprite != redSlimebw)
+            if (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite != redSlimebw)
             {
-                playerSelect.transform.GetChild(0).GetComponent<Image>().sprite = redSlimebw;
+                selectScreen.transform.GetChild(0).GetComponent<Image>().sprite = redSlimebw;
             }
         }
 

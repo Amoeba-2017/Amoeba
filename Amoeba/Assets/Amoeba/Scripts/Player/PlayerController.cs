@@ -290,12 +290,8 @@ using InControl;
             //}
         }
 
-
-
         if (Input.GetKey(KeyCode.E))
         {
-
-
             //find the center of all of the slimes
             Vector3 centerPoint = Vector3.zero;
             foreach (GameObject x in slimes)

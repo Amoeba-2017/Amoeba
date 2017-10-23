@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class SlimeMovement : MonoBehaviour
 {
-
-
     //declaring variables
     CharacterController cc;
     [HideInInspector]
@@ -20,7 +15,6 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField]
     [Tooltip("The speed that the slimes will move")]
     float speed;
-
 
     [SerializeField]
     [Tooltip("The amount of force applied when a slime hits a wall to try get around it")]
@@ -87,7 +81,6 @@ public class SlimeMovement : MonoBehaviour
 
     private Quaternion targetRot;
 
-
     void Start()
     {
         updatePlayerPos = true;
@@ -110,9 +103,6 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-
-        
-
         if (currentSlimeState == SlimeState.moving)
         {
             Seek();
@@ -121,8 +111,6 @@ public class SlimeMovement : MonoBehaviour
         {
             flying();
         }
-
-
         //seek the player
         //Alignment()
         //Seek();
@@ -248,9 +236,6 @@ public class SlimeMovement : MonoBehaviour
 
     public void Retract(Vector3 centerPoint)
     {
-
-
-
         if (randomCircleRadius == minSpreadDistance)
         {
             return;
@@ -293,5 +278,4 @@ public class SlimeMovement : MonoBehaviour
     {
         Gizmos.DrawSphere(newPos, 0.5f);
     }
-
 }
