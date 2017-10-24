@@ -28,7 +28,7 @@ public class Clouds : MonoBehaviour {
 
     private Rigidbody rb;
     private Vector3 startPosition;
-    private float distance;
+    public float dist;
 
     // Initialization
     void Start ()
@@ -37,7 +37,7 @@ public class Clouds : MonoBehaviour {
         startPosition.y = transform.position.y;
         startPosition.z = transform.position.z;
         rb = GetComponent<Rigidbody>();
-        distance = Vector3.Distance(startPosition, transform.position);
+        dist = Vector3.Distance(startPosition, transform.position);
     }
 	
 	// Update (Per Frame)
@@ -45,7 +45,7 @@ public class Clouds : MonoBehaviour {
     {
         rb.velocity = new Vector3(speedX, speedY, speedZ);
 
-        if (distance > 500)
+        if (dist >= 10)//distance >= 200)
         {
             transform.position = startPosition;
         }
