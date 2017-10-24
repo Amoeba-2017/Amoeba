@@ -48,7 +48,8 @@ using InControl;
     [SerializeField]
     public float maxSlimeRandomDistance;
 
-
+    private Vector3 dirRot;
+    
     void Start()
     {
 
@@ -134,6 +135,21 @@ using InControl;
         }
 
 
+        dirRot = (controllerRetical.transform.position - transform.position).normalized;
+
+        foreach (GameObject x in slimes)
+        {
+            x.GetComponent<SlimeMovement>().setTargetRot(dirRot);
+        }
+        if(dirRot != Vector3.zero)
+        {
+
+        transform.rotation = Quaternion.LookRotation(dirRot, Vector3.up);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
+        }
 
     }
 
@@ -188,15 +204,6 @@ using InControl;
 
 
         }
-        if (controller.LeftBumper.WasReleased)
-        {
-            //foreach (GameObject x in slimes)
-            //{
-            //    x.GetComponent<SlimeMovement>().isMoving = true;
-            //}
-
-
-        }
 
 
         if (controller.RightBumper.IsPressed)
@@ -217,6 +224,7 @@ using InControl;
                 x.GetComponent<SlimeMovement>().Expand(transform.position);
             }
         }
+
         if (controller.RightBumper.WasReleased)
         {
             //foreach (GameObject x in slimes)
@@ -224,10 +232,6 @@ using InControl;
             //    x.GetComponent<SlimeMovement>().isMoving = true;
             //}
         }
-
-
-
-
 
         //shooting on controller
 

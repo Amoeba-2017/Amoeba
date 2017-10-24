@@ -17506,8 +17506,8 @@ MonoBehaviour:
   speedX: 10
   speedY: 0
   speedZ: 0
-  spawnFrequency: 0
-  rb: {fileID: 0}
+  spawnSetTime: 0
+  cloudPrefab: {fileID: 0}
 --- !u!54 &785844238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33562,8 +33562,8 @@ MonoBehaviour:
   speedX: 0
   speedY: 0
   speedZ: 0
-  spawnFrequency: 0
-  rb: {fileID: 0}
+  spawnSetTime: 0
+  cloudPrefab: {fileID: 0}
 --- !u!54 &2076952732
 Rigidbody:
   m_ObjectHideFlags: 0

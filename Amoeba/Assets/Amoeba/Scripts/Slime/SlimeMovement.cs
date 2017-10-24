@@ -81,6 +81,8 @@ public class SlimeMovement : MonoBehaviour
 
     private Quaternion targetRot;
 
+
+
     void Start()
     {
         updatePlayerPos = true;
@@ -99,6 +101,22 @@ public class SlimeMovement : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
     }
+
+
+    public void setTargetRot(Vector3 dir)
+    {
+        
+        if(dir == Vector3.zero)
+        {
+            targetRot = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
+        }
+        else
+        {
+            targetRot = Quaternion.LookRotation(dir, Vector3.up);
+        }
+
+    }
+
 
 
     void Update()
@@ -134,6 +152,9 @@ public class SlimeMovement : MonoBehaviour
         return new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
 
     }
+
+
+
 
     void flying()
     {
@@ -189,14 +210,7 @@ public class SlimeMovement : MonoBehaviour
             }
           //  cc.Move(Vector3.down * 9.8f);
 
-            if(playersController.velocity == Vector3.zero)
-            {
-                targetRot = Quaternion.LookRotation(new Vector3(0, 0, -1),Vector3.up);
-            }
-            else
-            {
-                targetRot = Quaternion.LookRotation(playersController.velocity.normalized, Vector3.up);
-            }
+
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
         }
     }
