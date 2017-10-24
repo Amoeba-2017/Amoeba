@@ -17500,8 +17500,29 @@ MonoBehaviour:
   spawnX: -36
   spawnY: 70
   spawnZ: -130
+  scaleX: 0
+  scaleY: 0
+  scaleZ: 0
+  speedX: 10
+  speedY: 0
+  speedZ: 0
   spawnFrequency: 0
-  speed: 0
+  rb: {fileID: 0}
+--- !u!54 &785844238
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 785844232}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &789153498
 Prefab:
   m_ObjectHideFlags: 0
@@ -33517,8 +33538,29 @@ MonoBehaviour:
   spawnX: 0
   spawnY: 0
   spawnZ: 0
+  scaleX: 0
+  scaleY: 0
+  scaleZ: 0
+  speedX: 0
+  speedY: 0
+  speedZ: 0
   spawnFrequency: 0
-  speed: 0
+  rb: {fileID: 0}
+--- !u!54 &2076952732
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076952726}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2081114874
 Prefab:
   m_ObjectHideFlags: 0
