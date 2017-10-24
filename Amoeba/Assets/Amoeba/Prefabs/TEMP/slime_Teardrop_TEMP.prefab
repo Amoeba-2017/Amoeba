@@ -163,8 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileShot: {fileID: 1648453437199472, guid: dd61db4ee74592a4faf75c64617e9a94,
     type: 2}
-  projectileShotSpeed: 65
-  destroyTimer: 0.5
+  projectileShotSpeed: 40
+  destroyTimer: 1.2
   slime: {fileID: 1664931614777470}
 --- !u!114 &114734289424243706
 MonoBehaviour:
