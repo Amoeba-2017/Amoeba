@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-    public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //declaring variables
     [SerializeField]
@@ -49,7 +49,7 @@ using InControl;
     public float maxSlimeRandomDistance;
 
     private Vector3 dirRot;
-    
+
     void Start()
     {
 
@@ -72,7 +72,7 @@ using InControl;
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
-        
+
 
     }
 
@@ -141,14 +141,13 @@ using InControl;
         {
             x.GetComponent<SlimeMovement>().setTargetRot(dirRot);
         }
-        if(dirRot != Vector3.zero)
+        if (dirRot != Vector3.zero)
         {
-
-        transform.rotation = Quaternion.LookRotation(dirRot, Vector3.up);
+            transform.GetChild(2).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
         }
         else
         {
-            transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
+            transform.GetChild(2).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
         }
 
     }
@@ -345,7 +344,7 @@ using InControl;
 
     public void allSlimesAreIsInvincible()
     {
-        foreach(GameObject x in slimes)
+        foreach (GameObject x in slimes)
         {
             x.GetComponent<SlimeHealth>().isInvincible = true;
             StartCoroutine(x.GetComponent<SlimeHealth>().InvincibleFrames());
