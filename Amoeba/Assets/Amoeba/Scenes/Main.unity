@@ -17497,17 +17497,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a78800b76b250428aaaff7f5f45357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnX: -36
-  spawnY: 70
-  spawnZ: -130
   scaleX: 0
   scaleY: 0
   scaleZ: 0
   speedX: 10
   speedY: 0
   speedZ: 0
-  spawnSetTime: 0
-  cloudPrefab: {fileID: 0}
 --- !u!54 &785844238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33553,17 +33548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a78800b76b250428aaaff7f5f45357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnX: 0
-  spawnY: 0
-  spawnZ: 0
   scaleX: 0
   scaleY: 0
   scaleZ: 0
   speedX: 0
   speedY: 0
   speedZ: 0
-  spawnSetTime: 0
-  cloudPrefab: {fileID: 0}
 --- !u!54 &2076952732
 Rigidbody:
   m_ObjectHideFlags: 0
