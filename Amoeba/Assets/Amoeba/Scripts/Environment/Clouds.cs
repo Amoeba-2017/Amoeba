@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Clouds : MonoBehaviour {
 
-    // Scaling
-    [SerializeField]
-    [Tooltip("X axis scale.")]
-    private float scaleX;       // X axis
-    [SerializeField]
-    [Tooltip("Y axis scale.")]
-    private float scaleY;       // Y axis
-    [SerializeField]
-    [Tooltip("Z axis scale.")]
-    private float scaleZ;       // Z axis
-
     // Velocity
     [SerializeField]
     [Tooltip("X axis movement speed.")]
@@ -26,26 +15,28 @@ public class Clouds : MonoBehaviour {
     [Tooltip("Z axis movement speed.")]
     private float speedZ;       // Z axis
 
-    private Rigidbody rb;
+    // Positional Stuffs
     private Vector3 startPosition;
-    public float dist;
+    private float currentDistance;
+    [SerializeField]
+    [Tooltip("Set distance that when reached will cause the cloud's current position to be reset to its starting position.")]
+    private float resetDistance;
+
+    private Rigidbody rb;
 
     // Initialization
     void Start ()
     {
-        startPosition.x = transform.position.x;
-        startPosition.y = transform.position.y;
-        startPosition.z = transform.position.z;
+        startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
-        dist = Vector3.Distance(startPosition, transform.position);
     }
 	
 	// Update (Per Frame)
 	void Update ()
     {
         rb.velocity = new Vector3(speedX, speedY, speedZ);
-
-        if (dist >= 10)//distance >= 200)
+        currentDistance = Vector3.Distance(startPosition, transform.position);
+        if (currentDistance >= resetDistance)
         {
             transform.position = startPosition;
         }
