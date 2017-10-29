@@ -58,11 +58,12 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //if in the game scene
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
-        {
+        {   
+            //spawn the players if they dont exist
             if (spawnPlayers == true)
             {
                 loadPlayers();
@@ -70,15 +71,18 @@ public class GameStateManager : MonoBehaviour
             }
         }
 
+        //if the userInterfaceManager exist
         if (uim != null)
         {
+            //if the current canvas is playerSelect 
             if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
                 foreach (InputDevice x in InputManager.Devices)
                 {
+                    //if the last device pressed was x
                     if (x == InputManager.ActiveDevice)
                     {
-
+                        //if up is pressed incress the amout of max rounds
                         if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
                         {
                             if (maxRounds < 30)
@@ -87,6 +91,7 @@ public class GameStateManager : MonoBehaviour
                                 uim.maxRoundText.text = maxRounds.ToString();
                             }
                         }
+                        //if down is pressed decresse the amount of max rounds
                         else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
                         {
                             if (maxRounds > 1)

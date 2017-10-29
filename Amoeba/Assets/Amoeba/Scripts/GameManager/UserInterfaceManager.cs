@@ -141,6 +141,7 @@ public class UserInterfaceManager : MonoBehaviour
                 }
             }
 
+            //Pause menu
             foreach (InputDevice x in gsm.inputDevices)
             {
                 if (x.MenuWasPressed)
@@ -159,38 +160,41 @@ public class UserInterfaceManager : MonoBehaviour
                 }
             }
 
-            if (gsm.Players.Count == 1)
+            if (gsm.debugMode == false)
             {
-                Debug.Log("ended the game");
-                StartCoroutine(restartGame());
-                victoryScreen.enabled = true;
+                if (gsm.Players.Count == 1)
+                {
+                    Debug.Log("ended the game");
+                    StartCoroutine(restartGame());
+                    victoryScreen.enabled = true;
 
-                // Winner Icon
-                // If statements that trigger depending on which tag the last object left standing has,
-                // they then change the sprite to match the corresponding tag.
-                if (gsm.Players[0].tag == "PlayerRed")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerBlue")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = blueSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerYellow")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = yellowSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerPurple")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
-                }
+                    // Winner Icon
+                    // If statements that trigger depending on which tag the last object left standing has,
+                    // they then change the sprite to match the corresponding tag.
+                    if (gsm.Players[0].tag == "PlayerRed")
+                    {
+                        victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;
+                    }
+                    if (gsm.Players[0].tag == "PlayerBlue")
+                    {
+                        victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = blueSlime;
+                    }
+                    if (gsm.Players[0].tag == "PlayerYellow")
+                    {
+                        victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = yellowSlime;
+                    }
+                    if (gsm.Players[0].tag == "PlayerPurple")
+                    {
+                        victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
+                    }
 
-                // Play Victory sound
-                AudioManager.PlaySound("VictorySound");
+                    // Play Victory sound
+                    AudioManager.PlaySound("VictorySound");
 
-                gsm.Players[0].GetComponent<PlayerUI>().addScore();
-                Destroy(gsm.Players[0]);
-                gsm.Players.Clear();
+                    gsm.Players[0].GetComponent<PlayerUI>().addScore();
+                    Destroy(gsm.Players[0]);
+                    gsm.Players.Clear();
+                }
             }
         }
 
