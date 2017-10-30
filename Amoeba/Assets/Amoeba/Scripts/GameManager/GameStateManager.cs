@@ -61,7 +61,7 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         //if in the game scene
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
             //spawn the players if they dont exist
             if (spawnPlayers == true)

@@ -97,7 +97,7 @@ public class UserInterfaceManager : MonoBehaviour
     // Update (Per Frame)
     void Update()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
             if(firstRun == true)
             {
@@ -298,7 +298,7 @@ public class UserInterfaceManager : MonoBehaviour
         if (currentAmountofPlayers > 0)
         {
             currentCanvas = CanvasCount.none;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             gsm.SpawnPlayers();
         }
     }
