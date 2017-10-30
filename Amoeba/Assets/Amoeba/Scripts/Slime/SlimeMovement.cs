@@ -60,7 +60,6 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField]
     private float ExpandAndSrinkSpeed;
 
-    [SerializeField]
     private float beginYPos;
 
     [SerializeField]
@@ -98,7 +97,7 @@ public class SlimeMovement : MonoBehaviour
         randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
-
+        beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y;
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
     }
 
