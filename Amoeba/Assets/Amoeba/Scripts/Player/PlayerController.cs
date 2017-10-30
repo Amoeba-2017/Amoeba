@@ -242,6 +242,8 @@ public class PlayerController : MonoBehaviour
 
         if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
         {
+            ShootTimer = 0.0f;
+
             foreach (GameObject i in slimes)
             {
                 i.GetComponent<SlimeActions>().Shoot(dirRot);
