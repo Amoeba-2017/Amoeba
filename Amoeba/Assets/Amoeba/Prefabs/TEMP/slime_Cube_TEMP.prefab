@@ -190,6 +190,7 @@ MonoBehaviour:
   IsShielded: 0
   BulletDamage: 0
   amountOfSplits: 0
+  invincibilityFramesTime: 20
   powerUpLength: 7.5
   colorChangeSpeed: 2
   isInvincible: 0

@@ -21,6 +21,8 @@ public class SlimeHealth : MonoBehaviour
     [HideInInspector]
     public float amountOfSplits = 0;
 
+    [SerializeField]
+    private float invincibilityFramesTime;
 
     private SlimeActions slimeAction;
 
@@ -49,6 +51,8 @@ public class SlimeHealth : MonoBehaviour
         IsShielded = false;
         firstColor = true;
         slimeAction = gameObject.GetComponent<SlimeActions>();
+        isInvincible = true;
+        StartCoroutine(InvincibleFrames());
     }
 
     // Update is called once per frame
@@ -114,7 +118,7 @@ public class SlimeHealth : MonoBehaviour
 
     public IEnumerator InvincibleFrames()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(invincibilityFramesTime);
         isInvincible = false;
     }
 

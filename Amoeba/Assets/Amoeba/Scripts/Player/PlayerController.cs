@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public int playerNumber = 1;
 
+    private Vector3 lastRot;
 
     [SerializeField]
     [Tooltip("The amount of force applied when dodging")]
@@ -113,18 +114,14 @@ public class PlayerController : MonoBehaviour
         //if there is no controller
         if (controller == null)
         {
-
             KeyboredUpdate();
-
         }
 
 
         //controller
         else
         {
-
             ControllerUpdate();
-
         }
 
 
@@ -134,21 +131,29 @@ public class PlayerController : MonoBehaviour
             DebugMode();
         }
 
-
+        lastRot = dirRot;
         dirRot = (controllerRetical.transform.position - transform.position).normalized;
+
+        if (dirRot == Vector3.zero)
+        {
+            dirRot = lastRot;
+        }
 
         foreach (GameObject x in slimes)
         {
             x.GetComponent<SlimeMovement>().setTargetRot(dirRot);
         }
-        if (dirRot != Vector3.zero)
-        {
-            transform.GetChild(0).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
-        }
-        else
-        {
-            transform.GetChild(0).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
-        }
+
+        /////////RETICAL WORK
+
+        //if (dirRot != Vector3.zero)
+        //{
+        //    transform.GetChild(1).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
+        //}
+        //else
+        //{
+        //    transform.GetChild(1).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
+        //}
 
     }
 
@@ -237,16 +242,9 @@ public class PlayerController : MonoBehaviour
 
         if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
         {
-
-            ShootTimer = 0.0f;
-            Vector3 vecBetween = Vector3.zero;
-            vecBetween = controllerRetical.transform.position - transform.position;
-            if (vecBetween.magnitude > 0.5)
+            foreach (GameObject i in slimes)
             {
-                foreach (GameObject i in slimes)
-                {
-                    i.GetComponent<SlimeActions>().Shoot(vecBetween.normalized);
-                }
+                i.GetComponent<SlimeActions>().Shoot(dirRot);
             }
         }
 

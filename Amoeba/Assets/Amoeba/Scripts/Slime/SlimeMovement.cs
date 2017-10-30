@@ -105,15 +105,10 @@ public class SlimeMovement : MonoBehaviour
 
     public void setTargetRot(Vector3 dir)
     {
-        
-        if(dir == Vector3.zero)
-        {
-            targetRot = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
-        }
-        else
-        {
-            targetRot = Quaternion.LookRotation(dir, Vector3.up);
-        }
+
+
+        targetRot = Quaternion.LookRotation(dir, Vector3.up);
+
 
     }
 
@@ -125,7 +120,7 @@ public class SlimeMovement : MonoBehaviour
         {
             Seek();
         }
-        else if(currentSlimeState == SlimeState.flying)
+        else if (currentSlimeState == SlimeState.flying)
         {
             flying();
         }
@@ -208,7 +203,7 @@ public class SlimeMovement : MonoBehaviour
                 Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
                 cc.Move(vecBetween * speed * Time.deltaTime);
             }
-          //  cc.Move(Vector3.down * 9.8f);
+            //  cc.Move(Vector3.down * 9.8f);
 
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
