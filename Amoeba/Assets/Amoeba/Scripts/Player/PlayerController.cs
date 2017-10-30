@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
         slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
 
-        randomKingSlime = Random.Range(0, slimes.Count);
+        randomKingSlime = Random.Range(0, slimes.Count -1);
         Debug.Log(randomKingSlime);
         slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
 

@@ -307,7 +307,7 @@ MonoBehaviour:
   dodgeForce: 500
   BufferTime: 0.9
   slimeRandomDistanceToPlayer: 0.5
-  maxSlimeRandomDistance: 3
+  slimeMovementDistanceScalar: 2
 --- !u!114 &114872291195746730
 MonoBehaviour:
   m_ObjectHideFlags: 1

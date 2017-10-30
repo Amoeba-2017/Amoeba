@@ -63,7 +63,10 @@ public class SlimeActions : MonoBehaviour
 
         if (playerController == null)
         {
-            playerController = slimeMovement.player.GetComponent<PlayerController>();
+            if (slimeMovement.player.GetComponent<PlayerController>() != null)
+            {
+                playerController = slimeMovement.player.GetComponent<PlayerController>();
+            }
         }
         playerController.slimes.Remove(gameObject);
 

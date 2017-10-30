@@ -216,6 +216,7 @@ public class SlimeMovement : MonoBehaviour
         }
         else
         {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
             transform.position = player.transform.position;
         }
     }
