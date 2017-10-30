@@ -80,7 +80,8 @@ public class SlimeMovement : MonoBehaviour
 
     private Quaternion targetRot;
 
-
+    [HideInInspector]
+    public bool kingSlime = false;
 
     void Start()
     {
@@ -99,6 +100,9 @@ public class SlimeMovement : MonoBehaviour
         playersController = player.GetComponent<CharacterController>();
         beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y;
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
+
+
+
     }
 
 
@@ -168,44 +172,50 @@ public class SlimeMovement : MonoBehaviour
 
     void Seek()
     {
-
-        if (player != null)
+        if (kingSlime == false)
         {
-            if (slimes.Count > 1)
+            if (player != null)
             {
-                //if the player is moving and we're far enough away from our target
-                if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+                if (slimes.Count > 1)
                 {
-                    //StartCoroutine(FindNewPos());
-                    newPos = FindnewPosition();
-                }
+                    //if the player is moving and we're far enough away from our target
+                    if (Vector3.Distance(transform.position, newPos) < 1 && playersController.velocity != Vector3.zero)
+                    {
+                        //StartCoroutine(FindNewPos());
+                        newPos = FindnewPosition();
+                    }
 
-                if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > randomCircleRadius)
-                {
-                    Debug.Log("new pos");
-                    newPos = FindnewPosition();
-                }
+                    if (cc.velocity == Vector3.zero && Vector3.Distance(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z)) > randomCircleRadius)
+                    {
+                        Debug.Log("new pos");
+                        newPos = FindnewPosition();
+                    }
 
-                if (Vector3.Distance(transform.position, newPos) > 0.5f)
-                {
-                    Vector3 vecBetween = newPos - transform.position;
-                    cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+                    if (Vector3.Distance(transform.position, newPos) > 0.5f)
+                    {
+                        Vector3 vecBetween = newPos - transform.position;
+                        cc.Move(vecBetween.normalized * speed * Time.deltaTime);
+                    }
                 }
+                else
+                {
+                    if (updatePlayerPos == true)
+                    {
+                        player.transform.position = gameObject.transform.position;
+                        updatePlayerPos = false;
+                    }
+                    Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
+                    cc.Move(vecBetween * speed * Time.deltaTime);
+                }
+                //  cc.Move(Vector3.down * 9.8f);
+
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
             }
-            else
-            {
-                if (updatePlayerPos == true)
-                {
-                    player.transform.position = gameObject.transform.position;
-                    updatePlayerPos = false;
-                }
-                Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
-                cc.Move(vecBetween * speed * Time.deltaTime);
-            }
-            //  cc.Move(Vector3.down * 9.8f);
-
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
+        }
+        else
+        {
+            transform.position = player.transform.position;
         }
     }
 

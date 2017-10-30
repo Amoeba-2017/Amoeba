@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
     public float maxSlimeRandomDistance;
 
     private Vector3 dirRot;
+    int randomKingSlime;
+    bool pickRandomSlime = true;
+
+
 
     void Start()
     {
@@ -97,7 +101,24 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(cc.velocity == Vector3.zero)
+        {
+            if (pickRandomSlime == true)
+            {
+                slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
 
+                Debug.Log(randomKingSlime);
+                randomKingSlime = Random.Range(0, slimes.Count);
+                Debug.Log(randomKingSlime);
+
+                Debug.Log(slimes.Count);
+                slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
+            }
+        }
+        else
+        {
+            pickRandomSlime = false;
+        }
 
         //if(slimeRandomDistanceToPlayer < 0)
         //{
