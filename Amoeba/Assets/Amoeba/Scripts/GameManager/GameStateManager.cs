@@ -182,7 +182,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
-                if(Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     uim.AddPlayer();
                     playerCount++;
@@ -271,21 +271,24 @@ public class GameStateManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
-        if (playerCount >= 1)
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
-            Instantiate(playerRedPrefab);
-        }
-        if (playerCount >= 2)
-        {
-            Instantiate(playerRedPrefab);
-        }
-        if (playerCount >= 3)
-        {
-            Instantiate(playerRedPrefab);
-        }
-        if (playerCount >= 4)
-        {
-            Instantiate(playerRedPrefab);
+            if (playerCount >= 1)
+            {
+                Instantiate(playerRedPrefab);
+            }
+            if (playerCount >= 2)
+            {
+                Instantiate(playerRedPrefab);
+            }
+            if (playerCount >= 3)
+            {
+                Instantiate(playerRedPrefab);
+            }
+            if (playerCount >= 4)
+            {
+                Instantiate(playerRedPrefab);
+            }
         }
     }
 

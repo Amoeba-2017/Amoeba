@@ -35,6 +35,7 @@ public class SlimeActions : MonoBehaviour
     {
     
         Debug.Log(rot);
+
         if (rot != Vector3.zero)
         {
             // Create a Bullet object
@@ -57,7 +58,8 @@ public class SlimeActions : MonoBehaviour
 
     public void Split(float amount)
     {
-        Debug.Log(amount);
+
+        
 
         if (playerController == null)
         {
@@ -65,9 +67,9 @@ public class SlimeActions : MonoBehaviour
         }
         playerController.slimes.Remove(gameObject);
 
+
         if (amount == 0)
         {
-            playerController.slimeRandomDistanceToPlayer = 2.5f;
             playerController.speed = 15.5f;
 
             newSlime(0.75f, 1);
@@ -96,6 +98,7 @@ public class SlimeActions : MonoBehaviour
         {
             slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
         }
+        playerController.newKingSlime();
 
     }
 

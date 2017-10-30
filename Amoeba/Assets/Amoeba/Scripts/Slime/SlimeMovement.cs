@@ -98,6 +98,7 @@ public class SlimeMovement : MonoBehaviour
         randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
+        if (GameObject.FindGameObjectWithTag("SpawnPoint"))
         beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y;
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
 

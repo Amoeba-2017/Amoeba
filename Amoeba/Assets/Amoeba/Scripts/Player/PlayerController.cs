@@ -47,11 +47,11 @@ public class PlayerController : MonoBehaviour
     public float slimeRandomDistanceToPlayer;
 
     [SerializeField]
-    public float maxSlimeRandomDistance;
+    public float slimeMovementDistanceScalar;
 
     private Vector3 dirRot;
-    int randomKingSlime;
-    bool pickRandomSlime = true;
+    int randomKingSlime = 0;
+    bool isMoving;
 
 
 
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
-
+        isMoving = false;
 
     }
 
@@ -101,24 +101,31 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(cc.velocity == Vector3.zero)
+
+        slimeRandomDistanceToPlayer = (slimes.Count * 0.1f) * slimeMovementDistanceScalar;
+
+        //isMoving = false
+
+        //if not moving
+        //and isMoving == true
+        // just stopped
+        // isMoving = false
+        // choose random slime
+        //else
+        //isMoving = true
+
+        if (cc.velocity == Vector3.zero)
         {
-            if (pickRandomSlime == true)
+            if (isMoving == true)
             {
-                slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
-
-                Debug.Log(randomKingSlime);
-                randomKingSlime = Random.Range(0, slimes.Count);
-                Debug.Log(randomKingSlime);
-
-                Debug.Log(slimes.Count);
-                slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
+                isMoving = false;
             }
         }
         else
         {
-            pickRandomSlime = false;
+            isMoving = true;
         }
+
 
         //if(slimeRandomDistanceToPlayer < 0)
         //{
@@ -178,6 +185,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
+
+
     void DebugMode()
     {
         //if enter is pressed
@@ -190,6 +201,19 @@ public class PlayerController : MonoBehaviour
             slimes.Add(tempSlime);
         }
     }
+
+
+    public void newKingSlime()
+    {
+
+        slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
+
+        randomKingSlime = Random.Range(0, slimes.Count);
+        Debug.Log(randomKingSlime);
+        slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
+
+    }
+
 
     void ControllerUpdate()
     {
