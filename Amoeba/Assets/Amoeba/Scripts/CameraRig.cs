@@ -8,8 +8,8 @@ public class CameraRig : MonoBehaviour {
     private List<GameObject> players;
     private GameStateManager gsm;
 
-    public Transform lookAt;
     private bool smooth = true;
+    [SerializeField]
     private float smoothSpeed = 0.125f;
     private Vector3 offset = new Vector3(0, 0, -6.5f);
 
@@ -32,7 +32,7 @@ public class CameraRig : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
     {
         if (players.Count > 1)
         {
@@ -68,16 +68,14 @@ public class CameraRig : MonoBehaviour {
                 distance = minDistance;
             }
             centerPoint = new Vector3(centerPoint.x, centerPoint.y + (distance * yOffset), centerPoint.z - (distance * zOffset));
-            transform.position = centerPoint;
 
-            Vector3 desiredPosition = transform.position + offset;
             if (smooth)
             {
-                transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                transform.position = Vector3.Lerp(transform.position, centerPoint, smoothSpeed * Time.deltaTime);
             }
             else
             {
-                transform.position = desiredPosition;
+                transform.position = centerPoint;
             }
         }
     }
