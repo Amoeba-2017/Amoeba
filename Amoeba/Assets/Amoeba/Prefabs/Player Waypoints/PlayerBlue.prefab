@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 143883135020624570}
   - component: {fileID: 114952710905617382}
   - component: {fileID: 114682617786155608}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: PlayerBlue
   m_TagString: PlayerBlue
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 224458983126845790}
   - component: {fileID: 222510010130128148}
   - component: {fileID: 114553448144171680}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 223999388924534888}
   - component: {fileID: 114987033823484600}
   - component: {fileID: 114769674032364844}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 33874671735221630}
   - component: {fileID: 65045741824681762}
   - component: {fileID: 23225696118265164}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

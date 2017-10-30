@@ -143,11 +143,11 @@ public class PlayerController : MonoBehaviour
         }
         if (dirRot != Vector3.zero)
         {
-            transform.GetChild(2).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
+            transform.GetChild(0).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
         }
         else
         {
-            transform.GetChild(2).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
+            transform.GetChild(0).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
         }
 
     }
@@ -324,10 +324,10 @@ public class PlayerController : MonoBehaviour
         //Shooting on keybored
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit rayHit;
-        Vector3 vec3 = new Vector3();
+        Vector3 vec3 = Vector3.zero;
         if (Physics.Raycast(ray, out rayHit))
         {
-            vec3 = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
+            vec3 = new Vector3(rayHit.point.x, startPos.y, rayHit.point.z) - transform.position;
             Debug.DrawLine(rayHit.point, transform.position);
         }
 

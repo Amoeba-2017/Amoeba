@@ -62,7 +62,7 @@ public class GameStateManager : MonoBehaviour
     {
         //if in the game scene
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
-        {   
+        {
             //spawn the players if they dont exist
             if (spawnPlayers == true)
             {
@@ -121,20 +121,25 @@ public class GameStateManager : MonoBehaviour
 
                     foreach (InputDevice i in inputDevices)
                     {
-                        if (i.Action2.WasPressed)
+                        if (i != null)
                         {
-                            uim.RemovePlayer();
+                            if (i.Action2.WasPressed)
+                            {
+                                uim.RemovePlayer();
 
-                            playerCount--;
-                            removeFromArray = i;
-                            Debug.Log("removePlayer");
-                        }
-
-                        if (playerCount > InputManager.Devices.Count + 1)
-                        {
-                            Debug.Log("too many players");
-                            uim.RemovePlayer();
-                            playerCount--;
+                                playerCount--;
+                                removeFromArray = i;
+                                Debug.Log("removePlayer");
+                            }
+                            if (debugMode == false)
+                            {
+                                if (playerCount > InputManager.Devices.Count + 1)
+                                {
+                                    Debug.Log("too many players");
+                                    uim.RemovePlayer();
+                                    playerCount--;
+                                }
+                            }
                         }
                     }
 
@@ -175,31 +180,45 @@ public class GameStateManager : MonoBehaviour
 
         if (debugMode == true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
-                // if (playerCount < maxPlayerCount)
-                // {
-                playerCount++;
-                if (playerCount == 1)
+                if(Input.GetKeyDown(KeyCode.Space))
                 {
-                    players.Add(Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+                    uim.AddPlayer();
+                    playerCount++;
+                    inputDevices.Add(null);
                 }
-                else if (playerCount == 2)
-                {
-                    players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                }
-                else if (playerCount == 3)
-                {
-                    players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                }
-                else
-                {
-                    players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-                }
-                // }
-
             }
+
         }
+
+        //if (debugMode == true)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        // if (playerCount < maxPlayerCount)
+        //        // {
+        //        playerCount++;
+        //        if (playerCount == 1)
+        //        {
+        //            players.Add(Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+        //        }
+        //        else if (playerCount == 2)
+        //        {
+        //            players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+        //        }
+        //        else if (playerCount == 3)
+        //        {
+        //            players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+        //        }
+        //        else
+        //        {
+        //            players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
+        //        }
+        //        // }
+
+        //    }
+        //}
     }
 
 

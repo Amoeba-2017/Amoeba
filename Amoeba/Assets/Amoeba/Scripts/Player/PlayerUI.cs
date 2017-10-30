@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     void Awake()
     {
         sm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
-        gameObject.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = sm.GetScore(tag).ToString();
+        gameObject.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = sm.GetScore(tag).ToString();
     }
 
 

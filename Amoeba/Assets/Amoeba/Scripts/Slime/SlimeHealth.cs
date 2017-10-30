@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeHealth : MonoBehaviour {
+public class SlimeHealth : MonoBehaviour
+{
 
     // Health stat of the Slimes
     [SerializeField]
@@ -41,7 +42,7 @@ public class SlimeHealth : MonoBehaviour {
     public bool isInvincible;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         renderer = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         HeathPoints = 1f;
@@ -49,9 +50,9 @@ public class SlimeHealth : MonoBehaviour {
         firstColor = true;
         slimeAction = gameObject.GetComponent<SlimeActions>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
@@ -59,9 +60,9 @@ public class SlimeHealth : MonoBehaviour {
             Debug.Log("split");
         }
 
-        if(IsShielded == true)
+        if (IsShielded == true)
         {
-            colorTimer += Time.deltaTime; 
+            colorTimer += Time.deltaTime;
             if (firstColor == true)
             {
                 firstColor = false;
@@ -76,8 +77,9 @@ public class SlimeHealth : MonoBehaviour {
             {
                 renderer.material.SetColor("_EmissionColor", Color.black);
 
-              IsShielded = false;
+                IsShielded = false;
                 firstColor = true;
+                colorTimer = 0;
             }
         }
 
@@ -87,10 +89,10 @@ public class SlimeHealth : MonoBehaviour {
         {
             Death();
         }
-	}
+    }
 
 
-   
+
 
     void OnCollisionEnter(Collision col)
     {
@@ -117,7 +119,7 @@ public class SlimeHealth : MonoBehaviour {
     }
 
 
-    void Death ()
+    void Death()
     {
         slimeAction.Split(amountOfSplits);
         if (amountOfSplits <= 3)

@@ -130,7 +130,7 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 float countDown = ((roundTime * 60) - currentTimer);
                 string minutes = Mathf.Floor(countDown / 60).ToString("0");
-                string seconds = (countDown % 60).ToString("00");
+                string seconds = (countDown % 59).ToString("00");
                 if (float.Parse(minutes) <= 0.0f && float.Parse(seconds) <= 0.0f)
                 {
                     timerCanvas.transform.GetChild(0).GetComponent<Text>().text = "0:00";
@@ -144,24 +144,26 @@ public class UserInterfaceManager : MonoBehaviour
             //Pause menu
             foreach (InputDevice x in gsm.inputDevices)
             {
-                if (x.MenuWasPressed)
+                if (x != null)
                 {
-                    isPaused = !isPaused;
-                    if (isPaused)
+                    if (x.MenuWasPressed)
                     {
-                        pauseScreen.enabled = true;
-                        Time.timeScale = 0.0f;
-                    }
-                    else
-                    {
-                        Time.timeScale = 1.0f;
-                        pauseScreen.enabled = false;
+                        isPaused = !isPaused;
+                        if (isPaused)
+                        {
+                            pauseScreen.enabled = true;
+                            Time.timeScale = 0.0f;
+                        }
+                        else
+                        {
+                            Time.timeScale = 1.0f;
+                            pauseScreen.enabled = false;
+                        }
                     }
                 }
             }
 
-            if (gsm.debugMode == false)
-            {
+
                 if (gsm.Players.Count == 1)
                 {
                     Debug.Log("ended the game");
@@ -195,7 +197,7 @@ public class UserInterfaceManager : MonoBehaviour
                     Destroy(gsm.Players[0]);
                     gsm.Players.Clear();
                 }
-            }
+            
         }
 
         else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223364384289782160}
   - component: {fileID: 114626315065264926}
   - component: {fileID: 114192043285004018}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 143315880177889880}
   - component: {fileID: 114756394631701582}
   - component: {fileID: 114753479180423410}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: PlayerRed
   m_TagString: PlayerRed
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 224123543987731430}
   - component: {fileID: 222741999749791666}
   - component: {fileID: 114272491038417190}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 33210298281440498}
   - component: {fileID: 65529205197533380}
   - component: {fileID: 23069400912269436}
-  m_Layer: 14
+  m_Layer: 18
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,8 +96,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4755057566398646}
   - {fileID: 224864171046675910}
+  - {fileID: 4755057566398646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -112,7 +112,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4163916693582774}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23069400912269436
 MeshRenderer:
@@ -403,7 +403,7 @@ RectTransform:
   m_Children:
   - {fileID: 224123543987731430}
   m_Father: {fileID: 4163916693582774}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
