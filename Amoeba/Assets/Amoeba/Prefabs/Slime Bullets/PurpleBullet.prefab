@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4042589752224456}
   - component: {fileID: 135354905071751204}
   - component: {fileID: 54470479769394288}
+  - component: {fileID: 114753045089770562}
   m_Layer: 12
   m_Name: PurpleBullet
   m_TagString: Bullet
@@ -157,6 +158,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &114753045089770562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451342109059462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662513df6835a444989d560e73c73378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletWallSplat: {fileID: 1221325485049212, guid: db1ecdc3e4d9ef648bbea4eaa6b7b2ce,
+    type: 2}
+  BulletSlimeSplat: {fileID: 1026837326422102, guid: 02b23e29a916c7447bbb7aa98cd894a3,
+    type: 2}
 --- !u!135 &135354905071751204
 SphereCollider:
   m_ObjectHideFlags: 1

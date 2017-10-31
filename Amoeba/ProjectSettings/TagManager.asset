@@ -18,6 +18,7 @@ TagManager:
   - TimerCanvas
   - DrawCanvas
   - SpawnPoint
+  - Rock
   layers:
   - Default
   - TransparentFX
