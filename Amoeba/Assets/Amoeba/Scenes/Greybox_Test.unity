@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 90516527}
   m_Layer: 8
   m_Name: wall_Collider_012
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4422,7 +4422,7 @@ GameObject:
   - component: {fileID: 188332572}
   m_Layer: 8
   m_Name: wall_Collider_025
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5721,7 +5721,7 @@ GameObject:
   - component: {fileID: 207377237}
   m_Layer: 8
   m_Name: wall_Collider_008
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5904,7 +5904,7 @@ GameObject:
   - component: {fileID: 221430902}
   m_Layer: 8
   m_Name: wall_Collider_005
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5986,7 +5986,7 @@ GameObject:
   - component: {fileID: 222139398}
   m_Layer: 8
   m_Name: wall_Collider_030
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6068,7 +6068,7 @@ GameObject:
   - component: {fileID: 222267174}
   m_Layer: 8
   m_Name: wall_Collider_006
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6182,7 +6182,7 @@ GameObject:
   - component: {fileID: 251482453}
   m_Layer: 8
   m_Name: wall_Collider_028
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6264,7 +6264,7 @@ GameObject:
   - component: {fileID: 267873273}
   m_Layer: 8
   m_Name: wall_Collider_055
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6868,7 +6868,7 @@ GameObject:
   - component: {fileID: 292547471}
   m_Layer: 8
   m_Name: wall_Collider_036
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7444,7 +7444,7 @@ GameObject:
   - component: {fileID: 390950869}
   m_Layer: 8
   m_Name: wall_Collider_023
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7557,7 +7557,7 @@ GameObject:
   - component: {fileID: 396803468}
   m_Layer: 8
   m_Name: wall_Collider_020
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7639,7 +7639,7 @@ GameObject:
   - component: {fileID: 413571694}
   m_Layer: 8
   m_Name: wall_Collider_051
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7877,7 +7877,7 @@ GameObject:
   - component: {fileID: 479564502}
   m_Layer: 8
   m_Name: wall_Collider_018
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11001,7 +11001,7 @@ GameObject:
   - component: {fileID: 552865593}
   m_Layer: 8
   m_Name: wall_Collider_009
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11083,7 +11083,7 @@ GameObject:
   - component: {fileID: 554463792}
   m_Layer: 8
   m_Name: wall_Collider_029
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11425,7 +11425,7 @@ GameObject:
   - component: {fileID: 662590026}
   m_Layer: 8
   m_Name: wall_Collider_056
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11507,7 +11507,7 @@ GameObject:
   - component: {fileID: 681185449}
   m_Layer: 8
   m_Name: wall_Collider_027
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11589,7 +11589,7 @@ GameObject:
   - component: {fileID: 689243154}
   m_Layer: 8
   m_Name: wall_Collider_041
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11671,7 +11671,7 @@ GameObject:
   - component: {fileID: 693934493}
   m_Layer: 8
   m_Name: wall_Collider_021
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12913,7 +12913,7 @@ GameObject:
   - component: {fileID: 714424972}
   m_Layer: 8
   m_Name: wall_Collider_052
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14173,7 +14173,7 @@ GameObject:
   - component: {fileID: 744628258}
   m_Layer: 8
   m_Name: wall_Collider_010
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14255,7 +14255,7 @@ GameObject:
   - component: {fileID: 753087558}
   m_Layer: 8
   m_Name: wall_Collider_002
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14371,7 +14371,7 @@ GameObject:
   - component: {fileID: 819192228}
   m_Layer: 8
   m_Name: wall_Collider_032
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14453,7 +14453,7 @@ GameObject:
   - component: {fileID: 820107825}
   m_Layer: 8
   m_Name: wall_Collider_007
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16114,7 +16114,7 @@ GameObject:
   - component: {fileID: 938040513}
   m_Layer: 8
   m_Name: wall_Collider_001
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18286,7 +18286,7 @@ GameObject:
   - component: {fileID: 1100995060}
   m_Layer: 8
   m_Name: wall_Collider_037
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18745,7 +18745,7 @@ GameObject:
   - component: {fileID: 1238280695}
   m_Layer: 8
   m_Name: wall_Collider_011
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18827,7 +18827,7 @@ GameObject:
   - component: {fileID: 1239823363}
   m_Layer: 8
   m_Name: wall_Collider_026
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19062,7 +19062,7 @@ GameObject:
   - component: {fileID: 1292653299}
   m_Layer: 8
   m_Name: wall_Collider_039
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19370,7 +19370,7 @@ GameObject:
   - component: {fileID: 1340290923}
   m_Layer: 8
   m_Name: wall_Collider_050
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20958,7 +20958,7 @@ GameObject:
   - component: {fileID: 1367056407}
   m_Layer: 8
   m_Name: wall_Collider_040
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22092,7 +22092,7 @@ GameObject:
   - component: {fileID: 1372092579}
   m_Layer: 8
   m_Name: wall_Collider_017
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22174,7 +22174,7 @@ GameObject:
   - component: {fileID: 1383318151}
   m_Layer: 8
   m_Name: wall_Collider_015
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22384,7 +22384,7 @@ GameObject:
   - component: {fileID: 1401990065}
   m_Layer: 8
   m_Name: wall_Collider_035
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26764,7 +26764,7 @@ GameObject:
   - component: {fileID: 1561630318}
   m_Layer: 8
   m_Name: wall_Collider_003
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26974,7 +26974,7 @@ GameObject:
   - component: {fileID: 1577992824}
   m_Layer: 8
   m_Name: wall_Collider_033
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28496,7 +28496,7 @@ GameObject:
   - component: {fileID: 1633771498}
   m_Layer: 8
   m_Name: wall_Collider_034
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28610,7 +28610,7 @@ GameObject:
   - component: {fileID: 1656811816}
   m_Layer: 8
   m_Name: wall_Collider_014
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29076,7 +29076,7 @@ GameObject:
   - component: {fileID: 1671094389}
   m_Layer: 8
   m_Name: wall_Collider_004
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29379,7 +29379,7 @@ GameObject:
   - component: {fileID: 1724387619}
   m_Layer: 8
   m_Name: wall_Collider_031
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30161,7 +30161,7 @@ GameObject:
   - component: {fileID: 1802060645}
   m_Layer: 8
   m_Name: wall_Collider_019
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32585,7 +32585,7 @@ GameObject:
   - component: {fileID: 1856736535}
   m_Layer: 8
   m_Name: wall_Collider_038
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32714,7 +32714,7 @@ GameObject:
   - component: {fileID: 1873423834}
   m_Layer: 8
   m_Name: wall_Collider_024
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32796,7 +32796,7 @@ GameObject:
   - component: {fileID: 1878204188}
   m_Layer: 8
   m_Name: wall_Collider_022
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32878,7 +32878,7 @@ GameObject:
   - component: {fileID: 1885309110}
   m_Layer: 8
   m_Name: wall_Collider_013
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33139,7 +33139,7 @@ GameObject:
   - component: {fileID: 1939918326}
   m_Layer: 8
   m_Name: wall_Collider_016
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33221,7 +33221,7 @@ GameObject:
   - component: {fileID: 1943444356}
   m_Layer: 8
   m_Name: wall_Collider_054
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36928,7 +36928,7 @@ GameObject:
   - component: {fileID: 2133635895}
   m_Layer: 8
   m_Name: wall_Collider_053
-  m_TagString: Untagged
+  m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
