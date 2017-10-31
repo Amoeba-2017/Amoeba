@@ -205,13 +205,15 @@ public class PlayerController : MonoBehaviour
 
     public void newKingSlime()
     {
+        if (slimes.Count > 0)
+        {
+            slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
 
-        slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = false;
-
-        randomKingSlime = Random.Range(0, slimes.Count -1);
-        Debug.Log(randomKingSlime);
-        slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
-
+            randomKingSlime = Random.Range(0, slimes.Count - 1);
+            Debug.Log(randomKingSlime);
+            transform.position = slimes[randomKingSlime].transform.position;
+            slimes[randomKingSlime].GetComponent<SlimeMovement>().kingSlime = true;
+        }
     }
 
 
