@@ -174,14 +174,12 @@ public class PlayerController : MonoBehaviour
 
         /////////RETICAL WORK
 
-        //if (dirRot != Vector3.zero)
-        //{
-        //    transform.GetChild(1).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
-        //}
-        //else
-        //{
-        //    transform.GetChild(1).rotation = Quaternion.LookRotation(new Vector3(0, 0, -1), Vector3.up);
-        //}
+        if (dirRot != Vector3.zero)
+        {
+            transform.GetChild(1).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
+        }
+
+        transform.GetChild(1).transform.position = slimes[randomKingSlime].transform.position;
 
     }
 

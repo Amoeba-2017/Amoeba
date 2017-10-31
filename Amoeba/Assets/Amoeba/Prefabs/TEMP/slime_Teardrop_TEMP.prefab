@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileShot: {fileID: 1648453437199472, guid: dd61db4ee74592a4faf75c64617e9a94,
     type: 2}
-  projectileShotSpeed: 40
+  projectileShotSpeed: 60
   destroyTimer: 1.2
   slime: {fileID: 1664931614777470}
 --- !u!114 &114734289424243706
@@ -193,6 +193,7 @@ MonoBehaviour:
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
   rotSpeed: 5
+  kingSlime: 0
 --- !u!135 &135085119982324232
 SphereCollider:
   m_ObjectHideFlags: 1
