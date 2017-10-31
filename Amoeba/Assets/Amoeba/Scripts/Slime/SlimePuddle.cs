@@ -8,6 +8,9 @@ public class SlimePuddle : MonoBehaviour {
 
     Vector3 randomRotDir;
 
+    [HideInInspector]
+    public bool ShootOut;
+
     [SerializeField]
     private float minRanForce = 2;
 
@@ -22,8 +25,11 @@ public class SlimePuddle : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        randomRotDir = ((transform.position + transform.up) + new Vector3(Random.Range(1, -1), 0, Random.Range(1, -1))) - transform.position;
-        gameObject.GetComponent<Rigidbody>().AddForce(randomRotDir * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
+        if (ShootOut == true)
+        {
+            randomRotDir = ((transform.position + transform.up) + new Vector3(Random.Range(1, -1), 0, Random.Range(1, -1))) - transform.position;
+            gameObject.GetComponent<Rigidbody>().AddForce(randomRotDir * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
+        }
     }
 	
 

@@ -39,6 +39,27 @@ public class GameStateManager : MonoBehaviour
     [HideInInspector]
     public bool spawnPlayers = true;
 
+    [SerializeField]
+    private bool minMaxRandomSpawn;
+
+
+
+    [SerializeField]
+    private GameObject puddle;
+
+    [SerializeField]
+    float puddleIntervalTimer;
+
+    [SerializeField]
+    float minPuddleSpawnTime;
+
+    [SerializeField]
+    float maxPuddleSpawnTime;
+
+    private float minMaxPuddleTime;
+
+    float puddleTimer;
+
 
     // Use this for initialization
     void Awake()
@@ -56,6 +77,8 @@ public class GameStateManager : MonoBehaviour
         {
             Debug.Log(x);
         }
+
+        minMaxPuddleTime = Random.Range(minPuddleSpawnTime, maxPuddleSpawnTime);
     }
 
     void Update()
@@ -68,6 +91,92 @@ public class GameStateManager : MonoBehaviour
             {
                 loadPlayers();
                 spawnPlayers = false;
+            }
+
+
+            puddleTimer += Time.deltaTime;
+            if (puddleTimer > minMaxPuddleTime)
+            {
+                minMaxPuddleTime = Random.Range(minPuddleSpawnTime, maxPuddleSpawnTime);
+                puddleTimer = 0;
+
+
+                GameObject[] ts = GameObject.FindGameObjectsWithTag("PuddleSpawners");
+
+                int amountOfLoops = 0;
+
+                while (true)
+                {
+                    amountOfLoops++;
+                    if (amountOfLoops >= ts.Length)
+                    {
+                        break;
+                    }
+
+
+                    int randomNumber = Random.Range(0, ts.Length - 1);
+
+                    GameObject x = ts[randomNumber];
+
+                    if (x != null)
+                    {
+                        if (x.transform.childCount == 0)
+                        {
+                            GameObject i = Instantiate(puddle, x.transform.position + transform.up * 10, Quaternion.identity);
+                            i.GetComponent<SlimePuddle>().ShootOut = false;
+                            i.transform.SetParent(x.transform);
+                            break;
+                        }
+                        else
+                        {
+                            ts[randomNumber] = null;
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                if (puddleTimer > puddleIntervalTimer)
+                {
+                    puddleTimer = 0;
+
+                    puddleTimer = 0;
+
+
+                    GameObject[] ts = GameObject.FindGameObjectsWithTag("PuddleSpawners");
+
+                    int amountOfLoops = 0;
+
+                    while (true)
+                    {
+                        amountOfLoops++;
+                        if (amountOfLoops >= ts.Length)
+                        {
+                            break;
+                        }
+
+
+                        int randomNumber = Random.Range(0, ts.Length - 1);
+
+                        GameObject x = ts[randomNumber];
+
+                        if (x != null)
+                        {
+                            if (x.transform.childCount == 0)
+                            {
+                                GameObject i = Instantiate(puddle, x.transform.position + transform.up * 10, Quaternion.identity);
+                                i.GetComponent<SlimePuddle>().ShootOut = false;
+                                i.transform.SetParent(x.transform);
+                                break;
+                            }
+                            else
+                            {
+                                ts[randomNumber] = null;
+                            }
+                        }
+                    }
+                }
             }
         }
 

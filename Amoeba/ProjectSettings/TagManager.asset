@@ -20,6 +20,7 @@ TagManager:
   - SpawnPoint
   - Rock
   - Slime
+  - PuddleSpawners
   layers:
   - Default
   - TransparentFX
