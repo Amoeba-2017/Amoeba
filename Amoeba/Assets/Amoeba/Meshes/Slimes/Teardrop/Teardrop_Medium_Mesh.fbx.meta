@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 7a96c288bebd42441a288ba71f6fb44a
-timeCreated: 1508106045
+guid: 44729032c63298144b5f8f6d977a2b64
+timeCreated: 1509411118
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: tree_large_001
+    4300000: Slime_TearDrop_Medium
+    7400000: Take 001
     9500000: //RootNode
+    13700000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
