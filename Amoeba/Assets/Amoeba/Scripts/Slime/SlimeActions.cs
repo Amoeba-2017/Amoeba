@@ -31,10 +31,10 @@ public class SlimeActions : MonoBehaviour
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
     }
 
-    public void Shoot(Vector3 rot)
+    public void Shoot(Vector3 rot , float mass)
     {
     
-        Debug.Log(rot);
+        //Debug.Log(rot);
 
         if (rot != Vector3.zero)
         {
@@ -43,9 +43,9 @@ public class SlimeActions : MonoBehaviour
 
             Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.identity);
 
+            Bullet.GetComponent<SlimeBullet>().SetMyMass(mass);
             // Get the object (Bullet) and add the force to it
-            Bullet.GetComponent
-            <Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
+            Bullet.GetComponent<Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
 
             // Play shooting sound
             AudioManager.PlaySound("ShootSound");
@@ -56,64 +56,64 @@ public class SlimeActions : MonoBehaviour
     }
 
 
-    public void Split(float amount)
-    {
+    //public void Split(float amount)
+    //{
 
         
 
-        if (playerController == null)
-        {
-            if (slimeMovement.player.GetComponent<PlayerController>() != null)
-            {
-                playerController = slimeMovement.player.GetComponent<PlayerController>();
-            }
-        }
-        playerController.slimes.Remove(gameObject);
+    //    if (playerController == null)
+    //    {
+    //        if (slimeMovement.player.GetComponent<PlayerController>() != null)
+    //        {
+    //            playerController = slimeMovement.player.GetComponent<PlayerController>();
+    //        }
+    //    }
+    //    playerController.slimes.Remove(gameObject);
 
 
-        if (amount == 0)
-        {
-            playerController.speed = 15.5f;
+    //    if (amount == 0)
+    //    {
+    //        playerController.speed = 15.5f;
 
-            newSlime(0.75f, 1);
-            newSlime(0.75f, 1);
-        }
-        else if (amount == 1)
-        {
+    //        newSlime(0.75f, 1);
+    //        newSlime(0.75f, 1);
+    //    }
+    //    else if (amount == 1)
+    //    {
 
-            playerController.speed = 15.7f;
+    //        playerController.speed = 15.7f;
 
-            newSlime(.6f, 2);
-            newSlime(.6f, 2);
-            newSlime(.6f, 2);
-        }
+    //        newSlime(.6f, 2);
+    //        newSlime(.6f, 2);
+    //        newSlime(.6f, 2);
+    //    }
 
-        else if (amount == 2)
-        {
-            playerController.speed = 16;
+    //    else if (amount == 2)
+    //    {
+    //        playerController.speed = 16;
 
-            newSlime(0.4f, 3);
-            newSlime(0.4f, 3);
-            newSlime(0.4f, 3);
-            newSlime(0.4f, 3);
-        }
-        else if (amount == 3)
-        {
-            slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
-        }
-        playerController.newKingSlime();
+    //        newSlime(0.4f, 3);
+    //        newSlime(0.4f, 3);
+    //        newSlime(0.4f, 3);
+    //        newSlime(0.4f, 3);
+    //    }
+    //    else if (amount == 3)
+    //    {
+    //        slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
+    //    }
+    //    playerController.newKingSlime();
 
-    }
+    //}
 
 
-    void newSlime(float size, float amount)
-    {
-        GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
-        playerController.slimes.Add(tempSlime);
-        tempSlime.GetComponent<SlimeMovement>().parent = slimeMovement.parent;
-        tempSlime.GetComponent<SlimeHealth>().amountOfSplits = amount;
-        tempSlime.transform.localScale = new Vector3(size, size, size);
-    }
+    //void newSlime(float size, float amount)
+    //{
+    //    GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
+    //    playerController.slimes.Add(tempSlime);
+    //    tempSlime.GetComponent<SlimeMovement>().parent = slimeMovement.parent;
+    //    tempSlime.GetComponent<SlimeHealth>().amountOfSplits = amount;
+    //    tempSlime.transform.localScale = new Vector3(size, size, size);
+    //}
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {

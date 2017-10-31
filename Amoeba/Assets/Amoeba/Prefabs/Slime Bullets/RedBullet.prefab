@@ -173,6 +173,7 @@ MonoBehaviour:
     type: 2}
   BulletSlimeSplat: {fileID: 1026837326422102, guid: 02b23e29a916c7447bbb7aa98cd894a3,
     type: 2}
+  Puddle: {fileID: 1016585148679024, guid: 054d283a4bcea7c42a48501d97ce418d, type: 2}
 --- !u!135 &135569360488159030
 SphereCollider:
   m_ObjectHideFlags: 1

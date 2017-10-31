@@ -19,6 +19,7 @@ TagManager:
   - DrawCanvas
   - SpawnPoint
   - Rock
+  - Slime
   layers:
   - Default
   - TransparentFX

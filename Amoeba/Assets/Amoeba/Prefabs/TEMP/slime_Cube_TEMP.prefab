@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114522668222445102}
   m_Layer: 14
   m_Name: slime_Cube_TEMP
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,10 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeathPoints: 1
   IsShielded: 0
-  BulletDamage: 0
-  amountOfSplits: 0
+  BulletDamagePercent: 5
   invincibilityFramesTime: 1
   powerUpLength: 7.5
   colorChangeSpeed: 2
