@@ -65,6 +65,8 @@ public class UserInterfaceManager : MonoBehaviour
 
     private ControllerUISelection currentControllerUISelection;
 
+    float countDown  = 0.0f;
+
     public enum ControllerUISelection
     {
         play,
@@ -106,7 +108,7 @@ public class UserInterfaceManager : MonoBehaviour
                 firstRun = false;
             }
 
-            currentTimer += Time.deltaTime;
+
 
             // Game Canvas Detections
             if (victoryScreen == null)
@@ -128,9 +130,15 @@ public class UserInterfaceManager : MonoBehaviour
 
             if (timerCanvas != null)
             {
-                float countDown = ((roundTime * 60) - currentTimer);
+                currentTimer += Time.deltaTime;
+                countDown = ((roundTime * 60) - currentTimer);
                 string minutes = Mathf.Floor(countDown / 60).ToString("0");
-                string seconds = (countDown % 59).ToString("00");
+                string seconds = (countDown % 60).ToString("00");
+                if(seconds == "60")
+                {
+                    seconds = "00";
+                    minutes = (int.Parse(minutes) + 1).ToString();
+                }
                 if (float.Parse(minutes) <= 0.0f && float.Parse(seconds) <= 0.0f)
                 {
                     timerCanvas.transform.GetChild(0).GetComponent<Text>().text = "0:00";
@@ -270,6 +278,7 @@ public class UserInterfaceManager : MonoBehaviour
         }
         gsm.Players.Clear();
         StartCoroutine(restartGame());
+
     }
 
     IEnumerator restartGame()
@@ -278,7 +287,7 @@ public class UserInterfaceManager : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         Debug.Log("loading new Scene");
         gsm.spawnPlayers = true;
-        currentTimer = roundTime;
+        currentTimer = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
