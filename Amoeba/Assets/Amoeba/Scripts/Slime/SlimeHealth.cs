@@ -69,7 +69,7 @@ public class SlimeHealth : MonoBehaviour
         //   // HeathPoints = 0;
         //    Debug.Log("split");
         //}
-        Debug.Log(playerC.mass);
+
         gameObject.transform.localScale = new Vector3(playerC.mass / 100, playerC.mass / 100, playerC.mass / 100);
 
         if (IsShielded == true)

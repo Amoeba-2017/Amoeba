@@ -37,6 +37,7 @@ public class SlimePuddle : MonoBehaviour {
     {
         if (x.transform.tag == "Slime")
         {
+            Debug.Log("destroying this");
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
             Destroy(gameObject);
         }
