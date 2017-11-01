@@ -175,6 +175,7 @@ MonoBehaviour:
   projectileShotSpeed: 60
   destroyTimer: 1.2
   slime: {fileID: 1618447615051396}
+  ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
 --- !u!114 &114381959064204622
 MonoBehaviour:
   m_ObjectHideFlags: 1
