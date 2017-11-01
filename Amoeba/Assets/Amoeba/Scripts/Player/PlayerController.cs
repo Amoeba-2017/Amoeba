@@ -292,7 +292,7 @@ public class PlayerController : MonoBehaviour
 
             foreach (GameObject i in slimes)
             {
-                i.GetComponent<SlimeActions>().Shoot(vec3.normalized, mass);
+                i.GetComponent<SlimeActions>().Shoot(lastRot, mass);
             }
         }
 

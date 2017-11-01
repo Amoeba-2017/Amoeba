@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23398191099389826}
   - component: {fileID: 54889255212493226}
   - component: {fileID: 114822257472157374}
-  m_Layer: 18
+  m_Layer: 19
   m_Name: SlimePuddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,5 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b5215739f2ab3448ee4d0b52bb4331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootOut: 0
   minRanForce: 30
   maxRanForce: 39

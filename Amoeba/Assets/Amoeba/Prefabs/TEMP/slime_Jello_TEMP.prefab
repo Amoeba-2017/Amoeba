@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114271113959807272}
   - component: {fileID: 114381959064204622}
   - component: {fileID: 114248732610887640}
+  - component: {fileID: 54232321628340332}
   m_Layer: 17
   m_Name: slime_Jello_TEMP
   m_TagString: Slime
@@ -115,6 +116,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565415894958582}
   m_Mesh: {fileID: 4300000, guid: 53debdc7fc52bfb47b1b6306d8b33c43, type: 3}
+--- !u!54 &54232321628340332
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618447615051396}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95064601777837052
 Animator:
   serializedVersion: 3
@@ -215,10 +231,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
+  m_Height: 2.16
+  m_Radius: 1.59
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.38, z: 0}
+  m_Center: {x: 0, y: 0.94, z: 0}

@@ -17,6 +17,9 @@ public class SlimePuddle : MonoBehaviour {
     [SerializeField]
     private float maxRanForce = 5;
 
+    //mass needs to be added here 
+
+
     public void SetMass(float a_mass)
     {
         mass = a_mass;
@@ -37,7 +40,6 @@ public class SlimePuddle : MonoBehaviour {
     {
         if (x.transform.tag == "Slime")
         {
-            Debug.Log("destroying this");
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
             Destroy(gameObject);
         }
