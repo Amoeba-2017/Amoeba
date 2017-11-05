@@ -62,8 +62,8 @@ public class SlimeBullet : MonoBehaviour
     // Different particle effect depending on which If Statement is triggered
     void OnCollisionEnter(Collision col)
     {
-
-            Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }
