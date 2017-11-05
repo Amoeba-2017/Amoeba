@@ -9,22 +9,40 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1458926255341784}
+  m_RootGameObject: {fileID: 1885150514245024}
   m_IsPrefabParent: 1
---- !u!1 &1458926255341784
+--- !u!1 &1041216417044942
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4939739810954136}
-  - component: {fileID: 135927975185901128}
-  - component: {fileID: 143561204258688062}
-  - component: {fileID: 114012252371586062}
-  - component: {fileID: 114805458414191090}
-  - component: {fileID: 114522668222445102}
-  - component: {fileID: 54885823843822490}
+  - component: {fileID: 4647033545612528}
+  - component: {fileID: 33580174475798948}
+  - component: {fileID: 23084679463316000}
+  - component: {fileID: 95256167622013000}
+  m_Layer: 0
+  m_Name: Slime_Square_Large_Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1885150514245024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4784939486606870}
+  - component: {fileID: 135546925128688446}
+  - component: {fileID: 143323838807679440}
+  - component: {fileID: 114557451512928356}
+  - component: {fileID: 114329589823009616}
+  - component: {fileID: 114707457216912662}
+  - component: {fileID: 54376094884186036}
   m_Layer: 14
   m_Name: slime_Cube_TEMP
   m_TagString: Slime
@@ -32,57 +50,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1541472134881074
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4899762494457896}
-  - component: {fileID: 33454323027978568}
-  - component: {fileID: 23245935885405044}
-  - component: {fileID: 95335832308521778}
-  m_Layer: 14
-  m_Name: slime_Cube_Large
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4899762494457896
+--- !u!4 &4647033545612528
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1541472134881074}
+  m_GameObject: {fileID: 1041216417044942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4939739810954136}
+  m_Father: {fileID: 4784939486606870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4939739810954136
+--- !u!4 &4784939486606870
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 982.3399, y: 1149.9252, z: -5279.2676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4899762494457896}
+  - {fileID: 4647033545612528}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23245935885405044
+--- !u!23 &23084679463316000
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1541472134881074}
+  m_GameObject: {fileID: 1041216417044942}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -109,19 +109,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33454323027978568
+--- !u!33 &33580174475798948
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1541472134881074}
-  m_Mesh: {fileID: 4300000, guid: 80000619203ef2242b30b9198056fc93, type: 3}
---- !u!54 &54885823843822490
+  m_GameObject: {fileID: 1041216417044942}
+  m_Mesh: {fileID: 4300000, guid: 9979261db0e0f8345a7aa972ac8e7c6a, type: 3}
+--- !u!54 &54376094884186036
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -131,29 +131,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &95335832308521778
+--- !u!95 &95256167622013000
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1541472134881074}
+  m_GameObject: {fileID: 1041216417044942}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 80000619203ef2242b30b9198056fc93, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 9979261db0e0f8345a7aa972ac8e7c6a, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114012252371586062
+--- !u!114 &114329589823009616
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsShielded: 0
+  BulletDamagePercent: 5
+  invincibilityFramesTime: 1
+  powerUpLength: 7.5
+  colorChangeSpeed: 2
+  isInvincible: 0
+--- !u!114 &114557451512928356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885150514245024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
@@ -163,14 +180,14 @@ MonoBehaviour:
     type: 2}
   projectileShotSpeed: 60
   destroyTimer: 1.2
-  slime: {fileID: 1458926255341784}
+  slime: {fileID: 1885150514245024}
   ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
---- !u!114 &114522668222445102
+--- !u!114 &114707457216912662
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
@@ -192,41 +209,24 @@ MonoBehaviour:
   flyingVel: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   kingSlime: 0
---- !u!114 &114805458414191090
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsShielded: 0
-  BulletDamagePercent: 5
-  invincibilityFramesTime: 1
-  powerUpLength: 7.5
-  colorChangeSpeed: 2
-  isInvincible: 0
---- !u!135 &135927975185901128
+--- !u!135 &135546925128688446
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.66
   m_Center: {x: 0, y: 0.82, z: 0}
---- !u!143 &143561204258688062
+--- !u!143 &143323838807679440
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458926255341784}
+  m_GameObject: {fileID: 1885150514245024}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
