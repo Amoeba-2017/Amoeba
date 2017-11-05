@@ -353,7 +353,7 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
     }
-
+    
     public void RemovePlayer()
     {
         if (currentAmountofPlayers == 4)

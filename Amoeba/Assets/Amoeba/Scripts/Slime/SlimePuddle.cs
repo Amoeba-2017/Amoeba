@@ -40,14 +40,17 @@ public class SlimePuddle : MonoBehaviour {
     {
         if (x.transform.tag == "Slime")
         {
+            Physics.IgnoreCollision(x.collider, transform.GetComponent<Collider>(), true);
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
             Destroy(gameObject);
         }
     }
 
 
-	// Update is called once per frame
-	void Update ()
+
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}

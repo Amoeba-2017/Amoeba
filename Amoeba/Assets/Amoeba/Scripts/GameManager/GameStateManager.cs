@@ -93,6 +93,26 @@ public class GameStateManager : MonoBehaviour
                 spawnPlayers = false;
             }
 
+            float highestMass = float.MinValue;
+            GameObject higestGO = null;
+
+            foreach (GameObject x in players)
+            {
+                float currentMass = x.GetComponent<PlayerController>().mass;
+                if (currentMass > highestMass)
+                {
+                    highestMass = currentMass;
+                    higestGO = x;
+                }
+            }
+
+            if (higestGO != null)
+            {
+                higestGO.GetComponent<PlayerUI>().score += Time.deltaTime;
+            }
+
+
+
 
             puddleTimer += Time.deltaTime;
             if (puddleTimer > minMaxPuddleTime)

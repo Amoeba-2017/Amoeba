@@ -7,6 +7,9 @@ public class PlayerUI : MonoBehaviour
 {
     private ScoreManager sm;
 
+    [HideInInspector]
+    public float score;
+
     // Use this for initialization
     void Awake()
     {
