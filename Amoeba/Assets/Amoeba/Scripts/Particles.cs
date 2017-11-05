@@ -16,9 +16,9 @@ public class Particles : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Time.deltaTime == DestroyTime)
-        {
-            Destroy(gameObject);
-        }
+//        if (Time.deltaTime == DestroyTime)
+//        {
+            Destroy(gameObject, DestroyTime);
+//        }
 	}
 }
