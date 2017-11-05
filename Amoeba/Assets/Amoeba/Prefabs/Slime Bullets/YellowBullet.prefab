@@ -169,9 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662513df6835a444989d560e73c73378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletWallSplat: {fileID: 1221325485049212, guid: 562ad70e9db350d45bd8a40ff6864a81,
-    type: 2}
-  BulletSlimeSplat: {fileID: 1026837326422102, guid: c8aba37913b5e50408f5a343389acbf3,
+  BulletSplat: {fileID: 1983282747929010, guid: 1709cd30044b2b04ba1bba7592851f1e,
     type: 2}
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
 --- !u!135 &135354308472040938
