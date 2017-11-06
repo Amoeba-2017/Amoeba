@@ -786,7 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimePrefab: {fileID: 1825077359176794, guid: adb7001b73e333747b99c1ba58a04e11,
     type: 2}
-  speed: 15
+  speed: 20
   powerUpTime: 0
   cc: {fileID: 0}
   slimes: []
