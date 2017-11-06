@@ -34,6 +34,7 @@ public class SlimeActions : MonoBehaviour
     void Start()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
+
     }
 
     public void Shoot(Vector3 rot , float mass)
@@ -48,7 +49,12 @@ public class SlimeActions : MonoBehaviour
 
             Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.identity);
 
-            mass -= mass * (massPercentLossed / 100);
+            if(playerController == null)
+            {
+                playerController = slimeMovement.player.GetComponent<PlayerController>();
+            }
+
+            playerController.mass -= playerController.mass * (massPercentLossed / 100);
 
             Bullet.GetComponent<SlimeBullet>().SetMyMass(mass * (massPercentLossed / 100));
 
