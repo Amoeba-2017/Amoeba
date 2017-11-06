@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
         //cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
         //cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
-        cc.Move(((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized + (Vector3.down * 9.8f * Time.deltaTime) * speed * Time.deltaTime);
+        cc.Move(((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized + (Vector3.down * 9.8f) + (Vector3.down  * Time.deltaTime) * speed * Time.deltaTime);
 
 
         controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.RightStick.Y);
@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour
         //using keybored controls
 
         //add movment to the player if the user adds input
-        cc.Move(((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKey"))).normalized + (Vector3.down * 9.8f * Time.deltaTime) * speed  * Time.deltaTime);
+        cc.Move((((transform.right * Input.GetAxis("HorizontalKeys")) + (transform.forward * Input.GetAxis("VerticalKey"))).normalized + (Vector3.down * 9.8f)) * speed  * Time.deltaTime);
         //   cc.Move(transform.forward * Input.GetAxis("VerticalKeys") * speed * Time.deltaTime);
 
         //if q button is down

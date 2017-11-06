@@ -195,7 +195,7 @@ public class SlimeMovement : MonoBehaviour
                     if (Vector3.Distance(transform.position, newPos) > 0.5f)
                     {
                         Vector3 vecBetween = newPos - transform.position;
-                        cc.Move(vecBetween.normalized * speed * Time.deltaTime + Vector3.down * 9.8f );
+                        cc.Move(vecBetween.normalized * speed * Time.deltaTime);
                     }
                 }
                 else
@@ -206,7 +206,7 @@ public class SlimeMovement : MonoBehaviour
                         updatePlayerPos = false;
                     }
                     Vector3 vecBetween = new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position;
-                    cc.Move(vecBetween * speed * Time.deltaTime + Vector3.down * 9.8f);
+                    cc.Move(vecBetween * speed * Time.deltaTime);
                 }
 
 
@@ -216,7 +216,7 @@ public class SlimeMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
-            cc.Move(new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position + Vector3.down * 9.8f);
+            cc.Move(new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position);
 
         }
     }
