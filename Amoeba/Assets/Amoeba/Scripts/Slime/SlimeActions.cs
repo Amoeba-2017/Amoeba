@@ -15,7 +15,7 @@ public class SlimeActions : MonoBehaviour
 
     // The time that, when reached, will cause the projectile to be destroyed
     [SerializeField]
-    private float destroyTimer;
+    private float bulletDestroyTimer;
 
     [SerializeField]
     private GameObject slime;
@@ -26,6 +26,9 @@ public class SlimeActions : MonoBehaviour
 
     [SerializeField]
     private GameObject ShootSplat;
+
+    [SerializeField]
+    private float massPercentLossed;
 
     // Use this for initialization
     void Start()
@@ -45,7 +48,12 @@ public class SlimeActions : MonoBehaviour
 
             Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.identity);
 
-            Bullet.GetComponent<SlimeBullet>().SetMyMass(mass);
+            mass -= mass * (massPercentLossed / 100);
+
+            Bullet.GetComponent<SlimeBullet>().SetMyMass(mass * (massPercentLossed / 100));
+
+
+
             // Get the object (Bullet) and add the force to it
             Bullet.GetComponent<Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
 
@@ -55,71 +63,74 @@ public class SlimeActions : MonoBehaviour
             Instantiate(ShootSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
 
             // Destroy the Bullet when the DestroyTimer has been reached
-            Destroy(Bullet, destroyTimer);
+            Destroy(Bullet, bulletDestroyTimer);
         }
     }
 
 
-    //public void Split(float amount)
-    //{
-
-        
-
-    //    if (playerController == null)
-    //    {
-    //        if (slimeMovement.player.GetComponent<PlayerController>() != null)
-    //        {
-    //            playerController = slimeMovement.player.GetComponent<PlayerController>();
-    //        }
-    //    }
-    //    playerController.slimes.Remove(gameObject);
 
 
-    //    if (amount == 0)
-    //    {
-    //        playerController.speed = 15.5f;
 
-    //        newSlime(0.75f, 1);
-    //        newSlime(0.75f, 1);
-    //    }
-    //    else if (amount == 1)
-    //    {
-
-    //        playerController.speed = 15.7f;
-
-    //        newSlime(.6f, 2);
-    //        newSlime(.6f, 2);
-    //        newSlime(.6f, 2);
-    //    }
-
-    //    else if (amount == 2)
-    //    {
-    //        playerController.speed = 16;
-
-    //        newSlime(0.4f, 3);
-    //        newSlime(0.4f, 3);
-    //        newSlime(0.4f, 3);
-    //        newSlime(0.4f, 3);
-    //    }
-    //    else if (amount == 3)
-    //    {
-    //        slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
-    //    }
-    //    playerController.newKingSlime();
-
-    //}
+        //public void Split(float amount)
+        //{
 
 
-    //void newSlime(float size, float amount)
-    //{
-    //    GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
-    //    playerController.slimes.Add(tempSlime);
-    //    tempSlime.GetComponent<SlimeMovement>().parent = slimeMovement.parent;
-    //    tempSlime.GetComponent<SlimeHealth>().amountOfSplits = amount;
-    //    tempSlime.transform.localScale = new Vector3(size, size, size);
-    //}
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+        //    if (playerController == null)
+        //    {
+        //        if (slimeMovement.player.GetComponent<PlayerController>() != null)
+        //        {
+        //            playerController = slimeMovement.player.GetComponent<PlayerController>();
+        //        }
+        //    }
+        //    playerController.slimes.Remove(gameObject);
+
+
+        //    if (amount == 0)
+        //    {
+        //        playerController.speed = 15.5f;
+
+        //        newSlime(0.75f, 1);
+        //        newSlime(0.75f, 1);
+        //    }
+        //    else if (amount == 1)
+        //    {
+
+        //        playerController.speed = 15.7f;
+
+        //        newSlime(.6f, 2);
+        //        newSlime(.6f, 2);
+        //        newSlime(.6f, 2);
+        //    }
+
+        //    else if (amount == 2)
+        //    {
+        //        playerController.speed = 16;
+
+        //        newSlime(0.4f, 3);
+        //        newSlime(0.4f, 3);
+        //        newSlime(0.4f, 3);
+        //        newSlime(0.4f, 3);
+        //    }
+        //    else if (amount == 3)
+        //    {
+        //        slimeMovement.currentSlimeState = SlimeMovement.SlimeState.flying;
+        //    }
+        //    playerController.newKingSlime();
+
+        //}
+
+
+        //void newSlime(float size, float amount)
+        //{
+        //    GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
+        //    playerController.slimes.Add(tempSlime);
+        //    tempSlime.GetComponent<SlimeMovement>().parent = slimeMovement.parent;
+        //    tempSlime.GetComponent<SlimeHealth>().amountOfSplits = amount;
+        //    tempSlime.transform.localScale = new Vector3(size, size, size);
+        //}
+
+        void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "ProtectiveShield")
         {

@@ -14,12 +14,16 @@ public class SlimeHealth : MonoBehaviour
     public bool IsShielded;
 
     // Damage a Slime takes from bullets
-    [SerializeField] 
+    [SerializeField]
     private float BulletDamagePercent = 5;
 
     // Amount of times a Slime has split
     //[HideInInspector]
     //public float amountOfSplits = 0;
+
+    [SerializeField]
+    private GameObject Puddle;
+
 
     [SerializeField]
     private float invincibilityFramesTime;
@@ -47,11 +51,14 @@ public class SlimeHealth : MonoBehaviour
 
     private SlimeMovement slimeMovement;
 
+    [SerializeField]
+    private float massPercentLoss;
+
     // Use this for initialization
     void Start()
     {
         renderer = gameObject.transform.GetChild(0).GetComponent<Renderer>();
-   //     HeathPoints = 1f;
+        //     HeathPoints = 1f;
         IsShielded = false;
         firstColor = true;
         slimeAction = gameObject.GetComponent<SlimeActions>();
@@ -109,13 +116,43 @@ public class SlimeHealth : MonoBehaviour
                 if (isInvincible == false)
                 {
                     //gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
-                    print("Colliding");
-                    Debug.Log(playerC.mass * (BulletDamagePercent / 100));
-                    col.gameObject.GetComponent<SlimeBullet>().SetHitMass(playerC.mass * (BulletDamagePercent / 100));
-                    playerC.mass -= (playerC.mass * (BulletDamagePercent / 100));
+                    Vector3 randomRotDir = Vector3.zero;
+
+                    int randomPos = Random.Range(1, 4);
+
+                    if (randomPos == 1)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + transform.right + transform.forward);
+                    }
+                    else if (randomPos == 2)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + -transform.right + transform.forward);
+                    }
+                    else if (randomPos == 3)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + transform.right + -transform.forward);
+                    }
+
+                    else if (randomPos == 4)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + -transform.right + -transform.forward);
+                    }
+
+
+
+                    GameObject puddle;
+                    puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
+                    Physics.IgnoreCollision(puddle.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
+                    puddle.GetComponent<SlimePuddle>().SetMass(playerC.mass * (massPercentLoss / 100));
                 }
             }
-        }
+            }
+
+
+
+
+
+
     }
 
     public IEnumerator InvincibleFrames()

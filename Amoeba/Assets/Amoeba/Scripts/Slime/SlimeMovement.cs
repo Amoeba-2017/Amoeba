@@ -99,7 +99,7 @@ public class SlimeMovement : MonoBehaviour
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
         if (GameObject.FindGameObjectWithTag("SpawnPoint"))
-        beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y;
+        beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y - 0.5f;
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
 
 
@@ -217,7 +217,7 @@ public class SlimeMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
-            cc.Move(player.transform.position - transform.position);
+            cc.Move(new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position);
         }
     }
 

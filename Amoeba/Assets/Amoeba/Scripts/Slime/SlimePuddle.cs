@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlimePuddle : MonoBehaviour {
 
+    [SerializeField]
     private float mass;
 
     Vector3 randomRotDir;
@@ -30,7 +31,7 @@ public class SlimePuddle : MonoBehaviour {
     {
         if (ShootOut == true)
         {
-            randomRotDir = ((transform.position + transform.up) + new Vector3(Random.Range(1, -1), 0, Random.Range(1, -1))) - transform.position;
+
             gameObject.GetComponent<Rigidbody>().AddForce(randomRotDir * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
         }
     }
