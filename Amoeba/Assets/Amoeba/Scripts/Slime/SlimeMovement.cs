@@ -205,10 +205,10 @@ public class SlimeMovement : MonoBehaviour
                         player.transform.position = gameObject.transform.position;
                         updatePlayerPos = false;
                     }
-                    Vector3 vecBetween = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position;
+                    Vector3 vecBetween = new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position;
                     cc.Move(vecBetween * speed * Time.deltaTime);
                 }
-                //  cc.Move(Vector3.down * 9.8f);
+                cc.Move(Vector3.down * 9.8f);
 
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
@@ -218,6 +218,8 @@ public class SlimeMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
             cc.Move(new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position);
+            cc.Move(Vector3.down * 9.8f);
+
         }
     }
 
