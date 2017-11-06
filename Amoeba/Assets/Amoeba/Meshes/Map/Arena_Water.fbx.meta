@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9979261db0e0f8345a7aa972ac8e7c6a
-timeCreated: 1509921531
+guid: dae796aa34ab48144a1d21ec97b8c6c2
+timeCreated: 1509929191
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Slime_Square_Large
+    4300000: Water
     9500000: //RootNode
   materials:
     importMaterials: 1
