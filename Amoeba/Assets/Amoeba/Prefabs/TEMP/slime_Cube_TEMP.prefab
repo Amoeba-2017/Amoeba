@@ -9,25 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1892598478450518}
+  m_RootGameObject: {fileID: 1055853276112944}
   m_IsPrefabParent: 1
---- !u!1 &1892598478450518
+--- !u!1 &1055853276112944
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4459005275726858}
-  - component: {fileID: 33738078324823300}
-  - component: {fileID: 23714680377728330}
-  - component: {fileID: 95006107923193972}
-  - component: {fileID: 114305408185089764}
-  - component: {fileID: 114769533331295004}
-  - component: {fileID: 114022217636759492}
-  - component: {fileID: 54200980528314266}
-  - component: {fileID: 135100010436945296}
-  - component: {fileID: 143233350024897558}
+  - component: {fileID: 4078150503853140}
+  - component: {fileID: 135091088848495604}
+  - component: {fileID: 143248014494145550}
+  - component: {fileID: 114728958240874320}
+  - component: {fileID: 114497144794398878}
+  - component: {fileID: 114953899700208320}
+  - component: {fileID: 54142735214830354}
   m_Layer: 14
   m_Name: slime_Cube_TEMP
   m_TagString: Slime
@@ -35,60 +32,57 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1904922451485162
+--- !u!1 &1539898046043616
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4750419525984902}
-  - component: {fileID: 135120336303513954}
-  - component: {fileID: 143074743648367080}
-  - component: {fileID: 114023290837696434}
-  - component: {fileID: 114272930316299654}
-  - component: {fileID: 114365153656974468}
-  - component: {fileID: 54588701312543596}
+  - component: {fileID: 4590844160860264}
+  - component: {fileID: 33641632856687746}
+  - component: {fileID: 23557280924245042}
+  - component: {fileID: 95810688259263170}
   m_Layer: 14
-  m_Name: slime_Cube_TEMP
+  m_Name: slime_Cube_Large
   m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4459005275726858
+--- !u!4 &4078150503853140
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1055853276112944}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 611.4891, y: 560.35706, z: -2859.9902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4750419525984902}
+  - {fileID: 4590844160860264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4750419525984902
+--- !u!4 &4590844160860264
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1539898046043616}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4459005275726858}
+  m_Father: {fileID: 4078150503853140}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23714680377728330
+--- !u!23 &23557280924245042
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1539898046043616}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -115,19 +109,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33738078324823300
+--- !u!33 &33641632856687746
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1539898046043616}
   m_Mesh: {fileID: 4300000, guid: 9979261db0e0f8345a7aa972ac8e7c6a, type: 3}
---- !u!54 &54200980528314266
+--- !u!54 &54142735214830354
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1055853276112944}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -137,28 +131,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!54 &54588701312543596
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!95 &95006107923193972
+--- !u!95 &95810688259263170
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1539898046043616}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9979261db0e0f8345a7aa972ac8e7c6a, type: 3}
   m_Controller: {fileID: 0}
@@ -169,12 +148,49 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114022217636759492
+--- !u!114 &114497144794398878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1055853276112944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsShielded: 0
+  BulletDamagePercent: 5
+  Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
+  invincibilityFramesTime: 1
+  powerUpLength: 7.5
+  colorChangeSpeed: 2
+  isInvincible: 0
+  massPercentLoss: 10
+--- !u!114 &114728958240874320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055853276112944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
+    type: 2}
+  projectileShotSpeed: 60
+  bulletDestroyTimer: 1.2
+  slime: {fileID: 1055853276112944}
+  ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
+  massPercentLossed: 10
+--- !u!114 &114953899700208320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055853276112944}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
@@ -196,154 +212,24 @@ MonoBehaviour:
   flyingVel: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   kingSlime: 0
---- !u!114 &114023290837696434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
-    type: 2}
-  projectileShotSpeed: 60
-  bulletDestroyTimer: 1.2
-  slime: {fileID: 1904922451485162}
-  ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
-  massPercentLossed: 10
---- !u!114 &114272930316299654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsShielded: 0
-  BulletDamagePercent: 5
-  Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
-  invincibilityFramesTime: 1
-  powerUpLength: 7.5
-  colorChangeSpeed: 2
-  isInvincible: 0
-  massPercentLoss: 10
---- !u!114 &114305408185089764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c456f46c9a310944faf53e550b949c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileShot: {fileID: 1048198449170192, guid: 56316d5bd2fb4ea4aa75494fee1de32d,
-    type: 2}
-  projectileShotSpeed: 60
-  bulletDestroyTimer: 1.2
-  slime: {fileID: 1892598478450518}
-  ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
-  massPercentLossed: 10
---- !u!114 &114365153656974468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5e41a3880d458498b35449e5c72734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 20
-  avoidWallsForce: 5
-  parent: 
-  speedRandomRange: 1
-  separationDistance: 0.2
-  currentSlimeState: 0
-  maxSpreadDistance: 8
-  minSpreadDistance: 2
-  randomSlimeOffset: 2
-  ExpandAndSrinkSpeed: 15
-  flyingForce: 0
-  timeFlying: 0
-  flyingVel: {x: 0, y: 0, z: 0}
-  rotSpeed: 5
-  kingSlime: 0
---- !u!114 &114769533331295004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 123f0224f3c2f274fa1c05c36f657616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsShielded: 0
-  BulletDamagePercent: 5
-  Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
-  invincibilityFramesTime: 1
-  powerUpLength: 7.5
-  colorChangeSpeed: 2
-  isInvincible: 0
-  massPercentLoss: 10
---- !u!135 &135100010436945296
+--- !u!135 &135091088848495604
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.8
-  m_Center: {x: 0, y: 0.51, z: 0}
---- !u!135 &135120336303513954
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
+  m_GameObject: {fileID: 1055853276112944}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.66
   m_Center: {x: 0, y: 0.82, z: 0}
---- !u!143 &143074743648367080
+--- !u!143 &143248014494145550
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1904922451485162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2.16
-  m_Radius: 1.59
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.94, z: 0}
---- !u!143 &143233350024897558
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892598478450518}
+  m_GameObject: {fileID: 1055853276112944}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
