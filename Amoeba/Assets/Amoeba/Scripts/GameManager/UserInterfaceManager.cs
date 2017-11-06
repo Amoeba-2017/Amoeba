@@ -329,6 +329,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite != redSlime)
             {
                 selectScreen.transform.GetChild(0).GetComponent<Image>().sprite = redSlime;
+                selectScreen.transform.GetChild(0).GetChild(1).GetComponent<Image>().enabled = false;
             }
         }
         if (currentAmountofPlayers == 2)
@@ -336,6 +337,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlime)
             {
                 selectScreen.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlime;
+                selectScreen.transform.GetChild(1).GetChild(1).GetComponent<Image>().enabled = false;
             }
         }
         if (currentAmountofPlayers == 3)
@@ -343,6 +345,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(2).GetComponent<Image>().sprite != blueSlime)
             {
                 selectScreen.transform.GetChild(2).GetComponent<Image>().sprite = blueSlime;
+                selectScreen.transform.GetChild(2).GetChild(1).GetComponent<Image>().enabled = false;
             }
         }
         if (currentAmountofPlayers == 4)
@@ -350,6 +353,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlime)
             {
                 selectScreen.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlime;
+                selectScreen.transform.GetChild(3).GetChild(1).GetComponent<Image>().enabled = false;
             }
         }
     }
@@ -361,6 +365,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(3).GetComponent<Image>().sprite != purpleSlimebw)
             {
                 selectScreen.transform.GetChild(3).GetComponent<Image>().sprite = purpleSlimebw;
+                selectScreen.transform.GetChild(3).GetChild(1).GetComponent<Image>().enabled = true;
             }
         }
         if (currentAmountofPlayers == 3)
@@ -368,6 +373,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(2).GetComponent<Image>().sprite != blueSlimebw)
             {
                 selectScreen.transform.GetChild(2).GetComponent<Image>().sprite = blueSlimebw;
+                selectScreen.transform.GetChild(2).GetChild(1).GetComponent<Image>().enabled = true;
             }
         }
         if (currentAmountofPlayers == 2)
@@ -375,6 +381,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite != yellowSlimebw)
             {
                 selectScreen.transform.GetChild(1).GetComponent<Image>().sprite = yellowSlimebw;
+                selectScreen.transform.GetChild(1).GetChild(1).GetComponent<Image>().enabled = false;
             }
         }
         if (currentAmountofPlayers == 1)
@@ -382,6 +389,7 @@ public class UserInterfaceManager : MonoBehaviour
             if (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite != redSlimebw)
             {
                 selectScreen.transform.GetChild(0).GetComponent<Image>().sprite = redSlimebw;
+                selectScreen.transform.GetChild(0).GetChild(1).GetComponent<Image>().enabled = true;
             }
         }
 
