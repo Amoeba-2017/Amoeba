@@ -122,26 +122,27 @@ public class SlimeHealth : MonoBehaviour
 
                     if (randomPos == 1)
                     {
-                        randomRotDir = ((transform.position + transform.up) + transform.right + transform.forward);
+                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + transform.forward * 2);
                     }
                     else if (randomPos == 2)
                     {
-                        randomRotDir = ((transform.position + transform.up) + -transform.right + transform.forward);
+                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + transform.forward * 2);
                     }
                     else if (randomPos == 3)
                     {
-                        randomRotDir = ((transform.position + transform.up) + transform.right + -transform.forward);
+                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + -transform.forward * 2);
                     }
 
                     else if (randomPos == 4)
                     {
-                        randomRotDir = ((transform.position + transform.up) + -transform.right + -transform.forward);
+                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
                     }
 
 
 
                     GameObject puddle;
                     puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
+                    puddle.GetComponent<SlimePuddle>().ShootOut = true;
                     Physics.IgnoreCollision(puddle.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
                     puddle.GetComponent<SlimePuddle>().SetMass(playerC.mass * (massPercentLoss / 100));
                 }

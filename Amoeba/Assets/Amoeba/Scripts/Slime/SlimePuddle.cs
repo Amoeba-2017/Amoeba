@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimePuddle : MonoBehaviour {
+public class SlimePuddle : MonoBehaviour
+{
 
     [SerializeField]
     private float mass;
@@ -18,6 +19,10 @@ public class SlimePuddle : MonoBehaviour {
     [SerializeField]
     private float maxRanForce = 5;
 
+    private GameObject player;
+
+
+
     //mass needs to be added here 
 
 
@@ -26,16 +31,35 @@ public class SlimePuddle : MonoBehaviour {
         mass = a_mass;
     }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-        if (ShootOut == true)
-        {
+        float closestPlayerDist = float.MaxValue;
+        GameObject closestPlayer = null;
 
-            gameObject.GetComponent<Rigidbody>().AddForce(randomRotDir * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
+        foreach(GameObject x in GameObject.FindGameObjectsWithTag("Slime"))
+        {
+            float currentPlayerDist = Vector3.Distance(x.transform.position, transform.position);
+
+            if (currentPlayerDist < closestPlayerDist)
+            {
+                closestPlayerDist = currentPlayerDist;
+                closestPlayer = x;
+            }
+        }
+        player = closestPlayer;
+        Shoot();
+    }
+
+
+    void Shoot()
+    {
+        if (ShootOut)
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
         }
     }
-	
+
 
     void OnCollisionEnter(Collision x)
     {
@@ -51,8 +75,8 @@ public class SlimePuddle : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-		
-	}
+
+    }
 }

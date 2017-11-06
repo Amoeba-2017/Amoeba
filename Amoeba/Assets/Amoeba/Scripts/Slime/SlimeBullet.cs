@@ -41,31 +41,28 @@ public class SlimeBullet : MonoBehaviour
 
                 if (randomPos == 1)
                 {
-                    randomRotDir = ((transform.position + transform.up) + transform.right + transform.forward);
+                    randomRotDir = ((transform.position + transform.up) + transform.right * 2 + transform.forward * 2);
                 }
                 else if (randomPos == 2)
                 {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right + transform.forward);
+                    randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + transform.forward * 2);
                 }
                 else if (randomPos == 3)
                 {
-                    randomRotDir = ((transform.position + transform.up) + transform.right + -transform.forward);
+                    randomRotDir = ((transform.position + transform.up) + transform.right * 2 + -transform.forward * 2);
                 }
 
                 else if (randomPos == 4)
                 {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right + -transform.forward);
+                    randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
                 }
 
 
 
                 GameObject puddle;
-                puddle = Instantiate(Puddle, Vector3.one * 1000.0f, Quaternion.identity);
-                CharacterController cc;
-
-
+                puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
+                puddle.GetComponent<SlimePuddle>().ShootOut = true;
                 Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<CharacterController>(), true);
-                puddle.transform.position = randomRotDir;
                 puddle.GetComponent<SlimePuddle>().SetMass(myMass);
 
 
@@ -84,8 +81,11 @@ public class SlimeBullet : MonoBehaviour
     // Different particle effect depending on which If Statement is triggered
     void OnCollisionEnter(Collision x)
     {
+        if(x.transform.tag == "Slime")
+        {
+            CreatePuddles(x);
+        }
         Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-        CreatePuddles(x);
         Destroy(gameObject);
 
     }
