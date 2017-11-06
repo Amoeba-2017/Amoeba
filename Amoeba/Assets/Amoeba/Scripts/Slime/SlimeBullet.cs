@@ -6,10 +6,7 @@ public class SlimeBullet : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject BulletWallSplat;
-
-    [SerializeField]
-    private GameObject BulletSlimeSplat;
+    private GameObject BulletSplat;
 
     bool isPickupAble = false;
 
@@ -32,68 +29,41 @@ public class SlimeBullet : MonoBehaviour
         hitMass = mass;
     }
 
-    private void CreatePuddles(Collision x)
+    private void CreatePuddles()
     {
-        if (x != null)
+        if (hitMass > 0 && myMass > 0)
         {
-            Vector3 randomRotDir = Vector3.zero;
-
-            if (myMass > 0)
-            {
-                int randomPos = Random.Range(1, 4);
-
-                if (randomPos == 1)
-                {
-                    randomRotDir = ((transform.position + transform.up) + transform.right + transform.forward);
-                }
-                else if (randomPos == 2)
-                {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right + transform.forward);
-                }
-                else if (randomPos == 3)
-                {
-                    randomRotDir = ((transform.position + transform.up) + transform.right + -transform.forward);
-                }
-
-                else if (randomPos == 4)
-                {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right + -transform.forward);
-                }
-
-
-
-                GameObject puddle;
-                puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
-                Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<Collider>(), true);
-                puddle.GetComponent<SlimePuddle>().SetMass(myMass);
-
-
-            }
-            else
-            {
-                Debug.Log("0 mass to Throw");
-                Debug.Log(myMass);
-                Debug.Log(hitMass);
-            }
+            GameObject puddle;
+            puddle = Instantiate(Puddle, transform.position + transform.up, Quaternion.identity);
+            puddle.GetComponent<SlimePuddle>().SetMass(myMass);
+            puddle = Instantiate(Puddle, transform.position + transform.up, Quaternion.identity);
+            puddle.GetComponent<SlimePuddle>().SetMass(hitMass);
+            Debug.Log("puddles Spawned");
+        }
+        else
+        {
+            Debug.Log("0 mass to Throw");
+            Debug.Log(myMass);
+            Debug.Log(hitMass);
         }
     }
 
-
-    // Collision Code
-    // Different particle effect depending on which If Statement is triggered
-    void OnCollisionEnter(Collision x)
+    void OnCollisionStay(Collision x)
     {
         if (x.transform.tag == "Slime")
         {
-            Instantiate(BulletSlimeSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-            CreatePuddles(x);
+            Debug.Log("trowing mass");
+            CreatePuddles();
             Destroy(gameObject);
         }
+    }
 
-        if (x.gameObject.tag == "Wall" || x.gameObject.tag == "Rock")
-        {
-            Instantiate(BulletWallSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-        }
+    // Collision Code
+    // Different particle effect depending on which If Statement is triggered
+    void OnCollisionEnter(Collision col)
+    {
+        Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }
