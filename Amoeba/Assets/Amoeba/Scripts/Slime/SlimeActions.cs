@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SlimeActions : MonoBehaviour
 {
-
     // GameObject-type variable for the projectile
     [SerializeField]
     private GameObject projectileShot;
@@ -16,6 +15,10 @@ public class SlimeActions : MonoBehaviour
     // The time that, when reached, will cause the projectile to be destroyed
     [SerializeField]
     private float bulletDestroyTimer;
+
+    [SerializeField]
+    [Tooltip("When the child providing the model has been disabled, the child providing the trail/particles will last for this amount of seconds. Note: This variation roots from the SlimeAction.cs file.")]
+    private float TrailDestroyTime;
 
     [SerializeField]
     private GameObject slime;
@@ -34,7 +37,6 @@ public class SlimeActions : MonoBehaviour
     void Start()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-
     }
 
     public void Shoot(Vector3 rot , float mass)
@@ -58,8 +60,6 @@ public class SlimeActions : MonoBehaviour
 
             Bullet.GetComponent<SlimeBullet>().SetMyMass(mass * (massPercentLossed / 100));
 
-
-
             // Get the object (Bullet) and add the force to it
             Bullet.GetComponent<Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
 
@@ -68,13 +68,14 @@ public class SlimeActions : MonoBehaviour
 
             Instantiate(ShootSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
 
-            // Destroy the Bullet when the DestroyTimer has been reached
-            Destroy(Bullet, bulletDestroyTimer);
+            // The bullet object is separated into a gameObject with 3 children,
+            // the first for the Particle System, the second for the Model and the third for the Trail Effect.
+            // This will disable the Model child...
+            gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = false;
+            // And this will destroy the whole game object after the Trail Timer has run out.
+            Destroy(gameObject, TrailDestroyTime);
         }
     }
-
-
-
 
 
         //public void Split(float amount)
@@ -145,5 +146,4 @@ public class SlimeActions : MonoBehaviour
             Destroy(hit.gameObject);
         }
     }
-
 }

@@ -8,8 +8,8 @@ public class Particles : MonoBehaviour {
     [Tooltip("Time from particle spawn at which the object will be destroyed.")]
     private float DestroyTime;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
