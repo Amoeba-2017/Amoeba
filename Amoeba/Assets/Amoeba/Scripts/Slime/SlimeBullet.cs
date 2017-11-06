@@ -6,10 +6,7 @@ public class SlimeBullet : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject BulletWallSplat;
-
-    [SerializeField]
-    private GameObject BulletSlimeSplat;
+    private GameObject BulletSplat;
 
     bool isPickupAble = false;
 
@@ -87,17 +84,9 @@ public class SlimeBullet : MonoBehaviour
     // Different particle effect depending on which If Statement is triggered
     void OnCollisionEnter(Collision x)
     {
-        if (x.transform.tag == "Slime")
-        {
-            Instantiate(BulletSlimeSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-            CreatePuddles(x);
-            Destroy(gameObject);
-        }
+        Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        CreatePuddles(x);
+        Destroy(gameObject);
 
-        if (x.gameObject.tag == "Wall" || x.gameObject.tag == "Rock")
-        {
-            Instantiate(BulletWallSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-        }
     }
-
 }
