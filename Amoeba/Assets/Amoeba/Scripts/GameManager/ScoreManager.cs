@@ -42,7 +42,17 @@ public class ScoreManager : MonoBehaviour
             SceneManager.LoadScene(0);
             Destroy(gameObject);
         }
+
+        if(gsm.Players != null && gsm.Players.Count > 1)
+        {
+            //
+        }
+
+
+
     }
+
+
 
     public void AddOneToScore(string tag)
     {
