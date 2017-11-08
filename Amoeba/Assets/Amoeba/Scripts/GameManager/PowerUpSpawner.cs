@@ -10,11 +10,11 @@ public class PowerUpSpawner : MonoBehaviour
     private GameObject[] powerUps;
 
     [SerializeField]
-    private float spawnCoolDown;
+    private float spawnCoolDown;     //Spawn Cool Down
 
     private GameObject[] spawnPointPrefab;
 
-    private float powerUpSpawnTimer;
+    private float powerUpSpawnTimer; //Spawn Timer
 
     private GameObject currentPowerUp;
 
