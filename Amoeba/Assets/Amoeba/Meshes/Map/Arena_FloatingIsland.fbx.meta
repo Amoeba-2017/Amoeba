@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3a238f66e5e272a4e89ca55845e75e2d
-timeCreated: 1510112296
+guid: 5010cb2208a98a346844d7bd57d8f53d
+timeCreated: 1510121463
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface502
+    4300000: Arena_FloatingIsland1
     9500000: //RootNode
   materials:
     importMaterials: 1
