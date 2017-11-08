@@ -43,10 +43,10 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(gsm.Players != null && gsm.Players.Count > 1)
-        {
-            //
-        }
+        //if(gsm.Players != null && gsm.Players.Count > 1)
+        //{
+        //    foreach(GameObject x in gsm.Players)
+        //}
 
 
 
