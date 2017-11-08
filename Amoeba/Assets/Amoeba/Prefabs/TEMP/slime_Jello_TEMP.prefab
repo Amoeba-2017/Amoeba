@@ -222,7 +222,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.33
+  m_Radius: 2.16
   m_Center: {x: 0, y: 1.32, z: 0}
 --- !u!143 &143513542004054872
 CharacterController:
@@ -234,8 +234,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.16
-  m_Radius: 1.59
+  m_Height: 2.61
+  m_Radius: 1.21
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

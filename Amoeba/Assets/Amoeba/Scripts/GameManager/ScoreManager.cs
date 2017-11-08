@@ -33,25 +33,53 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(roundlimit != gsm.maxRounds)
+        if (roundlimit != gsm.maxRounds)
         {
             roundlimit = gsm.maxRounds;
         }
-        if(redScore >= roundlimit || yellowScore >= roundlimit || blueScore >= roundlimit || purpleScore >= roundlimit)
+        if (redScore >= roundlimit || yellowScore >= roundlimit || blueScore >= roundlimit || purpleScore >= roundlimit)
         {
             SceneManager.LoadScene(0);
             Destroy(gameObject);
         }
 
-        //if(gsm.Players != null && gsm.Players.Count > 1)
-        //{
-        //    foreach(GameObject x in gsm.Players)
-        //}
+        if (gsm.Players != null && gsm.Players.Count > 1)
+        {
+            bool increaseScore = true;
+            GameObject highestGO = null;
+            float highestMass = float.MinValue;
+
+            foreach (GameObject x in gsm.Players)
+            {
+                float currentValue = x.GetComponent<PlayerController>().mass;
+                if (currentValue > highestMass)
+                {
+                    highestMass = currentValue;
+                    highestGO = x;
+                }
+            }
+
+            foreach (GameObject x in gsm.Players)
+            {
+                float currentValue = x.GetComponent<PlayerController>().mass;
+
+                if (currentValue == highestMass && x != highestGO)
+                {
+                    increaseScore = false;
+                    break;
+                }
+            }
+
+            if (increaseScore == true)
+            {
+                highestGO.GetComponent<PlayerUI>().addPoints();
+            }
 
 
+
+        }
 
     }
-
 
 
     public void AddOneToScore(string tag)

@@ -77,7 +77,7 @@ public class SlimeHealth : MonoBehaviour
         //    Debug.Log("split");
         //}
 
-        gameObject.transform.localScale = new Vector3(playerC.mass / 100, playerC.mass / 100, playerC.mass / 100);
+        gameObject.transform.GetChild(0).localScale = new Vector3(playerC.mass / 100, playerC.mass / 100, playerC.mass / 100);
 
         if (IsShielded == true)
         {
@@ -122,20 +122,20 @@ public class SlimeHealth : MonoBehaviour
 
                     if (randomPos == 1)
                     {
-                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + transform.forward * 2);
+                        randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + transform.forward * 3);
                     }
                     else if (randomPos == 2)
                     {
-                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + transform.forward * 2);
+                        randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + transform.forward * 3);
                     }
                     else if (randomPos == 3)
                     {
-                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + -transform.forward * 2);
+                        randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + -transform.forward * 3);
                     }
 
                     else if (randomPos == 4)
                     {
-                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
+                        randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + -transform.forward * 3);
                     }
 
 

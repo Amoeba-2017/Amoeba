@@ -18,6 +18,8 @@ public class SlimeBullet : MonoBehaviour
     float myMass;
     float hitMass;
 
+    
+
 
     public void SetMyMass(float mass)
     {

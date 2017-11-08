@@ -37,7 +37,7 @@ public class SlimePuddle : MonoBehaviour
         float closestPlayerDist = float.MaxValue;
         GameObject closestPlayer = null;
 
-        foreach(GameObject x in GameObject.FindGameObjectsWithTag("Slime"))
+        foreach (GameObject x in GameObject.FindGameObjectsWithTag("Slime"))
         {
             float currentPlayerDist = Vector3.Distance(x.transform.position, transform.position);
 
@@ -65,11 +65,24 @@ public class SlimePuddle : MonoBehaviour
     {
         if (x.transform.tag == "Slime")
         {
-            Physics.IgnoreCollision(x.collider, transform.GetComponent<Collider>(), true);
+            GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
+            Destroy(gameObject);
+        }
+        if (x.transform.tag == "PlayerRed" || x.transform.tag == "PlayerBlue" || x.transform.tag == "PlayerPurple" || x.transform.tag == "PlayerYellow")
+        {
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
             Destroy(gameObject);
         }
     }
+
+    void OnControllerColliderHit(ControllerColliderHit x)
+    {
+        Debug.Log("hit the player or the slime");
+        GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
+        Destroy(gameObject);
+
+    }
+
 
 
 
