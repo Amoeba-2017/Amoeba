@@ -647,7 +647,7 @@ MonoBehaviour:
   slimes: []
   playerNumber: 0
   dodgeForce: 500
-  BufferTime: 0.9
+  BufferTime: 0.3
   slimeRandomDistanceToPlayer: 0.5
   slimeMovementDistanceScalar: 2
   mass: 100
