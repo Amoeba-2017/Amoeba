@@ -149,6 +149,7 @@ MonoBehaviour:
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
+  beginYPos: 0
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
@@ -238,8 +239,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.16
-  m_Radius: 1.59
+  m_Height: 1.09
+  m_Radius: 0.23
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     bool isMoving;
 
     [SerializeField]
-    public float mass = 100;
+    public float mass = 50;
 
     void Start()
     {

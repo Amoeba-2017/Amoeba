@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744678221461668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -57.037632, y: 103.07572, z: -170.1336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4104865640985012}
@@ -167,6 +167,7 @@ MonoBehaviour:
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
+  beginYPos: 0
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}
@@ -238,10 +239,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.16
-  m_Radius: 1.59
+  m_Height: 1.64
+  m_Radius: 0.29
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.94, z: 0}
+  m_Center: {x: 0, y: 1.45, z: 0}
