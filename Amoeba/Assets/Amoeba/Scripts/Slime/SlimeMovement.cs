@@ -60,6 +60,7 @@ public class SlimeMovement : MonoBehaviour
     [SerializeField]
     private float ExpandAndSrinkSpeed;
 
+    [SerializeField]
     private float beginYPos;
 
     [SerializeField]
@@ -98,8 +99,8 @@ public class SlimeMovement : MonoBehaviour
         randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
+        beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y;
         if (GameObject.FindGameObjectWithTag("SpawnPoint"))
-        beginYPos = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position.y - 0.5f;
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
 
 
@@ -148,7 +149,7 @@ public class SlimeMovement : MonoBehaviour
         //Vector3 pointOnCircle = transform.position + new Vector3(Mathf.Cos(randAngle), 0.0f, Mathf.Sin(randAngle)) * (radius + offset);
 
         float angle = Random.Range(0, Mathf.PI * 2);
-        return new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
+        return player.transform.position + new Vector3(Mathf.Cos(angle), beginYPos, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
 
     }
 
@@ -205,7 +206,7 @@ public class SlimeMovement : MonoBehaviour
                         player.transform.position = gameObject.transform.position;
                         updatePlayerPos = false;
                     }
-                    Vector3 vecBetween = player.transform.position - transform.position;
+                    Vector3 vecBetween = new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position;
                     cc.Move(vecBetween * speed * Time.deltaTime);
                 }
 
@@ -216,7 +217,7 @@ public class SlimeMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
-            cc.Move(player.transform.position - transform.position);
+            cc.Move(new Vector3(player.transform.position.x, beginYPos,player.transform.position.z) - transform.position);
 
         }
     }
