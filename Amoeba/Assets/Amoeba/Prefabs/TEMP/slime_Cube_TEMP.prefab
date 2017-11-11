@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsShielded: 0
-  BulletDamagePercent: 5
+  BulletDamagePercent: 15
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   invincibilityFramesTime: 1
   powerUpLength: 7.5
@@ -184,7 +184,7 @@ MonoBehaviour:
   bulletDestroyTimer: 1.2
   slime: {fileID: 1055853276112944}
   ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
-  massPercentLossed: 5
+  massPercentLossed: 0
 --- !u!114 &114953899700208320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,6 +207,7 @@ MonoBehaviour:
   minSpreadDistance: 2
   randomSlimeOffset: 2
   ExpandAndSrinkSpeed: 15
+  beginYPos: 0
   flyingForce: 0
   timeFlying: 0
   flyingVel: {x: 0, y: 0, z: 0}

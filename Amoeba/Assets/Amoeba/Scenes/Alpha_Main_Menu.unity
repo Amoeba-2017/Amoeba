@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   yellowSlime: {fileID: 21300000, guid: 49a4a1e3c8cc9e54eb8aa109d37032f9, type: 3}
   blueSlime: {fileID: 21300000, guid: adde7d68adf433e4582439b26141ce48, type: 3}
   purpleSlime: {fileID: 21300000, guid: 44db1e4dea5a10a459646a4609004f7e, type: 3}
-  roundTime: 40
+  roundTime: 2
   maxRoundText: {fileID: 0}
   currentCanvas: 0
 --- !u!114 &1624949586
