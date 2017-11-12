@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
     // List of Sound Clips
-    public static AudioClip ShootSound, DeathSound, VictorySound, DefeatSound;
+    public static AudioClip ShootSound, DeathSound, WallCollisionSound, GettingHitSound, CollectMassSound, VictorySound, DefeatSound;
     // Audion Source
     static AudioSource am;
 
@@ -15,6 +15,12 @@ public class AudioManager : MonoBehaviour {
     public AudioClip Shoot_SFX;
     [SerializeField]
     public AudioClip Death_SFX;
+    [SerializeField]
+    public AudioClip WallCollision_SFX;
+    [SerializeField]
+    public AudioClip GettingHit_SFX;
+    [SerializeField]
+    public AudioClip CollectMass_SFX;
     [SerializeField]
     public AudioClip Victory_SFX;
     [SerializeField]
@@ -26,6 +32,9 @@ public class AudioManager : MonoBehaviour {
         //ShootSound = Resources.Load<AudioClip>("ShootSound_Placeholder");
         ShootSound = Shoot_SFX;
         DeathSound = Death_SFX;
+        WallCollisionSound = WallCollision_SFX;
+        GettingHitSound = GettingHit_SFX;
+        CollectMassSound = CollectMass_SFX;
         VictorySound = Victory_SFX;
         DefeatSound = Defeat_SFX;
 
@@ -49,6 +58,15 @@ public class AudioManager : MonoBehaviour {
                 break;
             // Slime Death sound
             case "DeathSound": am.PlayOneShot(DeathSound, 1f);
+                break;
+            // Slime Wall Collision sound
+            case "WallCollisionSound": am.PlayOneShot(WallCollisionSound, 1f);
+                break;
+            // Slime Getting Hit sound
+            case "GettingHitSound": am.PlayOneShot(GettingHitSound, 1f);
+                break;
+            // Slime Collecting Mass sound
+            case "CollectMassSound": am.PlayOneShot(CollectMassSound, 1f);
                 break;
             // Player Victory sound
             case "VictorySound": am.PlayOneShot(VictorySound, 1f);

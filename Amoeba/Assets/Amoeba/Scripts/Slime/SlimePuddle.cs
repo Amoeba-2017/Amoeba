@@ -63,6 +63,9 @@ public class SlimePuddle : MonoBehaviour
 
     void OnCollisionEnter(Collision x)
     {
+        // Play collecting mass sound
+        AudioManager.PlaySound("CollectMassSound");
+
         if (x.transform.tag == "Slime")
         {
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;

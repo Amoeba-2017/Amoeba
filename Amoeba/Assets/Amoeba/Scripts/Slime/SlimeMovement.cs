@@ -228,8 +228,8 @@ public class SlimeMovement : MonoBehaviour
         //if the slime collides with a wall
         if (hit.transform.tag == "InvisibleWall")
         {
-            Debug.Log("WALL");
-            newPos = FindnewPosition();
+            // Play wall collision sound
+            AudioManager.PlaySound("WallCollisionSound");
         }
     }
 

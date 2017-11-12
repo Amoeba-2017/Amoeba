@@ -138,7 +138,8 @@ public class SlimeHealth : MonoBehaviour
                         randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + -transform.forward * 3);
                     }
 
-
+                    // Play getting hit sound
+                    AudioManager.PlaySound("GettingHitSound");
 
                     GameObject puddle;
                     puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);

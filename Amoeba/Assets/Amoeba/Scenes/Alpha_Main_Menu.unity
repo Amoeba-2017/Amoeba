@@ -2342,6 +2342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shoot_SFX: {fileID: 8300000, guid: 45b2c092b047bc0489d11f545946eed2, type: 3}
   Death_SFX: {fileID: 8300000, guid: 04d8fd00bddc09146be2faaa25570af7, type: 3}
+  WallCollision_SFX: {fileID: 0}
+  GettingHit_SFX: {fileID: 8300000, guid: ac2acf9c5d9f24b418d1151e3fa86709, type: 3}
+  CollectMass_SFX: {fileID: 0}
   Victory_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
   Defeat_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
 --- !u!114 &1624949590
