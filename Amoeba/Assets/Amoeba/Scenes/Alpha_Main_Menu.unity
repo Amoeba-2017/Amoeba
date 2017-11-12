@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2342,11 +2342,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shoot_SFX: {fileID: 8300000, guid: 45b2c092b047bc0489d11f545946eed2, type: 3}
   Death_SFX: {fileID: 8300000, guid: 04d8fd00bddc09146be2faaa25570af7, type: 3}
-  WallCollision_SFX: {fileID: 0}
-  GettingHit_SFX: {fileID: 8300000, guid: ac2acf9c5d9f24b418d1151e3fa86709, type: 3}
-  CollectMass_SFX: {fileID: 0}
-  Victory_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
-  Defeat_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
+  WallCollision_SFX: {fileID: 8300000, guid: ac2acf9c5d9f24b418d1151e3fa86709, type: 3}
+  GettingHit_SFX: {fileID: 8300000, guid: 6ddba1d0eb705b543acdda788c995e70, type: 3}
+  CollectMass_SFX: {fileID: 8300000, guid: 9e4535411d381c840bf4982beb58eacb, type: 3}
+  Victory_SFX: {fileID: 8300000, guid: 0583805fbe4004041bbd5217234c5406, type: 3}
+  Defeat_SFX: {fileID: 8300000, guid: 0583805fbe4004041bbd5217234c5406, type: 3}
 --- !u!114 &1624949590
 MonoBehaviour:
   m_ObjectHideFlags: 0
