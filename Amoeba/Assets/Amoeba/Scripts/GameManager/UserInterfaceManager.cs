@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using InControl;
-
+using XboxCtrlrInput;
 public class UserInterfaceManager : MonoBehaviour
 {
     // Menu Canvases
@@ -152,24 +151,18 @@ public class UserInterfaceManager : MonoBehaviour
             }
 
             //Pause menu
-            foreach (InputDevice x in gsm.inputDevices)
+            if (XCI.GetButtonDown(XboxButton.Start, XboxController.All))
             {
-                if (x != null)
+                isPaused = !isPaused;
+                if (isPaused)
                 {
-                    if (x.MenuWasPressed)
-                    {
-                        isPaused = !isPaused;
-                        if (isPaused)
-                        {
-                            pauseScreen.enabled = true;
-                            Time.timeScale = 0.0f;
-                        }
-                        else
-                        {
-                            Time.timeScale = 1.0f;
-                            pauseScreen.enabled = false;
-                        }
-                    }
+                    pauseScreen.enabled = true;
+                    Time.timeScale = 0.0f;
+                }
+                else
+                {
+                    Time.timeScale = 1.0f;
+                    pauseScreen.enabled = false;
                 }
             }
 
@@ -208,7 +201,8 @@ public class UserInterfaceManager : MonoBehaviour
             if (currentCanvas == CanvasCount.mainMenu)
             {
 
-                if (Input.GetKeyDown(KeyCode.DownArrow) || InputManager.ActiveDevice.DPadDown.WasPressed || InputManager.ActiveDevice.LeftStick.Down.WasPressed || Input.GetKeyDown(KeyCode.UpArrow) || InputManager.ActiveDevice.DPadUp.WasPressed || InputManager.ActiveDevice.LeftStick.Up.WasPressed)
+                //                if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.All) || XCI.GetAxis(XboxAxis.LeftStickY, XboxController.All) < -0.5f || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.All) || XCI.GetAxis(XboxAxis.LeftStickY, XboxController.All) > 0.5f)
+                if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.All) || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.All))
                 {
                     if (currentControllerUISelection == ControllerUISelection.play)
                     {
@@ -230,7 +224,7 @@ public class UserInterfaceManager : MonoBehaviour
                     mainMenu.transform.GetChild(2).GetComponent<Button>().Select();
                 }
 
-                if (Input.GetKeyDown(KeyCode.KeypadEnter) || InputManager.ActiveDevice.Action1.WasPressed)
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.Start, XboxController.All))
                 {
                     if (currentControllerUISelection == ControllerUISelection.play)
                     {
@@ -244,9 +238,9 @@ public class UserInterfaceManager : MonoBehaviour
             }
             if (currentCanvas == CanvasCount.playerSelect)
             {
-                if (Input.GetKeyDown(KeyCode.KeypadEnter) || InputManager.ActiveDevice.MenuWasPressed)
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.Start, XboxController.All))
                 {
-                    if (gsm.inputDevices.Count > 1)
+                    if (gsm.controllers.Count > 1)
                     {
                         selectStartButton();
                     }

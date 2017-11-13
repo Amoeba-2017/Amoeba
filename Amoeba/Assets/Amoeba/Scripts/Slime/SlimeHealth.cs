@@ -36,14 +36,10 @@ public class SlimeHealth : MonoBehaviour
 
     private float colorTimer;
 
-    [SerializeField]
-    private float powerUpLength;
+
 
     [SerializeField]
-    private float colorChangeSpeed;
-
-    private Renderer renderer;
-    Color LerpColor;
+    float sizeMuliplyer;
 
     public bool isInvincible;
 
@@ -57,7 +53,6 @@ public class SlimeHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        renderer = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         //     HeathPoints = 1f;
         IsShielded = false;
         firstColor = true;
@@ -77,30 +72,7 @@ public class SlimeHealth : MonoBehaviour
         //    Debug.Log("split");
         //}
 
-        gameObject.transform.GetChild(0).localScale = new Vector3(playerC.mass / 100, playerC.mass / 100, playerC.mass / 100);
-
-        if (IsShielded == true)
-        {
-            colorTimer += Time.deltaTime;
-            if (firstColor == true)
-            {
-                firstColor = false;
-            }
-
-            LerpColor = Color.Lerp(Color.black, Color.white, Mathf.PingPong(Time.time * colorChangeSpeed, 1));
-
-            Debug.Log("shielded");
-            renderer.material.SetColor("_EmissionColor", LerpColor);
-
-            if (colorTimer > powerUpLength)
-            {
-                renderer.material.SetColor("_EmissionColor", Color.black);
-
-                IsShielded = false;
-                firstColor = true;
-                colorTimer = 0;
-            }
-        }
+        gameObject.transform.GetChild(0).localScale = new Vector3((playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer);
 
     }
 

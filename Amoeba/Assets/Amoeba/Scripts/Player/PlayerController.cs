@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using InControl;
+using XboxCtrlrInput;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The slime that will be spawned by this player")]
     private GameObject slimePrefab;
 
-    private InputDevice controller;
+    private XboxController controller;
 
     [SerializeField]
     [Tooltip("The speed that the player will move")]
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void SetController(InputDevice device)
+    public void SetController(XboxController device)
     {
         controller = device;
     }
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         ShootTimer += Time.deltaTime;
 
         //if there is no controller
-        if (controller == null)
+        if (controller == XboxController.None)
         {
             KeyboredUpdate();
         }
@@ -225,10 +225,10 @@ public class PlayerController : MonoBehaviour
         //cc.Move(transform.right * controller.LeftStick.X * speed * Time.deltaTime);
         //cc.Move(transform.forward * controller.LeftStick.Y * speed * Time.deltaTime);
 
-        cc.Move((((transform.right * controller.LeftStick.X) + (transform.forward * controller.LeftStick.Y)).normalized) * speed  * Time.deltaTime);
+        cc.Move((((transform.right * XCI.GetAxis(XboxAxis.LeftStickX, controller)) + (transform.forward * XCI.GetAxis(XboxAxis.LeftStickY, controller)).normalized) * speed  * Time.deltaTime));
 
 
-        controllerRetical.transform.position = transform.position + new Vector3(controller.RightStick.X, 0, controller.RightStick.Y);
+        controllerRetical.transform.position = transform.position + new Vector3(XCI.GetAxis(XboxAxis.RightStickX, controller), 0, XCI.GetAxis(XboxAxis.RightStickY, controller));
 
 
         //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
@@ -286,7 +286,7 @@ public class PlayerController : MonoBehaviour
         //shooting on controller
 
 
-        if (controller.RightTrigger.WasPressed && ShootTimer > BufferTime)
+        if (XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0  && ShootTimer > BufferTime)
         {
             ShootTimer = 0.0f;
 

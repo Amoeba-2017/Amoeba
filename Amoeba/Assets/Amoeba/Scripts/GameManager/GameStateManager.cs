@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using InControl;
+using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
@@ -26,22 +26,22 @@ public class GameStateManager : MonoBehaviour
 
 
     [HideInInspector]
-    public int playerCount = 1;
+    public int playerCount = 0;
+
+    [HideInInspector]
+    public List<XboxController> controllers = new List<XboxController>();
 
 
     private List<GameObject> players = new List<GameObject>();
 
     private UserInterfaceManager uim;
 
-    [HideInInspector]
-    public List<InputDevice> inputDevices = new List<InputDevice>();
 
     [HideInInspector]
     public bool spawnPlayers = true;
 
     [SerializeField]
     private bool minMaxRandomSpawn;
-
 
 
     [SerializeField]
@@ -73,10 +73,6 @@ public class GameStateManager : MonoBehaviour
         uim = gameObject.GetComponent<UserInterfaceManager>();
         spawnPlayers = true;
 
-        foreach (InputDevice x in InputManager.Devices)
-        {
-            Debug.Log(x);
-        }
 
         minMaxPuddleTime = Random.Range(minPuddleSpawnTime, maxPuddleSpawnTime);
     }
@@ -162,9 +158,6 @@ public class GameStateManager : MonoBehaviour
                 {
                     puddleTimer = 0;
 
-                    puddleTimer = 0;
-
-
                     GameObject[] ts = GameObject.FindGameObjectsWithTag("PuddleSpawners");
 
                     int amountOfLoops = 0;
@@ -207,78 +200,40 @@ public class GameStateManager : MonoBehaviour
             //if the current canvas is playerSelect 
             if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
-                foreach (InputDevice x in InputManager.Devices)
+                for (int i = 1; i < 5; i++)
                 {
-                    //if the last device pressed was x
-                    if (x == InputManager.ActiveDevice)
+                    if (XCI.GetButtonDown(XboxButton.A, (XboxController)i) && !controllers.Contains((XboxController)i))
                     {
-                        //if up is pressed incress the amout of max rounds
-                        if (x.DPadUp.WasPressed || x.LeftStick.Up.WasPressed)
-                        {
-                            if (maxRounds < 30)
-                            {
-                                maxRounds++;
-                                uim.maxRoundText.text = maxRounds.ToString();
-                            }
-                        }
-                        //if down is pressed decresse the amount of max rounds
-                        else if (x.DPadDown.WasPressed || x.LeftStick.Down.WasPressed)
-                        {
-                            if (maxRounds > 1)
-                            {
-                                maxRounds--;
-                                uim.maxRoundText.text = maxRounds.ToString();
-
-                            }
-
-                        }
-                        if (x.Action1.WasPressed)
-                        {
-                            if (inputDevices.Contains(x) == false)
-                            {
-                                Debug.Log("add a player");
-                                playerCount++;
-                                uim.AddPlayer();
-                                inputDevices.Add(x);
-                            }
-
-                        }
-
-                    }
-
-
-                    InputDevice removeFromArray = null;
-
-                    foreach (InputDevice i in inputDevices)
-                    {
-                        if (i != null)
-                        {
-                            if (i.Action2.WasPressed)
-                            {
-                                uim.RemovePlayer();
-
-                                playerCount--;
-                                removeFromArray = i;
-                                Debug.Log("removePlayer");
-                            }
-                            if (debugMode == false)
-                            {
-                                if (playerCount > InputManager.Devices.Count + 1)
-                                {
-                                    Debug.Log("too many players");
-                                    uim.RemovePlayer();
-                                    playerCount--;
-                                }
-                            }
-                        }
-                    }
-
-
-                    if (removeFromArray != null)
-                    {
-                        inputDevices.Remove(removeFromArray);
+                        controllers.Add((XboxController)i);
+                        uim.AddPlayer();
                     }
                 }
+
+                //if (playerCount == 1)
+                //{ 
+                //    controllers.Add(XboxController.First);
+                //    uim.AddPlayer();
+                //}
+                //else if (playerCount == 2)
+                //{
+                //    controllers.Add(XboxController.Second);
+                //    uim.AddPlayer();
+                //}
+                //else if (playerCount == 3)
+                //{
+                //    controllers.Add(XboxController.Third);
+                //    uim.AddPlayer();
+                //}
+                //else if (playerCount == 4)
+                //{
+                //    controllers.Add(XboxController.Fourth);
+                //    uim.AddPlayer();
+                //}
+                //if(playerCount > 4)
+                //{
+                //    playerCount = 4;
+                //}
+
             }
 
 
@@ -316,7 +271,7 @@ public class GameStateManager : MonoBehaviour
                 {
                     uim.AddPlayer();
                     playerCount++;
-                    inputDevices.Add(null);
+                    controllers.Add(XboxController.None);
                 }
             }
 
@@ -355,45 +310,48 @@ public class GameStateManager : MonoBehaviour
     private void loadPlayers()
     {
         GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        Debug.Log(inputDevices.Count);
         if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
         {
-            if (inputDevices.Count >= 1)
+            if (controllers.Count >= 1)
             {
+                controllers[0] = XboxController.First;
                 Debug.Log("added Red Player");
                 GameObject temp = Instantiate(playerRedPrefab, spawnpoints[0].transform.position, Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDevices[0]);
+                temp.GetComponent<PlayerController>().SetController(controllers[0]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerYellow") == false)
         {
-            if (inputDevices.Count >= 2)
+            if (controllers.Count >= 2)
             {
+                controllers[1] = XboxController.Second;
                 GameObject temp = Instantiate(playerYellowPrefab, spawnpoints[1].transform.position, Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDevices[1]);
+                temp.GetComponent<PlayerController>().SetController(controllers[1]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerBlue") == false)
         {
-            if (inputDevices.Count >= 3)
+            if (controllers.Count >= 3)
             {
+                controllers[2] = XboxController.Third;
                 GameObject temp = Instantiate(playerBluePrefab, spawnpoints[2].transform.position, Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDevices[2]);
+                temp.GetComponent<PlayerController>().SetController(controllers[2]);
             }
         }
 
         if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
         {
-            if (inputDevices.Count >= 4)
+            if (controllers.Count >= 4)
             {
+                controllers[3] = XboxController.Fourth;
                 GameObject temp = Instantiate(playerPurplePrefab, spawnpoints[3].transform.position, Quaternion.identity);
                 players.Add(temp);
-                temp.GetComponent<PlayerController>().SetController(inputDevices[3]);
+                temp.GetComponent<PlayerController>().SetController(controllers[3]);
             }
         }
 

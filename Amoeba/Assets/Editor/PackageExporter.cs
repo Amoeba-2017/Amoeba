@@ -14,8 +14,8 @@ namespace InControl
 			var assetPathNames = new string[] { 
 				"Assets/InControl"
 			};
-			var packageName = "Packages/InControl-" + VersionInfo.InControlVersion().ToShortString() + ".unitypackage";
-			AssetDatabase.ExportPackage( assetPathNames, packageName, ExportPackageOptions.Recurse );
+			//var packageName = "Packages/InControl-" + VersionInfo.InControlVersion().ToShortString() + ".unitypackage";
+		//	AssetDatabase.ExportPackage( assetPathNames, packageName, ExportPackageOptions.Recurse );
 		}
 	}
 }
