@@ -144,7 +144,7 @@ MonoBehaviour:
   bulletDestroyTimer: 1.2
   slime: {fileID: 1312857039401634}
   ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
-  massPercentLossed: 5
+  massPercentLossed: 0
 --- !u!114 &114930159099752658
 MonoBehaviour:
   m_ObjectHideFlags: 1
