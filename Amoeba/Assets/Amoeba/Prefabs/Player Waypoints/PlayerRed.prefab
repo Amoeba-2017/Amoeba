@@ -455,7 +455,7 @@ MonoBehaviour:
   BufferTime: 0.3
   slimeRandomDistanceToPlayer: 0.5
   slimeMovementDistanceScalar: 2
-  mass: 100
+  mass: 30
 --- !u!114 &114192043285004018
 MonoBehaviour:
   m_ObjectHideFlags: 1
