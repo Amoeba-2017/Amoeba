@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SlimeBullet : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("Time from bullet model being removed at which the object will be destroyed.")]
-    private float ParentExpireTime;
+    //[SerializeField]
+    //[Tooltip("Time from bullet model being removed at which the object will be destroyed.")]
+    //private float ParentExpireTime;
 
     [SerializeField]
     private GameObject BulletSplat;
@@ -87,7 +87,8 @@ public class SlimeBullet : MonoBehaviour
         }
         Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
         Debug.Log("destroying this");
-        Destroy(gameObject.transform.GetChild(1).gameObject);
-        Destroy(gameObject, ParentExpireTime);
+        //Destroy(gameObject.transform.GetChild(1).gameObject);
+        //Destroy(gameObject, ParentExpireTime);
+        Destroy(gameObject);
     }
 }
