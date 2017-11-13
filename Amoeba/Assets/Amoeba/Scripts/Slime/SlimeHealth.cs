@@ -144,7 +144,6 @@ public class SlimeHealth : MonoBehaviour
                     GameObject puddle;
                     puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
                     puddle.GetComponent<SlimePuddle>().ShootOut = true;
-                    Physics.IgnoreCollision(puddle.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
                     puddle.GetComponent<SlimePuddle>().SetMass(playerC.mass * (massPercentLoss / 100));
                     playerC.mass -= playerC.mass * (massPercentLoss / 100);
                 }
