@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 95cdfc5937341b847b25283d61794791
-timeCreated: 1510541301
+guid: 09eaa4e151d89c946add0c79280efaba
+timeCreated: 1510538498
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Water
+    4300000: pCube42
     9500000: //RootNode
   materials:
     importMaterials: 1
