@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SlimeBullet : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Time from bullet model being removed at which the object will be destroyed.")]
+    private float ParentExpireTime;
 
     [SerializeField]
     private GameObject BulletSplat;
@@ -58,16 +61,11 @@ public class SlimeBullet : MonoBehaviour
                 {
                     randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
                 }
-
-
-
                 GameObject puddle;
                 puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
                 puddle.GetComponent<SlimePuddle>().ShootOut = true;
                 Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<CharacterController>(), true);
                 puddle.GetComponent<SlimePuddle>().SetMass(myMass);
-
-
             }
             else
             {
@@ -89,7 +87,7 @@ public class SlimeBullet : MonoBehaviour
         }
         Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
         Debug.Log("destroying this");
-        Destroy(gameObject);
-
+        Destroy(gameObject.transform.GetChild(1).gameObject);
+        Destroy(gameObject, ParentExpireTime);
     }
 }
