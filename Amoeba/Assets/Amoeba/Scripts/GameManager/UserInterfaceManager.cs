@@ -65,7 +65,9 @@ public class UserInterfaceManager : MonoBehaviour
 
     private ControllerUISelection currentControllerUISelection;
 
-    float countDown  = 0.0f;
+    float countDown = 0.0f;
+
+    Coroutine co;
 
     public enum ControllerUISelection
     {
@@ -103,7 +105,7 @@ public class UserInterfaceManager : MonoBehaviour
         {
             if (firstRun == true)
             {
-                StartCoroutine(GameTimer(roundTime));
+                co = StartCoroutine(GameTimer(roundTime));
                 Debug.Log("startedGametimer");
                 firstRun = false;
             }
@@ -134,7 +136,7 @@ public class UserInterfaceManager : MonoBehaviour
                 countDown = ((roundTime * 60) - currentTimer);
                 string minutes = Mathf.Floor(countDown / 60).ToString("0");
                 string seconds = (countDown % 60).ToString("00");
-                if(seconds == "60")
+                if (seconds == "60")
                 {
                     seconds = "00";
                     minutes = (int.Parse(minutes) + 1).ToString();
@@ -176,35 +178,20 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 Debug.Log("ended the game");
                 StartCoroutine(restartGame());
-                victoryScreen.enabled = true;
+
 
                 // Winner Icon
                 // If statements that trigger depending on which tag the last object left standing has,
                 // they then change the sprite to match the corresponding tag.
-                if (gsm.Players[0].tag == "PlayerRed")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerBlue")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = blueSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerYellow")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = yellowSlime;
-                }
-                if (gsm.Players[0].tag == "PlayerPurple")
-                {
-                    victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
-                }
+                selectWinner();
 
                 // Play Victory sound
                 AudioManager.PlaySound("VictorySound");
 
                 gsm.Players[0].GetComponent<PlayerUI>().addScore();
-                foreach(GameObject x in gsm.Players)
+                foreach (GameObject x in gsm.Players)
                 {
-                    foreach(GameObject i in x.GetComponent<PlayerController>().slimes)
+                    foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
                     {
                         Destroy(i);
                     }
@@ -271,7 +258,43 @@ public class UserInterfaceManager : MonoBehaviour
     IEnumerator GameTimer(float time)
     {
         yield return new WaitForSeconds(time * 60);
-        drawScreen.enabled = true;
+        GameObject highestGO = null;
+        float highestMass = float.MinValue;
+        bool winner = true;
+
+        foreach (GameObject x in gsm.Players)
+        {
+            float currentValue = x.GetComponent<PlayerController>().mass;
+            if (currentValue > highestMass)
+            {
+                highestMass = currentValue;
+                highestGO = x;
+            }
+        }
+
+        foreach (GameObject x in gsm.Players)
+        {
+            float currentValue = x.GetComponent<PlayerController>().mass;
+
+            if (currentValue == highestMass && x != highestGO)
+            {
+                winner = false;
+                break;
+            }
+        }
+
+
+        if (winner == true)
+        {
+            gsm.Players.Clear();
+            gsm.Players.Add(highestGO);
+            selectWinner();
+        }
+        else
+        {
+            drawScreen.enabled = true;
+        }
+
         foreach (GameObject x in gsm.Players)
         {
             Destroy(x);
@@ -285,7 +308,8 @@ public class UserInterfaceManager : MonoBehaviour
     {
         // Start function restartGame as a coroutine
         yield return new WaitForSeconds(5.0f);
-        Debug.Log("loading new Scene");
+        StopCoroutine(co);
+        co = StartCoroutine(GameTimer(roundTime));
         gsm.spawnPlayers = true;
         currentTimer = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -320,6 +344,26 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
+    private void selectWinner()
+    {
+        if (gsm.Players[0].tag == "PlayerRed")
+        {
+            victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = redSlime;
+        }
+        if (gsm.Players[0].tag == "PlayerBlue")
+        {
+            victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = blueSlime;
+        }
+        if (gsm.Players[0].tag == "PlayerYellow")
+        {
+            victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = yellowSlime;
+        }
+        if (gsm.Players[0].tag == "PlayerPurple")
+        {
+            victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
+        }
+        victoryScreen.enabled = true;
+    }
     public void AddPlayer()
     {
         currentAmountofPlayers++;
@@ -357,7 +401,7 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
     }
-    
+
     public void RemovePlayer()
     {
         if (currentAmountofPlayers == 4)

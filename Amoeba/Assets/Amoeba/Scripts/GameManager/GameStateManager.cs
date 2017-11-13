@@ -389,7 +389,7 @@ public class GameStateManager : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("PlayerPurple") == false)
         {
-            if (inputDevices.Count >= 3)
+            if (inputDevices.Count >= 4)
             {
                 GameObject temp = Instantiate(playerPurplePrefab, spawnpoints[3].transform.position, Quaternion.identity);
                 players.Add(temp);
