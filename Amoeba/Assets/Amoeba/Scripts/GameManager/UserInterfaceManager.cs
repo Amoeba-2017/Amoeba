@@ -338,6 +338,11 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
+    // Button function for the Victory Screen 'Continue' button
+    public void victoryContinueButton()
+    {
+    }
+
     private void selectWinner()
     {
         if (gsm.Players[0].tag == "PlayerRed")
