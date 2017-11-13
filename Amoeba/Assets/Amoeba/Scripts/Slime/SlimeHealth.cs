@@ -149,7 +149,7 @@ public class SlimeHealth : MonoBehaviour
                     playerC.mass -= playerC.mass * (massPercentLoss / 100);
                 }
             }
-            }
+        }
 
 
 

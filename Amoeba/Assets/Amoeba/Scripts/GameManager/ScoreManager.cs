@@ -19,7 +19,12 @@ public class ScoreManager : MonoBehaviour
 
     private int roundlimit;
 
+    [SerializeField]
+    private int maxScore;
+
     private GameStateManager gsm;
+
+    private GameObject highestGO;
 
 
     // Use this for initialization
@@ -27,7 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         gsm = gameObject.GetComponent<GameStateManager>();
         roundlimit = gsm.maxRounds;
-        
+
     }
 
     // Update is called once per frame
@@ -46,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         if (gsm.Players != null && gsm.Players.Count > 1)
         {
             bool increaseScore = true;
-            GameObject highestGO = null;
+            highestGO = null;
             float highestMass = float.MinValue;
 
             foreach (GameObject x in gsm.Players)
@@ -73,18 +78,36 @@ public class ScoreManager : MonoBehaviour
             if (increaseScore == true)
             {
                 highestGO.GetComponent<PlayerUI>().addPoints();
+                if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
+                {
+                    DestroyLosers(highestGO);
+                }
             }
-
-
-
         }
-
     }
 
+    void DestroyLosers(GameObject go)
+    {
+        foreach (GameObject slime in GameObject.FindGameObjectsWithTag("Slime"))
+        {
+            if (slime.GetComponent<SlimeMovement>().player != null)
+            {
+                if (slime.GetComponent<SlimeMovement>().player != go)
+                {
+                    Debug.Log("destroyLosers");
+                    gsm.Players.Remove(slime.GetComponent<SlimeMovement>().player);
+                    Destroy(slime.GetComponent<SlimeMovement>().player);
+                    Destroy(slime);
+                }
+            }
+        }
+
+        gsm.Players.TrimExcess();
+    }
 
     public void AddOneToScore(string tag)
     {
-        if(tag == "PlayerBlue")
+        if (tag == "PlayerBlue")
         {
             blueScore++;
         }

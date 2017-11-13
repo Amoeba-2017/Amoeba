@@ -41,7 +41,8 @@ public class PlayerUI : MonoBehaviour
 
     public void addPoints()
     {
-        pointsSlider.value += Time.deltaTime;
+        pointsSlider.value += Time.deltaTime * 2;
+        score = pointsSlider.value;
     }
 
 }

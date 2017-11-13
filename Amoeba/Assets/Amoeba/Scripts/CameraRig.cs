@@ -34,6 +34,13 @@ public class CameraRig : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate ()
     {
+        players = gsm.Players;
+
+        players.TrimExcess();
+
+        Debug.Log(players.Count);
+
+
         if (players.Count > 1)
         {
             centerPoint = Vector3.zero;

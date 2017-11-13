@@ -103,7 +103,7 @@ public class UserInterfaceManager : MonoBehaviour
         {
             if (firstRun == true)
             {
-                StartCoroutine(GameTimer());
+                StartCoroutine(GameTimer(roundTime));
                 Debug.Log("startedGametimer");
                 firstRun = false;
             }
@@ -268,9 +268,9 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
-    IEnumerator GameTimer()
+    IEnumerator GameTimer(float time)
     {
-        yield return new WaitForSeconds(roundTime * 60);
+        yield return new WaitForSeconds(time * 60);
         drawScreen.enabled = true;
         foreach (GameObject x in gsm.Players)
         {

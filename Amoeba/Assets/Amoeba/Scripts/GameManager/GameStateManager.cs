@@ -83,6 +83,7 @@ public class GameStateManager : MonoBehaviour
 
     void Update()
     {
+
         //if in the game scene
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
         {
