@@ -249,6 +249,19 @@ public class UserInterfaceManager : MonoBehaviour
                 }
             }
         }
+        else if (currentCanvas == CanvasCount.gameOver)
+        {
+            if (XCI.GetButton(XboxButton.A, XboxController.All))
+            {
+                RestartGame();
+            }
+            else if(XCI.GetButton(XboxButton.B, XboxController.All))
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(0));
+            }
+        }
+
+
     }
 
     IEnumerator GameTimer(float time)
@@ -297,14 +310,13 @@ public class UserInterfaceManager : MonoBehaviour
         }
 
         gsm.Players.Clear();
-        StartCoroutine(restartGame());
+        currentCanvas = CanvasCount.gameOver;
 
     }
 
-    IEnumerator restartGame()
+    public void RestartGame()
     {
         // Start function restartGame as a coroutine
-        yield return new WaitForSeconds(5.0f);
         StopCoroutine(co);
         co = StartCoroutine(GameTimer(roundTime));
         gsm.spawnPlayers = true;
