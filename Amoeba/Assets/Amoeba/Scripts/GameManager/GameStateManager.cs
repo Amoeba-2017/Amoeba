@@ -314,7 +314,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (controllers.Count >= 1)
             {
-                controllers[0] = XboxController.First;
                 Debug.Log("added Red Player");
                 GameObject temp = Instantiate(playerRedPrefab, spawnpoints[0].transform.position, Quaternion.identity);
                 players.Add(temp);
@@ -326,7 +325,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (controllers.Count >= 2)
             {
-                controllers[1] = XboxController.Second;
                 GameObject temp = Instantiate(playerYellowPrefab, spawnpoints[1].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(controllers[1]);
@@ -337,7 +335,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (controllers.Count >= 3)
             {
-                controllers[2] = XboxController.Third;
                 GameObject temp = Instantiate(playerBluePrefab, spawnpoints[2].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(controllers[2]);
@@ -348,7 +345,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (controllers.Count >= 4)
             {
-                controllers[3] = XboxController.Fourth;
                 GameObject temp = Instantiate(playerPurplePrefab, spawnpoints[3].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(controllers[3]);
