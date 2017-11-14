@@ -50,10 +50,13 @@ public class SlimeHealth : MonoBehaviour
     [SerializeField]
     private float massPercentLoss;
 
+    private SphereCollider slimeCollider;
+
     // Use this for initialization
     void Start()
     {
         //     HeathPoints = 1f;
+        slimeCollider = gameObject.GetComponent<SphereCollider>();
         IsShielded = false;
         firstColor = true;
         slimeAction = gameObject.GetComponent<SlimeActions>();
@@ -73,6 +76,7 @@ public class SlimeHealth : MonoBehaviour
         //}
 
         gameObject.transform.GetChild(0).localScale = new Vector3((playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer);
+        slimeCollider.radius = (((playerC.mass / 100) * sizeMuliplyer) / 2) * 1.5f; 
 
     }
 
