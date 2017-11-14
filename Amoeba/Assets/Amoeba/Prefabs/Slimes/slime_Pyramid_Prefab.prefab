@@ -126,6 +126,7 @@ MonoBehaviour:
   massAdded: 10
   sizeMuliplyer: 3
   isInvincible: 0
+  slimeCollliderMulitplyer: 1.5
   massLoss: 10
 --- !u!114 &114470326212940026
 MonoBehaviour:
@@ -172,7 +173,7 @@ MonoBehaviour:
   bulletDestroyTimer: 1.2
   slime: {fileID: 1293238037079842}
   ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
-  massPercentLossed: 0
+  massShot: 0
 --- !u!135 &135670409563713928
 SphereCollider:
   m_ObjectHideFlags: 1
