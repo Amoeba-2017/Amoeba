@@ -46,6 +46,9 @@ public class SlimeActions : MonoBehaviour
 
         if (rot != Vector3.zero)
         {
+
+            gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("IsShooting");
+
             // Create a Bullet object
             GameObject Bullet;
 
