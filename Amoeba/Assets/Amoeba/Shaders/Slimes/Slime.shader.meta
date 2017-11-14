@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: daa687e8ed490744aa3d86826f440d7b
-timeCreated: 1510113949
+guid: 4f2b60fed5126664c83b3a8e83c0114c
+timeCreated: 1510614071
 licenseType: Pro
 ShaderImporter:
-  defaultTextures: []
+  defaultTextures:
+  - _BumpMap: {fileID: 2800000, guid: 1b576e2a3b0d60546b2fdc672ad328c6, type: 3}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
