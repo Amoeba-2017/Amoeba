@@ -72,13 +72,14 @@ public class PlayerController : MonoBehaviour
         //getting the amount of players in the game
         playerNumber = gameManager.playerCount;
 
-        controllerRetical = transform.GetChild(0).gameObject;
+        controllerRetical = transform.GetChild(1).gameObject;
 
         //making the first slime
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
         tempSlime.GetComponent<SlimeMovement>().parent = gameObject.tag;
         slimes.Add(tempSlime);
         isMoving = false;
+
 
     }
 
@@ -398,6 +399,8 @@ public class PlayerController : MonoBehaviour
                 i.GetComponent<SlimeActions>().Shoot(vec3.normalized, mass);
             }
         }
+
+
     }
 
     public void allSlimesAreIsInvincible()
@@ -407,5 +410,10 @@ public class PlayerController : MonoBehaviour
             x.GetComponent<SlimeHealth>().isInvincible = true;
             StartCoroutine(x.GetComponent<SlimeHealth>().InvincibleFrames());
         }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(controllerRetical.transform.position, 0.1f);
     }
 }

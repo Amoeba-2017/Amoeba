@@ -21,6 +21,8 @@ TagManager:
   - Rock
   - Slime
   - PuddleSpawners
+  - mainMenu
+  - selectScreen
   layers:
   - Default
   - TransparentFX

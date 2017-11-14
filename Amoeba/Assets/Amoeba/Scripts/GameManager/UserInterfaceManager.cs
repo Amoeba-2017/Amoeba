@@ -111,7 +111,7 @@ public class UserInterfaceManager : MonoBehaviour
                 firstRun = false;
             }
 
-
+            
 
             // Game Canvas Detections
             if (victoryScreen == null)
@@ -200,6 +200,16 @@ public class UserInterfaceManager : MonoBehaviour
 
         else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
         {
+            if(mainMenu == null)
+            {
+                mainMenu = GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>();
+            }
+
+            if(selectScreen == null)
+            {
+                selectScreen = GameObject.FindGameObjectWithTag("selectScreen").GetComponent<Canvas>();
+            }
+
             if (currentCanvas == CanvasCount.mainMenu)
             {
 
@@ -249,7 +259,7 @@ public class UserInterfaceManager : MonoBehaviour
                 }
             }
         }
-        else if (currentCanvas == CanvasCount.gameOver)
+        if (currentCanvas == CanvasCount.gameOver)
         {
             if (XCI.GetButton(XboxButton.A, XboxController.All))
             {
@@ -257,7 +267,8 @@ public class UserInterfaceManager : MonoBehaviour
             }
             else if(XCI.GetButton(XboxButton.B, XboxController.All))
             {
-                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(0));
+                SceneManager.LoadScene(0);
+                currentCanvas = CanvasCount.mainMenu;
             }
         }
 

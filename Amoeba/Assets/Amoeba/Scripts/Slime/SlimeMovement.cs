@@ -292,6 +292,6 @@ public class SlimeMovement : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(newPos, 0.5f);
+     
     }
 }
