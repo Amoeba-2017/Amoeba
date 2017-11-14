@@ -11,23 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1293238037079842}
   m_IsPrefabParent: 1
---- !u!1 &1053831351223618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4584225329600220}
-  - component: {fileID: 137063487294007152}
-  - component: {fileID: 95490103123168454}
-  m_Layer: 15
-  m_Name: Slime_Pyramid
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1293238037079842
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,12 +32,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4584225329600220
+--- !u!1 &1983673434318782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4094677374152160}
+  - component: {fileID: 137433173842245932}
+  - component: {fileID: 95978156303982848}
+  m_Layer: 0
+  m_Name: slime_Pyramid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4094677374152160
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053831351223618}
+  m_GameObject: {fileID: 1983673434318782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -69,10 +69,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293238037079842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 27.737537, y: 8.0499325, z: -9.763664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4584225329600220}
+  - {fileID: 4094677374152160}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,16 +91,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &95490103123168454
+--- !u!95 &95978156303982848
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053831351223618}
+  m_GameObject: {fileID: 1983673434318782}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 61c732954d2dee94fb89070a03e8a44c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6c5062e2d7efa948b59956d6378d00a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -123,8 +123,7 @@ MonoBehaviour:
   BulletDamagePercent: 20
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   invincibilityFramesTime: 1
-  powerUpLength: 7.5
-  colorChangeSpeed: 2
+  sizeMuliplyer: 0
   isInvincible: 0
   massPercentLoss: 10
 --- !u!114 &114470326212940026
@@ -185,12 +184,12 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.33
   m_Center: {x: 0, y: 1.32, z: 0}
---- !u!137 &137063487294007152
+--- !u!137 &137433173842245932
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053831351223618}
+  m_GameObject: {fileID: 1983673434318782}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

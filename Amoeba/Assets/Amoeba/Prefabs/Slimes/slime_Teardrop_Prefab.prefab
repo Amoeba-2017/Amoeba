@@ -32,18 +32,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1529405885436324
+--- !u!1 &1332533295036452
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4885172045762862}
-  - component: {fileID: 137224476252726882}
-  - component: {fileID: 95889401896988618}
-  m_Layer: 16
-  m_Name: Slime_Teardrop
+  - component: {fileID: 4579060644807474}
+  - component: {fileID: 137386751835752542}
+  - component: {fileID: 95606756703393476}
+  m_Layer: 0
+  m_Name: slime_Teardrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,21 +55,21 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312857039401634}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000032782552}
-  m_LocalPosition: {x: -11.07, y: -0.01999998, z: -9.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.39, y: 2, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4885172045762862}
+  - {fileID: 4579060644807474}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
---- !u!4 &4885172045762862
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4579060644807474
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529405885436324}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1332533295036452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -91,16 +91,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &95889401896988618
+--- !u!95 &95606756703393476
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529405885436324}
+  m_GameObject: {fileID: 1332533295036452}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e84f910b0d805e8498c3171dec1997de, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45d57874da3753d41bf27e1c75fbae27, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -123,8 +123,7 @@ MonoBehaviour:
   BulletDamagePercent: 20
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   invincibilityFramesTime: 1
-  powerUpLength: 7.5
-  colorChangeSpeed: 2
+  sizeMuliplyer: 0
   isInvincible: 0
   massPercentLoss: 10
 --- !u!114 &114664178896822308
@@ -185,12 +184,12 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.33
   m_Center: {x: 0, y: 1.32, z: 0}
---- !u!137 &137224476252726882
+--- !u!137 &137386751835752542
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529405885436324}
+  m_GameObject: {fileID: 1332533295036452}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
