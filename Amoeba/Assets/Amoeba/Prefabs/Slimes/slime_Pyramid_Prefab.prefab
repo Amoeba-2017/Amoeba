@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293238037079842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.737537, y: 8.0499325, z: -9.763664}
+  m_LocalPosition: {x: 26.97154, y: -0.15, z: -32.22514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4094677374152160}
@@ -124,7 +124,7 @@ MonoBehaviour:
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   invincibilityFramesTime: 1
   massAdded: 10
-  sizeMuliplyer: 0
+  sizeMuliplyer: 3
   isInvincible: 0
   massLoss: 10
 --- !u!114 &114470326212940026

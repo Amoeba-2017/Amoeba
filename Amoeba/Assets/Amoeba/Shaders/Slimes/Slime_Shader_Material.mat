@@ -33,6 +33,7 @@ Material:
     m_Floats:
     - _Cutoff: 0.5
     - _GlossAmount: 0.433
+    - _Outline: 0.1279
     - _RefractionAmount: 0
     m_Colors:
     - _AmbientColour: {r: 0.7794118, g: 0, b: 0, a: 1}

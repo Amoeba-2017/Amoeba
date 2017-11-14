@@ -47,7 +47,7 @@ public class PlayerUI : MonoBehaviour
     public void addPoints()
     {
         points += (Time.deltaTime * timeMulitpler);
-        pointsSlider.value += Mathf.Floor(points);
+        pointsSlider.value = Mathf.Floor(points);
         Debug.Log(Time.deltaTime * timeMulitpler);
         score = pointsSlider.value;
     }
