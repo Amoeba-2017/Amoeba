@@ -36,7 +36,8 @@ public class SlimeHealth : MonoBehaviour
 
     private float colorTimer;
 
-
+    [SerializeField]
+    private float massAdded;
 
     [SerializeField]
     float sizeMuliplyer;
@@ -74,6 +75,7 @@ public class SlimeHealth : MonoBehaviour
         //   // HeathPoints = 0;
         //    Debug.Log("split");
         //}
+
 
         gameObject.transform.GetChild(0).localScale = new Vector3((playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer);
         slimeCollider.radius = (((playerC.mass / 100) * sizeMuliplyer) / 2) * 1.5f; 
@@ -120,8 +122,8 @@ public class SlimeHealth : MonoBehaviour
                     GameObject puddle;
                     puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
                     puddle.GetComponent<SlimePuddle>().ShootOut = true;
-                    puddle.GetComponent<SlimePuddle>().SetMass(playerC.mass * (massPercentLoss / 100));
-                    playerC.mass -= playerC.mass * (massPercentLoss / 100);
+                    puddle.GetComponent<SlimePuddle>().SetMass(massAdded);
+                    playerC.mass -= massAdded;
                 }
             }
         }

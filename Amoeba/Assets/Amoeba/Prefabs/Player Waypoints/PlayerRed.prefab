@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  timeMulitpler: 0.5
 --- !u!114 &114756394631701582
 MonoBehaviour:
   m_ObjectHideFlags: 1

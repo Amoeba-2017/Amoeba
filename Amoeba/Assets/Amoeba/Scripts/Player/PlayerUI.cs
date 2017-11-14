@@ -17,6 +17,9 @@ public class PlayerUI : MonoBehaviour
 
     private PlayerController playerC;
 
+    [SerializeField][Tooltip("0.5 is 2 seconds per tick")]
+    private float timeMulitpler;
+
     // Use this for initialization
     void Awake()
     {
@@ -41,7 +44,7 @@ public class PlayerUI : MonoBehaviour
 
     public void addPoints()
     {
-        pointsSlider.value += Time.deltaTime * 2;
+        pointsSlider.value += (Time.deltaTime * timeMulitpler);
         score = pointsSlider.value;
     }
 

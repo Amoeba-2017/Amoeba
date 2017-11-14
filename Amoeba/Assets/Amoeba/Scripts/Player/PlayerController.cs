@@ -92,6 +92,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+
+        if(mass <= 30)
+        {
+            mass = 30;
+        }
+
+        if(mass >= 100)
+        {
+            mass = 100;
+        }
+
         //if (slimes.Count == 0)
         //{
         //    gameManager.Players.Remove(gameObject);
