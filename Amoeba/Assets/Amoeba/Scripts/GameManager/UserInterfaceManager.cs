@@ -78,7 +78,9 @@ public class UserInterfaceManager : MonoBehaviour
     {
         mainMenu,
         playerSelect,
-        none
+        none,
+        gameOver
+
     };
 
     public CanvasCount currentCanvas;
@@ -167,32 +169,32 @@ public class UserInterfaceManager : MonoBehaviour
             }
 
 
-            if (gsm.Players.Count == 1)
-            {
-                Debug.Log("ended the game");
-                StartCoroutine(restartGame());
+            //if (gsm.Players.Count == 1)
+            //{
+            //    Debug.Log("ended the game");
+            //    StartCoroutine(restartGame());
 
 
-                // Winner Icon
-                // If statements that trigger depending on which tag the last object left standing has,
-                // they then change the sprite to match the corresponding tag.
-                selectWinner();
+            //    // Winner Icon
+            //    // If statements that trigger depending on which tag the last object left standing has,
+            //    // they then change the sprite to match the corresponding tag.
+            //    selectWinner();
 
-                // Play Victory sound
-                AudioManager.PlaySound("VictorySound");
+            //    // Play Victory sound
+            //    AudioManager.PlaySound("VictorySound");
 
-                gsm.Players[0].GetComponent<PlayerUI>().addScore();
-                foreach (GameObject x in gsm.Players)
-                {
-                    foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
-                    {
-                        Destroy(i);
-                    }
-                    x.GetComponent<PlayerController>().slimes.Clear();
-                }
-                Destroy(gsm.Players[0]);
-                gsm.Players.Clear();
-            }
+            //    gsm.Players[0].GetComponent<PlayerUI>().addScore();
+            //    foreach (GameObject x in gsm.Players)
+            //    {
+            //        foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
+            //        {
+            //            Destroy(i);
+            //        }
+            //        x.GetComponent<PlayerController>().slimes.Clear();
+            //    }
+            //    Destroy(gsm.Players[0]);
+            //    gsm.Players.Clear();
+            //}
 
         }
 
@@ -293,6 +295,7 @@ public class UserInterfaceManager : MonoBehaviour
         {
             Destroy(x);
         }
+
         gsm.Players.Clear();
         StartCoroutine(restartGame());
 

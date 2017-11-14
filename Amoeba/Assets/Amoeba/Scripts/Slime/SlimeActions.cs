@@ -28,9 +28,12 @@ public class SlimeActions : MonoBehaviour
     private GameObject ShootSplat;
 
     [SerializeField]
-    private float massPercentLossed;
+    private float massShot;
 
     private SlimeHealth slimeHealth;
+
+
+
 
     // Use this for initialization
     void Start()
@@ -59,9 +62,9 @@ public class SlimeActions : MonoBehaviour
                 playerController = slimeMovement.player.GetComponent<PlayerController>();
             }
 
-            playerController.mass -= slimeHealth.massLoss;
+            playerController.mass -= massShot;
 
-            Bullet.GetComponent<SlimeBullet>().SetMyMass(slimeHealth.massAdded);
+            Bullet.GetComponent<SlimeBullet>().SetMyMass(massShot);
 
 
 

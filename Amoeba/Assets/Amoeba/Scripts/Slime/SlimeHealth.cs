@@ -77,7 +77,7 @@ public class SlimeHealth : MonoBehaviour
 
 
         gameObject.transform.GetChild(0).localScale = new Vector3((playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer);
-        slimeCollider.radius = (((playerC.mass / 100) * sizeMuliplyer) / 2) * 1.5f; 
+        slimeCollider.radius = ((playerC.mass / 100) * 1.5f); 
 
     }
 

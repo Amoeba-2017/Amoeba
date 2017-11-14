@@ -81,6 +81,7 @@ public class SlimeMovement : MonoBehaviour
 
     private Quaternion targetRot;
 
+
     [HideInInspector]
     public bool kingSlime = false;
 
@@ -108,11 +109,7 @@ public class SlimeMovement : MonoBehaviour
 
     public void setTargetRot(Vector3 dir)
     {
-
-
         targetRot = Quaternion.LookRotation(dir, Vector3.up);
-
-
     }
 
 
