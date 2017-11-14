@@ -79,7 +79,8 @@ public class UserInterfaceManager : MonoBehaviour
         mainMenu,
         playerSelect,
         none,
-        gameOver
+        gameOver,
+        pause
 
     };
 
@@ -90,7 +91,7 @@ public class UserInterfaceManager : MonoBehaviour
     {
         firstRun = true;
         currentControllerUISelection = ControllerUISelection.play;
-        maxRoundText = selectScreen.transform.GetChild(5).gameObject.GetComponent<Text>();
+        //maxRoundText = selectScreen.transform.GetChild(5).gameObject.GetComponent<Text>();
         currentCanvas = CanvasCount.mainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
         redSlimebw = (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite);
@@ -102,12 +103,11 @@ public class UserInterfaceManager : MonoBehaviour
     // Update (Per Frame)
     void Update()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             if (firstRun == true)
             {
                 co = StartCoroutine(GameTimer(roundTime));
-                Debug.Log("startedGametimer");
                 firstRun = false;
             }
 
@@ -160,41 +160,44 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                     pauseScreen.enabled = true;
                     Time.timeScale = 0.0f;
+                    currentCanvas = CanvasCount.pause;
                 }
                 else
                 {
                     Time.timeScale = 1.0f;
                     pauseScreen.enabled = false;
+                    currentCanvas = CanvasCount.none;
                 }
             }
 
 
-            //if (gsm.Players.Count == 1)
-            //{
-            //    Debug.Log("ended the game");
-            //    StartCoroutine(restartGame());
+           if (gsm.Players.Count == 1)
+           {
+                Debug.Log("ended the game");
+                currentCanvas = CanvasCount.gameOver;
 
+               // Winner Icon
+               // If statements that trigger depending on which tag the last object left standing has,
+               // they then change the sprite to match the corresponding tag.
+               selectWinner();
 
-            //    // Winner Icon
-            //    // If statements that trigger depending on which tag the last object left standing has,
-            //    // they then change the sprite to match the corresponding tag.
-            //    selectWinner();
+                // Play Victory sound
+                AudioManager.PlaySound("VictorySound");
 
-            //    // Play Victory sound
-            //    AudioManager.PlaySound("VictorySound");
+                gsm.Players[0].GetComponent<PlayerUI>().addScore();
+               foreach (GameObject x in gsm.Players)
+               {
+                   foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
+                   {
+                       Destroy(i);
+                   }
+                   x.GetComponent<PlayerController>().slimes.Clear();
+               }
+               Destroy(gsm.Players[0]);
+               gsm.Players.Clear();
 
-            //    gsm.Players[0].GetComponent<PlayerUI>().addScore();
-            //    foreach (GameObject x in gsm.Players)
-            //    {
-            //        foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
-            //        {
-            //            Destroy(i);
-            //        }
-            //        x.GetComponent<PlayerController>().slimes.Clear();
-            //    }
-            //    Destroy(gsm.Players[0]);
-            //    gsm.Players.Clear();
-            //}
+                Time.timeScale = 0f;
+           }
 
         }
 
@@ -218,7 +221,6 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                     if (currentControllerUISelection == ControllerUISelection.play)
                     {
-                        Debug.Log("exit");
                         currentControllerUISelection = ControllerUISelection.exit;
                     }
                     else if (currentControllerUISelection == ControllerUISelection.exit)
@@ -226,6 +228,7 @@ public class UserInterfaceManager : MonoBehaviour
                         currentControllerUISelection = ControllerUISelection.play;
                     }
                 }
+
 
                 if (currentControllerUISelection == ControllerUISelection.play)
                 {
@@ -236,7 +239,7 @@ public class UserInterfaceManager : MonoBehaviour
                     mainMenu.transform.GetChild(2).GetComponent<Button>().Select();
                 }
 
-                if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.Start, XboxController.All))
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.A, XboxController.All))
                 {
                     if (currentControllerUISelection == ControllerUISelection.play)
                     {
@@ -264,10 +267,24 @@ public class UserInterfaceManager : MonoBehaviour
             if (XCI.GetButton(XboxButton.A, XboxController.All))
             {
                 RestartGame();
+                Time.timeScale = 1f;
             }
             else if(XCI.GetButton(XboxButton.B, XboxController.All))
             {
+                Time.timeScale = 1.0f;
                 SceneManager.LoadScene(0);
+                Destroy(gameObject);
+                currentCanvas = CanvasCount.mainMenu;
+            }
+        }
+        if(currentCanvas == CanvasCount.pause)
+        {
+            if (XCI.GetButton(XboxButton.B, XboxController.All))
+            {
+                Time.timeScale = 1.0f;
+                pauseScreen.enabled = false;
+                SceneManager.LoadScene(0);
+                Destroy(gameObject);
                 currentCanvas = CanvasCount.mainMenu;
             }
         }
@@ -306,6 +323,12 @@ public class UserInterfaceManager : MonoBehaviour
 
         if (winner == true)
         {
+            foreach (GameObject x in gsm.Players)
+            {
+                Destroy(x.GetComponent<PlayerController>().slimes[0]);
+                Destroy(x);
+            }
+            AudioManager.PlaySound("VictorySound");
             gsm.Players.Clear();
             gsm.Players.Add(highestGO);
             selectWinner();
@@ -315,11 +338,8 @@ public class UserInterfaceManager : MonoBehaviour
             drawScreen.enabled = true;
         }
 
-        foreach (GameObject x in gsm.Players)
-        {
-            Destroy(x);
-        }
 
+        Destroy(gsm.Players[0]);
         gsm.Players.Clear();
         currentCanvas = CanvasCount.gameOver;
 
@@ -359,7 +379,7 @@ public class UserInterfaceManager : MonoBehaviour
         if (currentAmountofPlayers > 0)
         {
             currentCanvas = CanvasCount.none;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
             gsm.SpawnPlayers();
         }
     }

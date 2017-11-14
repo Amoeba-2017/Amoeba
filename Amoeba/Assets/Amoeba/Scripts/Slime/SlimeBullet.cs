@@ -67,12 +67,7 @@ public class SlimeBullet : MonoBehaviour
                 Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<CharacterController>(), true);
                 puddle.GetComponent<SlimePuddle>().SetMass(myMass);
             }
-            else
-            {
-                Debug.Log("0 mass to Throw");
-                Debug.Log(myMass);
-                Debug.Log(hitMass);
-            }
+            
         }
     }
 

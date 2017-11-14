@@ -81,7 +81,7 @@ public class GameStateManager : MonoBehaviour
     {
 
         //if in the game scene
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             //spawn the players if they dont exist
             if (spawnPlayers == true)
@@ -314,7 +314,6 @@ public class GameStateManager : MonoBehaviour
         {
             if (controllers.Count >= 1)
             {
-                Debug.Log("added Red Player");
                 GameObject temp = Instantiate(playerRedPrefab, spawnpoints[0].transform.position, Quaternion.identity);
                 players.Add(temp);
                 temp.GetComponent<PlayerController>().SetController(controllers[0]);
@@ -355,7 +354,7 @@ public class GameStateManager : MonoBehaviour
 
     public void SpawnPlayers()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
         {
             if (playerCount >= 1)
             {

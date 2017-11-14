@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
         //getting the amount of players in the game
         playerNumber = gameManager.playerCount;
 
-        controllerRetical = transform.GetChild(1).gameObject;
+        controllerRetical = transform.GetChild(2).gameObject;
+
 
         //making the first slime
         GameObject tempSlime = Instantiate(slimePrefab, new Vector3(transform.position.x, 45.25f, transform.position.z), transform.rotation);
@@ -387,8 +388,9 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit))
         {
             vec3 = new Vector3(rayHit.point.x, startPos.y, rayHit.point.z) - transform.position;
-            Debug.DrawLine(rayHit.point, transform.position);
         }
+
+        controllerRetical.transform.position = vec3;
 
         //if mousebutton 0 is pressed
         if (Input.GetMouseButtonDown(0) && ShootTimer > BufferTime)
