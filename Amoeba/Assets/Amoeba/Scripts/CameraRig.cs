@@ -38,7 +38,6 @@ public class CameraRig : MonoBehaviour {
 
         players.TrimExcess();
 
-        Debug.Log(players.Count);
 
 
         if (players.Count > 1)

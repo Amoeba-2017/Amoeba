@@ -49,7 +49,7 @@ public class SlimeHealth : MonoBehaviour
     private SlimeMovement slimeMovement;
 
     [SerializeField]
-    private float massPercentLoss;
+    private float massLoss;
 
     private SphereCollider slimeCollider;
 
@@ -123,7 +123,7 @@ public class SlimeHealth : MonoBehaviour
                     puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
                     puddle.GetComponent<SlimePuddle>().ShootOut = true;
                     puddle.GetComponent<SlimePuddle>().SetMass(massAdded);
-                    playerC.mass -= massAdded;
+                    playerC.mass -= massLoss;
                 }
             }
         }

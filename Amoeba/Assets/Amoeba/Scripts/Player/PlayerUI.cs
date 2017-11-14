@@ -8,7 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     private ScoreManager sm;
 
-    [HideInInspector]
+    
     public float score;
 
     private Slider healthSlider;
@@ -19,6 +19,8 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField][Tooltip("0.5 is 2 seconds per tick")]
     private float timeMulitpler;
+
+    float points;
 
     // Use this for initialization
     void Awake()
@@ -44,7 +46,9 @@ public class PlayerUI : MonoBehaviour
 
     public void addPoints()
     {
-        pointsSlider.value += (Time.deltaTime * timeMulitpler);
+        points += (Time.deltaTime * timeMulitpler);
+        pointsSlider.value += Mathf.Floor(points);
+        Debug.Log(Time.deltaTime * timeMulitpler);
         score = pointsSlider.value;
     }
 
