@@ -36,8 +36,7 @@ public class SlimeHealth : MonoBehaviour
 
     private float colorTimer;
 
-    [SerializeField]
-    private float massAdded;
+    public float massAdded;
 
     [SerializeField]
     float sizeMuliplyer;
@@ -48,8 +47,8 @@ public class SlimeHealth : MonoBehaviour
 
     private SlimeMovement slimeMovement;
 
-    [SerializeField]
-    private float massLoss;
+    
+    public float massLoss;
 
     private SphereCollider slimeCollider;
 

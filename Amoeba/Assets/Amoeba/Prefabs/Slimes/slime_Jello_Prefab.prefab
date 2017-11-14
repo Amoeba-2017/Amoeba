@@ -151,9 +151,10 @@ MonoBehaviour:
   BulletDamagePercent: 20
   Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   invincibilityFramesTime: 1
+  massAdded: 10
   sizeMuliplyer: 0
   isInvincible: 0
-  massPercentLoss: 10
+  massLoss: 10
 --- !u!114 &114809020168658524
 MonoBehaviour:
   m_ObjectHideFlags: 1

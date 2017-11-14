@@ -30,11 +30,13 @@ public class SlimeActions : MonoBehaviour
     [SerializeField]
     private float massPercentLossed;
 
+    private SlimeHealth slimeHealth;
+
     // Use this for initialization
     void Start()
     {
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-
+        slimeHealth = gameObject.GetComponent<SlimeHealth>();
     }
 
     public void Shoot(Vector3 rot , float mass)
@@ -54,9 +56,9 @@ public class SlimeActions : MonoBehaviour
                 playerController = slimeMovement.player.GetComponent<PlayerController>();
             }
 
-            playerController.mass -= playerController.mass * (massPercentLossed / 100);
+            playerController.mass -= slimeHealth.massLoss;
 
-            Bullet.GetComponent<SlimeBullet>().SetMyMass(mass * (massPercentLossed / 100));
+            Bullet.GetComponent<SlimeBullet>().SetMyMass(slimeHealth.massAdded);
 
 
 

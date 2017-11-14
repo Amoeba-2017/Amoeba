@@ -2327,7 +2327,7 @@ MonoBehaviour:
   yellowScore: 0
   blueScore: 0
   purpleScore: 0
-  maxScore: 100
+  maxScore: 5
 --- !u!114 &1624949587
 MonoBehaviour:
   m_ObjectHideFlags: 0
