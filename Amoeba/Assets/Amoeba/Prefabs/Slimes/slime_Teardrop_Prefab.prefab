@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312857039401634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.69777, y: -0.15, z: -33.233486}
+  m_LocalPosition: {x: 913.49, y: 401.6827, z: -1486.5657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4579060644807474}
@@ -126,7 +126,7 @@ MonoBehaviour:
   massAdded: 10
   sizeMuliplyer: 3
   isInvincible: 0
-  slimeCollliderMulitplyer: 1.5
+  slimeCollliderMulitplyer: 3
   massLoss: 10
 --- !u!114 &114664178896822308
 MonoBehaviour:
@@ -240,10 +240,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.72
-  m_Radius: 0.7
+  m_Height: 2
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.94, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
