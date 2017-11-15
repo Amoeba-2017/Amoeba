@@ -21,7 +21,7 @@ public class SlimeBullet : MonoBehaviour
     float myMass;
     float hitMass;
 
-    
+
 
 
     public void SetMyMass(float mass)
@@ -42,32 +42,35 @@ public class SlimeBullet : MonoBehaviour
 
             if (myMass > 0)
             {
-                int randomPos = Random.Range(1, 4);
+                if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass > 30)
+                {
+                    int randomPos = Random.Range(1, 4);
 
-                if (randomPos == 1)
-                {
-                    randomRotDir = ((transform.position + transform.up) + transform.right * 2 + transform.forward * 2);
-                }
-                else if (randomPos == 2)
-                {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + transform.forward * 2);
-                }
-                else if (randomPos == 3)
-                {
-                    randomRotDir = ((transform.position + transform.up) + transform.right * 2 + -transform.forward * 2);
-                }
+                    if (randomPos == 1)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + transform.forward * 2);
+                    }
+                    else if (randomPos == 2)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + transform.forward * 2);
+                    }
+                    else if (randomPos == 3)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + transform.right * 2 + -transform.forward * 2);
+                    }
 
-                else if (randomPos == 4)
-                {
-                    randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
+                    else if (randomPos == 4)
+                    {
+                        randomRotDir = ((transform.position + transform.up) + -transform.right * 2 + -transform.forward * 2);
+                    }
+                    GameObject puddle;
+                    puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
+                    puddle.GetComponent<SlimePuddle>().ShootOut = true;
+                    Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<CharacterController>(), true);
+                    puddle.GetComponent<SlimePuddle>().SetMass(myMass);
                 }
-                GameObject puddle;
-                puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
-                puddle.GetComponent<SlimePuddle>().ShootOut = true;
-                Physics.IgnoreCollision(puddle.GetComponent<Collider>(), x.transform.GetComponent<CharacterController>(), true);
-                puddle.GetComponent<SlimePuddle>().SetMass(myMass);
             }
-            
+
         }
     }
 
@@ -76,7 +79,7 @@ public class SlimeBullet : MonoBehaviour
     // Different particle effect depending on which If Statement is triggered
     void OnCollisionEnter(Collision x)
     {
-        if(x.transform.tag == "Slime")
+        if (x.transform.tag == "Slime")
         {
             CreatePuddles(x);
         }

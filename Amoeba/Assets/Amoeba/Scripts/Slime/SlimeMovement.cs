@@ -95,7 +95,11 @@ public class SlimeMovement : MonoBehaviour
         cc = gameObject.GetComponent<CharacterController>();
         speed = Random.Range(speed - speedRandomRange, speed + speedRandomRange);
         //define it
-        player = GameObject.FindGameObjectWithTag(parent);
+
+        if (parent != null)
+        {
+            player = GameObject.FindGameObjectWithTag(parent);
+        }
         slimes = player.GetComponent<PlayerController>().slimes;
         randomCircleRadius = player.GetComponent<PlayerController>().slimeRandomDistanceToPlayer;
         newPos = FindnewPosition();
@@ -116,14 +120,19 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
+        if (parent != null)
+        {
+            player = GameObject.FindGameObjectWithTag(parent);
+        }
+
         if (currentSlimeState == SlimeState.moving)
-        {
-            Seek();
-        }
-        else if (currentSlimeState == SlimeState.flying)
-        {
-            flying();
-        }
+            {
+                Seek();
+            }
+            else if (currentSlimeState == SlimeState.flying)
+            {
+                flying();
+            }
         //seek the player
         //Alignment()
         //Seek();
@@ -216,7 +225,7 @@ public class SlimeMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
             cc.Move(new Vector3(player.transform.position.x, beginYPos, player.transform.position.z) - transform.position);
         }
-       // }
+        // }
     }
 
 
@@ -294,6 +303,6 @@ public class SlimeMovement : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-     
+
     }
 }

@@ -95,37 +95,40 @@ public class SlimeHealth : MonoBehaviour
             {
                 if (isInvincible == false)
                 {
-                    //gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
-                    Vector3 randomRotDir = Vector3.zero;
-
-                    int randomPos = Random.Range(1, 4);
-
-                    if (randomPos == 1)
+                    if (playerC.mass > 30)
                     {
-                        randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + transform.forward * 3);
-                    }
-                    else if (randomPos == 2)
-                    {
-                        randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + transform.forward * 3);
-                    }
-                    else if (randomPos == 3)
-                    {
-                        randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + -transform.forward * 3);
-                    }
+                        //gameObject.GetComponent<SlimeMovement>().flyingVel = col.rigidbody.velocity;
+                        Vector3 randomRotDir = Vector3.zero;
 
-                    else if (randomPos == 4)
-                    {
-                        randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + -transform.forward * 3);
+                        int randomPos = Random.Range(1, 4);
+
+                        if (randomPos == 1)
+                        {
+                            randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + transform.forward * 3);
+                        }
+                        else if (randomPos == 2)
+                        {
+                            randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + transform.forward * 3);
+                        }
+                        else if (randomPos == 3)
+                        {
+                            randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + -transform.forward * 3);
+                        }
+
+                        else if (randomPos == 4)
+                        {
+                            randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + -transform.forward * 3);
+                        }
+
+                        // Play getting hit sound
+                        AudioManager.PlaySound("GettingHitSound");
+
+                        GameObject puddle;
+                        puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
+                        puddle.GetComponent<SlimePuddle>().ShootOut = true;
+                        puddle.GetComponent<SlimePuddle>().SetMass(massAdded);
+                        playerC.mass -= massLoss;
                     }
-
-                    // Play getting hit sound
-                    AudioManager.PlaySound("GettingHitSound");
-
-                    GameObject puddle;
-                    puddle = Instantiate(Puddle, randomRotDir, Quaternion.identity);
-                    puddle.GetComponent<SlimePuddle>().ShootOut = true;
-                    puddle.GetComponent<SlimePuddle>().SetMass(massAdded);
-                    playerC.mass -= massLoss;
                 }
             }
         }
