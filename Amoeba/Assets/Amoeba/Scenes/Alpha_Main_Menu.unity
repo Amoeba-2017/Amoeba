@@ -2289,8 +2289,8 @@ MonoBehaviour:
   WallCollision_SFX: {fileID: 0}
   GettingHit_SFX: {fileID: 8300000, guid: 6ddba1d0eb705b543acdda788c995e70, type: 3}
   CollectMass_SFX: {fileID: 8300000, guid: 57a132dcdef2fc047b005a7de404ce34, type: 3}
-  Victory_SFX: {fileID: 8300000, guid: 0583805fbe4004041bbd5217234c5406, type: 3}
-  Defeat_SFX: {fileID: 8300000, guid: 0583805fbe4004041bbd5217234c5406, type: 3}
+  Victory_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
+  Defeat_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
 --- !u!114 &1624949590
 MonoBehaviour:
   m_ObjectHideFlags: 0
