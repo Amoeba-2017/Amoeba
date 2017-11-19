@@ -103,7 +103,7 @@ public class UserInterfaceManager : MonoBehaviour
     // Update (Per Frame)
     void Update()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0))
         {
             if (firstRun == true)
             {
@@ -262,12 +262,14 @@ public class UserInterfaceManager : MonoBehaviour
                 }
             }
         }
+
         if (currentCanvas == CanvasCount.gameOver)
         {
             if (XCI.GetButton(XboxButton.A, XboxController.All))
             {
                 RestartGame();
                 Time.timeScale = 1f;
+                currentCanvas = CanvasCount.none;
             }
             else if(XCI.GetButton(XboxButton.B, XboxController.All))
             {
@@ -277,6 +279,7 @@ public class UserInterfaceManager : MonoBehaviour
                 currentCanvas = CanvasCount.mainMenu;
             }
         }
+
         if(currentCanvas == CanvasCount.pause)
         {
             if (XCI.GetButton(XboxButton.B, XboxController.All))
