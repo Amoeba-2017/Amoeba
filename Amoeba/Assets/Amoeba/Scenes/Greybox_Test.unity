@@ -5602,7 +5602,7 @@ MonoBehaviour:
   smoothSpeed: 3
   zOffset: 2
   yOffset: 2
-  maxDistance: 22
+  maxDistance: 35
   minDistance: 10
 --- !u!114 &1265022868
 MonoBehaviour:
@@ -6267,6 +6267,10 @@ Prefab:
     - target: {fileID: 4172343422482950, guid: 98f09abe7ba7bcb49b35622687c2c42a, type: 2}
       propertyPath: m_LocalPosition.z
       value: -82.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596329360965454, guid: 98f09abe7ba7bcb49b35622687c2c42a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -60.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98f09abe7ba7bcb49b35622687c2c42a, type: 2}
