@@ -23,6 +23,8 @@ public class ScoreManager : MonoBehaviour
     private int maxScore;
 
     [SerializeField]
+    private GameObject crownPrefab;
+
     private GameObject crown;
 
     private GameStateManager gsm;
@@ -44,7 +46,7 @@ public class ScoreManager : MonoBehaviour
         {
             if (GameObject.FindGameObjectWithTag("Crown") == null)
             {
-                crown = Instantiate(crown, Vector3.zero, Quaternion.identity);
+                crown = Instantiate(crownPrefab, Vector3.zero, Quaternion.identity);
             }
 
 
