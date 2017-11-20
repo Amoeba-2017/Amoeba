@@ -79,7 +79,7 @@ public class ScoreManager : MonoBehaviour
 
                 if (increaseScore == true)
                 {
-                    crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 5);
+                    crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 8);
                     highestGO.GetComponent<PlayerUI>().addPoints();
                     //if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
                     //{
