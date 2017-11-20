@@ -414,8 +414,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(controllerRetical.transform.position, 0.1f);
-    }
 }
