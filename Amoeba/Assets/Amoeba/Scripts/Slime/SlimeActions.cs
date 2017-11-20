@@ -55,7 +55,7 @@ public class SlimeActions : MonoBehaviour
             // Create a Bullet object
             GameObject Bullet;
 
-            Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.FromToRotation(rot, Vector3.up));
+            Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.FromToRotation(Vector3.up, rot));
 
             if (playerController == null)
             {
