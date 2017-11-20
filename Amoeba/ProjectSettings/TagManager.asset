@@ -23,6 +23,7 @@ TagManager:
   - PuddleSpawners
   - mainMenu
   - selectScreen
+  - Crown
   layers:
   - Default
   - TransparentFX

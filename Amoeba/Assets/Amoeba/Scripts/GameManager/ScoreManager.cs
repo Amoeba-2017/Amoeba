@@ -22,6 +22,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int maxScore;
 
+    [SerializeField]
+    private GameObject crown;
+
     private GameStateManager gsm;
 
     private GameObject highestGO;
@@ -38,50 +41,66 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (roundlimit != gsm.maxRounds)
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0))
         {
-            roundlimit = gsm.maxRounds;
-        }
-        if (redScore >= roundlimit || yellowScore >= roundlimit || blueScore >= roundlimit || purpleScore >= roundlimit)
-        {
-            SceneManager.LoadScene(0);
-            Destroy(gameObject);
-        }
-
-        if (gsm.Players != null && gsm.Players.Count > 1)
-        {
-            bool increaseScore = true;
-            highestGO = null;
-            float highestMass = float.MinValue;
-
-            foreach (GameObject x in gsm.Players)
+            if (GameObject.FindGameObjectWithTag("Crown") == null)
             {
-                float currentValue = x.GetComponent<PlayerController>().mass;
-                if (currentValue > highestMass)
-                {
-                    highestMass = currentValue;
-                    highestGO = x;
-                }
+                crown = Instantiate(crown, Vector3.zero, Quaternion.identity);
             }
 
-            foreach (GameObject x in gsm.Players)
-            {
-                float currentValue = x.GetComponent<PlayerController>().mass;
 
-                if (currentValue == highestMass && x != highestGO)
-                {
-                    increaseScore = false;
-                    break;
-                }
+
+            if (roundlimit != gsm.maxRounds)
+            {
+                roundlimit = gsm.maxRounds;
+            }
+            if (redScore >= roundlimit || yellowScore >= roundlimit || blueScore >= roundlimit || purpleScore >= roundlimit)
+            {
+                SceneManager.LoadScene(0);
+                Destroy(gameObject);
             }
 
-            if (increaseScore == true)
+            if (gsm.Players != null && gsm.Players.Count > 1)
             {
-                highestGO.GetComponent<PlayerUI>().addPoints();
-                if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
+                bool increaseScore = true;
+                highestGO = null;
+                float highestMass = float.MinValue;
+
+                foreach (GameObject x in gsm.Players)
                 {
-                    DestroyLosers(highestGO);
+                    float currentValue = x.GetComponent<PlayerController>().mass;
+                    if (currentValue > highestMass)
+                    {
+                        highestMass = currentValue;
+                        highestGO = x;
+                    }
                 }
+
+                foreach (GameObject x in gsm.Players)
+                {
+                    float currentValue = x.GetComponent<PlayerController>().mass;
+
+                    if (currentValue == highestMass && x != highestGO)
+                    {
+                        increaseScore = false;
+                        break;
+                    }
+                }
+
+                if (increaseScore == true)
+                {
+                    crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 5);
+                    highestGO.GetComponent<PlayerUI>().addPoints();
+                    if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
+                    {
+                        DestroyLosers(highestGO);
+                    }
+                }
+                else
+                {
+                    crown.transform.position = new Vector3(0, -10, 0);
+                }
+
             }
         }
     }

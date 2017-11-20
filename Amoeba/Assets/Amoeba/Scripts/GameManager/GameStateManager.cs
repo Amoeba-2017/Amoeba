@@ -56,6 +56,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField]
     float maxPuddleSpawnTime;
 
+    
+
     private float minMaxPuddleTime;
 
     float puddleTimer;

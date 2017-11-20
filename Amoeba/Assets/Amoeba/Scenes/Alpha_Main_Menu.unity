@@ -2179,6 +2179,7 @@ MonoBehaviour:
   blueScore: 0
   purpleScore: 0
   maxScore: 30
+  crown: {fileID: 1373106974519464, guid: 132dca170c949414780ffb9cdc60feb7, type: 2}
 --- !u!114 &1624949587
 MonoBehaviour:
   m_ObjectHideFlags: 0

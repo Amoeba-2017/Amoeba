@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
         cc.Move((((transform.right * XCI.GetAxis(XboxAxis.LeftStickX, controller)) + (transform.forward * XCI.GetAxis(XboxAxis.LeftStickY, controller)).normalized) * speed  * Time.deltaTime));
 
 
-        controllerRetical.transform.position = transform.position + new Vector3(XCI.GetAxis(XboxAxis.RightStickX, controller), 0, XCI.GetAxis(XboxAxis.RightStickY, controller));
+        controllerRetical.transform.position = transform.position + new Vector3(XCI.GetAxisRaw(XboxAxis.RightStickX, controller), 0, XCI.GetAxisRaw(XboxAxis.RightStickY, controller));
 
 
         //if the a button is pressed on xbox or the x button is pressed on controller (this will probs change)
