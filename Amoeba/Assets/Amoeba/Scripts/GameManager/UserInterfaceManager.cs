@@ -89,6 +89,7 @@ public class UserInterfaceManager : MonoBehaviour
     // Initialization
     void Start()
     {
+        GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = false;
         firstRun = true;
         currentControllerUISelection = ControllerUISelection.play;
         CurrentGameState = GameState.MainMenu;
