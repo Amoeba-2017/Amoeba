@@ -89,7 +89,6 @@ public class UserInterfaceManager : MonoBehaviour
     // Initialization
     void Start()
     {
-        GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = false;
         firstRun = true;
         currentControllerUISelection = ControllerUISelection.play;
         CurrentGameState = GameState.MainMenu;
@@ -325,6 +324,7 @@ public class UserInterfaceManager : MonoBehaviour
         co = StartCoroutine(GameTimer(roundTime));
         gsm.spawnPlayers = true;
         currentTimer = 0;
+        GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
