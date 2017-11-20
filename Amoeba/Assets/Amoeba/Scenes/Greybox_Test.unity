@@ -18054,7 +18054,7 @@ GameObject:
   - component: {fileID: 865209415}
   - component: {fileID: 865209414}
   m_Layer: 0
-  m_Name: Rock_Medium_03_005 (3)
+  m_Name: Rock_Medium_03_026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28452,7 +28452,7 @@ GameObject:
   - component: {fileID: 1362674726}
   - component: {fileID: 1362674725}
   m_Layer: 0
-  m_Name: Rock_Large_04_014 (1)
+  m_Name: Rock_Large_04_015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29616,7 +29616,7 @@ GameObject:
   - component: {fileID: 1434999638}
   - component: {fileID: 1434999637}
   m_Layer: 0
-  m_Name: Rock_Medium_03_005 (1)
+  m_Name: Rock_Medium_03_024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36844,7 +36844,7 @@ GameObject:
   - component: {fileID: 1973487513}
   - component: {fileID: 1973487512}
   m_Layer: 0
-  m_Name: Rock_Medium_03_005 (2)
+  m_Name: Rock_Medium_03_025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
