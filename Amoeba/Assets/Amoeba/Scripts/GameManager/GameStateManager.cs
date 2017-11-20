@@ -130,9 +130,6 @@ public class GameStateManager : MonoBehaviour
         DebugUpdate();
     }
 
-
-
-
     void SpawnPuddle()
     {
         // if the timer is greater then the spawn time
@@ -163,8 +160,10 @@ public class GameStateManager : MonoBehaviour
                 //find a random number between 
                 int randomNumber = Random.Range(0, ts.Length - 1);
 
+                //get a random puddle Spawner
                 GameObject x = ts[randomNumber];
 
+                //spawn the random puddle
                 if (x != null)
                 {
                     if (x.transform.childCount == 0)
@@ -185,6 +184,7 @@ public class GameStateManager : MonoBehaviour
 
     void DebugUpdate()
     {
+        //if "b" "u " "g" is pressed all at once turn debug mode on
         if (Input.GetKey("b"))
         {
             if (Input.GetKey("u"))
@@ -197,17 +197,21 @@ public class GameStateManager : MonoBehaviour
             }
         }
 
+        //if debug mode is on
         if (debugMode == true)
         {
+            //turn on the mouse
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
+            //if we are in playerselect and the space key is pressed add a debug player
             if (uim.CurrentGameState == UserInterfaceManager.GameState.PlayerSelect)
-            {
+            { 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     uim.AddPlayer();
                     playerCount++;
+                    //if controller none use keybored
                     controllers.Add(XboxController.None);
                 }
             }
@@ -215,16 +219,18 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-
     private void loadPlayers()
     {
+        //pick a spawn point and make a player for each controller 
         GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         if (GameObject.FindGameObjectWithTag("PlayerRed") == false)
         {
             if (controllers.Count >= 1)
             {
                 GameObject temp = Instantiate(playerRedPrefab, spawnpoints[0].transform.position, Quaternion.identity);
+                //add a player to the list
                 players.Add(temp);
+                //set this players controller to the person that hit "A"
                 temp.GetComponent<PlayerController>().SetController(controllers[0]);
             }
         }
@@ -234,7 +240,9 @@ public class GameStateManager : MonoBehaviour
             if (controllers.Count >= 2)
             {
                 GameObject temp = Instantiate(playerYellowPrefab, spawnpoints[1].transform.position, Quaternion.identity);
+                //add a player to the list
                 players.Add(temp);
+                //set this players controller to the person that hit "A"
                 temp.GetComponent<PlayerController>().SetController(controllers[1]);
             }
         }
@@ -244,7 +252,9 @@ public class GameStateManager : MonoBehaviour
             if (controllers.Count >= 3)
             {
                 GameObject temp = Instantiate(playerBluePrefab, spawnpoints[2].transform.position, Quaternion.identity);
+                //add a player to the list
                 players.Add(temp);
+                //set this players controller to the person that hit "A"
                 temp.GetComponent<PlayerController>().SetController(controllers[2]);
             }
         }
@@ -254,39 +264,18 @@ public class GameStateManager : MonoBehaviour
             if (controllers.Count >= 4)
             {
                 GameObject temp = Instantiate(playerPurplePrefab, spawnpoints[3].transform.position, Quaternion.identity);
+                //add a player to the list
                 players.Add(temp);
+                //set this players controller to the person that hit "A"
                 temp.GetComponent<PlayerController>().SetController(controllers[3]);
             }
         }
 
     }
 
-    public void SpawnPlayers()
-    {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
-        {
-            if (playerCount >= 1)
-            {
-                Instantiate(playerRedPrefab);
-            }
-            if (playerCount >= 2)
-            {
-                Instantiate(playerRedPrefab);
-            }
-            if (playerCount >= 3)
-            {
-                Instantiate(playerRedPrefab);
-            }
-            if (playerCount >= 4)
-            {
-                Instantiate(playerRedPrefab);
-            }
-        }
-    }
-
     public List<GameObject> Players
     {
-
+        //getter
         get
         {
             return players;
