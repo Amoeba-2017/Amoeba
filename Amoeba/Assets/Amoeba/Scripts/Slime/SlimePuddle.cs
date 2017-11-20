@@ -65,7 +65,7 @@ public class SlimePuddle : MonoBehaviour
     {
         if (x.transform.tag == "Slime")
         {
-            if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass <= 100)
+            if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass < 100)
             {
                 GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
                 Destroy(gameObject);
@@ -76,7 +76,7 @@ public class SlimePuddle : MonoBehaviour
         }
         if (x.transform.tag == "PlayerRed" || x.transform.tag == "PlayerBlue" || x.transform.tag == "PlayerPurple" || x.transform.tag == "PlayerYellow")
         {
-            if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass <= 100)
+            if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass < 100)
             {
                 GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
                 Destroy(gameObject);
@@ -86,7 +86,7 @@ public class SlimePuddle : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit x)
     {
-        if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass <= 100)
+        if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass < 100)
         {
             Debug.Log("hit the player or the slime");
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;

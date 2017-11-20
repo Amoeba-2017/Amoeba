@@ -2093,7 +2093,6 @@ GameObject:
   - component: {fileID: 1624949587}
   - component: {fileID: 1624949589}
   - component: {fileID: 1624949588}
-  - component: {fileID: 1624949590}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -2292,17 +2291,6 @@ MonoBehaviour:
   CollectMass_SFX: {fileID: 8300000, guid: 57a132dcdef2fc047b005a7de404ce34, type: 3}
   Victory_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
   Defeat_SFX: {fileID: 8300000, guid: 997e8c5efc2ccb24e84cd4fd3bca2115, type: 3}
---- !u!114 &1624949590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1624949581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96e3806accc55846af4de6e34a5b901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1906774655
 GameObject:
   m_ObjectHideFlags: 0

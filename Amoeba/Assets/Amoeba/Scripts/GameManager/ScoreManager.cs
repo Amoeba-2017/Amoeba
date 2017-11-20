@@ -91,10 +91,10 @@ public class ScoreManager : MonoBehaviour
                 {
                     crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 5);
                     highestGO.GetComponent<PlayerUI>().addPoints();
-                    if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
-                    {
-                        DestroyLosers(highestGO);
-                    }
+                    //if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
+                    //{
+                    //    DestroyLosers(highestGO);
+                    //}
                 }
                 else
                 {
