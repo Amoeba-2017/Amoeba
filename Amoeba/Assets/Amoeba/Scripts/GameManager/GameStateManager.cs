@@ -57,8 +57,6 @@ public class GameStateManager : MonoBehaviour
     float puddleTimer;
 
 
-
-
     // Use this for initialization
     void Awake()
     {
