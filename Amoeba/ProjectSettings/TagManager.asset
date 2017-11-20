@@ -24,6 +24,7 @@ TagManager:
   - mainMenu
   - selectScreen
   - Crown
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX

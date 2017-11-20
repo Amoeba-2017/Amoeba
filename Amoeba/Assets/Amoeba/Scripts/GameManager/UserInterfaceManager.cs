@@ -292,7 +292,6 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
 
-
         if (winner == true)
         {
             foreach (GameObject x in gsm.Players)
@@ -301,6 +300,7 @@ public class UserInterfaceManager : MonoBehaviour
                 Destroy(x);
             }
             AudioManager.PlaySound("VictorySound");
+            GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = true;
             gsm.Players.Clear();
             gsm.Players.Add(highestGO);
             selectWinner();
