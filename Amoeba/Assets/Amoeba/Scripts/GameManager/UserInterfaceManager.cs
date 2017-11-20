@@ -56,8 +56,6 @@ public class UserInterfaceManager : MonoBehaviour
     // List of sprites
     private List<Image> sprites = new List<Image>();
 
-    public Text maxRoundText;
-
     bool isPaused = false;
 
     bool firstRun;
