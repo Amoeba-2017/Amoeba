@@ -27,15 +27,19 @@ public class Clouds : MonoBehaviour {
     // Initialization
     void Start ()
     {
+        // Set start position.
         startPosition = transform.position;
+        // Get the compnent for the rigidbody.
         rb = GetComponent<Rigidbody>();
     }
 	
 	// Update (Per Frame)
 	void Update ()
     {
+        // Give gameObject the velocities defined in the Unity Editor.
         rb.velocity = new Vector3(speedX, speedY, speedZ);
         currentDistance = Vector3.Distance(startPosition, transform.position);
+        // If the current distance exceeds the reset distance, reset the distance back to start.
         if (currentDistance >= resetDistance)
         {
             transform.position = startPosition;

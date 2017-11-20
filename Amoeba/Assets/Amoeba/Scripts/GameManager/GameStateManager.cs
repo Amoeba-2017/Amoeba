@@ -62,10 +62,12 @@ public class GameStateManager : MonoBehaviour
 
     float puddleTimer;
 
-
     // Use this for initialization
     void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         maxRounds = 3;
         DontDestroyOnLoad(gameObject);
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -74,7 +76,6 @@ public class GameStateManager : MonoBehaviour
         }
         uim = gameObject.GetComponent<UserInterfaceManager>();
         spawnPlayers = true;
-
 
         minMaxPuddleTime = Random.Range(minPuddleSpawnTime, maxPuddleSpawnTime);
     }
@@ -267,6 +268,9 @@ public class GameStateManager : MonoBehaviour
 
         if (debugMode == true)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
             if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
             {
                 if (Input.GetKeyDown(KeyCode.Space))

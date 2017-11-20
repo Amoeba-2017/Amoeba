@@ -12,18 +12,25 @@ public class AudioManager : MonoBehaviour {
     // Sound Clips
     // Variables that appear in the Unity Editor, for quick and easy replacement
     [SerializeField]
+    [Tooltip("Audio clip for Shooting")]
     public AudioClip Shoot_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Death")]
     public AudioClip Death_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Wall Collision")]
     public AudioClip WallCollision_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Getting Hit")]
     public AudioClip GettingHit_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Collecting Mass")]
     public AudioClip CollectMass_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Victory")]
     public AudioClip Victory_SFX;
     [SerializeField]
+    [Tooltip("Audio clip for Defeat")]
     public AudioClip Defeat_SFX;
 
     // Initialization
