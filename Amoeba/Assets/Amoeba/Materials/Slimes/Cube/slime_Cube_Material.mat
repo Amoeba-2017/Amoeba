@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceNormal:
-        m_Texture: {fileID: 2800000, guid: f93831e302bc78a42980c3d795bc38f0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -63,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _node_2788:
-        m_Texture: {fileID: 2800000, guid: f871bb882a9053e4898d36e40b75664c, type: 3}
+        m_Texture: {fileID: 2800000, guid: b49d3fd1979e2b64da58e0394957473c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -78,6 +78,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.2
     - _Parallax: 0.02
     - _RefractionAmount: 0.154
     - _SmoothnessTextureChannel: 0
