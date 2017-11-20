@@ -270,24 +270,24 @@ public class UserInterfaceManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time * 60);
         GameObject highestGO = null;
-        float highestMass = float.MinValue;
+        float highestPoints = float.MinValue;
         bool winner = true;
 
         foreach (GameObject x in gsm.Players)
         {
-            float currentValue = x.GetComponent<PlayerController>().mass;
-            if (currentValue > highestMass)
+            float currentValue = x.GetComponent<PlayerUI>().score;
+            if (currentValue > highestPoints)
             {
-                highestMass = currentValue;
+                highestPoints = currentValue;
                 highestGO = x;
             }
         }
 
         foreach (GameObject x in gsm.Players)
         {
-            float currentValue = x.GetComponent<PlayerController>().mass;
+            float currentValue = x.GetComponent<PlayerUI>().score;
 
-            if (currentValue == highestMass && x != highestGO)
+            if (currentValue == highestPoints && x != highestGO)
             {
                 winner = false;
                 break;
