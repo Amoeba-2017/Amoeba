@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Slime_Bullet_Cube
-  m_Shader: {fileID: 4800000, guid: daa687e8ed490744aa3d86826f440d7b, type: 3}
+  m_Name: slime_Cube_Shader_Material
+  m_Shader: {fileID: 4800000, guid: de617ab8b1efe834a897139bb0ee0dbb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -23,23 +23,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceNormal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f93831e302bc78a42980c3d795bc38f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _node_2788:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f871bb882a9053e4898d36e40b75664c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
     - _GlossAmount: 0.5055891
-    - _Outline: 0
+    - _Opacity: 0.75
+    - _Outline: 0.05982906
     - _RefractionAmount: 0.02287514
     m_Colors:
     - _AmbientColour: {r: 0.7794118, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.8897059, g: 0.2289684, b: 0.2289684, a: 1}
-    - _OutlineColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _OutLineColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: slime_Pyramid_Material
-  m_Shader: {fileID: 4800000, guid: 4f2b60fed5126664c83b3a8e83c0114c, type: 3}
+  m_Shader: {fileID: 4800000, guid: de617ab8b1efe834a897139bb0ee0dbb, type: 3}
   m_ShaderKeywords: _EMISSION _NORMALMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -78,6 +78,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.75
     - _Outline: 0.2
     - _Parallax: 0.02
     - _RefractionAmount: 0.028
@@ -90,4 +91,5 @@ Material:
     - _AmbientColour: {r: 0.63235295, g: 0.6161914, b: 0.046496548, a: 1}
     - _Color: {r: 0.85294116, g: 0.79844284, b: 0.06271627, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutLineColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _OutlineColour: {r: 1, g: 0.80689657, b: 0, a: 1}
