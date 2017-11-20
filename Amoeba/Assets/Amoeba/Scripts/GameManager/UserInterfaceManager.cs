@@ -68,31 +68,32 @@ public class UserInterfaceManager : MonoBehaviour
 
     Coroutine co;
 
+    public GameState CurrentGameState;
+
     public enum ControllerUISelection
     {
         play,
         exit,
     }
 
-    public enum CanvasCount
+    public enum GameState
     {
-        mainMenu,
-        playerSelect,
-        none,
-        gameOver,
-        pause
+        MainMenu,
+        PlayerSelect,
+        GameScene,
+        GameOver,
+        Pause
 
     };
 
-    public CanvasCount currentCanvas;
+
 
     // Initialization
     void Start()
     {
         firstRun = true;
         currentControllerUISelection = ControllerUISelection.play;
-        //maxRoundText = selectScreen.transform.GetChild(5).gameObject.GetComponent<Text>();
-        currentCanvas = CanvasCount.mainMenu;
+        CurrentGameState = GameState.MainMenu;
         gsm = gameObject.GetComponent<GameStateManager>();
         redSlimebw = (selectScreen.transform.GetChild(0).GetComponent<Image>().sprite);
         yellowSlimebw = (selectScreen.transform.GetChild(1).GetComponent<Image>().sprite);
@@ -160,45 +161,15 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                     pauseScreen.enabled = true;
                     Time.timeScale = 0.0f;
-                    currentCanvas = CanvasCount.pause;
+                    CurrentGameState = GameState.Pause;
                 }
                 else
                 {
                     Time.timeScale = 1.0f;
                     pauseScreen.enabled = false;
-                    currentCanvas = CanvasCount.none;
+                    CurrentGameState = GameState.GameScene;
                 }
             }
-
-
-           if (gsm.Players.Count == 1)
-           {
-                Debug.Log("ended the game");
-                currentCanvas = CanvasCount.gameOver;
-
-               // Winner Icon
-               // If statements that trigger depending on which tag the last object left standing has,
-               // they then change the sprite to match the corresponding tag.
-               selectWinner();
-
-                // Play Victory sound
-                AudioManager.PlaySound("VictorySound");
-
-                gsm.Players[0].GetComponent<PlayerUI>().addScore();
-               foreach (GameObject x in gsm.Players)
-               {
-                   foreach (GameObject i in x.GetComponent<PlayerController>().slimes)
-                   {
-                       Destroy(i);
-                   }
-                   x.GetComponent<PlayerController>().slimes.Clear();
-               }
-               Destroy(gsm.Players[0]);
-               gsm.Players.Clear();
-
-                Time.timeScale = 0f;
-           }
-
         }
 
         else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
@@ -213,7 +184,7 @@ public class UserInterfaceManager : MonoBehaviour
                 selectScreen = GameObject.FindGameObjectWithTag("selectScreen").GetComponent<Canvas>();
             }
 
-            if (currentCanvas == CanvasCount.mainMenu)
+            if (CurrentGameState == GameState.MainMenu)
             {
 
                 //                if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.All) || XCI.GetAxis(XboxAxis.LeftStickY, XboxController.All) < -0.5f || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.All) || XCI.GetAxis(XboxAxis.LeftStickY, XboxController.All) > 0.5f)
@@ -251,7 +222,7 @@ public class UserInterfaceManager : MonoBehaviour
                     }
                 }
             }
-            if (currentCanvas == CanvasCount.playerSelect)
+            if (CurrentGameState == GameState.PlayerSelect)
             {
                 if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.Start, XboxController.All))
                 {
@@ -263,24 +234,24 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
 
-        if (currentCanvas == CanvasCount.gameOver)
+        if (CurrentGameState == GameState.GameOver)
         {
             if (XCI.GetButton(XboxButton.A, XboxController.All))
             {
                 RestartGame();
                 Time.timeScale = 1f;
-                currentCanvas = CanvasCount.none;
+                CurrentGameState = GameState.GameScene;
             }
             else if(XCI.GetButton(XboxButton.B, XboxController.All))
             {
                 Time.timeScale = 1.0f;
                 SceneManager.LoadScene(0);
                 Destroy(gameObject);
-                currentCanvas = CanvasCount.mainMenu;
+                CurrentGameState = GameState.MainMenu;
             }
         }
 
-        if(currentCanvas == CanvasCount.pause)
+        if(CurrentGameState == GameState.Pause)
         {
             if (XCI.GetButton(XboxButton.B, XboxController.All))
             {
@@ -288,7 +259,7 @@ public class UserInterfaceManager : MonoBehaviour
                 pauseScreen.enabled = false;
                 SceneManager.LoadScene(0);
                 Destroy(gameObject);
-                currentCanvas = CanvasCount.mainMenu;
+                CurrentGameState = GameState.MainMenu;
             }
         }
 
@@ -344,7 +315,7 @@ public class UserInterfaceManager : MonoBehaviour
 
         Destroy(gsm.Players[0]);
         gsm.Players.Clear();
-        currentCanvas = CanvasCount.gameOver;
+        CurrentGameState = GameState.GameOver;
 
     }
 
@@ -365,7 +336,7 @@ public class UserInterfaceManager : MonoBehaviour
     // Button function for the Main Menu 'Start' button
     public void mainStartButton()
     {
-        currentCanvas = CanvasCount.playerSelect;
+        CurrentGameState = GameState.PlayerSelect;
         mainMenu.enabled = false;
         selectScreen.enabled = true;
     }
@@ -379,18 +350,14 @@ public class UserInterfaceManager : MonoBehaviour
     // Button function for the Player Select 'Start' button
     public void selectStartButton()
     {
-        if (currentAmountofPlayers > 0)
+        if (currentAmountofPlayers > 1)
         {
-            currentCanvas = CanvasCount.none;
+            CurrentGameState = GameState.GameScene;
             SceneManager.LoadScene(1);
             gsm.SpawnPlayers();
         }
     }
 
-    // Button function for the Victory Screen 'Continue' button
-    public void victoryContinueButton()
-    {
-    }
 
     private void selectWinner()
     {

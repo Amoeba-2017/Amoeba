@@ -21,9 +21,6 @@ public class GameStateManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPurplePrefab;
 
-    [HideInInspector]
-    public int maxRounds;
-
 
     [HideInInspector]
     public int playerCount = 0;
@@ -41,10 +38,6 @@ public class GameStateManager : MonoBehaviour
     public bool spawnPlayers = true;
 
     [SerializeField]
-    private bool minMaxRandomSpawn;
-
-
-    [SerializeField]
     private GameObject puddle;
 
     [SerializeField]
@@ -56,19 +49,18 @@ public class GameStateManager : MonoBehaviour
     [SerializeField]
     float maxPuddleSpawnTime;
 
-    
-
     private float minMaxPuddleTime;
 
     float puddleTimer;
+
+
+
 
     // Use this for initialization
     void Awake()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        maxRounds = 3;
         DontDestroyOnLoad(gameObject);
         if (FindObjectsOfType(GetType()).Length > 1)
         {
@@ -84,7 +76,7 @@ public class GameStateManager : MonoBehaviour
     {
 
         //if in the game scene
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0))
         {
             //spawn the players if they dont exist
             if (spawnPlayers == true)
@@ -201,7 +193,7 @@ public class GameStateManager : MonoBehaviour
         if (uim != null)
         {
             //if the current canvas is playerSelect 
-            if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
+            if (uim.CurrentGameState == UserInterfaceManager.GameState.PlayerSelect)
             {
                 for (int i = 1; i < 5; i++)
                 {
@@ -212,39 +204,7 @@ public class GameStateManager : MonoBehaviour
                     }
                 }
 
-                //if (playerCount == 1)
-                //{ 
-                //    controllers.Add(XboxController.First);
-                //    uim.AddPlayer();
-                //}
-                //else if (playerCount == 2)
-                //{
-                //    controllers.Add(XboxController.Second);
-                //    uim.AddPlayer();
-                //}
-                //else if (playerCount == 3)
-                //{
-                //    controllers.Add(XboxController.Third);
-                //    uim.AddPlayer();
-                //}
-                //else if (playerCount == 4)
-                //{
-                //    controllers.Add(XboxController.Fourth);
-                //    uim.AddPlayer();
-                //}
-                //if(playerCount > 4)
-                //{
-                //    playerCount = 4;
-                //}
-
             }
-
-
-            //if(inputDivices.Count == 4)
-            //{
-            //    SceneManager.LoadScene(1);
-            //}
-
         }
 
         DebugUpdate();
@@ -271,7 +231,7 @@ public class GameStateManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            if (uim.currentCanvas == UserInterfaceManager.CanvasCount.playerSelect)
+            if (uim.CurrentGameState == UserInterfaceManager.GameState.PlayerSelect)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -282,34 +242,6 @@ public class GameStateManager : MonoBehaviour
             }
 
         }
-
-        //if (debugMode == true)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        // if (playerCount < maxPlayerCount)
-        //        // {
-        //        playerCount++;
-        //        if (playerCount == 1)
-        //        {
-        //            players.Add(Instantiate(playerRedPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-        //        }
-        //        else if (playerCount == 2)
-        //        {
-        //            players.Add(Instantiate(playerYellowPrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-        //        }
-        //        else if (playerCount == 3)
-        //        {
-        //            players.Add(Instantiate(playerBluePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-        //        }
-        //        else
-        //        {
-        //            players.Add(Instantiate(playerPurplePrefab, new Vector3(7f, 47.376f, -131.3f), Quaternion.identity));
-        //        }
-        //        // }
-
-        //    }
-        //}
     }
 
 

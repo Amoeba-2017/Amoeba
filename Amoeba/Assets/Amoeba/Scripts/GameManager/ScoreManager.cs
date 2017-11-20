@@ -34,7 +34,6 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         gsm = gameObject.GetComponent<GameStateManager>();
-        roundlimit = gsm.maxRounds;
 
     }
 
@@ -48,17 +47,6 @@ public class ScoreManager : MonoBehaviour
                 crown = Instantiate(crown, Vector3.zero, Quaternion.identity);
             }
 
-
-
-            if (roundlimit != gsm.maxRounds)
-            {
-                roundlimit = gsm.maxRounds;
-            }
-            if (redScore >= roundlimit || yellowScore >= roundlimit || blueScore >= roundlimit || purpleScore >= roundlimit)
-            {
-                SceneManager.LoadScene(0);
-                Destroy(gameObject);
-            }
 
             if (gsm.Players != null && gsm.Players.Count > 1)
             {
