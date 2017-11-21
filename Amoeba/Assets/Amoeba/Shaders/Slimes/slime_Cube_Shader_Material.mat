@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 1b576e2a3b0d60546b2fdc672ad328c6, type: 3}
+        m_Texture: {fileID: 2800000, guid: d67a97528f2281743a93ae0e69868af5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceNormal:
@@ -33,7 +33,7 @@ Material:
     m_Floats:
     - _Cutoff: 0.5
     - _GlossAmount: 0.5055891
-    - _Opacity: 0.75
+    - _Opacity: 0.9
     - _Outline: 0.169
     - _RefractionAmount: 0.02287514
     m_Colors:
