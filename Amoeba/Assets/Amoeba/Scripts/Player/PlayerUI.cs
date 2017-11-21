@@ -42,7 +42,7 @@ public class PlayerUI : MonoBehaviour
     {
         points += (Time.deltaTime * timeMulitpler) / sc.maxScore;
         pointsSlider.fillAmount = points;
-        score = pointsSlider.fillAmount;
+        score = pointsSlider.fillAmount * sc.maxScore;
     }
 
 }

@@ -457,6 +457,11 @@ public class UserInterfaceManager : MonoBehaviour
 
         CurrentGameState = GameState.GameOver;
         victoryScreen.enabled = true;
+        Destroy(gsm.Players[0].GetComponent<PlayerController>().slimes[0]);
+        Destroy(gsm.Players[0]);
+        GameObject.FindGameObjectWithTag("Crown").transform.position = new Vector3(0, -10, 0);
+        gsm.Players.Clear();
+
     }
     public void AddPlayer()
     {
