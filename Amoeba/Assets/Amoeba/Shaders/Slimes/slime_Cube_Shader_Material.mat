@@ -23,19 +23,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceNormal:
-        m_Texture: {fileID: 2800000, guid: f93831e302bc78a42980c3d795bc38f0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: f871bb882a9053e4898d36e40b75664c, type: 3}
+        m_Texture: {fileID: 2800000, guid: b49d3fd1979e2b64da58e0394957473c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
     - _GlossAmount: 0.5055891
     - _Opacity: 0.9
-    - _Outline: 0.169
+    - _Outline: 0.041
     - _RefractionAmount: 0.02287514
     m_Colors:
     - _AmbientColour: {r: 0.7794118, g: 0, b: 0, a: 1}
-    - _OutLineColour: {r: 0.46323532, g: 0, b: 0, a: 1}
+    - _OutLineColour: {r: 1, g: 0.014705896, b: 0.014705896, a: 1}

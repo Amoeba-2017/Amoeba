@@ -249,11 +249,11 @@ public class UserInterfaceManager : MonoBehaviour
                 if (currentControllerUISelection == ControllerUISelection.play)
                 {
                     currentControllerUISelection = ControllerUISelection.exit;
-                    UICrowm.transform.position += new Vector3(0, -5, 0);
+                    UICrowm.transform.position += new Vector3(0, -2.5f, 0);
                 }
                 else if (currentControllerUISelection == ControllerUISelection.exit)
                 {
-                    UICrowm.transform.position += new Vector3(0, 5, 0);
+                    UICrowm.transform.position += new Vector3(0, 2.5f, 0);
                     currentControllerUISelection = ControllerUISelection.play;
                 }
                 Debug.Log(axisInUse);

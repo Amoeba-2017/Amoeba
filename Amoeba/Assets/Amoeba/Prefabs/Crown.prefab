@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4376037739827218}
   - component: {fileID: 33073738747021262}
   - component: {fileID: 23911389869708754}
+  - component: {fileID: 95327997975671400}
   m_Layer: 0
   m_Name: Crown
   m_TagString: Crown
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373106974519464}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.78788, y: 18.59685, z: -37.60063}
+  m_LocalPosition: {x: 912.462, y: 979.6594, z: -1795.7776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,3 +81,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373106974519464}
   m_Mesh: {fileID: 4300000, guid: a584c2a616ffab842b306d61ef8428fb, type: 3}
+--- !u!95 &95327997975671400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373106974519464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a7871a0203b73b499a39e544d2293b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
