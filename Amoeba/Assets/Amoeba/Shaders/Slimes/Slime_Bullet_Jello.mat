@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Slime_Bullet_Jello
-  m_Shader: {fileID: 4800000, guid: 4f2b60fed5126664c83b3a8e83c0114c, type: 3}
+  m_Shader: {fileID: 4800000, guid: de617ab8b1efe834a897139bb0ee0dbb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,7 +33,9 @@ Material:
     m_Floats:
     - _Cutoff: 0.5
     - _GlossAmount: 0.5055891
+    - _Opacity: 0.75
     - _Outline: 0.2
     - _RefractionAmount: 0.02287514
     m_Colors:
     - _AmbientColour: {r: 1, g: 0, b: 0.972414, a: 1}
+    - _OutLineColour: {r: 0.5808823, g: 0.11532223, b: 0.56803936, a: 1}
