@@ -211,7 +211,10 @@ public class GameStateManager : MonoBehaviour
                         GameObject[] allGO = GameObject.FindObjectsOfType<GameObject>();
                         foreach (var i in allGO)
                         {
-                            i.GetComponent<Renderer>().material = WTFMaterial;
+                            if (i.GetComponent<Renderer>() != null)
+                            {
+                                i.GetComponent<Renderer>().material = WTFMaterial;
+                            }
                         }
                     }
                 }
