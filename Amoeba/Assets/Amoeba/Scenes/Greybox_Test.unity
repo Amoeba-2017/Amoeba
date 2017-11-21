@@ -8782,6 +8782,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 336793918}
+  - component: {fileID: 336793919}
   m_Layer: 0
   m_Name: Background_Islands
   m_TagString: Untagged
@@ -8803,10 +8804,26 @@ Transform:
   - {fileID: 149503986}
   - {fileID: 881565588}
   - {fileID: 226868280}
-  - {fileID: 1153320623}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &336793919
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 336793917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f50b009c3b1aa944b591751e0a9ff9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &350623458
 GameObject:
   m_ObjectHideFlags: 0
@@ -26968,8 +26985,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153320622}
-  m_LocalRotation: {x: -0, y: -0.9914453, z: -0, w: -0.13052304}
-  m_LocalPosition: {x: -174.15213, y: -121.73309, z: -34.78648}
+  m_LocalRotation: {x: -0.6087594, y: -0.00000033040453, z: -0.7933549, w: 0.00000013685951}
+  m_LocalPosition: {x: -3.6231122, y: -3.0898638, z: 13.904482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 700602316}
@@ -26992,8 +27009,8 @@ Transform:
   - {fileID: 1837851805}
   - {fileID: 2058292202}
   - {fileID: 2060830764}
-  m_Father: {fileID: 336793918}
-  m_RootOrder: 4
+  m_Father: {fileID: 226868280}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174713446
 GameObject:

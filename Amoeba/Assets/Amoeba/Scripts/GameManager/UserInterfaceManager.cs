@@ -120,7 +120,7 @@ public class UserInterfaceManager : MonoBehaviour
             {
              //   gameCoroutineCountdown = StartCoroutine(GameTimer(roundTime));
                 firstRun = false;
-                
+
                 // check to see if all of the canvas are refrenced properly 
                 if (victoryScreen == null)
                 {
@@ -404,6 +404,7 @@ public class UserInterfaceManager : MonoBehaviour
         gsm.spawnPlayers = true;
         currentTimer = 0;
         GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = false;
+        firstRun = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -461,6 +462,7 @@ public class UserInterfaceManager : MonoBehaviour
         Destroy(gsm.Players[0]);
         GameObject.FindGameObjectWithTag("Crown").transform.position = new Vector3(0, -10, 0);
         gsm.Players.Clear();
+
 
     }
     public void AddPlayer()
