@@ -56,6 +56,9 @@ public class GameStateManager : MonoBehaviour
     //the timer for the puddles
     float puddleTimer;
 
+    [SerializeField]
+    private Material WTFMaterial;
+
 
     // Use this for initialization
     void Awake()
@@ -198,8 +201,24 @@ public class GameStateManager : MonoBehaviour
         //if debug mode is on
         if (debugMode == true)
         {
-            //turn on the mouse
-            Cursor.visible = true;
+
+            if (Input.GetKey("w"))
+            {
+                if (Input.GetKey("t"))
+                {
+                    if (Input.GetKeyDown("f"))
+                    {
+                        GameObject[] allGO = GameObject.FindObjectsOfType<GameObject>();
+                        foreach (var i in allGO)
+                        {
+                            i.GetComponent<Renderer>().material = WTFMaterial;
+                        }
+                    }
+                }
+            }
+
+                        //turn on the mouse
+                        Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
             //if we are in playerselect and the space key is pressed add a debug player
