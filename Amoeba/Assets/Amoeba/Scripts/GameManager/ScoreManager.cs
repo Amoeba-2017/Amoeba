@@ -19,8 +19,7 @@ public class ScoreManager : MonoBehaviour
 
     private int roundlimit;
 
-    [SerializeField]
-    private int maxScore;
+    public int maxScore;
 
     [SerializeField]
     private GameObject crownPrefab;
@@ -31,12 +30,13 @@ public class ScoreManager : MonoBehaviour
 
     private GameObject highestGO;
 
+    private UserInterfaceManager uim;
 
     // Use this for initialization
     void Start()
     {
         gsm = gameObject.GetComponent<GameStateManager>();
-
+        uim =  gameObject.GetComponent<UserInterfaceManager>();
     }
 
     // Update is called once per frame
@@ -81,10 +81,11 @@ public class ScoreManager : MonoBehaviour
                 {
                     crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 8);
                     highestGO.GetComponent<PlayerUI>().addPoints();
-                    //if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
-                    //{
-                    //    DestroyLosers(highestGO);
-                    //}
+                    if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
+                    {
+                        DestroyLosers(highestGO);
+                        uim.selectWinner();
+                    }
                 }
                 else
                 {

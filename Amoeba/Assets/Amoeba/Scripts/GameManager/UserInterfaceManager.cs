@@ -118,7 +118,7 @@ public class UserInterfaceManager : MonoBehaviour
             //first run of Update start the coroutine to count down the game Timer
             if (firstRun == true)
             {
-                gameCoroutineCountdown = StartCoroutine(GameTimer(roundTime));
+             //   gameCoroutineCountdown = StartCoroutine(GameTimer(roundTime));
                 firstRun = false;
                 
                 // check to see if all of the canvas are refrenced properly 
@@ -141,7 +141,7 @@ public class UserInterfaceManager : MonoBehaviour
 
             }
 
-            UItimerUpdate();
+            //UItimerUpdate();
 
             PauseCheck();
         }
@@ -395,10 +395,10 @@ public class UserInterfaceManager : MonoBehaviour
         //restarts the game 
 
         //stop the old coroutine
-        StopCoroutine(gameCoroutineCountdown);
+        //StopCoroutine(gameCoroutineCountdown);
 
         //start a new coroutine
-        gameCoroutineCountdown = StartCoroutine(GameTimer(roundTime));
+        //gameCoroutineCountdown = StartCoroutine(GameTimer(roundTime));
 
         //spawn new players
         gsm.spawnPlayers = true;
@@ -435,7 +435,7 @@ public class UserInterfaceManager : MonoBehaviour
         }
     }
 
-    private void selectWinner()
+    public void selectWinner()
     {
         //check the last player aginst all the players tags
         if (gsm.Players[0].tag == "PlayerRed")
@@ -454,6 +454,8 @@ public class UserInterfaceManager : MonoBehaviour
         {
             victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
         }
+
+        CurrentGameState = GameState.GameOver;
         victoryScreen.enabled = true;
     }
     public void AddPlayer()
