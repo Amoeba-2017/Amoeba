@@ -189,6 +189,8 @@ public class PlayerController : MonoBehaviour
 
         /////////RETICAL WORK
 
+
+
         if (dirRot != Vector3.zero)
         {
             transform.GetChild(1).rotation = Quaternion.LookRotation(dirRot, Vector3.up);
