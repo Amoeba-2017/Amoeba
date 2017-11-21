@@ -62,6 +62,9 @@ public class UserInterfaceManager : MonoBehaviour
     //the first run of update
     bool firstRun;
 
+    //for ui controller use
+    bool axisInUse = false;
+
     //the current selection for UI using a controller
     private ControllerUISelection currentControllerUISelection;
 
@@ -230,8 +233,9 @@ public class UserInterfaceManager : MonoBehaviour
         if (CurrentGameState == GameState.MainMenu)
         {
             //if up or down is pressed switch current selected UI
-            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.First) || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.First))
+            if ((Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.First) || XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) > 0 || XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) < 0 || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.First)) && axisInUse == false)
             {
+                axisInUse = true;
                 if (currentControllerUISelection == ControllerUISelection.play)
                 {
                     currentControllerUISelection = ControllerUISelection.exit;
@@ -240,6 +244,12 @@ public class UserInterfaceManager : MonoBehaviour
                 {
                     currentControllerUISelection = ControllerUISelection.play;
                 }
+                Debug.Log(axisInUse);
+            }
+
+            if (XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) == 0)
+            {
+                axisInUse = false;
             }
 
             //current selected ui is highlighted
