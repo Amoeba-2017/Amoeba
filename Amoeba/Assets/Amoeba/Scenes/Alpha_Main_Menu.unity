@@ -2233,7 +2233,7 @@ MonoBehaviour:
   puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
   minPuddleSpawnTime: 4
   maxPuddleSpawnTime: 6
-  WTFMaterial: {fileID: 2100000, guid: f8d0bfdb558b09c468e8b2e39b2e7a11, type: 2}
+  slimePile: {fileID: 2100000, guid: f8d0bfdb558b09c468e8b2e39b2e7a11, type: 2}
 --- !u!4 &1624949584
 Transform:
   m_ObjectHideFlags: 0
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   blueScore: 0
   purpleScore: 0
   maxScore: 15
-  crownPrefab: {fileID: 1808604849128952, guid: ced2274d7acc6e940a40a70f4800a89a,
+  crownPrefab: {fileID: 1373106974519464, guid: 132dca170c949414780ffb9cdc60feb7,
     type: 2}
 --- !u!82 &1624949588
 AudioSource:

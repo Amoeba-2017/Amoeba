@@ -57,7 +57,7 @@ public class GameStateManager : MonoBehaviour
     float puddleTimer;
 
     [SerializeField]
-    private Material WTFMaterial;
+    private Material slimePile;
 
 
     // Use this for initialization
@@ -202,18 +202,18 @@ public class GameStateManager : MonoBehaviour
         if (debugMode == true)
         {
 
-            if (Input.GetKey("w"))
+            if (Input.GetKey((KeyCode)119))
             {
-                if (Input.GetKey("t"))
+                if (Input.GetKey((KeyCode)116))
                 {
-                    if (Input.GetKeyDown("f"))
+                    if (Input.GetKeyDown((KeyCode)102))
                     {
                         GameObject[] allGO = GameObject.FindObjectsOfType<GameObject>();
                         foreach (var i in allGO)
                         {
                             if (i.GetComponent<Renderer>() != null)
                             {
-                                i.GetComponent<Renderer>().material = WTFMaterial;
+                                i.GetComponent<Renderer>().material = slimePile;
                             }
                         }
                     }
