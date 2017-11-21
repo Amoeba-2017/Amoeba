@@ -77,6 +77,10 @@ public class UserInterfaceManager : MonoBehaviour
     //the current gameState
     public GameState CurrentGameState;
 
+    //the mesh for the main screen
+    [SerializeField]
+    private GameObject mainScreenMesh;
+
     //an enum for changing ui buttons using a controller
     public enum ControllerUISelection
     {
@@ -232,6 +236,10 @@ public class UserInterfaceManager : MonoBehaviour
         //if the current gamestate is main menu
         if (CurrentGameState == GameState.MainMenu)
         {
+            if (mainScreenMesh.activeInHierarchy == false)
+            {
+                mainScreenMesh.SetActive(true);
+            }
             //if up or down is pressed switch current selected UI
             if ((Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButtonDown(XboxButton.DPadDown, XboxController.First) || XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) > 0 || XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) < 0 || Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButtonDown(XboxButton.DPadUp, XboxController.First)) && axisInUse == false)
             {
@@ -279,6 +287,11 @@ public class UserInterfaceManager : MonoBehaviour
         //if current game state is playerselect and enter or a is pressed and and there is more then one player
         if (CurrentGameState == GameState.PlayerSelect)
         {
+            if (mainScreenMesh.activeInHierarchy == true)
+            {
+                mainScreenMesh.SetActive(false);
+            }
+
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || XCI.GetButtonDown(XboxButton.Start, XboxController.First))
             {
                 if (gsm.controllers.Count > 1)
