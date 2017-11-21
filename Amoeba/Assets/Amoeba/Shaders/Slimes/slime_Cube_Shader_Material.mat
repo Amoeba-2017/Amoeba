@@ -34,8 +34,8 @@ Material:
     - _Cutoff: 0.5
     - _GlossAmount: 0.5055891
     - _Opacity: 0.75
-    - _Outline: 0.05982906
+    - _Outline: 0.169
     - _RefractionAmount: 0.02287514
     m_Colors:
     - _AmbientColour: {r: 0.7794118, g: 0, b: 0, a: 1}
-    - _OutLineColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _OutLineColour: {r: 0.46323532, g: 0, b: 0, a: 1}

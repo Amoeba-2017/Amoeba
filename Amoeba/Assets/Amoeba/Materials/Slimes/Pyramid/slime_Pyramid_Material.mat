@@ -91,5 +91,5 @@ Material:
     - _AmbientColour: {r: 0.63235295, g: 0.6161914, b: 0.046496548, a: 1}
     - _Color: {r: 0.85294116, g: 0.79844284, b: 0.06271627, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutLineColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _OutLineColour: {r: 0.67094326, g: 0.74264705, b: 0, a: 1}
     - _OutlineColour: {r: 1, g: 0.80689657, b: 0, a: 1}
