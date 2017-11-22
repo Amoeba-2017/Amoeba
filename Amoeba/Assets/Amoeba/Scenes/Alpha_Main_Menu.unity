@@ -2170,7 +2170,7 @@ MonoBehaviour:
   blueScore: 0
   purpleScore: 0
   maxScore: 15
-  crownPrefab: {fileID: 1373106974519464, guid: 132dca170c949414780ffb9cdc60feb7,
+  crownPrefab: {fileID: 1808604849128952, guid: ced2274d7acc6e940a40a70f4800a89a,
     type: 2}
 --- !u!82 &1624949588
 AudioSource:
