@@ -309,6 +309,7 @@ public class UserInterfaceManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = false;
                 // Then the canvas.
                 GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = false;
                 // Enable Credits canvas.
@@ -335,6 +336,7 @@ public class UserInterfaceManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = true;
             }
         }
 
