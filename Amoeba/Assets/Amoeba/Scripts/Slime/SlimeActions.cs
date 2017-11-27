@@ -74,7 +74,7 @@ public class SlimeActions : MonoBehaviour
             // Play shooting sound
             AudioManager.PlaySound("ShootSound");
 
-            Instantiate(ShootSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            //Instantiate(ShootSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, bulletDestroyTimer);

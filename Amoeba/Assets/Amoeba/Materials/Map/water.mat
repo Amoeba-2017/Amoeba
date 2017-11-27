@@ -64,7 +64,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _node_3004:
         m_Texture: {fileID: 2800000, guid: 4e39d67fefa0ac34f8f862a281e172a4, type: 3}
-        m_Scale: {x: 7, y: 7}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _node_6901:
         m_Texture: {fileID: 0}
@@ -76,7 +76,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _node_9193:
         m_Texture: {fileID: 2800000, guid: 4e39d67fefa0ac34f8f862a281e172a4, type: 3}
-        m_Scale: {x: 7, y: 7}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: -1}
     - _node_9193_copy:
         m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
@@ -112,6 +112,7 @@ Material:
     - _node_7897: 0.5
     - _node_923: 0.5
     - _node_9538: 0.276
+    - _vertoffset: 0
     m_Colors:
     - _AmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

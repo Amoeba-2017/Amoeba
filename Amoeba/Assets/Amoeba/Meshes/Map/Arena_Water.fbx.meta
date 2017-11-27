@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 95cdfc5937341b847b25283d61794791
-timeCreated: 1510541301
+guid: e628a9d60e2c27045be7d7a118c42ff7
+timeCreated: 1511744804
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Water
+    4300000: Arena_Water
     9500000: //RootNode
   materials:
     importMaterials: 1

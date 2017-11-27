@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: 9b40edbcf97b03547bc5d46f3efdbd94, type: 3}
+        m_Texture: {fileID: 2800000, guid: f45a83969f0d5b44b8b62a6cc3f28760, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -87,4 +87,4 @@ Material:
     - _AmbientColour: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0, g: 0.95862055, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutLineColour: {r: 0, g: 0.6275859, b: 1, a: 1}
+    - _OutLineColour: {r: 0, g: 0, b: 0, a: 1}
