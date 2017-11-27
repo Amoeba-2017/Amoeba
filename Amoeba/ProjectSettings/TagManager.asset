@@ -26,6 +26,12 @@ TagManager:
   - Crown
   - BackgroundMusic
   - creditsScreen
+  - MenuSlimeText
+  - MenuRedSlime
+  - MenuBlueSlime
+  - MenuYellowSlime
+  - MenuPurpleSlime
+  - MenuCrown
   layers:
   - Default
   - TransparentFX

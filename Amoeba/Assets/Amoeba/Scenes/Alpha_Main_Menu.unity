@@ -1504,6 +1504,14 @@ Prefab:
       propertyPath: m_Name
       value: crown_Prefab_002
       objectReference: {fileID: 0}
+    - target: {fileID: 1960168437146414, guid: 796dec7db32657846b41429d362707df, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493751572489134, guid: 796dec7db32657846b41429d362707df, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 796dec7db32657846b41429d362707df, type: 2}
   m_IsPrefabParent: 0
@@ -2519,7 +2527,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1296208560}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3161,6 +3169,14 @@ Prefab:
       propertyPath: m_Name
       value: crown_Prefab_001
       objectReference: {fileID: 0}
+    - target: {fileID: 1960168437146414, guid: 796dec7db32657846b41429d362707df, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493751572489134, guid: 796dec7db32657846b41429d362707df, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 796dec7db32657846b41429d362707df, type: 2}
   m_IsPrefabParent: 0
@@ -3538,7 +3554,7 @@ GameObject:
   - component: {fileID: 2048744086}
   m_Layer: 0
   m_Name: CrownUI
-  m_TagString: Untagged
+  m_TagString: MenuCrown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3804,6 +3820,46 @@ Prefab:
     - target: {fileID: 100008, guid: c05cdec65c568804fa63fde29d381358, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_TagString
+      value: MenuSlimeText
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_TagString
+      value: MenuPurpleSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_TagString
+      value: MenuYellowSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_TagString
+      value: MenuRedSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: c05cdec65c568804fa63fde29d381358, type: 3}
+      propertyPath: m_TagString
+      value: MenuBlueSlime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c05cdec65c568804fa63fde29d381358, type: 3}

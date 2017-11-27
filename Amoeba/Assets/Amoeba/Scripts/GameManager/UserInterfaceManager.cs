@@ -295,6 +295,49 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
 
+        // If the current game state is the Main Menu and Y is pressed.
+        if (CurrentGameState == GameState.MainMenu)
+        {
+            if (Input.GetKeyDown(KeyCode.Y) || XCI.GetButtonDown(XboxButton.Y))
+            {
+                // Set current state to Credits.
+                CurrentGameState = GameState.Credits;
+                // Disable elements from the Main Menu.
+                // First, the objects...
+                GameObject.FindGameObjectWithTag("MenuSlimeText").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuRedSlime").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = false;
+                // Then the canvas.
+                GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = false;
+                // Enable Credits canvas.
+                GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>().enabled = true;
+            }
+        }
+
+        // If the current game state is the Credits Screen and B is pressed.
+        if (CurrentGameState == GameState.Credits)
+        {
+            if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.B))
+            {
+                // Set current state to Main Menu.
+                CurrentGameState = GameState.MainMenu;
+                // Disable elements from the Credits.
+                // So the canvas.
+                GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>().enabled = false;
+                // Enable Main Menu elements.
+                // First the canvas...
+                GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = true;
+                // Then the objects.
+                GameObject.FindGameObjectWithTag("MenuSlimeText").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuRedSlime").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+
         //if current game state is playerselect and enter or a is pressed and and there is more then one player
         if (CurrentGameState == GameState.PlayerSelect)
         {
