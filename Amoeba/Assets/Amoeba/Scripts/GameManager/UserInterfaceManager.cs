@@ -13,6 +13,9 @@ public class UserInterfaceManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Canvas for the Player/Slime Selection Menu.")]
     private Canvas selectScreen;    // Player/Slime Selection
+    [SerializeField]
+    [Tooltip("Canvas for the Credits Screen.")]
+    private Canvas creditsScreen;   // Credits Screen
     private Canvas pauseScreen;     // Pause Screen
     private Canvas victoryScreen;   // Victory Screen
     private Canvas timerCanvas;     // Timer
@@ -93,6 +96,7 @@ public class UserInterfaceManager : MonoBehaviour
     {
         MainMenu,
         PlayerSelect,
+        Credits,
         GameScene,
         GameOver,
         Pause
@@ -161,8 +165,11 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 mainMenu = GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>();
             }
-
-            if(selectScreen == null)
+            if (creditsScreen == null)
+            {
+                selectScreen = GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>();
+            }
+            if (selectScreen == null)
             {
                 selectScreen = GameObject.FindGameObjectWithTag("selectScreen").GetComponent<Canvas>();
             }
