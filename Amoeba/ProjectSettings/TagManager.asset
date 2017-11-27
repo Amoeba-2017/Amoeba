@@ -25,6 +25,7 @@ TagManager:
   - selectScreen
   - Crown
   - BackgroundMusic
+  - creditsScreen
   layers:
   - Default
   - TransparentFX

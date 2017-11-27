@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Amoeba/Scenes/Main.unity
     guid: 2323b6933f0513349a662736be1d4321
   - enabled: 0
-    path: Assets/Amoeba/Scenes/prototype_Scene_001.unity
+    path: 
     guid: 372336b6be574c24abcfff602553ad98
   - enabled: 0
-    path: Assets/Amoeba/Scenes/Prototype_Scene.unity
+    path: 
     guid: e013e700b75380648ae71d4ed85a169c
   - enabled: 1
     path: Assets/Amoeba/Scenes/Greybox_Test.unity
