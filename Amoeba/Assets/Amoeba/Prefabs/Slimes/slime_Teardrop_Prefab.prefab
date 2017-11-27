@@ -141,10 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileShot: {fileID: 1648453437199472, guid: dd61db4ee74592a4faf75c64617e9a94,
     type: 2}
-  projectileShotSpeed: 90
-  bulletDestroyTimer: 1.2
+  projectileShotSpeed: 100
+  bulletDestroyTimer: 1.5
   slime: {fileID: 1312857039401634}
-  ShootSplat: {fileID: 1896898704692394, guid: e462e8d726a46cc4499f545da608a2cd, type: 2}
+  ShootSplat: {fileID: 1983282747929010, guid: 1709cd30044b2b04ba1bba7592851f1e, type: 2}
   massShot: 0
 --- !u!114 &114930159099752658
 MonoBehaviour:

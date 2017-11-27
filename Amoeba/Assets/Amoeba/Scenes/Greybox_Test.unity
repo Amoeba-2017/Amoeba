@@ -2914,7 +2914,7 @@ GameObject:
   - component: {fileID: 90516529}
   - component: {fileID: 90516528}
   - component: {fileID: 90516527}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_008
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -9735,7 +9735,7 @@ GameObject:
   - component: {fileID: 207377239}
   - component: {fileID: 207377238}
   - component: {fileID: 207377237}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_005
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -13686,7 +13686,7 @@ GameObject:
   - component: {fileID: 366892040}
   - component: {fileID: 366892039}
   - component: {fileID: 366892038}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_029
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -13878,8 +13878,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.96025467, y: 8.378225, z: 16.66}
-  m_Center: {x: 7.0828657, y: 3.108532, z: 1.7402781}
+  m_Size: {x: 0.96025443, y: 8.378225, z: 15.93974}
+  m_Center: {x: 7.082874, y: 3.108532, z: 2.1004097}
 --- !u!4 &377222897 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4064289396094268, guid: cb60e7e26c6f7774da645d9f61d63cb5,
@@ -14699,7 +14699,7 @@ GameObject:
   - component: {fileID: 396803470}
   - component: {fileID: 396803469}
   - component: {fileID: 396803468}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_015
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -16806,7 +16806,7 @@ GameObject:
   - component: {fileID: 479564504}
   - component: {fileID: 479564503}
   - component: {fileID: 479564502}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_013
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -19048,7 +19048,7 @@ GameObject:
   - component: {fileID: 552865595}
   - component: {fileID: 552865594}
   - component: {fileID: 552865593}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_006
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -23875,7 +23875,7 @@ GameObject:
   - component: {fileID: 744628260}
   - component: {fileID: 744628259}
   - component: {fileID: 744628258}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_007
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -24604,7 +24604,7 @@ GameObject:
   - component: {fileID: 753087560}
   - component: {fileID: 753087559}
   - component: {fileID: 753087558}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_002
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -26178,7 +26178,7 @@ GameObject:
   - component: {fileID: 820107827}
   - component: {fileID: 820107826}
   - component: {fileID: 820107825}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_004
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -43816,7 +43816,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4293918463
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -47020,7 +47020,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 0f94838b166548a42896b3315e6ecfdf, type: 3}
+    m_Font: {fileID: 12800000, guid: c62c02f2b7783cb45896d74e89b405d5, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 1
@@ -47987,7 +47987,7 @@ GameObject:
   - component: {fileID: 1367056409}
   - component: {fileID: 1367056408}
   - component: {fileID: 1367056407}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_024
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -48229,7 +48229,7 @@ GameObject:
   - component: {fileID: 1372092581}
   - component: {fileID: 1372092580}
   - component: {fileID: 1372092579}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_012
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -48919,7 +48919,7 @@ GameObject:
   - component: {fileID: 1401990067}
   - component: {fileID: 1401990066}
   - component: {fileID: 1401990065}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_020
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -52576,7 +52576,7 @@ GameObject:
   - component: {fileID: 1561630320}
   - component: {fileID: 1561630319}
   - component: {fileID: 1561630318}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_003
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -53263,7 +53263,7 @@ GameObject:
   - component: {fileID: 1577992826}
   - component: {fileID: 1577992825}
   - component: {fileID: 1577992824}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_018
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -55045,7 +55045,7 @@ GameObject:
   - component: {fileID: 1633771500}
   - component: {fileID: 1633771499}
   - component: {fileID: 1633771498}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_019
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -55608,7 +55608,7 @@ GameObject:
   - component: {fileID: 1656811818}
   - component: {fileID: 1656811817}
   - component: {fileID: 1656811816}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_010
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -59251,7 +59251,7 @@ GameObject:
   - component: {fileID: 1802060647}
   - component: {fileID: 1802060646}
   - component: {fileID: 1802060645}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_014
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -59692,7 +59692,7 @@ GameObject:
   - component: {fileID: 1817761155}
   - component: {fileID: 1817761154}
   - component: {fileID: 1817761153}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_032
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -61585,7 +61585,7 @@ GameObject:
   - component: {fileID: 1878204190}
   - component: {fileID: 1878204189}
   - component: {fileID: 1878204188}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_017
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -61937,7 +61937,7 @@ GameObject:
   - component: {fileID: 1885309112}
   - component: {fileID: 1885309111}
   - component: {fileID: 1885309110}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_009
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}
@@ -62362,7 +62362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1896575991
 Transform:
   m_ObjectHideFlags: 0
@@ -63406,7 +63406,7 @@ GameObject:
   - component: {fileID: 1939918328}
   - component: {fileID: 1939918327}
   - component: {fileID: 1939918326}
-  m_Layer: 8
+  m_Layer: 20
   m_Name: wall_Collider_011
   m_TagString: InvisibleWall
   m_Icon: {fileID: 0}

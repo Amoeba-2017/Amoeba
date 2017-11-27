@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4637516266191258}
   m_Layer: 0
-  m_Name: Crown_Prefab
+  m_Name: crown_Prefab
   m_TagString: Crown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
