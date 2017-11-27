@@ -300,18 +300,16 @@ public class UserInterfaceManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Y) || XCI.GetButtonDown(XboxButton.Y))
             {
-                // Set current state to Credits.
-                CurrentGameState = GameState.Credits;
                 // Disable elements from the Main Menu.
-                // First, the objects...
                 GameObject.FindGameObjectWithTag("MenuSlimeText").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuRedSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = false;
-                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = false;
-                // Then the canvas.
+                GameObject.FindGameObjectWithTag("MenuCrown").SetActive(false);
                 GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = false;
+                // Set current state to Credits.
+                CurrentGameState = GameState.Credits;
                 // Enable Credits canvas.
                 GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>().enabled = true;
             }
@@ -322,21 +320,18 @@ public class UserInterfaceManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.B))
             {
+                // Disable elements from the Credits.
+                GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>().enabled = false;
                 // Set current state to Main Menu.
                 CurrentGameState = GameState.MainMenu;
-                // Disable elements from the Credits.
-                // So the canvas.
-                GameObject.FindGameObjectWithTag("creditsScreen").GetComponent<Canvas>().enabled = false;
                 // Enable Main Menu elements.
-                // First the canvas...
                 GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = true;
-                // Then the objects.
                 GameObject.FindGameObjectWithTag("MenuSlimeText").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuRedSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = true;
-                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuCrown").SetActive(true);
             }
         }
 
