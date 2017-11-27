@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016585148679024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.353573, y: 20.142143, z: -69.635635}
+  m_LocalPosition: {x: 0.36267757, y: 11.758457, z: -21.802792}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4297023764558652}
@@ -186,6 +186,7 @@ MonoBehaviour:
   ShootOut: 0
   minRanForce: 30
   maxRanForce: 39
+  shadow: {fileID: 0}
 --- !u!119 &119849914966501876
 Projector:
   m_ObjectHideFlags: 1

@@ -21,6 +21,8 @@ public class SlimePuddle : MonoBehaviour
 
     private GameObject player;
 
+    public GameObject shadow;
+
 
 
     //mass needs to be added here 
@@ -68,7 +70,11 @@ public class SlimePuddle : MonoBehaviour
             if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass < 100)
             {
                 GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
+
                 Destroy(gameObject);
+
+                gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                gameObject.transform.GetChild(1).GetComponent<Projector>().enabled = false;
 
                 // Play collecting mass sound
                 AudioManager.PlaySound("CollectMassSound");
@@ -101,6 +107,7 @@ public class SlimePuddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //shadow.transform.rotation = Quaternion.Euler(90, 0, 0);
 
     }
 }

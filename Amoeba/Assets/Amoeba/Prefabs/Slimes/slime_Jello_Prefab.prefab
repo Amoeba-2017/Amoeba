@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687164553317750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.38818, y: 36.76317, z: -45.782497}
+  m_LocalPosition: {x: 28.906387, y: 3.3184366, z: -9.072231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4722572205448874}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsShielded: 0
   BulletDamagePercent: 20
-  Puddle: {fileID: 1016585148679024, guid: 2e11fec4f546ccf44bd8337146fe62a9, type: 2}
+  Puddle: {fileID: 1016585148679024, guid: dbedd990a41341b40aafb70ad96ae270, type: 2}
   invincibilityFramesTime: 1
   massAdded: 10
   sizeMuliplyer: 3
