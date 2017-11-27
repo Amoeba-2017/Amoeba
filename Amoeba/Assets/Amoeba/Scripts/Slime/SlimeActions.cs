@@ -33,8 +33,6 @@ public class SlimeActions : MonoBehaviour
     private SlimeHealth slimeHealth;
 
 
-
-
     // Use this for initialization
     void Start()
     {
@@ -45,16 +43,14 @@ public class SlimeActions : MonoBehaviour
     public void Shoot(Vector3 rot, float mass)
     {
 
-        //Debug.Log(rot);
+        Debug.Log(rot);
 
-        if (rot != Vector3.zero)
-        {
-
+     
             gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("IsShooting");
 
             // Create a Bullet object
             GameObject Bullet;
-
+            
             Bullet = Instantiate(projectileShot, transform.position + (rot * 2), Quaternion.LookRotation(rot, Vector3.up));
 
             if (playerController == null)
@@ -66,8 +62,6 @@ public class SlimeActions : MonoBehaviour
 
             Bullet.GetComponent<SlimeBullet>().SetMyMass(massShot);
 
-
-
             // Get the object (Bullet) and add the force to it
             Bullet.GetComponent<Rigidbody>().AddForce(rot * projectileShotSpeed, ForceMode.Impulse);
 
@@ -78,7 +72,7 @@ public class SlimeActions : MonoBehaviour
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, bulletDestroyTimer);
-        }
+    
     }
 
 

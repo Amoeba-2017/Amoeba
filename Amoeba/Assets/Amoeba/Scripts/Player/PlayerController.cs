@@ -175,8 +175,14 @@ public class PlayerController : MonoBehaviour
         //}
 
         lastRot = dirRot;
-        dirRot = (controllerRetical.transform.position - transform.position).normalized;
-
+        if((controllerRetical.transform.position - transform.position).magnitude == 0.0f) //if no movement of stick, set shooting direction to forward
+        {
+            dirRot = Vector3.forward;
+        }
+        else
+        { 
+            dirRot = (controllerRetical.transform.position - transform.position).normalized;
+        }
         if (dirRot == Vector3.zero)
         {
             dirRot = lastRot;
