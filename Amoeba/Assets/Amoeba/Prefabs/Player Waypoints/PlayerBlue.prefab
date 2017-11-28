@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 223999388924534888}
   - component: {fileID: 114987033823484600}
   - component: {fileID: 114769674032364844}
+  - component: {fileID: 95351731313153198}
   m_Layer: 18
   m_Name: UICanvas
   m_TagString: Untagged
@@ -323,6 +324,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95351731313153198
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232009573767830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a78ad2cd3ac6194a87d8235dfb8745e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95516984736721170
 Animator:
   serializedVersion: 3
