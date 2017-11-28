@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SlimeActions : MonoBehaviour
 {
-
     // GameObject-type variable for the projectile
     [SerializeField]
     private GameObject projectileShot;
@@ -32,7 +31,6 @@ public class SlimeActions : MonoBehaviour
 
     private SlimeHealth slimeHealth;
 
-
     // Use this for initialization
     void Start()
     {
@@ -42,10 +40,8 @@ public class SlimeActions : MonoBehaviour
 
     public void Shoot(Vector3 rot, float mass)
     {
+            Debug.Log(rot);
 
-        Debug.Log(rot);
-
-     
             gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("IsShooting");
 
             // Create a Bullet object
@@ -72,18 +68,10 @@ public class SlimeActions : MonoBehaviour
 
             // Destroy the Bullet when the DestroyTimer has been reached
             Destroy(Bullet, bulletDestroyTimer);
-    
     }
-
-
-
-
 
     //public void Split(float amount)
     //{
-
-
-
     //    if (playerController == null)
     //    {
     //        if (slimeMovement.player.GetComponent<PlayerController>() != null)
@@ -92,7 +80,6 @@ public class SlimeActions : MonoBehaviour
     //        }
     //    }
     //    playerController.slimes.Remove(gameObject);
-
 
     //    if (amount == 0)
     //    {
@@ -128,7 +115,6 @@ public class SlimeActions : MonoBehaviour
 
     //}
 
-
     //void newSlime(float size, float amount)
     //{
     //    GameObject tempSlime = Instantiate(slime, transform.position, transform.rotation);
@@ -147,5 +133,4 @@ public class SlimeActions : MonoBehaviour
             Destroy(hit.gameObject);
         }
     }
-
 }

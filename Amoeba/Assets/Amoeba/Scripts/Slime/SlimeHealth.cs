@@ -24,7 +24,6 @@ public class SlimeHealth : MonoBehaviour
     [SerializeField]
     private GameObject Puddle;
 
-
     [SerializeField]
     private float invincibilityFramesTime;
 
@@ -49,7 +48,6 @@ public class SlimeHealth : MonoBehaviour
 
     [SerializeField]
     private float slimeCollliderMulitplyer;
-
 
     public float massLoss;
 
@@ -78,14 +76,9 @@ public class SlimeHealth : MonoBehaviour
         //    Debug.Log("split");
         //}
 
-
         gameObject.transform.GetChild(0).localScale = new Vector3((playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer, (playerC.mass / 100) * sizeMuliplyer);
-        slimeCollider.radius = ((playerC.mass / 100) * slimeCollliderMulitplyer); 
-
+        slimeCollider.radius = ((playerC.mass / 100) * slimeCollliderMulitplyer);
     }
-
-
-
 
     void OnCollisionEnter(Collision col)
     {
@@ -114,7 +107,6 @@ public class SlimeHealth : MonoBehaviour
                         {
                             randomRotDir = ((transform.position + (Vector3.up * 2)) + transform.right * 3 + -transform.forward * 3);
                         }
-
                         else if (randomPos == 4)
                         {
                             randomRotDir = ((transform.position + (Vector3.up * 2)) + -transform.right * 3 + -transform.forward * 3);
@@ -132,12 +124,6 @@ public class SlimeHealth : MonoBehaviour
                 }
             }
         }
-
-
-
-
-
-
     }
 
     public IEnumerator InvincibleFrames()
@@ -145,7 +131,4 @@ public class SlimeHealth : MonoBehaviour
         yield return new WaitForSeconds(invincibilityFramesTime);
         isInvincible = false;
     }
-
-
 }
-

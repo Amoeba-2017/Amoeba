@@ -32,11 +32,17 @@ public class ScoreManager : MonoBehaviour
 
     private UserInterfaceManager uim;
 
+    private PlayerUI[] playerUiElements;
+
+
     // Use this for initialization
     void Start()
     {
         gsm = gameObject.GetComponent<GameStateManager>();
         uim =  gameObject.GetComponent<UserInterfaceManager>();
+
+
+
     }
 
     // Update is called once per frame
@@ -47,6 +53,11 @@ public class ScoreManager : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("Crown") == null)
             {
                 crown = Instantiate(crownPrefab, Vector3.zero, Quaternion.identity);
+
+                //find all PlayerUI components in the scene, and store them in an array
+                playerUiElements = FindObjectsOfType<PlayerUI>();
+
+                UpdateScorePulsing(null);
             }
 
 
@@ -80,6 +91,9 @@ public class ScoreManager : MonoBehaviour
                 if (increaseScore == true)
                 {
                     crown.transform.position = highestGO.transform.position + (highestGO.transform.up * 8);
+                    //highestGO is the current winning player
+                    UpdateScorePulsing(highestGO);
+
                     highestGO.GetComponent<PlayerUI>().addPoints();
                     if (highestGO.GetComponent<PlayerUI>().score >= maxScore)
                     {
@@ -95,6 +109,29 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
+
+    private void UpdateScorePulsing(GameObject winningPlayer)
+    {
+        //loop over all player
+        foreach(GameObject p in gsm.Players)
+        {
+            //if player is not the winning player, turn off the pulsing
+            if (p != winningPlayer)
+            {
+                p.transform.Find("UICanvas").GetComponent<Animator>().Play("Idle", 0, 0.0f);
+
+            }
+            else //turn on the pulsing
+            {
+                //if we're not already playing the UI state
+                if (p.transform.Find("UICanvas").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("UI") == false)
+                {
+                    p.transform.Find("UICanvas").GetComponent<Animator>().Play("UI", 0, 0.0f);
+                }
+            }
+        }
+    }
+
 
     void DestroyLosers(GameObject go)
     {

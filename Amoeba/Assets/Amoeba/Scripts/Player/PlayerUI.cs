@@ -29,9 +29,10 @@ public class PlayerUI : MonoBehaviour
         pointsSlider = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         playerC = gameObject.GetComponent<PlayerController>();
         sc = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ScoreManager>();
+
+        //sc = GameObject.FindGameObjectWithTag("ScoreBar").GetComponent<Animation>().enabled = false;
+        //GameObject.FindGameObjectWithTag("ScoreBar")
     }
-
-
 
     public void addScore()
     {
@@ -44,5 +45,4 @@ public class PlayerUI : MonoBehaviour
         pointsSlider.fillAmount = points;
         score = pointsSlider.fillAmount * sc.maxScore;
     }
-
 }

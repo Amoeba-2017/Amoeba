@@ -81,7 +81,6 @@ public class SlimeMovement : MonoBehaviour
 
     private Quaternion targetRot;
 
-
     [HideInInspector]
     public bool kingSlime = false;
 
@@ -105,9 +104,6 @@ public class SlimeMovement : MonoBehaviour
         newPos = FindnewPosition();
         playersController = player.GetComponent<CharacterController>();
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
-
-
-
     }
 
 
@@ -139,8 +135,6 @@ public class SlimeMovement : MonoBehaviour
         //separation()
     }
 
-
-
     //IEnumerator FindNewPos()
     //{
     //  yield return new WaitForSeconds(.1f);
@@ -154,11 +148,7 @@ public class SlimeMovement : MonoBehaviour
 
         float angle = Random.Range(0, Mathf.PI * 2);
         return player.transform.position + new Vector3(Mathf.Cos(angle), beginYPos, Mathf.Sin(angle)) * (randomCircleRadius + Random.Range(randomSlimeOffset, -randomSlimeOffset));
-
     }
-
-
-
 
     void flying()
     {
@@ -174,7 +164,6 @@ public class SlimeMovement : MonoBehaviour
             currentSlimeState = SlimeState.still;
         }
     }
-
 
     void Seek()
     {
@@ -228,7 +217,6 @@ public class SlimeMovement : MonoBehaviour
         // }
     }
 
-
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         //if the slime collides with a wall
@@ -260,7 +248,6 @@ public class SlimeMovement : MonoBehaviour
         }
     }
 
-
     public void Retract(Vector3 centerPoint)
     {
         if (randomCircleRadius == minSpreadDistance)
@@ -280,9 +267,6 @@ public class SlimeMovement : MonoBehaviour
             newPos = FindnewPosition();
         }
 
-
-
-
         //if (randomCircleRadius > minSpreadDistance)
         //{
 
@@ -298,11 +282,9 @@ public class SlimeMovement : MonoBehaviour
         //    randomCircleRadius -= (Time.deltaTime *(speed / 3));
 
         //}
-
     }
 
     public void OnDrawGizmos()
     {
-
     }
 }
