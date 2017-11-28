@@ -101,6 +101,7 @@ public class ScoreManager : MonoBehaviour
                 else
                 {
                     crown.transform.position = new Vector3(0, -10, 0);
+                    UpdateScorePulsing(null);
                 }
             }
         }

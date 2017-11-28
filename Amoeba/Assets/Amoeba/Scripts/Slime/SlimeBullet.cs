@@ -79,7 +79,7 @@ public class SlimeBullet : MonoBehaviour
             CreatePuddles(x);
         }
         Instantiate(BulletSplat, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-        Debug.Log("destroying this");
+//        Debug.Log("destroying this");
         //Destroy(gameObject.transform.GetChild(1).gameObject);
         //Destroy(gameObject, ParentExpireTime);
         Destroy(gameObject);

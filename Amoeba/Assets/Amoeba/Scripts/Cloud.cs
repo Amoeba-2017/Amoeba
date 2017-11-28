@@ -37,7 +37,7 @@ public class Cloud : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		//Debug.Log (currentDistance);
+//		Debug.Log (currentDistance);
 		Vector3 transtemp = transform.position;
 
 		//Movement
@@ -47,7 +47,7 @@ public class Cloud : MonoBehaviour
 		if (currentDistance <= 100)
 		{
 			transform.position = moveHere;
-			Debug.Log ("working");
+//			Debug.Log ("working");
 		}
 //		if (transtemp.x <= end)
 //		{
