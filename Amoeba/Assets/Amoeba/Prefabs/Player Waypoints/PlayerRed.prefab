@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 224650674555724160}
   - component: {fileID: 222881496688101216}
   - component: {fileID: 114331021852344854}
+  - component: {fileID: 114792548620093186}
   m_Layer: 18
   m_Name: PointBar
   m_TagString: Untagged
@@ -417,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.18382353, b: 0.18382353, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -477,6 +478,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45bdf70f78e99b4ebb86029aa864055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114792548620093186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231267622902894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.7352941, g: 0.016219739, b: 0.016219739, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114809492887502848
 MonoBehaviour:
   m_ObjectHideFlags: 1

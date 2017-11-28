@@ -32,6 +32,8 @@ TagManager:
   - MenuYellowSlime
   - MenuPurpleSlime
   - MenuCrown
+  - MenuCrownLeft
+  - MenuCrownRight
   layers:
   - Default
   - TransparentFX

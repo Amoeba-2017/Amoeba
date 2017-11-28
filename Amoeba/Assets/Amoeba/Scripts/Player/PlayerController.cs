@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float mass = 50;
 
+    private bool hasMovedRetical = false;
     void Start()
     {
 
@@ -175,13 +176,14 @@ public class PlayerController : MonoBehaviour
         //}
 
         lastRot = dirRot;
-        if((controllerRetical.transform.position - transform.position).magnitude == 0.0f) //if no movement of stick, set shooting direction to forward
+        if(hasMovedRetical == false && (controllerRetical.transform.position - transform.position).magnitude == 0.0f) //if no movement of stick, set shooting direction to forward
         {
             dirRot = Vector3.forward;
         }
         else
         { 
             dirRot = (controllerRetical.transform.position - transform.position).normalized;
+            hasMovedRetical = true;
         }
         if (dirRot == Vector3.zero)
         {
