@@ -306,7 +306,8 @@ public class UserInterfaceManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = false;
-                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuCrownLeft").GetComponent<MeshRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("MenuCrownRight").GetComponent<MeshRenderer>().enabled = false;
                 GameObject.FindGameObjectWithTag("mainMenu").GetComponent<Canvas>().enabled = false;
                 // Set current state to Credits.
                 CurrentGameState = GameState.Credits;
@@ -331,7 +332,8 @@ public class UserInterfaceManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MenuBlueSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuYellowSlime").GetComponent<MeshRenderer>().enabled = true;
                 GameObject.FindGameObjectWithTag("MenuPurpleSlime").GetComponent<MeshRenderer>().enabled = true;
-                GameObject.FindGameObjectWithTag("MenuCrown").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuCrownLeft").GetComponent<MeshRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("MenuCrownRight").GetComponent<MeshRenderer>().enabled = true;
             }
         }
 
