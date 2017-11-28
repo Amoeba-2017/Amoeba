@@ -434,11 +434,6 @@ public class UserInterfaceManager : MonoBehaviour
                 Destroy(x.GetComponent<PlayerController>().slimes[0]);
                 Destroy(x);
             }
-
-            //play the victory sound
-            AudioManager.PlaySound("VictorySound");
-            //mute the game music
-            GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = true;
             gsm.Players.Clear();
             gsm.Players.Add(highestGO);
             selectWinner();
@@ -521,6 +516,11 @@ public class UserInterfaceManager : MonoBehaviour
         {
             victoryScreen.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Image>().sprite = purpleSlime;
         }
+
+        //play the victory sound
+        AudioManager.PlaySound("VictorySound");
+        //mute the game music
+        GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>().mute = true;
 
         CurrentGameState = GameState.GameOver;
         victoryScreen.enabled = true;
