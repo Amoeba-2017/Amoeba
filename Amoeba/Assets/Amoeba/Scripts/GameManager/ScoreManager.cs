@@ -40,9 +40,6 @@ public class ScoreManager : MonoBehaviour
     {
         gsm = gameObject.GetComponent<GameStateManager>();
         uim =  gameObject.GetComponent<UserInterfaceManager>();
-
-
-
     }
 
     // Update is called once per frame
@@ -105,7 +102,6 @@ public class ScoreManager : MonoBehaviour
                 {
                     crown.transform.position = new Vector3(0, -10, 0);
                 }
-
             }
         }
     }
@@ -192,6 +188,4 @@ public class ScoreManager : MonoBehaviour
         }
         return -1;
     }
-
-
 }

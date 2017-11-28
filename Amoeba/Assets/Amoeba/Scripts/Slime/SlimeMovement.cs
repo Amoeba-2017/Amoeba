@@ -106,13 +106,10 @@ public class SlimeMovement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, beginYPos, transform.position.z);
     }
 
-
     public void setTargetRot(Vector3 dir)
     {
         targetRot = Quaternion.LookRotation(dir, Vector3.up);
     }
-
-
 
     void Update()
     {
@@ -164,7 +161,6 @@ public class SlimeMovement : MonoBehaviour
             currentSlimeState = SlimeState.still;
         }
     }
-
     void Seek()
     {
         //if (kingSlime == false)

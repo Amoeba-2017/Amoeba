@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SlimePuddle : MonoBehaviour
 {
-
     [SerializeField]
     private float mass;
 
@@ -23,10 +22,7 @@ public class SlimePuddle : MonoBehaviour
 
     public GameObject shadow;
 
-
-
     //mass needs to be added here 
-
 
     public void SetMass(float a_mass)
     {
@@ -53,7 +49,6 @@ public class SlimePuddle : MonoBehaviour
         Shoot();
     }
 
-
     void Shoot()
     {
         if (ShootOut)
@@ -61,7 +56,6 @@ public class SlimePuddle : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * Random.Range(minRanForce, maxRanForce), ForceMode.Impulse);
         }
     }
-
 
     void OnCollisionEnter(Collision x)
     {
@@ -100,14 +94,9 @@ public class SlimePuddle : MonoBehaviour
         }
     }
 
-
-
-
-
     // Update is called once per frame
     void Update()
     {
         //shadow.transform.rotation = Quaternion.Euler(90, 0, 0);
-
     }
 }

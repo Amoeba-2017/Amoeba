@@ -21,9 +21,6 @@ public class SlimeBullet : MonoBehaviour
     float myMass;
     float hitMass;
 
-
-
-
     public void SetMyMass(float mass)
     {
         myMass = mass;
@@ -70,10 +67,8 @@ public class SlimeBullet : MonoBehaviour
                     puddle.GetComponent<SlimePuddle>().SetMass(myMass);
                 }
             }
-
         }
     }
-
 
     // Collision Code
     // Different particle effect depending on which If Statement is triggered

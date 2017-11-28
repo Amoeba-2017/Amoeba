@@ -263,7 +263,7 @@ public class UserInterfaceManager : MonoBehaviour
                     UICrowm.transform.position += new Vector3(0, 2.5f, 0);
                     currentControllerUISelection = ControllerUISelection.play;
                 }
-                Debug.Log(axisInUse);
+                //Debug.Log(axisInUse);
             }
 
             if (XCI.GetAxisRaw(XboxAxis.LeftStickY, XboxController.First) == 0)
