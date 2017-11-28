@@ -88,7 +88,7 @@ public class SlimePuddle : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass >= 30 && GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass < 100)
         {
-            Debug.Log("hit the player or the slime");
+            //Debug.Log("hit the player or the slime");
             GameObject.FindGameObjectWithTag(x.gameObject.GetComponent<SlimeMovement>().parent).GetComponent<PlayerController>().mass += mass;
             Destroy(gameObject);
         }
